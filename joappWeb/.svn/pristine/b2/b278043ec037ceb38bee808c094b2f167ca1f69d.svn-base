@@ -1,0 +1,320 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+<script type="text/javascript">
+
+
+ 
+	function atras(unitId){
+		var lol = window.parent.document.getElementById('contenPrincipal');
+		//lol.src = '/joappWeb/dashboards/dashBoardCourses.xhtml?'+'unitId='+unitId;
+		lol.src = '/joappWeb/dashboards/dashBoardCourses.xhtml';
+		
+		}
+	//<![CDATA[ 
+	function abreVideo(link,topicId){
+		
+		//var text = window.parent.document.getElementById('menuCursos').getElementsByTagName('a')[0].click();
+		var lol = window.parent.document.getElementById('contenPrincipal');
+		//lol.src = "/joappWeb/carousel/visualizaVideo.xhtml?linkTopic="+link+"&topicId="+topicId;
+		lol.src = "/joappWeb/VisalizaVideoServlet?linkTopic="+link+"&topicId="+topicId;
+		//var media = window.parent.document.getElementById('clicVideo').click();
+		
+		}
+	//]]> 
+	//<![CDATA[ 
+	function abreLamina(link,topicId){
+		
+		//var text = window.parent.document.getElementById('menuCursos').getElementsByTagName('a')[0].click();
+		var lol = window.parent.document.getElementById('contenPrincipal');
+		//lol.src = "/joappWeb/carousel/visualizaVideo.xhtml?linkTopic="+link+"&topicId="+topicId;
+		lol.src = "/joappWeb/VisualizaLaminaServlet?topicId="+topicId;
+		//var media = window.parent.document.getElementById('clicVideo').click();
+		
+		}
+	//]]>
+	//<![CDATA[ 
+	function abrePractica(topicId){
+		
+		//var text = window.parent.document.getElementById('menuCursos').getElementsByTagName('a')[0].click();
+		var lol = window.parent.document.getElementById('contenPrincipal');
+		//lol.src = "/joappWeb/carousel/visualizaVideo.xhtml?linkTopic="+link+"&topicId="+topicId;
+		lol.src = "/joappWeb/VisualizaPracticaServlet?topicId="+topicId;
+		//var media = window.parent.document.getElementById('clicVideo').click();
+		
+		}
+	//]]>
+	//<![CDATA[ 
+	function abreSolucion(topicId){
+		
+		//var text = window.parent.document.getElementById('menuCursos').getElementsByTagName('a')[0].click();
+		var lol = window.parent.document.getElementById('contenPrincipal');
+		//lol.src = "/joappWeb/carousel/visualizaVideo.xhtml?linkTopic="+link+"&topicId="+topicId;
+		lol.src = "/joappWeb/VisualizaSolucionServlet?topicId="+topicId;
+		//var media = window.parent.document.getElementById('clicVideo').click();
+		
+		}
+	//]]>
+	function asignaValorHidden(param){
+	/*	var hiddenValue =document.getElementById('formCarousel:hiddenRateValue');
+		alert(hiddenValue);
+		hiddenValue.value=param;
+		alert(hiddenValue.value);*/
+		}
+</script>
+<style type="text/css">
+/*.ui-dialog .ui-dialog-titlebar {
+   display: none !important;
+} */
+.ui-carousel {
+		border: none;
+}
+.ui-carousel .ui-widget-content {
+	 width: 1017px;
+}
+.ui-carousel .ui-carousel-viewport{
+	
+}
+.ui-carousel .ui-carousel-viewport ul{
+
+}
+.ui-carousel .ui-carousel-header .ui-carousel-header-title{
+
+}
+.ui-carousel-item {
+height: 300px;
+}
+.ui-carousel .ui-widget .ui-corner-all{
+
+}	
+
+.animated .ui-progressbar-value { 
+                background-image: url(../images/pbar-ani.gif); 
+            }					
+</style>
+</h:head>
+<h:body>
+  	
+<h:form id="formCarousel">
+<center>
+<p:panelGrid styleClass="borderCero3">
+<p:row>
+	<p:column>
+		<p:panelGrid>
+			<p:row>
+				<p:column>
+				<p:commandLink onclick="javascript:atras(#{sessionScope['unitId']});">
+			   		<p:graphicImage url="/images/Arrow-Left-blue-48.png" 
+			   						style="margin-top:-12px;margin-bottom:-7px;" 
+			   						title="Regresar al dashBoard"/>
+			   </p:commandLink>
+			   </p:column>
+			</p:row>
+	   </p:panelGrid>
+	</p:column>
+	<p:column>
+	
+	
+		<p:panelGrid>
+			<p:row>
+			<p:column>
+				<p:outputLabel value="Ayudanos a valorar esta unidad" style="font-weight:bold;text-align:center;"/>
+			</p:column>
+        	</p:row>
+        	<p:row>
+			<p:column style="text-align:right;">
+			
+				<p:growl id="messages1" showDetail="true" for="thanksFiveStarts" autoUpdate="true"/>
+			  <p:rating id="idRate" value="#{ratingController.valorRating}">
+			
+			  		<p:ajax event="rate" listener="#{ratingController.onrate}"/>
+			  		
+	            <p:ajax event="cancel" listener="#{ratingController.oncancel}" oncomplete="PF('dlgRate').show()" />  
+        	  </p:rating>
+			</p:column>
+        	</p:row>
+        </p:panelGrid>
+		</p:column>
+</p:row>
+
+</p:panelGrid>
+	
+<p:dialog id="dialogRate" header="¿Que nos hace falta para tener 5 estrellas?" 
+			widgetVar="dlgRate" 
+			modal="true" 
+			height="150"
+			 width="400" 
+			 resizable="false"
+			 showEffect="fade"
+			 hideEffect="explode">  
+    <p:inputTextarea id="txtAreaStarts" rows="6" cols="50" value="#{ratingController.commentFiveStarts}"/>
+    <h:form id="formFiveStarts">
+    <p:growl id="messages" showDetail="true" />
+    <p:spacer width="150" height="10" />
+    			<p:commandButton id="btnEstrellas"
+    							 value="Aceptar" 
+    							 action="#{ratingController.sendWhyNotFiveStarts}"
+    							 oncomplete="PF('dlgRate').hide()"
+    							 update="messages"/>
+    		
+    </h:form> 
+</p:dialog>
+
+
+ <p:carousel id="carousel" value="#{topicsCarouselBean.creaListTopics(sessionScope['unitId'],sessionScope['topicIdArbol'])}" 
+             var="top"
+             numVisible="1"
+             headerText="¡Es hora de Empezar!">  
+             
+ <!-- <p:scrollPanel style="height:700px;">     -->
+ <!-- <p:panel header="#{top.topicName}" style="height:300px;"> -->
+  <p:panelGrid id="pnlTopics" styleClass="borderCero3" >
+ 
+  	<f:facet name="header">
+  		<p:row>
+  			<p:column colspan="2">
+  				<h:outputText value="#{top.topicName}"/>
+  			</p:column>
+  		</p:row>
+  	</f:facet>
+
+  <p:row>
+  	<p:column rendered="#{!empty top.linkVideo}">
+  		<p:panel header="Videos" style="text-align:center;width:460px;">
+  		<p:panelGrid id="panel2" style="width:380px">
+  		
+  			<p:row>
+  				<p:column style="width:100px;font-weight:bold;color:#290375;">
+  					<h:outputText value="#{top.segment2}"/>
+  				</p:column>
+  				
+  				<p:column style="width:35px">
+  				    
+	  				<p:commandLink onclick="javascript:abreVideo('#{top.linkVideo}',#{top.topicId})">
+	  					  <p:graphicImage url="/images/ensenar_video.png" title="Entra para ver el video"/>	  					 
+	  				</p:commandLink>
+  				</p:column>
+  			
+  				  
+  				<p:column style="width:30px">
+  					<p:progressBar value="#{topicsCarouselBean.getTopicStatusBar(top.topicId,'video')}"
+  								   labelTemplate="{value}%" 
+  								   displayOnly="true"
+  								   style="width:90px"
+  								   styleClass="animated"/>	
+  				</p:column>
+  				<p:column style="width:10px">  				
+  					 <p:graphicImage url="#{topicsCarouselBean.getStatusIcon(top.topicId,'video')}" />
+  				</p:column>
+  			</p:row>
+  			
+  		</p:panelGrid>
+  		
+  		</p:panel>
+  	</p:column>
+  	<p:column rendered="#{!empty top.lamina}">
+  		<p:panel header="Material de apoyo" style="text-align:center;width:460px;">
+  			<p:panelGrid id="panel3" style="width:380px">
+  			<p:row>
+  				<p:column style="width:100px;font-weight:bold;color:#290375;">
+  					<h:outputText value="#{top.segment2}"/>	
+  				</p:column>
+  				<p:column style="width:35px">
+  				<p:commandLink onclick="javascript:abreLamina('#{top.lamina}',#{top.topicId})">
+  					<p:graphicImage url="/images/documento.png" title="Entra para ver el documento"/>	
+  				</p:commandLink>
+  				</p:column>
+  				<p:column style="width:30px">
+  					<p:progressBar value="#{topicsCarouselBean.getTopicStatusBar(top.topicId,'lamina')}"
+  								   labelTemplate="{value}%" 
+  								   displayOnly="true"
+  								   style="width:90px"
+  								   styleClass="animated"/>		
+  				</p:column>
+  				<p:column style="width:10px">
+  					<p:graphicImage url="#{topicsCarouselBean.getStatusIcon(top.topicId,'lamina')}" />	
+  				</p:column>
+  			</p:row>
+  		</p:panelGrid>
+  		</p:panel>
+  	</p:column>
+  </p:row>
+  <p:row>
+  
+
+   	<p:column rendered="#{!empty top.practica}">
+  		<p:panel header="Practicas" style="text-align:center;width:460px;">
+  		  		
+  			<p:panelGrid id="panel4" style="width:380px">
+  			<p:row>
+  				<p:column style="width:100px;font-weight:bold;color:#290375;">
+  					Practica	
+  				</p:column>
+  				<p:column style="width:35px">
+  					<p:commandLink onclick="javascript:abrePractica(#{top.topicId})">
+  						<p:graphicImage url="/images/Clipboard.png" title="Entra para ver el documento"/>
+  					</p:commandLink>	
+  				</p:column>
+  				<p:column style="width:30px">
+  					<p:progressBar value="#{topicsCarouselBean.getTopicStatusBar(top.topicId,'practica')}"
+  								   labelTemplate="{value}%" 
+  								   displayOnly="true"
+  								   style="width:90px"
+  								   styleClass="animated"/>	
+  				</p:column>
+  				<p:column style="width:10px">
+  					<p:graphicImage url="#{topicsCarouselBean.getStatusIcon(top.topicId,'practica')}" />
+  				</p:column>
+  			</p:row>
+  		</p:panelGrid>
+  		</p:panel>
+  	</p:column>
+ 
+  	<p:column rendered="#{!empty top.solucion}">
+  		<p:panel header="Solución" style="text-align:center;width:460px;">
+  			<p:panelGrid id="panel5" style="width:380px">
+  			<p:row>
+  				<p:column style="width:100px;font-weight:bold;color:#290375;">
+  					Solucion	
+  				</p:column>
+  				<p:column style="width:35px">
+  					<p:commandLink onclick="javascript:abreSolucion(#{top.topicId})">
+  						<p:graphicImage url="/images/Chalkboard.png" />
+  					</p:commandLink>		
+  				</p:column>
+  				<p:column style="width:30px">
+  					<p:progressBar value="#{topicsCarouselBean.getTopicStatusBar(top.topicId,'solucion')}"
+  								   labelTemplate="{value}%" 
+  								   displayOnly="true"
+  								   style="width:90px"
+  								   styleClass="animated"/>		
+  				</p:column>
+  				<p:column style="width:10px">
+  					<p:graphicImage url="#{topicsCarouselBean.getStatusIcon(top.topicId,'solucion')}" />	
+  				</p:column>
+  			</p:row>
+  		</p:panelGrid>
+  		</p:panel>
+  	</p:column>
+ 	
+  </p:row>
+  	
+  </p:panelGrid>
+ <!-- </p:panel>-->
+<!-- </p:scrollPanel>-->
+     
+      
+</p:carousel> 
+</center>
+</h:form>  
+
+</h:body>
+
+</html>

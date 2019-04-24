@@ -1,0 +1,15 @@
+package mx.javaonline.admin.beans;
+
+public class MenuPerfil {
+
+	public MenuPerfil() {
+		
+	}
+	
+	public String cambiaContrasena(){
+		return "cambiaPass";
+	}
+	public String actualizaDatos(){
+		return "updateData";
+	}
+}

@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+      <link rel="stylesheet" type="text/css" href="../css/general.css"/>
+<style type="text/css" >
+
+</style>
+<script type="text/javascript">
+
+function atras(){
+	var lol = window.parent.document.getElementById('contenPrincipal');
+	//lol.src = '/joappWeb/dashboards/dashBoardCourses.xhtml?'+'unitId='+unitId;
+	lol.src = '/joappWeb/administracion/miPerfil.xhtml';
+	
+	}
+</script>      
+</h:head>
+<h:body>
+
+
+<h:form id="frmContrasena">
+
+<p:panel id="pnlPass" header="Cambia tu contraseña">
+<div id="atras">
+<a href="javascript:atras()" style="text-decoration: none">
+	<img src="../images/Arrow-Left-blue-48.png"/>
+</a>	
+</div>
+<p:growl id="mensajes" showDetail="true"/>
+
+<p:panelGrid styleClass="borderCero3" style="margin: 0 auto;">
+	<p:row>
+		<p:column>
+			<h:outputText value="Nueva contraseña:" styleClass="etiqueta2"/>
+		</p:column>
+		<p:column>
+			<p:password label="Nueva contraseña" value="#{cambiaPasswordBean.pass}" required="true" feedback="true"/>
+		</p:column>
+	</p:row>
+		<p:row>
+		<p:column>
+			<h:outputText value="Confirma contraseña:" styleClass="etiqueta2"/>
+		</p:column>
+		<p:column>
+			<p:password label="Confirma contraseña" value="#{cambiaPasswordBean.confirmPass}" required="true" feedback="true"/>
+		</p:column>
+	</p:row>
+	<p:row>
+		<p:column colspan="2" style="text-align:center;">
+			<p:commandButton value="Guardar" action="#{cambiaPasswordBean.guardarPass}" update=":frmContrasena"/>
+		</p:column>
+	</p:row>
+</p:panelGrid>
+</p:panel>
+</h:form>
+
+
+</h:body>
+
+</html>

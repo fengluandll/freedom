@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+<style type="text/css">
+/*.ui-dialog .ui-dialog-titlebar {
+   display: none !important;
+} */
+.ui-carousel {
+		border: none;
+}
+.borderCero3 tr, .borderCero3 td{
+				border: none;
+			}
+.borderCero4 tr, .borderCero4 td{
+				border: none;
+			}
+.borderCero4{ 
+}		
+			
+</style>
+<script type="text/javascript">
+function atras(unitId){
+	var lol = window.parent.document.getElementById('contenPrincipal');
+	lol.src = '/joappWeb/carousel/topicCarousel.xhtml';
+	
+	}  
+function start() {  
+    PF('statusDialog').show();  
+}  
+  
+function stop() {  
+    PF('statusDialog').hide();  
+}  
+
+</script>
+</h:head>
+<p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false">  
+    <p:graphicImage value="/images/ajaxloadingbar.gif" />  
+</p:dialog>  
+<h:form id="formVisualizaVideo">
+         
+<p:panelGrid styleClass="borderCero3">
+<p:row>
+	<p:column>
+		<p:panelGrid>
+			<p:row>
+				<p:column>
+				<p:commandLink onclick="javascript:atras(#{sessionScope['unitId']});">
+			   		<p:graphicImage url="/images/Arrow-Left-blue-48.png" 
+			   						style="margin-top:-12px;margin-bottom:-7px;" 
+			   						title="Regresar al dashBoard"/>
+			   </p:commandLink>
+			   </p:column>
+			</p:row>
+	   </p:panelGrid>
+	</p:column>
+	<p:column>
+		<p:panelGrid>
+	<p:row>
+	<p:column/>
+	<p:column/>
+	<p:column/>
+	<p:column/>
+	<p:column/>
+	<p:column/>
+	<p:column/>
+	<p:column/>
+	<p:column/>
+	<p:column/>
+	<p:column/>
+	<p:column/>
+		<p:column rowspan="2">
+			<p:graphicImage value="/images/Modern-Clock-64.png"/>  
+		</p:column>
+		<p:column colspan="3" style="text-align:center;">
+		  <h:outputText id="txt_count" 
+		  				value="#{timerContent.sCronometro}" 
+		  				style="font-size:18px;font-weight:bold;font:serif;"/>  
+      
+   		 <p:poll interval="1" 
+            	 listener="#{timerContent.increment('lamina')}" 
+            	 update="txt_count"
+            	 widgetVar="pollTime">
+         </p:poll>
+	 	
+	 	 
+		</p:column>
+	</p:row>
+	<p:row>
+		<p:column/>
+		<p:column/>
+		<p:column/>
+		<p:column/>
+		<p:column/>
+		<p:column/>
+		<p:column/>
+		<p:column/>
+		<p:column/>
+		<p:column/>
+		<p:column/>
+		<p:column/>
+		<p:column>
+		<div style="text-align:center;">
+			<p:panelGrid styleClass="borderCero3">
+				<p:row>
+					<p:column>
+						<p:commandLink actionListener="#{timerContent.playTimer}">
+						<p:graphicImage value="/images/Play-32.png"/>
+						</p:commandLink>
+					</p:column>  
+					<p:column>
+						<p:commandLink actionListener="#{timerContent.pausaTimer}">
+						<p:graphicImage value="/images/Button-Pause-yellow-32.png"/>
+						</p:commandLink>
+					</p:column>   
+				</p:row>
+			</p:panelGrid>
+			</div>
+		</p:column>
+	</p:row>
+</p:panelGrid>	
+	</p:column>
+</p:row>
+</p:panelGrid>
+<div style="text-align:center;">
+<h:outputText value="Cuando estes list@ da clic en el boton de play" style="font-size:14px;font-family:Lucida Sans Unicode;color:rgb(66, 145, 29)"/>
+</div>
+<p:separator id="separator"/> 
+<p:spacer height="20" />
+
+<p:accordionPanel multiple="true">
+<p:tab title="Mi PDF">
+<div style="text-align:right;">
+
+	<p:panelGrid styleClass="borderCero3" style="text-align:center;">
+		<p:row>
+			<p:column>
+				<p:spacer height="1" width="386"/><p:graphicImage value="/images/DescargaPDF.png"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<p:spacer height="1" width="395"/><p:commandButton id="downloadLink" value="Descargar" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop)"   
+				        icon="ui-icon-arrowthichk-s">  
+				    <p:fileDownload value="#{fileDownloadController.getArchivo('lamina')}" />  
+				</p:commandButton>  
+			</p:column>
+		</p:row>
+	</p:panelGrid> 
+</div>
+</p:tab>
+
+</p:accordionPanel>
+               
+<p:spacer height="20" />
+<p:separator id="separator2"/>
+                   
+    					             
+</h:form>
+</html>

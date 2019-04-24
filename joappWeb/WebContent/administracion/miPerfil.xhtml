@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<link rel="stylesheet" type="text/css" href="../css/general.css" />
+	<script type="text/javascript">
+	//<![CDATA[ 
+	function direcciona(){
+		
+		//var text = window.parent.document.getElementById('menuCursos').getElementsByTagName('a')[0].click();
+		var lol = window.parent.document.getElementById('contenPrincipal');
+		//lol.src = "/joappWeb/carousel/visualizaVideo.xhtml?linkTopic="+link+"&topicId="+topicId;
+		lol.src = "/joappWeb/home/comoTomarCursos.jsp";
+		//var media = window.parent.document.getElementById('clicVideo').click();
+		
+		}
+	//]]> 
+	</script>
+</h:head>
+<h:body>
+	<center>
+		<h:form>
+		
+			<p:panelMenu style="width:600px;position: relative;top: 30px;" styleClass="">
+				<p:submenu label="Administración">
+					<p:menuitem value="Cambiar contraseña"
+						action="cambiaPass"
+						icon="ui-icon-arrowrefresh-1-w" styleClass="etiqueta4" />
+					<p:menuitem value="Actualiza tus datos"
+						action="updateData" icon="ui-icon-person"
+						styleClass="etiqueta4" />
+					<p:menuitem value="Mi suscripción"
+						action="suscripcion" icon="ui-icon-flag"
+						styleClass="etiqueta4" />
+					<p:menuitem value="Como tomar los cursos"
+						onclick="javascript:direcciona();" icon="ui-icon-info"
+						styleClass="etiqueta4" />
+				</p:submenu>
+			</p:panelMenu>
+		</h:form>
+	</center>
+</h:body>
+</html>

@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<link rel="stylesheet" type="text/css" href="../css/general.css" />
+</h:head>
+<h:body>
+	<center>
+		<h:form>
+		
+			<p:panelMenu style="width:600px;position: relative;top: 30px;">
+				<p:submenu label="Administración">
+					<p:menuitem value="Cambiar contraseña"
+						action="cambiaPass"
+						icon="ui-icon-arrowrefresh-1-w" styleClass="etiqueta2" />
+					<p:menuitem value="Actualiza tus datos"
+						action="updateData" icon="ui-icon-disk"
+						styleClass="etiqueta2" />
+				</p:submenu>
+			</p:panelMenu>
+		</h:form>
+	</center>
+</h:body>
+</html>

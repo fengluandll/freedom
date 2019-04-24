@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+<script type="text/javascript">
+	function redirecciona(){
+		
+		window.location = '/joappWeb/login.xhtml';
+		
+		}
+</script>
+<link rel="stylesheet" type="text/css" href="css/general.css"/>
+   <style type="text/css">
+			
+		   body{
+		   		/*background-color:rgb(224,224,224)  ;*/
+		   		background-image:url('images/fondo_login-pagina_verde.png');
+		   		 
+		   }
+   </style>
+</h:head>
+<h:body>
+
+<h:form id="frmLogin">
+<div style="position: relative;top:20px;left:320px;width: 20px;">
+
+<p:graphicImage value="images/Home2-Blue-32.png" onclick="javascript:redirecciona()" style="cursor:pointer"/>
+</div>
+<div id="divPrincipal">  
+<p:panelGrid styleClass="borderCero">
+	<f:facet name="header">
+	  
+        <p:row>
+           <p:column colspan="4" styleClass="etiqueta1">Se enviara a tu e-mail tu contraseña</p:column>
+        </p:row>
+    </f:facet>        
+        <p:row>
+        	<p:column>
+    			<h:outputText value="Ingresa tu correo : " styleClass="etiqueta1"/>
+    		</p:column>
+          	<p:column>
+    			<p:inputText value="#{loginBean.correo}" required="true" label="Correo"/>
+    		</p:column>
+        </p:row>
+    <f:facet name="footer">
+        <p:row>
+    		<p:column colspan="2" style="text-align: center">
+    			<p:commandButton value="Enviar" actionListener="#{loginBean.olvidoContrasena}" update="msgGral"/>
+    		</p:column>
+    		
+        </p:row>
+        
+	</f:facet>
+	
+</p:panelGrid>
+<p:messages id="msgGral" showDetail="true"/>  
+</div>  
+</h:form>
+<p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">
+    <f:facet name="start">
+        <h:graphicImage value="../images/ajax-loader.gif" />
+    </f:facet>
+     
+    <f:facet name="complete">
+        <h:outputText value="" />
+    </f:facet>
+</p:ajaxStatus>
+</h:body>
+</html>

@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	lang="es">
+<h:head>
+	<script type="text/javascript">
+	function redirecciona(){
+		
+		window.location = '/joappWeb/recuperaPass.xhtml';
+		
+		}
+	function redireccionaWeb(){
+		
+		window.open('http://www.startonline.com.mx');
+		
+		}
+</script>
+	<link rel="stylesheet" type="text/css" href="css/general.css" />
+	<link href="images/headset_icono.png" rel="shortcut icon" type='image/png'/>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="css/custom.css"/>
+    <link rel="stylesheet" type="text/css" href="css/loginCss.css"/>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+	<style type="text/css">
+body {
+	/*background-color:rgb(224,224,224)  ;*/
+	/*background-image: url("images/background_black.jpg");*/
+	
+	
+	
+}
+
+/* .top {
+				filter:alpha(opacity=90);
+				opacity:0.8;
+				padding:50px 0 0 50px;
+			}*/
+
+</style>
+</h:head>
+<h:body>
+
+<span id="startPalabra" onclick="redireccionaWeb()" style="cursor: pointer;">
+	start
+</span>
+<span class="text-danger" onclick="redireccionaWeb()" style="cursor: pointer;position: relative;
+															top: 8px;
+															right: px;
+															left: 32px;
+															font-size: 30pt;
+															font-weight: 100;
+															font-family: Helvetica, sans-serif">
+	Web
+</span>
+<span id="linePalabra" onclick="redireccionaWeb()" style="cursor: pointer;">
+	
+</span>
+<span id="web" onclick="redireccionaWeb()" style="cursor: pointer;">
+	www.startonline.com.mx
+</span>
+<h:form id="frmLogin">
+<div id="grid" class="container" style="width: 25%;">
+  
+  <div class="row" id="pwd-container" style="">
+   <div class="form-group" style=""></div>
+       <section class="login-form">
+       <!--  <img src="http://i.imgur.com/RcmcLv4.png" class="img-responsive" alt="" />  -->
+       <h2 class="text-info" style="text-align: center;">Bienvenido de vuelta</h2>
+       <div style="position:relative;text-align:center;">
+         <p:commandLink onclick="javascript:redirecciona()"> Olvide mi contraseña </p:commandLink>
+       </div>
+         <p:inputText type="email"
+         			  id="idUser" 
+         			  placeholder="Email" 
+         			  styleClass="form-control" 
+         			  value="#{loginBean.user}" 
+         			  required="true" 
+         			  label="Usuario"
+         			  style="position:relative;top:20px;" />
+         <p:message for="idUser" />
+         <p:password id="password" 
+         			 type="password" 
+         			 placeholder="Contraseña"
+         			 styleClass="form-control"
+         			 value="#{loginBean.password}"
+					 required="true" 
+					 label="Contraseña"
+					 style="position:relative;top:35px;" />
+		<p:message for="password" />
+		 
+		<p:commandButton value="Iniciar sesión"
+						 action="#{loginBean.passStudent}" 
+						 styleClass="btn btn-success btn-lg btn-block"
+						 style="position:relative;top:35px;text-align: center;" />
+		 <div style="position:relative;top: 35px;">
+		 <p:messages id="messages" 
+		 			 showDetail="true" 
+		 			 autoUpdate="true"
+    				 closable="true" />
+    	</div>
+       </section>
+
+  </div>
+</div>
+</h:form>
+</h:body>
+</html>

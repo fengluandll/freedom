@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+<h:head>
+	<link rel="stylesheet" type="text/css" href="../css/general.css" />
+</h:head>
+<h:body>
+
+	<center>
+		<p:panel header="Cuenta de Usuario" styleClass="borderCero3">
+			<p:panelGrid style="width:700px;">
+				<p:row>
+					<p:column>
+						<p:graphicImage value="../images/Accept-32.png" />
+					</p:column>
+					<p:column>
+						<h:outputText value="Cuenta creada exitosamente"
+							style="font-size:20px;" />
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+
+			<p:panelGrid style="width:700px;">
+				<p:row>
+					<p:column>
+						<h:outputText value="Nombre: " styleClass="negritas" />
+					</p:column>
+					<p:column>
+						<h:outputText value="#{sessionScope['surnames']}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<h:outputText value="Usuario: " styleClass="negritas" />
+					</p:column>
+					<p:column>
+						<h:outputText value="#{sessionScope['user']}"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<h:outputText value="Password: " styleClass="negritas" />
+					</p:column>
+					<p:column>
+						<h:outputText value="********" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<h:outputText value="No- Cuenta: " styleClass="negritas" />
+					</p:column>
+					<p:column>
+						<h:outputText value="#{sessionScope['numCta']}"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<h:outputText value="Rol: " styleClass="negritas" />
+					</p:column>
+					<p:column>
+						<h:outputText value="#{sessionScope['nomRol']}"/>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+		</p:panel>
+<h:form id="frmCursos">	
+<p:panel header="Asignacion de Cursos">
+<p:pickList id="pickList" value="#{asignaCursosUsuario.courses}" var="course"
+                itemLabel="#{fn:substringBefore(course, '|')}" itemValue="#{course}">
+</p:pickList>  
+	<center>
+		<p:panelGrid styleClass="borderCero3">
+			<p:row>
+				<p:column>
+					<p:commandButton value="Registrar" actionListener="#{asignaCursosUsuario.procesaCursosAgregados}" update="msgral"/>		
+				</p:column>
+				<p:column>
+					<p:commandButton value="Enviar correo" actionListener="#{sendMails.enviaMailBienvenida}" update="msgral"/>
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:message id="msgCorreoEnviado"/>
+			</p:row>
+		</p:panelGrid>
+		<p:messages id="msgral"/>
+	</center>            
+</p:panel>
+
+</h:form>
+<p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">
+    <f:facet name="start">
+        <h:graphicImage value="../images/ajax-loader.gif" />
+    </f:facet>
+     
+    <f:facet name="complete">
+        <h:outputText value="" />
+    </f:facet>
+</p:ajaxStatus>
+	</center>
+
+</h:body>
+</html>

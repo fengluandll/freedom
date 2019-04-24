@@ -1,0 +1,212 @@
+.ui-datatable .ui-column-filter{
+ display:none;
+ /*width: 60px;
+ margin: auto;*/
+}
+.textHeader{
+	font-size: 17px;
+	font-weight: 550;
+}
+.textSubHeader{
+	font-size: 18px;
+	font-weight: 550;
+}
+.menuBarText{
+	font-size: 20px;
+	font-weight: 550;	
+}
+
+/*HOJA DE ESTILOS PARA EL ARBOL DE CURSOS*/
+.ui-tree {
+	  max-width: 600px;  
+	}
+	 .ui-treenode {
+			  /*font-weight:bold;*/
+			  font-size: 14px; 
+			  color:white;
+			   }
+	.ui-tree .ui-tree-container {
+		    height: 100%;
+		    margin: 0;
+		    /*overflow: auto;*/
+		    padding: 0px;
+		    
+			}
+			
+	.ui-treenode-children .ui-treenode-label {
+		 font-size: 13px; 
+			 /*color:rgb(64,171,208);*/
+			 color:orange;    
+	 }
+	
+	.ui-accordion .ui-accordion-header {
+			   background: rgb(39,39,39);  
+			}
+	.ui-accordion {
+	    overflow:hidden !important;  	    
+	}
+	.ui-accordion .ui-accordion-header a{
+				font-size:15px;
+				color:orange;	
+	  }
+			  
+	.animated .ui-progressbar-value { 
+	                background-image: url(../images/pbar-ani.gif); 
+	            }		
+/***************************************************************/
+/*HOJA DE ESTILOS PARA EL HOME*/
+.datoGral{font-size:8px;}
+.ui-layout-west .ui-layout-unit-header{
+	    /*color: white;*/
+	    /*background:rgb(0,128,192);*/
+	    background:rgb(78,93,108);
+	    
+	}
+.ui-layout-west .ui-layout-unit-content{
+	background:rgb(43,62,80);
+}
+.ui-layout-west{
+ 	
+	background:rgb(43,62,80);
+}
+.ui-layout-unit-header-title{
+	color:white;
+}
+ 
+.ui-widget-content{
+
+	background:rgb(43,62,80)!important;
+}
+.restricted{overflow-y: hidden;}
+
+a{
+	text-decoration: none;
+}			
+#startOnlineLogo{
+	position: relative;
+    top: 10px;
+    right: 10px;
+    left: 25px;
+}
+#startPalabraH{
+	position: relative;
+    top: 8px;
+    right: 0px;
+    left: 25px;
+    color: red;
+    font-size: 22pt;
+    font-weight:demi-bold;
+    font-family: monospace;
+}
+#onPalabraH{
+position: relative;
+    top: 8px;
+    right: 0px;
+    left: 21px;
+    color: blue;
+    font-size: 22pt;
+    font-weight:100;
+    font-family: monospace;
+}
+#linePalabraH{
+position: relative;
+    top: 8px;
+    right: 0px;
+    left: 18px;
+    color: red;
+    font-size: 22pt;
+    font-weight:100;
+    font-family: monospace;
+}
+#misNotasPalabra{
+	/*position: absolute;
+    top: 58%;
+    right: 0%;
+    left: 33%;*/
+    color: black;
+    font-size:14pt;
+    font-weight:100;
+    font-family: serif;
+}
+#posiNotpng{
+	/*position:absolute;
+    top: 8%;
+    right: 0px;
+    left: 35%;*/
+}
+#salirPng{
+/*	position:absolute;
+    top: -75px;
+    right: 0px;
+    left: 1180px;*/
+}
+#salirPalabra{
+	/*position:absolute;
+    top: -63px;
+    right: 0px;
+    left: 1150px;*/
+    color: blue;
+    font-size:14pt;
+    font-weight:100;
+    font-family: serif;
+}
+#perfilPng{
+	/*position:absolute;
+    top: 8%;
+    right: 0px;
+    left: 40%;*/
+}
+
+#perfilPalabra{
+	/*position: relative;
+    top: 22px;
+    right: 0px;
+    left: 23%;*/
+    color: black;
+    font-size:14pt;
+    font-weight:100;
+    font-family: serif;
+}
+
+#ayudaPng{
+	/*position:absolute;
+    top: 9%;
+    right: 0px;
+    left: 45%;*/
+}
+#ayudaPalabra{
+	/*position: relative;
+    top: 22px;
+    right: 0px;
+    left: 48%;*/
+    color: black;
+    font-size:14pt;
+    font-weight:100;
+    font-family: serif;
+}
+#buzonPng{
+	/*position:relative;
+    top: -72px;
+    right: 0px;
+    left: 53%;*/
+}
+#buzonPalabra{
+	/*position: relative;*/
+   /* top: -60px;*/
+    right: 0px;
+   /* left: 50%;*/
+    color: black;
+    font-size:14pt;
+    font-weight:100;
+    font-family: serif;
+}
+
+/*
+.ui-layout-north {                    
+                overflow:hidden !important;
+            }
+
+.ui-layout-north .ui-layout-unit-content {
+    overflow:hidden !important;
+}   
+*/  	            

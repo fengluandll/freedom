@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+      <h:head>
+<link rel="stylesheet" type="text/css" href="../css/general.css"/>      
+<style type="text/css">
+      	.ui-tree {
+				    width: 600px;
+				      
+				 }
+		 .ui-treenode {
+				  font-weight:bold;
+				  
+				 /*font-size: 9pt;*/ 
+				  color:#660000;
+				  
+				  
+				  				 }
+		.ui-tree .ui-tree-container {
+			    height: 100%;
+			    margin: 0;
+			    overflow: auto;
+			    padding: 0px;
+			    
+				}
+				
+		.ui-treenode-children {
+			    margin: 0;
+			    padding: 0 0 0 16px;
+				font-family:none;
+				font-size: 9pt; 
+		 }
+		.ui-accordion .ui-accordion-header {
+				   
+				   background: rgb(39,39,39);
+				   	    
+				}
+		.ui-accordion .ui-accordion-header a{
+					color:orange;	
+		  }
+		  
+.animated .ui-progressbar-value { 
+                background-image: url(../images/pbar-ani.gif); 
+            }				        
+      </style>
+ <script type="text/javascript">
+ 	function error(){
+ 	 	alert(1);
+ 	 	}
+ </script> 
+</h:head>
+<h:body>
+
+<p:accordionPanel value="#{arbolCursosBean.listCourses}" var="cursos" activeIndex="-1" widgetVar="accordion">
+
+<p:ajax event="tabChange"  listener="#{arbolCursosBean.onTabChange}" update=":frameContent"/>
+	
+    <p:tab title="#{cursos.courseName}" id="#{cursos.courseId}_#{cursos.courseName}" > 
+      <h:form id="formArbol">
+<!--       <h:outputText value="Porcentaje total del curso" style="text-align:center;font-size:18px;color:red;"/>  -->  
+  		 <p:progressBar value="#{graficaCursosBean.getPorTotal(cursos.courseId)}" 
+  		 				labelTemplate="{value}%" 
+  		 				styleClass="animated"
+  		 				ajax="true"
+  		 				global="false"
+  		 				displayOnly="true" />
+	    <p:tree value="#{arbolCursosBean.cursosEstudiantes2(cursos.courseId)}" var="node" 
+	            id="tree" 
+	            style="border: none;"
+	            selectionMode="single"
+	            selection="#{arbolCursosBean.selectedNode}"
+	            cache="false" > 
+	      <p:ajax event="select" update=":frameContent" listener="#{arbolCursosBean.onNodeSelect}" /> 
+	        <p:treeNode id="treeNode">  
+	          
+	            <h:outputText value="#{fn:substringBefore(node, '|')} " id="lblNode"/>
+	        	
+	        </p:treeNode>  
+	    </p:tree>  
+  
+      </h:form>  
+    </p:tab> 
+</p:accordionPanel>
+
+<p:messages showDetail="true"/> 
+
+<p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel" onerror="" oncomplete="">
+    <f:facet name="start">
+        <h:graphicImage value="../design/ajaxloadingbar.gif" />
+    </f:facet>
+     
+    <f:facet name="complete">
+        <h:outputText value="" />
+    </f:facet>
+    
+    <f:facet name="error">
+        <h:outputText value="error" />
+    </f:facet>
+</p:ajaxStatus>
+<!-- <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" /> -->
+<p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+    <p:graphicImage name="../design/ajaxloadingbar.gif" />
+</p:dialog>
+</h:body>
+</html>

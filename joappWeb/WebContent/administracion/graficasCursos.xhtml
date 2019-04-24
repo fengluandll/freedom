@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+<script type="text/javascript">
+function ext() {
+	   this.cfg.seriesDefaults = { 
+	       useSeriesColor: true, 
+	       min: 0, 
+	       max: 500, 
+	       tickInterval: 220, 
+	       tickOptions: { 
+	           formatString: '%d' 
+	       } 
+	   };
+	}
+</script> 
+</h:head>
+<h:body>
+<h:form>
+
+<center>
+<p:panel header="Prueba panel">
+<p:barChart id="basic" value="#{graficaCursosBean.categoryModel}" legendPosition="ne"  
+            title="Seguimientos de cursos" min="0" max="100" style="height:350px" shadow="true" yaxisLabel="Numeros en %"
+             animate="true" />  
+</p:panel>
+</center>
+</h:form>
+</h:body>
+</html>

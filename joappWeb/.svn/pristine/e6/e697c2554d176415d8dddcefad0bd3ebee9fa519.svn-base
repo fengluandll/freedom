@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+<h:head>
+<script type="text/javascript">
+function conMayusculas(field) {
+    field.value = field.value.toUpperCase()
+}
+</script>
+	<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+</h:head>
+<h:body>
+<center>
+
+<h:form id="frmNvoUser">
+<p:panel id="pnlBuscaUser" header="Buscar Usuario" styleClass="borderCero3">
+
+	<p:panelGrid style="width:700px;">
+		<p:row>
+			<p:column>
+				<h:outputText value="Num cta :" styleClass="etiqueta2"/>
+			</p:column>
+			<p:column>
+				<p:inputText label="Num Cta" value="#{buscaActualizaUsuario.buskNumCta}" />
+			</p:column>
+			<p:column>
+				<h:outputText value="Correo :" styleClass="etiqueta2"/>
+			</p:column>
+			<p:column>
+				<p:inputText label="Correo" value="#{buscaActualizaUsuario.buskMail}" />
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="4" style="text-align:center;">
+				<p:commandButton value="Buscar" actionListener="#{buscaActualizaUsuario.buscaUsuario}" update="@all"/>
+			</p:column>
+		</p:row>
+	</p:panelGrid>
+</p:panel>
+<p:messages id="mensajesBuk"/>
+</h:form>
+<p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">
+    <f:facet name="start">
+        <h:graphicImage value="../images/ajax-loader.gif" />
+    </f:facet>
+     
+    <f:facet name="complete">
+        <h:outputText value="" />
+    </f:facet>
+</p:ajaxStatus>
+<h:form id="frmModificaUser">
+<p:panel id="pnlUser" header="Modifica Usuario" styleClass="borderCero3">
+<p:panelGrid>
+	<p:row>
+		<p:column>
+			<h:outputText styleClass="etiqueta2" value="Dar de baja: "/>
+		</p:column>
+		<p:column>
+			<p:selectBooleanCheckbox value="#{buscaActualizaUsuario.activar}" />
+	</p:column>
+	</p:row>
+</p:panelGrid>
+<p:messages id="mensajes"/>
+<p:panelGrid style="width:700px;">
+<p:row>
+	<p:column>
+		<h:outputText styleClass="etiqueta2" value="Nombre: * "/>
+	</p:column>
+	<p:column>
+		<p:inputText label="Nombre"  value="#{buscaActualizaUsuario.givenNames}" required="true"/>
+	</p:column>
+	<p:column>
+		<h:outputText styleClass="etiqueta2" value="Apellidos: * "/>
+	</p:column>
+	<p:column>
+		<p:inputText label="Apellidos" value="#{buscaActualizaUsuario.surnames}" required="true"/>
+	</p:column>
+</p:row>
+<p:row>
+	<p:column>
+		<h:outputText styleClass="etiqueta2" value="Fecha Nacimiento: * "/>
+	</p:column>
+	<p:column>
+		<p:inputMask label="Fecha de nacimiento" value="#{buscaActualizaUsuario.segment2}" mask="99/99/9999" required="true"/>
+		<h:outputText value="dd/mm/aaaa"/>
+	</p:column>
+	<p:column>
+		<h:outputText styleClass="etiqueta2" value="País: "/>
+	</p:column>
+	<p:column>
+		<p:inputText label="Pais" value="#{buscaActualizaUsuario.country}" onblur="conMayusculas(this);"/>
+	</p:column>
+</p:row>
+<p:row>
+	<p:column>
+		<h:outputText styleClass="etiqueta2" value="Estado: "/>
+	</p:column>
+	<p:column>
+		<p:inputText label="Estado" value="#{buscaActualizaUsuario.state}" onblur="conMayusculas(this);"/>
+	</p:column>
+	<p:column>
+		<h:outputText styleClass="etiqueta2" value="Cd/Municipio: "/>
+	</p:column>
+	<p:column>
+		<p:inputText label="Cd/Municipio" value="#{buscaActualizaUsuario.city}" onblur="conMayusculas(this);"/>
+	</p:column>
+</p:row>
+<p:row>
+	<p:column>
+		<h:outputText styleClass="etiqueta2" value="Correo:  "/>
+	</p:column>
+	<p:column>
+		<h:outputText value="#{buscaActualizaUsuario.mail}"/>
+	</p:column>
+	<p:column>
+		<h:outputText styleClass="etiqueta2" value="Telefono: "/>
+	</p:column>
+	<p:column>
+		<p:inputMask value="#{buscaActualizaUsuario.phone}" mask="(999) 999-9999"/>
+	</p:column>
+</p:row>
+<p:row>
+	<p:column>
+		<h:outputText styleClass="etiqueta2" value="Prueba 10 días: "/>
+	</p:column>
+	<p:column>
+		<p:selectBooleanCheckbox value="#{buscaActualizaUsuario.prueba}" />
+		<h:inputHidden value="#{buscaActualizaUsuario.tipoUsuario}"/>
+		<h:inputHidden value="#{buscaActualizaUsuario.studPersonalId}"/>
+		
+	</p:column>
+</p:row>
+<p:row>
+	<p:column colspan="4" style="text-align:center;">
+		<p:commandButton value="Guardar" action="#{buscaActualizaUsuario.actualizaUsuario}" update="pnlUser"/>
+	</p:column>
+</p:row>
+</p:panelGrid>
+
+</p:panel>
+
+
+
+<p:panel id="pnlAsigCursos" header="Asignacion de Cursos">
+<p:messages id="msgral"/>
+<p:pickList id="pickList" value="#{buscaActualizaUsuario.courses}" var="course"
+                itemLabel="#{fn:substringBefore(course, '|')}" itemValue="#{course}">
+</p:pickList>  
+	<center>
+		<p:panelGrid styleClass="borderCero3">
+			<p:row>
+				<p:column>
+					<p:commandButton value="Guardar" actionListener="#{buscaActualizaUsuario.procesaCursosAgregados}" update="msgral"/>		
+				</p:column>
+			</p:row>
+			<p:row>
+			</p:row>
+		</p:panelGrid>
+		
+	</center>
+	            
+</p:panel>
+
+</h:form>
+</center>
+</h:body>
+</html>

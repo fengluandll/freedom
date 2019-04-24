@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+<h:head>
+<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+	<title>Mis Notas</title> 
+</h:head>
+<h:body>
+	<h:form>
+			<p:panelGrid>
+				<p:row>
+					<p:column>
+						Nota nueva
+					</p:column>
+					<p:column>
+						<p:graphicImage value="/images/agrear.png"/>
+					</p:column>
+				</p:row>
+			</p:panelGrid>  
+            <p:dataTable var="not" value="#{dialogNotesBean.obtenNotas}">  
+                <p:column headerText="Nombre">  
+                    <h:outputText value="#{note.noteName}" />  
+                </p:column>  
+  
+                <p:column headerText="Abrir">  
+                    <h:graphicImage value="/images/Note_Yellow.png" onclick=""/>  
+                </p:column>  
+  
+                <p:column headerText="Eliminar">  
+                    <h:graphicImage value="/images/eliminar.png" onclick=""/>  
+                </p:column>  
+  
+            </p:dataTable>  
+        </h:form>  
+</h:body>      
+
+   
+   
+</html>

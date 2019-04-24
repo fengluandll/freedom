@@ -1,0 +1,36 @@
+/**
+ * @Jose de Jesus Argumedo Quiroz
+ */
+package mx.javaonline.admin.beans;
+
+import java.io.Serializable;
+import java.util.Map;
+
+import javax.faces.context.FacesContext;
+
+import mx.javaonline.daos.ThemeSwitcherDAO;
+
+public class GuestPreferences implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	private String theme = "sunny";
+	
+	
+	
+	public String getTheme() {
+//		Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+//		if(params.containsKey("theme")){
+//			theme = params.get("theme");
+//		}
+//		ThemeSwitcherDAO themeSwitcherDAO = new ThemeSwitcherDAO();
+//		theme = themeSwitcherDAO.dameMiTema();
+		return theme;
+	}
+	public void setTheme(String theme) {
+		this.theme = theme;
+	}
+	
+	
+	
+
+}

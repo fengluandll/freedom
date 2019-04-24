@@ -1,0 +1,302 @@
+package mx.javaonline.admin.beans;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
+import mx.javaonline.daos.AgregaContenidoDAO;
+import mx.javaonline.model.CursosBeanTableModel;
+import mx.javaonline.model.TopicBeanTableModel;
+import mx.javaonline.model.UnitsBeanTableModel;
+
+import org.primefaces.event.SelectEvent;
+
+public class AgregaContenidoBean implements Serializable {
+
+
+	private static final long serialVersionUID = 1L;
+	AgregaContenidoDAO agregaContenidoDAO;
+	List<CursosBeanTableModel> listCourses;
+	List<UnitsBeanTableModel>  listUnits;
+	List<TopicBeanTableModel>  listTopics;
+	CursosBeanTableModel selectedCurso;
+	UnitsBeanTableModel selectedUnidad;
+	TopicBeanTableModel selectedTopic;
+	private int activeIndex;
+	private int courseId;
+	private String courseName;
+	private int unitId;
+	private String unitName;
+	private int topicId;
+	private String topicName;
+	private String linkVideo;
+	private java.util.Date creationDate; 
+	private List<ColumnModel> columns;
+	private List<ColumnModel> columnsUnits;
+	private List<ColumnModel> columnsTopics;
+	private final static List<String> VALID_COLUMN_KEYS = Arrays.asList("id_curso", "nombre_curso",
+																		"fecha_creacion");
+	private final static List<String> VALID_COLUMN_KEYS_UTIS = Arrays.asList("unidad_id", "nombre_unidad");
+	private final static List<String> VALID_COLUMN_KEYS_TOPICS = Arrays.asList("id_topic", "nombre_topic");
+	FacesMessage msg;
+	
+	
+	public AgregaContenidoBean() {
+		agregaContenidoDAO = new AgregaContenidoDAO();
+		listCourses = agregaContenidoDAO.dameCursosDb();
+		createDynamicColumns();
+	}
+	
+	  private void createDynamicColumns() {
+	       
+	        columns = new ArrayList<ColumnModel>();   
+	         
+	        for(String columnKey : VALID_COLUMN_KEYS) {
+	               columns.add(new ColumnModel(columnKey.toUpperCase(), columnKey));
+	        }
+	    }
+	  private void createDynamicColumnsUnits() {
+	       
+	        columnsUnits = new ArrayList<ColumnModel>();   
+	         
+	        for(String columnKey : VALID_COLUMN_KEYS_UTIS) {
+	        	columnsUnits.add(new ColumnModel(columnKey.toUpperCase(), columnKey));
+	        }
+	    }
+	  private void createDynamicColumnsTopics() {
+	       
+		  columnsTopics = new ArrayList<ColumnModel>();   
+	         
+	        for(String columnKey : VALID_COLUMN_KEYS_TOPICS) {
+	        	columnsTopics.add(new ColumnModel(columnKey.toUpperCase(), columnKey));
+	        }
+	    }
+	
+	public void onRowSelect(SelectEvent event) {
+		CursosBeanTableModel cursosBeanTableModel = (CursosBeanTableModel) event.getObject();
+		
+		this.courseId     = cursosBeanTableModel.getId_curso();
+		this.courseName   = cursosBeanTableModel.getNombre_curso();
+		this.creationDate = cursosBeanTableModel.getFecha_creacion();
+		listUnits = agregaContenidoDAO.dameUnidadesDb(courseId);
+		createDynamicColumnsUnits();
+		activeIndex = 1;
+//        FacesMessage msg = new FacesMessage("Car Selected", String.valueOf(((CursosBeanTableModel) event.getObject()).getId_curso()));
+//        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+	
+	public void onRowSelectUidad(SelectEvent event) {
+		UnitsBeanTableModel unitsBeanTableModel = (UnitsBeanTableModel) event.getObject();
+		
+		this.unitId    = unitsBeanTableModel.getUnidad_id();
+		this.unitName   = unitsBeanTableModel.getNombre_unidad();
+		createDynamicColumnsTopics();
+		listTopics = agregaContenidoDAO.dameTopicsDb(unitId);
+		activeIndex = 2;
+//        FacesMessage msg = new FacesMessage("Car Selected", String.valueOf(((UnitsBeanTableModel) event.getObject()).getUnidad_id()));
+//        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+	
+	public void onRowSelectTopics(SelectEvent event) {
+		TopicBeanTableModel topicBeanTableModel = (TopicBeanTableModel) event.getObject();
+		
+		this.topicId   = topicBeanTableModel.getId_topic();
+		this.topicName = topicBeanTableModel.getNombre_topic();
+		activeIndex = 3;
+//		createDynamicColumnsUnits();
+//		listUnits = agregaContenidoDAO.dameUnidadesDb(courseId);
+		
+//        msg = new FacesMessage("Car Selected", String.valueOf(((TopicBeanTableModel) event.getObject()).getId_topic()));
+//        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+	
+	public void guardaLinkVideo(){
+	
+		boolean bandera = agregaContenidoDAO.guardaLinkVideo(topicId, linkVideo);
+		if(bandera){
+			msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Exito","Link de video guardado" ); 
+		    FacesContext.getCurrentInstance().addMessage(null, msg);
+		    activeIndex = 3;
+		}else{
+			msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ups","Salio algo mal en guardar el link del video" ); 
+		    FacesContext.getCurrentInstance().addMessage(null, msg);
+		}
+	}
+	
+	
+	static public class ColumnModel implements Serializable {
+   	 
+
+	private static final long serialVersionUID = 1L;
+		private String header;
+        private String property;
+ 
+        public ColumnModel(String header, String property) {
+            this.header = header;
+            this.property = property;
+        }
+ 
+        public String getHeader() {
+            return header;
+        }
+ 
+        public String getProperty() {
+            return property;
+        }
+    }
+	
+	
+
+	
+	
+	public List<ColumnModel> getColumns() {
+		return columns;
+	}
+
+
+	public void setColumns(List<ColumnModel> columns) {
+		this.columns = columns;
+	}
+
+
+	public int getCourseId() {
+		return courseId;
+	}
+
+
+	public void setCourseId(int courseId) {
+		this.courseId = courseId;
+	}
+
+
+	public String getCourseName() {
+		return courseName;
+	}
+
+
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
+	}
+
+
+	public java.util.Date getCreationDate() {
+		return creationDate;
+	}
+
+
+	public void setCreationDate(java.util.Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
+
+	public List<CursosBeanTableModel> getListCourses() {
+		return listCourses;
+	}
+
+	public void setListCourses(List<CursosBeanTableModel> listCourses) {
+		this.listCourses = listCourses;
+	}
+
+	public CursosBeanTableModel getSelectedCurso() {
+		return selectedCurso;
+	}
+
+	public void setSelectedCurso(CursosBeanTableModel selectedCurso) {
+		this.selectedCurso = selectedCurso;
+	}
+
+	public List<UnitsBeanTableModel> getListUnits() {
+		return listUnits;
+	}
+
+	public void setListUnits(List<UnitsBeanTableModel> listUnits) {
+		this.listUnits = listUnits;
+	}
+
+	public UnitsBeanTableModel getSelectedUnidad() {
+		return selectedUnidad;
+	}
+
+	public void setSelectedUnidad(UnitsBeanTableModel selectedUnidad) {
+		this.selectedUnidad = selectedUnidad;
+	}
+
+	public String getUnitName() {
+		return unitName;
+	}
+
+	public void setUnitName(String unitName) {
+		this.unitName = unitName;
+	}
+
+	public List<ColumnModel> getColumnsUnits() {
+		return columnsUnits;
+	}
+
+	public void setColumnsUnits(List<ColumnModel> columnsUnits) {
+		this.columnsUnits = columnsUnits;
+	}
+
+	public int getActiveIndex() {
+		return activeIndex;
+	}
+
+	public void setActiveIndex(int activeIndex) {
+		this.activeIndex = activeIndex;
+	}
+
+	public int getTopicId() {
+		return topicId;
+	}
+
+	public void setTopicId(int topicId) {
+		this.topicId = topicId;
+	}
+
+	public String getTopicName() {
+		return topicName;
+	}
+
+	public void setTopicName(String topicName) {
+		this.topicName = topicName;
+	}
+
+	public List<ColumnModel> getColumnsTopics() {
+		return columnsTopics;
+	}
+
+	public void setColumnsTopics(List<ColumnModel> columnsTopics) {
+		this.columnsTopics = columnsTopics;
+	}
+
+	public List<TopicBeanTableModel> getListTopics() {
+		return listTopics;
+	}
+
+	public void setListTopics(List<TopicBeanTableModel> listTopics) {
+		this.listTopics = listTopics;
+	}
+
+	public TopicBeanTableModel getSelectedTopic() {
+		return selectedTopic;
+	}
+
+	public void setSelectedTopic(TopicBeanTableModel selectedTopic) {
+		this.selectedTopic = selectedTopic;
+	}
+
+	public String getLinkVideo() {
+		return linkVideo;
+	}
+
+	public void setLinkVideo(String linkVideo) {
+		this.linkVideo = linkVideo;
+	}
+	
+	
+
+}

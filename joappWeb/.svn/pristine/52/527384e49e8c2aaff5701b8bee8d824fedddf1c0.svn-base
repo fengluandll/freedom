@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+<script type="text/javascript">
+$("document").ready(function(){
+
+	$('btnEnviac').attr('disabled','true');
+});
+</script>
+</h:head>
+<h:body>
+<h:form id="frmEnvia">
+<center>
+<p:panel header="Buscar alumno">
+<p:growl showDetail="true"/>
+<p:panelGrid style="" styleClass="borderCero3">
+		<p:row>
+			<p:column>
+				<h:outputText value="Nombres: " styleClass="etiqueta2"/>
+			</p:column>
+			<p:column>
+				<p:inputText value="#{reenviarCorreoBienveBean.nombres}"/>
+				 
+			</p:column>
+			<p:column>
+				<h:outputText value="Apellidos: " styleClass="etiqueta2"/>
+			</p:column>
+			<p:column>
+				<p:inputText value="#{reenviarCorreoBienveBean.apellidos}"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<h:outputText value="Fecha inicio " styleClass="etiqueta2"/>
+			</p:column>
+			<p:column>
+				<p:calendar id="fecIni" value="#{reenviarCorreoBienveBean.fecIni}" pattern="yyyy-MM-dd"/>
+			</p:column>
+			<p:column>
+				<h:outputText value="Fecha fin " styleClass="etiqueta2"/>
+			</p:column>
+			<p:column>
+				<p:calendar id="fecFin" value="#{reenviarCorreoBienveBean.fecFin}" pattern="yyyy-MM-dd"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="4" style="text-align:center;">
+				<p:commandButton value="Buscar" icon="ui-icon-search"  action="#{reenviarCorreoBienveBean.buscar}" update=":frmEnvia"/>
+			</p:column>
+		</p:row>
+</p:panelGrid>
+<p:dataTable id="eventsDT" 
+			 var="alu" 
+			 value="#{reenviarCorreoBienveBean.listAlumn}" 
+			 selectionMode="single" 
+			 selection="#{reenviarCorreoBienveBean.selectedAlum}" 
+			 rowKey="#{alu.studentPersonalId}">
+        
+        <p:ajax event="rowSelect"   listener="#{reenviarCorreoBienveBean.onRowSelect}" update=":frmEnvia:datos"/>
+        <!-- <p:ajax event="rowUnselect" listener="#{reenviarCorreoBienveBean.onRowUnselect}" />  -->
+        
+        <f:facet name="header">
+            Selecciona a un Estudiante
+        </f:facet>
+  
+        <p:column headerText="id" style="display: none;">
+            <h:outputText value="#{alu.studentPersonalId}" />
+        </p:column>
+        <p:column headerText="No. Cta">
+            <h:outputText value="#{alu.numCta}" />
+        </p:column>
+        <p:column headerText="Nombres">
+            <h:outputText value="#{alu.givenNames}" />
+        </p:column>
+        <p:column headerText="Apellidos">
+            <h:outputText value="#{alu.surNames}" />
+        </p:column>
+        <p:column headerText="mail">
+            <h:outputText value="#{alu.mail}" />
+        </p:column>
+        <p:column headerText="Fecha de creacion">
+            <h:outputText value="#{alu.creationDate}" />
+        </p:column>
+        <p:column headerText="from login" style="display: none;">
+            <h:outputText value="#{alu.fromLoginId}" />
+        </p:column>
+        <p:column headerText="segment1" style="display: none;">
+            <h:outputText value="#{alu.segment1}" />
+        </p:column>
+        <p:column headerText="Rol id" style="display: none;">
+            <h:outputText value="#{alu.rolId}" />
+        </p:column>
+    </p:dataTable>
+    <p:separator />
+    <p:panelGrid id="datos" styleClass="borderCero3">
+    	<p:row>
+    		<p:column>
+    			 <h:outputText value="Nombres" styleClass="etiqueta2"/>
+    		</p:column>
+    		<p:column>
+    			 <h:outputText value="#{reenviarCorreoBienveBean.nombres}"/>
+    		</p:column>
+    	</p:row>
+    	<p:row>
+    		<p:column>
+    			 <h:outputText value="Apellidos" styleClass="etiqueta2"/>
+    		</p:column>
+    		<p:column>
+    			 <h:outputText value="#{reenviarCorreoBienveBean.apellidos}"/>
+    		</p:column>
+    	</p:row>
+    	<p:row>
+    		<p:column>
+    			 <h:outputText value="No. Cta" styleClass="etiqueta2"/>
+    		</p:column>
+    		<p:column>
+    			 <h:outputText value="#{reenviarCorreoBienveBean.noCta}"/>
+    		</p:column>
+    	</p:row>
+    	<p:row>
+    		<p:column>
+    			 <h:outputText value="Mail" styleClass="etiqueta2"/>
+    		</p:column>
+    		<p:column>
+    			 <p:inputText value="#{reenviarCorreoBienveBean.mail}"/>
+    		</p:column>
+    	</p:row>
+    	<p:row>
+    		<p:column style="text-align:center;">
+    			<p:commandButton value="Guardar" 
+    							 action="#{reenviarCorreoBienveBean.modificaCorreo}" 
+    							 update=":frmEnvia:msgral"
+    							 onclick="PF('btnEnv').enable();"/>
+    		</p:column>
+    		<p:column style="text-align:center;">
+    			<p:commandButton id="btnEnviac" 
+    							 value="Enviar Correo" 
+    							 action="#{reenviarCorreoBienveBean.enviaCorreo}"
+    							 update=":frmEnvia:msgral"
+    							 widgetVar="btnEnv"/>
+    		</p:column>
+    	</p:row>
+    	
+    </p:panelGrid>
+    <p:messages id="msgral" showDetail="true"/>
+<p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">
+    <f:facet name="start">
+        <h:graphicImage value="../images/ajax-loader.gif" />
+    </f:facet>
+     
+    <f:facet name="complete">
+        <h:outputText value="" />
+    </f:facet>
+</p:ajaxStatus>
+</p:panel>
+</center>
+</h:form>
+</h:body>
+</html>

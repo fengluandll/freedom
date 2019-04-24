@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#login.xhtml" PATH="/login.xhtml"
+  SHAPE="48,56,50,25" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#login.xhtml:0" NAME="item"
+   PATH="/login.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#home#home.xhtml" NAME="output"
+    PATH="/home/home.xhtml" TARGET="rules:#home#home.xhtml"
+    TITLE="success" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#home#home.xhtml" PATH="/home/home.xhtml"
+  SHAPE="227,71,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#home#home.xhtml:0" NAME="item"
+   PATH="/home/home.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="salir::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="salir" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#dashboards#dashBoardCourses.xhtml"
+  PATH="/dashboards/dashBoardCourses.xhtml" SHAPE="73,165,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#dashboards#dashBoardCourses.xhtml:0"
+   NAME="item" PATH="/dashboards/dashBoardCourses.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="topicCarousel::#carousel#topicCarousel.xhtml" NAME="output"
+    PATH="/carousel/topicCarousel.xhtml"
+    TARGET="rules:#carousel#topicCarousel.xhtml" TITLE="topicCarousel" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#carousel#topicCarousel.xhtml"
+  PATH="/carousel/topicCarousel.xhtml" SHAPE="304,184,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#administracion#nuevoUsuario.xhtml"
+  PATH="/administracion/nuevoUsuario.xhtml" SHAPE="48,256,50,25" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#administracion#nuevoUsuario.xhtml:0"
+   NAME="item" PATH="/administracion/nuevoUsuario.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="success::#administracion#asignaCursosUsuario.xhtml"
+    NAME="output" PATH="/administracion/asignaCursosUsuario.xhtml"
+    TARGET="rules:#administracion#asignaCursosUsuario.xhtml"
+    TITLE="success" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#administracion#asignaCursosUsuario.xhtml"
+  PATH="/administracion/asignaCursosUsuario.xhtml" SHAPE="320,280,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+</PROCESS>

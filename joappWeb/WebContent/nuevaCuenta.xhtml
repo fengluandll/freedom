@@ -1,0 +1,232 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+      	xmlns:h="http://java.sun.com/jsf/html"
+     	xmlns:p="http://primefaces.org/ui"
+      	xmlns:f="http://java.sun.com/jsf/core"
+      	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<link href="images/headset_icono.png" rel="shortcut icon" type='image/png'/>
+<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="assets/icon/themify-icons/themify-icons.css"/>
+<link rel="stylesheet" type="text/css" href="assets/icon/icofont/css/icofont.css"/>
+<link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
+<link rel="stylesheet" type="text/css" href="css/login.css"/>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script src="js/fontawesome/fontawesome-all.js"></script>
+
+
+ 
+<script type="text/javascript">
+
+$("document").ready(function(){
+	
+	var input = document.getElementById('frmNvoUser:idPlace');
+	var autocomplete = new google.maps.places.Autocomplete(input,{types: ['(cities)']});
+    google.maps.event.addListener(autocomplete, 'place_changed', function(){
+       var place = autocomplete.getPlace();
+    })
+	
+});
+
+
+function conMayusculas(field) {
+    field.value = field.value.toUpperCase();
+}
+function cambiacheck(comp){
+	//var val = $('chk1').checked;
+	//alert(val);
+	//var chk1 = document.getElementById('frmNvoUser:chk1_input').checked;
+	
+	chk2.uncheck();	
+	
+}
+function cambiacheck2(){
+
+	chk1.uncheck();	
+ //var v = document.getElementById('frmNvoUser:chk1_input').checked;
+ //document.getElementById("frmNvoUser:chk1_input").checked = true;
+ //alert(v);
+// $("#chk1").prop("checked", true);
+
+}
+
+function redireccionaIniciaSesion(){
+	window.location = '/joappWeb/login.xhtml';
+}
+</script>
+
+<style>
+
+.ui-panelgrid>*>tr,
+.ui-panelgrid .ui-panelgrid-cell {
+    border: none;
+}
+</style>      
+</h:head>
+<h:body>
+<div class="container-fluid">
+<div class="row">
+		<div class="col-sm-12 col-md-12 col-lg-12 uno">
+		<span id="startPalabra" onclick="redireccionaWeb()" style="cursor: pointer;">
+			start
+		</span>
+		<span class="text-danger" onclick="redireccionaWeb()" style="cursor: pointer;position: relative;
+															top: 8px;
+															right: px;
+															left: 0px;
+															font-size: 30pt;
+															font-weight: 100;
+															font-family: Helvetica, sans-serif">
+			Web
+		</span>
+		<span id="web" onclick="redireccionaWeb()" style="cursor: pointer;">
+			www.startonline.com.mx
+		</span>
+		</div>
+</div>
+
+<h:form id="frmNvoUser">
+
+<div class="row justify-content-center">
+
+<p:growl id="growl" showDetail="true" sticky="false" />
+<div class="col-sm-12 col-md-6 col-lg-4">
+<div id="contentLogin" class="auth-box">
+   
+       <div class="row m-b-20">
+	       <div class="col-md-12">
+	       		<h2 class="text-info" style="text-align: center;">Registra tu cuenta</h2>
+	       </div>
+       </div>
+       <hr/>
+        <div class="col-md-12">
+         	<span class="linkolvido">¿Ya tienes cuenta?</span><p:commandLink onclick="javascript:redireccionaIniciaSesion()" styleClass="linkolvido" style="color:#007bff !important;">    Inicia sesión aqui! </p:commandLink>
+       	</div>
+       	 
+      
+<p:panelGrid style="width:100%;">
+<p:row>
+	<p:column>
+		<p:inputText 	label="Correo" value="#{nuevoUsuarioBean.mail}" required="true"
+						styleClass="form-control" placeholder="Correo electronico" />
+	</p:column>
+	
+	
+</p:row>
+<p:row>
+	<p:column>
+		<p:inputText 	label="Nombre"  value="#{nuevoUsuarioBean.firstNames}" 
+						required="true" styleClass="form-control" placeholder="Nombre" />
+	</p:column>
+	
+	
+</p:row>
+<p:row>
+	<p:column>
+		<p:inputText 	label="Apellidos" value="#{nuevoUsuarioBean.lastNames}" required="true"
+						styleClass="form-control" placeholder="Apellidos"/>
+	</p:column>
+	
+	
+</p:row>
+<p:row>
+	<p:column>
+		<p:inputText id="idPlace" label="Ciudad" value="#{nuevoUsuarioBean.city}" onblur="conMayusculas(this);"
+						styleClass="form-control" placeholder="Ciudad" required="true"/>
+						
+		<div style="position: relative;top: 10px;left: 180px">
+			<p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">
+			    <f:facet name="start">
+			        <h:graphicImage value="images/ajax-loader-login.gif" />
+			    </f:facet>
+			     
+			    <f:facet name="complete">
+			        <h:outputText value="" />
+			    </f:facet>
+			</p:ajaxStatus>
+		</div>
+	</p:column>
+	
+</p:row>
+<p:row>
+	<p:column>
+		
+		<p:password 	id="pwd1" label="Contraseña" value="#{nuevoUsuarioBean.password}" required="true"
+						styleClass="form-control" placeholder="Contraseña" feedback="true"
+						promptLabel="Ingresa tu contraseña" 
+					    weakLabel="Débil"  
+					    goodLabel="Bien" 
+					    strongLabel="Excelente" />
+	</p:column>
+	
+	
+</p:row>
+<p:row>
+	<p:column>
+		<p:password 	id="pwd2" label="Confirma Contraseña" value="#{nuevoUsuarioBean.confirmPassword}" required="true"
+						styleClass="form-control" placeholder="Confirma Contraseña" feedback="true"
+						promptLabel="Ingresa tu contraseña" 
+					    weakLabel="Débil"  
+					    goodLabel="Bien" 
+					    strongLabel="Excelente"/>
+	</p:column>
+	
+	
+</p:row>
+
+<p:row>
+<p:column>
+	
+</p:column>
+</p:row>
+
+</p:panelGrid>
+
+<p:commandButton 	value="Registrame" action="#{nuevoUsuarioBean.guardarUsuarioPlus}" 
+							update="frmNvoUser" styleClass="btn btn-success btn-lg btn-block !important"
+						 	style="	padding: 10px 16px;
+							    	font-size: 20px;
+							    	margin-top:0%;"/>
+  </div>
+
+</div>
+
+</div>
+</h:form>
+<!-- 
+<div id="idFooter" class="footer" style="">
+<table id="tblfot" style="width: 100%" align="center">
+	<tr>
+		<td style="font-size: 13px;"><a href="#" style="text-decoration: none;"><i class="far fa-file-alt"></i> <span style="margin-left: 5px;">Términos de sevicios</span></a></td>
+		<td style="font-size: 13px;"><a href="#" style="text-decoration: none;"><i class="far fa-file-alt"></i><span style="margin-left: 5px;">Politica de privacidad</span> </a></td>
+		<td style="font-size: 13px;">
+			 <h6 class="mega-menu-title">Redes Sociales</h6>
+		<ul>
+            <li>
+                <a href="https://www.facebook.com/Videotutoriales-de-java-475040742575227/" target="_blank" style="text-decoration: none;">
+                    <i class="fab fa-facebook-square"/>
+                    	/Videotutoriales de java
+                </a>
+            </li>
+             <li>
+                <a href="" style="text-decoration: none;">
+                    <i class="fab fa-twitter"/>
+                    	@startonline
+                </a>
+            </li>
+           </ul>
+        </td>
+	</tr>
+</table>
+</div>
+ -->
+</div>
+</h:body>
+</html>

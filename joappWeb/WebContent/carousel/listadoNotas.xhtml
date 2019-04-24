@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+<h:head>
+<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+
+<style type="text/css">
+	.ui-widget,.ui-widget .ui-widget {
+	   font-size: 80%;
+	}
+	body{
+		background-color: black;
+	}
+	.ui-confirm-dialog-message{
+		color:white !important;
+	}
+</style> 
+</h:head>
+<h:body>
+<span style="color: white;font-size: 25px;position:relative;left: 80px;">MIS NOTAS</span>
+<br/>
+<br/>
+<h:form id="frmGuardaNota">
+	<p:panelGrid styleClass="borderCero3">
+				<p:row>
+					<p:column style="background-color:black;">
+						<h:outputText style="color:white;" value="Nombre de tu nota"/>
+					</p:column>
+					<p:column style="background-color:black;">
+						<p:inputText id="nombre_nota" value="#{dialogNotesBean.nomNota}" required="true" validatorMessage="Introduce el nombre de tu nota"/>
+					</p:column>
+					<p:column style="background-color:black;">
+					 <p:commandLink  actionListener="#{dialogNotesBean.generaNomNota}" update=":frmListaNota:tblNotes">
+						<p:graphicImage style="cursor:pointer" value="/images/Create.png" title="Nueva nota"/>
+					 </p:commandLink>
+					</p:column>
+				</p:row>
+			</p:panelGrid> 
+</h:form>
+<h:form id="frmListaNota">         
+            <p:dataTable var="note" value="#{dialogNotesBean.listNotas}"
+            			 id="tblNotes"
+            		     style="width:330px;">
+                <p:column rendered="false">
+                	<h:outputText value="#{note.noteId}" />  
+                </p:column>
+     
+                <p:column headerText="Nombre" style="text-align:center;
+                									 font:normal bold 110% normal;
+                									 color:black;
+                									 width:105px;">  
+                    <h:outputText styleClass="text-info" value="#{note.noteName}" />  
+                </p:column>  
+  
+                <p:column headerText="Abrir" style="text-align:center;
+                								    width:95px;">
+                <p:commandLink action="#{dialogNotesBean.getValueNotes(note.noteId,note.noteName)}" 
+                			   oncomplete="" update="">  
+                    <h:graphicImage value="/images/Note_Yellow_24.png" style="cursor:pointer" title="Abrir nota"/>
+                </p:commandLink>  
+                </p:column>  
+  
+                <p:column headerText="Eliminar" style="text-align:center;width:65px;">
+                	<p:commandLink id="linkBorraNota" 
+                				   actionListener="#{dialogNotesBean.borraNota(note.noteId)}"
+                				   oncomplete=""
+                				   update="tblNotes">  
+                    	<h:graphicImage value="/images/eliminar_24.png" style="cursor:pointer;" title="Eliminar nota"/>
+                    	<span style="color:white;"><p:confirm header="Confirmación" message="¿Estas seguro que deseas eliminar esta nota?" icon="ui-icon-alert"/></span>
+                    </p:commandLink>
+                    
+                    <p:growl id="msgEliminar" showDetail="true"/>
+                    <p:confirmDialog global="true" showEffect="fade">  
+				        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>  
+				        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>       
+				    </p:confirmDialog>   
+                </p:column>
+                
+            </p:dataTable>
+</h:form>            
+</h:body>      
+
+   
+   
+</html>

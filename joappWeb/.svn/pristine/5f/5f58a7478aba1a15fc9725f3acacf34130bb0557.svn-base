@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+</h:head>
+<h:body>
+<h:form id="frmPregunta" enctype="multipart/form-data">
+<center>
+<p:panel header="Elije el tema y escribe una pregunta">
+	<p:panelGrid styleClass="borderCero3">
+		<p:row>
+			<p:column>
+				<h:outputText  value="Curso: " styleClass="etiqueta2"/>
+			</p:column>
+			<p:column>
+				<p:selectOneMenu id="curso" 
+				                 value="#{preguntaTemaBean.courseId}"
+				                 label="curso"
+				                 >
+				  <p:ajax listener="#{preguntaTemaBean.handleChange}" update=":frmPregunta:unidad"/>
+				    <f:selectItem itemLabel="--Seleccione--" itemValue="0" />
+					<f:selectItems value="#{preguntaTemaBean.listCourses}" var="cour" itemLabel="#{cour.courseName}" itemValue="#{cour.courseId}"/>
+				</p:selectOneMenu>
+			</p:column>
+		</p:row>
+	    <p:row>
+			<p:column>
+				<h:outputText  value="Unidad: " styleClass="etiqueta2"/>
+			</p:column>
+			<p:column>
+				<p:selectOneMenu id="unidad" 
+				                 value="#{preguntaTemaBean.unitId}">
+				  <p:ajax listener="#{preguntaTemaBean.handleChangeUnit}" update=":frmPregunta:tema"/>
+				  <f:selectItem itemLabel="--Seleccione--" itemValue="0" />
+					<f:selectItems value="#{preguntaTemaBean.listUnits}" var="unit" itemLabel="#{unit.unitName}" itemValue="#{unit.unitId}"/>
+				</p:selectOneMenu>
+			</p:column>
+		</p:row>
+	    <p:row>
+			<p:column>
+				<h:outputText  value="Tema: " styleClass="etiqueta2"/>
+			</p:column>
+			<p:column>
+				<p:selectOneMenu id="tema" 
+				                 value="#{preguntaTemaBean.topicId}">
+				  <p:ajax listener="#{preguntaTemaBean.handleChangeTopic}" update=":frmPregunta:txtArea"/>
+				  <f:selectItem itemLabel="--Seleccione--" itemValue="0" />
+					<f:selectItems value="#{preguntaTemaBean.listTopics}" var="topic" itemLabel="#{topic.topicName}" itemValue="#{topic.topicId}"/>
+				</p:selectOneMenu>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="2" style="text-align:center;">
+			<h:outputText  value="Escribe tu pregunta " styleClass="etiqueta2"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="2" style="text-align:center;">
+				<p:inputTextarea label="Pregunta" 
+								 id="txtArea" 
+								 rows="10" 
+								 cols="70" 
+								 value="#{preguntaTemaBean.pregunta}" 
+								 readonly="#{preguntaTemaBean.readOnly}"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="2" style="text-align:center;">
+			<h:outputText  value="Sube screenshots en formato jpg,png o gif. El proceso puede demorar segun el tamaño" styleClass="etiqueta2"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="2" style="text-align:center;">
+	            <p:fileUpload value="#{preguntaTemaBean.file}" mode="simple"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="2" style="text-align:center;">
+	            <p:fileUpload value="#{preguntaTemaBean.file2}" mode="simple"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="2" style="text-align:center;">
+	            <p:fileUpload value="#{preguntaTemaBean.file3}" mode="simple"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="2" style="text-align:center;">
+	            <p:fileUpload value="#{preguntaTemaBean.file4}" mode="simple"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="2" style="text-align:center;">
+	            <p:fileUpload value="#{preguntaTemaBean.file5}" mode="simple"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="2" style="text-align:center;">
+				<p:commandButton value="Enviar" ajax="false" actionListener="#{preguntaTemaBean.enviaPregunta}" update=":frmPregunta"/>
+			</p:column>
+		</p:row>
+	</p:panelGrid>
+	<p:growl id="msgral" showDetail="true"/>
+</p:panel>
+<p:ajaxStatus style="width:16px;height:16px;text-align:center;" id="ajaxStatusPanel">
+    <f:facet name="start">
+        <h:graphicImage value="../images/ajax-loader.gif" />
+    </f:facet>
+     
+    <f:facet name="complete">
+        <h:outputText value="" />
+    </f:facet>
+</p:ajaxStatus>
+</center>
+</h:form>
+
+</h:body>
+</html>

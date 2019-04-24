@@ -1,0 +1,18 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>My Facelets 'index.xhtml' starting page</title>
+        <base href="//#{request.serverName}:#{request.serverPort}#{request.contextPath}"></base>
+    </h:head>
+    <h:body>
+<h:form id="form">  
+    <h:outputText id="txt_count" value="#{timerContent.count}" />  
+      
+    <p:poll interval="1"   
+            listener="#{timerContent.increment}" update="txt_count" />  
+</h:form>  
+           
+    </h:body>
+</html>

@@ -1,0 +1,504 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+      <link rel="stylesheet" type="text/css" href="../css/general.css" />
+</h:head>
+<h:body>
+<center>
+<h:form id="frmNvosCursos">
+<p:growl id="msgral" autoUpdate="true"/>
+
+<p:panel header="Agregar nuevo curso" styleClass="borderCero3">
+
+	<p:panelGrid>
+		<p:row>
+			<p:column>
+				<h:outputText styleClass="etiqueta2" value="Nombre del curso"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<p:inputText value="#{nuevosCursos.nomCurso}" required="true" label="Nombre del curso"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column style="text-align:center;">
+				<p:commandButton value="Agregar" actionListener="#{nuevosCursos.agregaCurso}" id="btnGuardaCurso"
+            		 update="frmNvosCursos" icon="ui-icon-disk" />
+			</p:column>
+		</p:row>
+		
+	</p:panelGrid>
+	<p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">
+    <f:facet name="start">
+        <h:graphicImage value="../images/ajax-loader.gif" />
+    </f:facet>
+     
+    <f:facet name="complete">
+        <h:outputText value="" />
+    </f:facet>
+</p:ajaxStatus>
+</p:panel>
+
+
+<p:dataTable id="tblCursos" var="cur" value="#{nuevosCursos.listCursosBean}"  editable="true" scrollable="true" scrollHeight="150">
+ 
+        <f:facet name="header">
+            Listado de cursos
+        </f:facet>
+ 
+        <p:ajax event="rowEdit" listener="#{nuevosCursos.onEdit}" update=":frmNvosCursos:msgral" />
+        <p:ajax event="rowEditCancel" listener="#{nuevosCursos.onCancel}" update=":frmNvosCursos:msgral" />
+  		<p:column headerText="Nombre curso" style="width:30%" rendered="false">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{cur.courseId}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{cur.courseId}" style="width:100%" label="link"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+        <p:column headerText="Nombre curso" style="width:30%">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{cur.courseName}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{cur.courseName}" style="width:100%" label="link"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+ 
+        <p:column headerText="Link" style="width:100%">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{cur.link}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{cur.link}" style="width:100%" label="link"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+ 
+        <p:column headerText="segment1" style="width:24%">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{cur.segment1}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{cur.segment1}" style="width:100%" label="link"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+         <p:column headerText="segment2" style="width:24%">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{cur.segment2}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{cur.segment2}" style="width:100%" label="link"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+                <p:column headerText="segment3" style="width:24%">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{cur.segment3}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{cur.segment3}" style="width:100%" label="link"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+                <p:column headerText="segment4" style="width:24%">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{cur.segment4}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{cur.segment4}" style="width:100%" label="link"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+                <p:column headerText="segment5" style="width:24%">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{cur.segment5}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{cur.segment5}" style="width:100%" label="link"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+                <p:column headerText="segment6" style="width:24%">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{cur.segment6}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{cur.segment6}" style="width:100%" label="link"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+        
+ 
+        <p:column style="width:6%">
+            <p:rowEditor />
+        </p:column>
+ 
+    </p:dataTable>
+</h:form>
+<h:form id="frmUnidad">    
+<p:growl id="msgral" autoUpdate="true"/>
+<p:panel header="Agregar nueva unidad" styleClass="borderCero3">
+<div style="text-align:right;">
+	<p:commandButton id="btnActualizaCursos" value="Actualiza cursos" actionListener="#{nuevosCursos.comboCursos}" update="pnlagregaUnidad"/>
+</div>	
+	<p:panelGrid id="pnlagregaUnidad">
+		<p:row>
+			<p:column>
+				<h:outputText styleClass="etiqueta2" value="Nombre de la unidad"/>
+			</p:column>
+			<p:column>
+				<h:outputText styleClass="etiqueta2" value="Curso a relacionar"/>
+			</p:column>
+			<p:column>
+				<h:outputText styleClass="etiqueta2" value="Objetivo"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<p:inputText value="#{nuevosCursos.nomUnidad}" required="true" label="Nombre de la unidad"/>
+			</p:column>
+			<p:column>
+				<p:selectOneMenu id="cmbRelacionUnit" value="#{nuevosCursos.relacionUnidad}" required="true" label="Curso a relacionar">
+					<f:selectItem itemLabel="Elije un curso" itemValue=""/>
+					<f:selectItems value="#{nuevosCursos.cursos}" />
+				</p:selectOneMenu>
+			</p:column>
+			<p:column>
+				<p:inputText value="#{nuevosCursos.objetivoUnidad}" label="Objetivo de la unidad"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column style="text-align:center;" colspan="3">
+				<p:commandButton value="Agregar" actionListener="#{nuevosCursos.agregaUnidad}" id="btnGuardaUnidad"
+            		 update="frmUnidad" icon="ui-icon-disk" />
+			</p:column>
+		</p:row>
+	</p:panelGrid>
+</p:panel>	
+<!-- Sector de unidades -->	
+	<p:dataTable id="tblUnidades" 
+				 var="uni" 
+				 value="#{nuevosCursos.listUnidadesBean}"  
+				 editable="true" 
+				 scrollable="true" 
+				 scrollHeight="180"
+				 filteredValue="#{nuevosCursos.listCursos}"
+				 widgetVar="unitTable">
+ 
+        <f:facet name="header">
+            Listado de unidades
+        </f:facet>
+ 
+        <p:ajax event="rowEdit" listener="#{nuevosCursos.onEditUnits}" update=":frmUnidad:msgral" />
+        <p:ajax event="rowEditCancel" listener="#{nuevosCursos.onCancel}" update=":frmUnidad:msgral" />
+  		<p:column headerText="Unidad id" style="width:30%" rendered="true">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{uni.unitId}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{uni.unitId}" style="width:100%"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+        <p:column headerText="Nombre unidad" style="width:30%">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{uni.unitName}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{uni.unitName}" style="width:100%" label="Nombre unidad"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+ 
+        <p:column headerText="Link" style="width:100%">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{uni.link}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{uni.link}" style="width:100%" label="link"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+ 
+        <p:column headerText="Curso" style="width:34%" filterBy="#{uni.courseName}" filterOptions="#{nuevosCursos.itemCursos}" filterMatchMode="exact">
+           
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{uni.courseName}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{uni.courseName}" style="width:100%" label="curso"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+        <p:column headerText="Objetivo" style="width:64%">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{uni.segment1}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{uni.segment1}" style="width:100%" label="objetivo"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+         <p:column headerText="segment2" style="width:24%">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{uni.segment2}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{uni.segment2}" style="width:100%" label="link"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+                <p:column headerText="segment3" style="width:24%">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{uni.segment3}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{uni.segment3}" style="width:100%" label="link"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+                <p:column headerText="segment4" style="width:24%">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{uni.segment4}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{uni.segment4}" style="width:100%" label="link"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+                <p:column headerText="segment5" style="width:24%">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{uni.segment5}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{uni.segment5}" style="width:100%" label="link"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+                <p:column headerText="segment6" style="width:24%">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{uni.segment6}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{uni.segment6}" style="width:100%" label="link"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+        
+ 
+        <p:column style="width:6%">
+            <p:rowEditor />
+        </p:column>
+ 
+    </p:dataTable>
+
+
+</h:form>
+<h:form id="frmTopic">    
+<p:growl id="msgral" autoUpdate="true"/>
+<p:panel header="Agregar un nuevo Tema" styleClass="borderCero3">
+<div style="text-align:right;">
+	<p:commandButton id="btnActualizaUnidades" value="Actualiza unidades" actionListener="#{nuevosCursos.comboUnidades}" update="pnlagregaTopic"/>
+</div>	
+	<p:panelGrid id="pnlagregaTopic">
+		<p:row>
+			<p:column>
+				<h:outputText styleClass="etiqueta2" value="Nombre del tema"/>
+			</p:column>
+			<p:column>
+				<h:outputText styleClass="etiqueta2" value="Liga"/>
+			</p:column>
+			<p:column>
+				<h:outputText styleClass="etiqueta2" value="Unidad a relacionar"/>
+			</p:column>
+			<p:column>
+				<h:outputText styleClass="etiqueta2" value="Objetivo"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<p:inputText value="#{nuevosCursos.nomTopic}" required="true" label="Nombre del tema"/>
+			</p:column>
+			<p:column>
+				<p:inputText value="#{nuevosCursos.ligaTopic}" required="true" label="Liga"/>
+			</p:column>
+			<p:column>
+				<p:selectOneMenu id="cmbRelacionTopic" value="#{nuevosCursos.relacionTopic}" required="true" label="Tema a relacionar">
+					<f:selectItem itemLabel="Elije una unidad" itemValue=""/>
+					<f:selectItems value="#{nuevosCursos.unidades}" />
+				</p:selectOneMenu>
+			</p:column>
+			<p:column>
+				<p:inputText value="#{nuevosCursos.objetivoTema}" label="Objetivo del tema"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column style="text-align:center;" colspan="3">
+				<p:commandButton value="Agregar" actionListener="#{nuevosCursos.agregaTopic}" id="btnGuardaUnidad"
+            		 update="frmTopic" icon="ui-icon-disk" />
+			</p:column>
+		</p:row>
+	</p:panelGrid>
+</p:panel>	
+
+<!-- Sector de topics -->	
+	<p:dataTable id="tblTopics" 
+				 var="top" 
+				 value="#{nuevosCursos.listTopicBean}"  
+				 editable="true" 
+				 scrollable="true" 
+				 scrollHeight="180"
+				 filteredValue="#{nuevosCursos.listUnidades}"
+				 widgetVar="unitTopics">
+ 
+        <f:facet name="header">
+            Listado de Temas
+        </f:facet>
+ 
+        <p:ajax event="rowEdit" listener="#{nuevosCursos.onEditTopic}" update=":frmTopic:msgral" />
+        <p:ajax event="rowEditCancel" listener="#{nuevosCursos.onCancel}" update=":frmTopic:msgral" />
+  		<p:column headerText="topic id" style="width:30%" rendered="true">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{top.topicId}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{top.topicId}" style="width:100%"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+        <p:column headerText="Nombre del tema" style="width:30%">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{top.topicName}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{top.topicName}" style="width:100%" label="Nombre unidad"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+ 
+        <p:column headerText="Link" style="width:100%">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{top.link}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{top.link}" style="width:100%" label="link"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+ 
+        <p:column headerText="Unidad" style="width:34%" filterBy="#{top.unitName}" filterOptions="#{nuevosCursos.itemUnidades}" filterMatchMode="exact">
+           
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{top.unitName}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{top.unitName}" style="width:100%" label="unidad"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+        <p:column headerText="Objetivo" style="width:64%">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{top.segment1}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{top.segment1}" style="width:100%" label="objetivo"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+         <p:column headerText="segment2" style="width:24%">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{top.segment2}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{top.segment2}" style="width:100%" label="link"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+                <p:column headerText="segment3" style="width:24%">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{top.segment3}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{top.segment3}" style="width:100%" label="link"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+                <p:column headerText="segment4" style="width:24%">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{top.segment4}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{top.segment4}" style="width:100%" label="link"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+                <p:column headerText="segment5" style="width:24%">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{top.segment5}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{top.segment5}" style="width:100%" label="link"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+                <p:column headerText="segment6" style="width:24%">
+            <p:cellEditor>
+                <f:facet name="output">
+                    <h:outputText value="#{top.segment6}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{top.segment6}" style="width:100%" label="link"/>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+        
+ 
+        <p:column style="width:6%">
+            <p:rowEditor />
+        </p:column>
+ 
+    </p:dataTable>
+</h:form>
+
+
+</center>
+
+</h:body>
+</html>

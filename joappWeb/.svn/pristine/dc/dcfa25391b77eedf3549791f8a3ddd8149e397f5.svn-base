@@ -1,0 +1,70 @@
+package mx.javaonline.filter;
+
+import java.io.IOException;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import mx.javaonline.beans.LoginBean;
+import mx.javaonline.beans.StudentPersonalBean;
+
+import org.apache.log4j.Logger;
+
+public class LoginFilter implements Filter {
+
+	private static org.apache.log4j.Logger logger = Logger.getLogger(LoginFilter.class);
+	public LoginFilter() {
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void destroy() {
+		logger.debug("session destroyed :");
+
+	}
+
+	@Override
+	public void doFilter(ServletRequest request, ServletResponse response,
+			             FilterChain chain) throws IOException, ServletException {
+		HttpServletResponse res = (HttpServletResponse) response;
+		
+		HttpServletRequest req = (HttpServletRequest) request;
+        HttpSession session = req.getSession();
+      /*  logger.debug("session.getAttribute "+session.getAttribute("studentPersonalBean"));
+        logger.debug("req.getRequestURL().endsWith "+req.getRequestURL());
+		*/
+        if (session.getAttribute("studentPersonalBean") != null || req.getRequestURL().toString().endsWith("login.xhtml")
+        														|| req.getRequestURL().toString().endsWith("recuperaPass.xhtml")) {
+        	
+            chain.doFilter(request, response);
+        } else {
+        	/*StudentPersonalBean studentPersonalBean = (StudentPersonalBean)session.getAttribute("studentPersonalBean");
+        	logger.debug("session destroyed :"+studentPersonalBean.getSurNames());
+        	*/
+            
+//            logger.debug("CONTEXTO!! "+req.getContextPath() + "/login.xhtml");
+//            logger.debug("Estatus req "+ res.getStatus());
+            res.sendRedirect(req.getContextPath() + "/login.xhtml");
+            //res.encodeRedirectUrl(req.getContextPath() + "/login.xhtml");
+            
+//            logger.debug("Paso forward");
+            return;
+        }
+
+	}
+
+	@Override
+	public void init(FilterConfig arg0) throws ServletException {
+		// TODO Auto-generated method stub
+
+	}
+
+}

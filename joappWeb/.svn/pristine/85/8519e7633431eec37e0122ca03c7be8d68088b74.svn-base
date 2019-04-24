@@ -1,0 +1,626 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+<h:head>
+	<link rel="stylesheet" type="text/css" href="../css/general.css" />
+<style type="text/css">
+
+</style>
+</h:head>
+<h:body>
+<h:form id="frmCursos" enctype="multipart/form-data">
+
+  <p:growl id="msgs" showDetail="true" />
+	<center>
+		<p:accordionPanel id="apanel"  activeIndex="#{agregaContenidoBean.activeIndex}">
+        <p:tab title="Cursos">
+        	<p:dataTable id="courses" var="cur" value="#{agregaContenidoBean.listCourses}" selectionMode="single" selection="#{agregaContenidoBean.selectedCurso}" rowKey="#{cur.id_curso}" style="font-size:9pt;">
+		        <f:facet name="header">
+		            Busqueda de cursos
+			        </f:facet>
+					<p:ajax event="rowSelect" listener="#{agregaContenidoBean.onRowSelect}"     update=":frmCursos:apanel" />
+			        
+			  <p:columns value="#{agregaContenidoBean.columns}" var="column" columnIndexVar="colIndex" sortBy="#{cur[column.property]}" filterBy="#{cur[column.property]}">
+			            <f:facet name="header">
+			                <h:outputText value="#{column.header}" />
+			            </f:facet>
+			            <h:outputText value="#{cur[column.property]}" />
+			  </p:columns>
+			</p:dataTable>
+        </p:tab>
+       
+        <p:tab title="Unidades" id="tabUnits">
+        	 <p:dataTable id="units" var="uni" value="#{agregaContenidoBean.listUnits}" selectionMode="single" selection="#{agregaContenidoBean.selectedUnidad}" rowKey="#{uni.unidad_id}" style="font-size:9pt;">
+		        <f:facet name="header">
+		            Busqueda de unidades
+			        </f:facet>
+					<p:ajax event="rowSelect" listener="#{agregaContenidoBean.onRowSelectUidad}"     update=":frmCursos:apanel" />
+			        
+			  <p:columns value="#{agregaContenidoBean.columnsUnits}" var="column" columnIndexVar="colIndex" sortBy="#{uni[column.property]}" filterBy="#{uni[column.property]}">
+			            <f:facet name="header">
+			                <h:outputText value="#{column.header}" />
+			            </f:facet>
+			            <h:outputText value="#{uni[column.property]}" />
+			  </p:columns>
+			</p:dataTable>
+        </p:tab>
+      
+        <p:tab title="Topics" id="tabTopics">
+        	 <p:dataTable id="topics" var="top" value="#{agregaContenidoBean.listTopics}" selectionMode="single" selection="#{agregaContenidoBean.selectedTopic}" rowKey="#{top.id_topic}" style="font-size:9pt;">
+		        <f:facet name="header">
+		            Busqueda de Temas
+			        </f:facet>
+					<p:ajax event="rowSelect" listener="#{agregaContenidoBean.onRowSelectTopics}"     update="@all" />
+			        
+			  <p:columns value="#{agregaContenidoBean.columnsTopics}" var="column" columnIndexVar="colIndex" sortBy="#{top[column.property]}" filterBy="#{top[column.property]}">
+			            <f:facet name="header">
+			                <h:outputText value="#{column.header}" />
+			            </f:facet>
+			            <h:outputText value="#{top[column.property]}" />
+			  </p:columns>
+			</p:dataTable>
+        </p:tab>
+    </p:accordionPanel>
+</center>
+</h:form>
+
+
+<p:panel id="pnlContentido" header="#{agregaContenidoBean.topicName}" rendered="#{agregaContenidoBean.topicId > 0}">
+							<!-- ****************************** -->
+							<!-- EMPIEZA LA CREACION DE VIDEOS -->
+							<!-- ****************************** -->
+<p:panelGrid styleClass="borderCero">
+<p:row>
+<p:column>
+<br/>
+<h:form id="frmVideo">
+ 	<p:growl id="msgPro" autoUpdate="true" showDetail="true"/>
+ 		<p:outputPanel>
+          	<p:panelGrid>
+          		<p:row rendered="#{agregaContenidoBean.ocultaLinkEvaluacion != 1}">
+              		<p:column>
+          				<h:outputText value="Nuevo Video" style="font-weight: bold;"/>
+          			</p:column>
+          			<p:column>
+          				<p:commandLink onclick="PF('dlgVideo').show();">
+          					<p:graphicImage value="../images/Create.png" style="cursor:pointer;"/>
+          				</p:commandLink>
+          			</p:column>
+              	</p:row>
+              </p:panelGrid>
+         </p:outputPanel>
+         
+    	<p:dataTable id="tblVideos" var="vid" 
+    				 value="#{agregaContenidoBean.listVideos}" 
+    				 widgetVar="VideoTable"
+                     emptyMessage="No es necesario videos para este tema"  
+                     style="width:500px"
+                     rendered="#{agregaContenidoBean.ocultaLinkEvaluacion != 1}">
+                     		    
+			<p:column  headerText="Nombre del video" style="font-size:12px;">
+	            <h:outputText value="#{vid.nomVideo}" />
+	        </p:column>
+	        <p:column  headerText="link del video" style="font-size:12px;">
+	            <h:outputText value="#{vid.linkVideo}" />
+	        </p:column>
+	        <p:column  headerText="Editar" style="text-align: center">
+		           <p:commandButton update=":idEditaVideo" 
+		           				    actionListener="#{agregaContenidoBean.editarVideo(vid)}" 
+		           				    oncomplete="PF('dlgActuaVideo').show()" 
+		           				    icon="ui-icon-pencil" 
+		           				    title="Editar"/>
+    	 	</p:column>  
+    	    <p:column  headerText="Eliminar" style="text-align: center">
+		           <p:commandButton update=":frmVideo:tblVideos"
+		           				    actionListener="#{agregaContenidoBean.eliminaVideo(vid)}"  
+		           				    icon="ui-icon-trash" 
+		           				    title="Eliminar">
+		           	<p:confirm header="Confirmación" message="¿Estas seguro?" icon="ui-icon-alert" />
+		           </p:commandButton>
+    	 	</p:column> 
+        </p:dataTable>
+     	 
+
+	<p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+        <p:commandButton value="SI" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        <p:commandButton value="NO" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    </p:confirmDialog>         
+</h:form>
+<h:form id="idDialogVideo">
+<p:dialog header="Nuevo video" 
+		  widgetVar="dlgVideo" 
+		  modal="true" 
+		  resizable="false"
+		  showEffect="slide"
+		  hideEffect="fold"
+		  id="id_video"
+		  style="width=10px;">
+	  
+ 	<p:panelGrid>
+		<p:row>
+			<p:column>
+				<p:outputLabel value="Nombre del video " style="font-weight: bold;font-size:16px;"/>
+			</p:column>
+			<p:column>
+				<p:inputText id="idNomVid" value="#{agregaContenidoBean.nombreVideo}" 
+						     required="true"
+						     label="Nombre de video"
+						     style="font-size:16px;"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<p:outputLabel value="Link del video: " style="font-weight: bold;font-size:16px;"/>
+			</p:column>
+			<p:column>
+				<p:inputText value="#{agregaContenidoBean.linkVideo}"
+							 required="true"
+							 label="Link del video"
+							 style="font-size:16px;"/>
+	   		 </p:column>
+		</p:row>
+		
+		<p:row>
+			<p:column colspan="2" style="text-align:center;">
+				<p:commandButton id="btnGuardar" 
+								 value="Guardar" 
+								 actionListener="#{agregaContenidoBean.guardaVideo}" 
+								 update=":frmVideo:tblVideos"/>
+			</p:column>
+		</p:row>
+	</p:panelGrid>
+	
+</p:dialog> 
+</h:form>
+</p:column>
+
+							<!-- ****************************** -->
+							<!--  EMPIEZA LA CREACION DE LAMINAS -->
+							<!-- ****************************** -->
+						
+<p:column>
+<h:form id="frmLamina">
+	<p:growl id="msgPro" autoUpdate="true" showDetail="true"/>
+		 <p:outputPanel>
+          	<p:panelGrid>
+          		<p:row rendered="#{agregaContenidoBean.ocultaLinkEvaluacion != 1}">
+              		<p:column>
+          				<h:outputText value="Nueva lamina" style="font-weight: bold;"/>
+          			</p:column>
+          			<p:column>
+          				<p:commandLink onclick="PF('dlgLamina').show();">
+          					<p:graphicImage value="../images/Create.png" style="cursor:pointer;"/>
+          				</p:commandLink>
+          			</p:column>
+              	</p:row>
+              </p:panelGrid>
+         </p:outputPanel>
+    	<p:dataTable id="tblLaminas" var="lam" 
+    				 value="#{agregaContenidoBean.listLaminas}" 
+    				 widgetVar="LaminaTable"
+                     emptyMessage="No hay laminas agregadas"  
+                     style="width:500px;"
+                     rendered="#{agregaContenidoBean.ocultaLinkEvaluacion != 1}">
+                     		    
+			<p:column  headerText="Nombre lamina" style="">
+	            <h:outputText value="#{lam.nom_lamina}" />
+	        </p:column>
+    	    <p:column  headerText="Eliminar" style="text-align: center">
+		           <p:commandButton update="tblLaminas"
+		           				    actionListener="#{agregaContenidoBean.eliminaLamina(lam)}"  
+		           				    icon="ui-icon-trash" 
+		           				    title="Eliminar">
+		           	<p:confirm header="Confirmación" message="¿Estas seguro?" icon="ui-icon-alert" />
+		           </p:commandButton>
+    	 	</p:column> 
+        </p:dataTable>
+     	
+         
+	<p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+        <p:commandButton value="SI" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        <p:commandButton value="NO" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    </p:confirmDialog>         
+</h:form>        
+<h:form id="idDialogLamina">
+<p:dialog header="Nueva lamina" 
+		  widgetVar="dlgLamina" 
+		  modal="true" 
+		  resizable="false"
+		  showEffect="slide"
+		  hideEffect="fold"
+		  id="id_Lamina">
+	  
+ 	<p:panelGrid>
+		<p:row>
+			<p:column colspan="2">
+				<p:fileUpload id="id_fileLaminas"
+							  fileUploadListener="#{agregaContenidoBean.handleFileUpload}"
+				  			  mode="advanced" 
+				  			  dragDropSupport="false"
+        					  update=":frmLamina:tblLaminas"
+        					  sizeLimit="100000000" 
+        					  fileLimit="1" 
+        					  invalidSizeMessage="El tamaño del pdf sobrepasa el limite"
+        					  invalidFileMessage="El formato debe ser pdf"
+        					  fileLimitMessage="Solo puedes agregar un documento"
+        					  allowTypes="/(\.|\/)(pdf)$/" />
+     		</p:column>
+		</p:row>
+	</p:panelGrid>
+	
+</p:dialog> 
+</h:form>
+
+</p:column>
+</p:row>
+							<!-- ****************************** -->
+							<!--  EMPIEZA LA CREACION DE PRACTICAS -->
+							<!-- ****************************** -->
+<p:row>
+<p:column>
+<br />
+	<h:form id="frmPractica">
+
+		 <p:outputPanel>
+          	<p:panelGrid>
+          		<p:row rendered="#{agregaContenidoBean.ocultaLinkEvaluacion != 1}">
+              		<p:column>
+          				<h:outputText value="Practica Video" style="font-weight: bold;"/>
+          			</p:column>
+          			<p:column>
+          				<p:commandLink onclick="PF('dlgPracticaVideo').show();">
+          					<p:graphicImage value="../images/Create.png" style="cursor:pointer;"/>
+          				</p:commandLink>
+          			</p:column>
+          			<p:column/>
+          			<p:column>
+          				<h:outputText value="Practica PDF" style="font-weight: bold;"/>
+          			</p:column>
+          			<p:column>
+          				<p:commandLink onclick="PF('dlgPracticaPDF').show();">
+          					<p:graphicImage value="../images/Create.png" style="cursor:pointer;"/>
+          				</p:commandLink>
+          			</p:column>
+              	</p:row>
+              </p:panelGrid>
+         </p:outputPanel>
+    	<p:dataTable id="tblPracticas" var="pra" 
+    				 value="#{agregaContenidoBean.listPracticas}" 
+    				 widgetVar="practicaTable"
+                     emptyMessage="No hay practicas agregadas"  
+                     style="width:500px;"
+                     rendered="#{agregaContenidoBean.ocultaLinkEvaluacion != 1}">
+                     		    
+			<p:column  headerText="Nombre archivo" style="">
+	            <h:outputText value="#{pra.nomArchivo}" />
+	        </p:column>
+	        <p:column  headerText="Link Video" style="">
+	            <h:outputText value="#{pra.link_video}" />
+	        </p:column>
+	        <p:column  headerText="Tipo Contenido" style="">
+	            <h:outputText value="#{pra.tipoContendio}" />
+	        </p:column>
+    	    <p:column  headerText="Eliminar" style="text-align: center">
+		           <p:commandButton update="tblPracticas"
+		           				    actionListener="#{agregaContenidoBean.eliminaPractica(pra)}"  
+		           				    icon="ui-icon-trash" 
+		           				    title="Eliminar">
+		           	<p:confirm header="Confirmación" message="¿Estas seguro?" icon="ui-icon-alert" />
+		           </p:commandButton>
+    	 	</p:column> 
+        </p:dataTable>
+     	
+         
+	<p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+        <p:commandButton value="SI" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        <p:commandButton value="NO" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    </p:confirmDialog>         
+</h:form>
+
+							<!-- ****************************** -->
+							<!--  EMPIEZA DIALOGO PRACTICA PDF-->
+							<!-- ****************************** -->
+<h:form id="idDialogPracticaPDF">
+<p:dialog header="Nueva Practica" 
+		  widgetVar="dlgPracticaPDF" 
+		  modal="true" 
+		  resizable="true"
+		  showEffect="slide"
+		  hideEffect="fold"
+		  id="idPracticaPDF">
+	  
+ 	<p:panelGrid>
+		<p:row>
+			<p:column>
+				<h:outputText value="Nombre Practica "/>
+			</p:column>
+			<p:column>
+				<p:inputText value="#{agregaContenidoBean.nomPractica}" required="true"/>
+			</p:column>
+		</p:row>
+	    <p:row>
+			<p:column colspan="2">
+				<p:fileUpload id="id_filePracticas"
+							  fileUploadListener="#{agregaContenidoBean.handleFileUploadPractica}"
+				  			  mode="advanced" 
+				  			  dragDropSupport="false"
+        					  update=":frmPractica:tblPracticas"
+        					  sizeLimit="100000000" 
+        					  fileLimit="1" 
+        					  invalidSizeMessage="El tamaño del pdf sobrepasa el limite"
+        					  invalidFileMessage="El formato debe ser pdf"
+        					  fileLimitMessage="Solo puedes agregar un documento"
+        					  allowTypes="/(\.|\/)(pdf)$/" />
+     		</p:column>
+		</p:row>
+	</p:panelGrid>
+	
+</p:dialog> 
+</h:form>    
+							<!-- ****************************** -->
+							<!--  EMPIEZA DIALOGO PRACTICA VIDEO-->
+							<!-- ****************************** -->
+<h:form id="idDialogpPracticaVideo">
+<p:dialog header="Nueva Practica" 
+		  widgetVar="dlgPracticaVideo" 
+		  modal="true" 
+		  resizable="true"
+		  showEffect="slide"
+		  hideEffect="fold"
+		  id="idPracticaVideo">
+	  
+ 	<p:panelGrid>
+		<p:row>
+			<p:column>
+				<h:outputText value="Nombre Practica "/>
+			</p:column>
+			<p:column>
+				<p:inputText value="#{agregaContenidoBean.nomPractica}" required="true" label="Nombre practica"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<h:outputText value="Link Video"/>
+			</p:column>
+			<p:column>
+				<p:inputText value="#{agregaContenidoBean.linkVideoPrac}" required="true" label="Link video"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="2">
+				<p:commandButton value="Guardar" actionListener="#{agregaContenidoBean.guardaPracticaVideo}"/>
+			</p:column>
+		</p:row>
+	</p:panelGrid>
+	
+</p:dialog> 
+</h:form>      
+  
+</p:column>
+
+
+							<!-- ****************************** -->
+							<!--  EMPIEZA LA CREACION DE SOLUCIONES -->
+							<!-- ****************************** -->
+
+<p:column>
+<br />
+	<h:form id="frmSolucion">
+
+		 <p:outputPanel>
+          	<p:panelGrid>
+          		<p:row rendered="#{agregaContenidoBean.ocultaLinkEvaluacion != 1}">
+              		<p:column>
+          				<h:outputText value="Solución Video" style="font-weight: bold;"/>
+          			</p:column>
+          			<p:column>
+          				<p:commandLink onclick="PF('dlgSolucionVideo').show();">
+          					<p:graphicImage value="../images/Create.png" style="cursor:pointer;"/>
+          				</p:commandLink>
+          			</p:column>
+          			<p:column/>
+          			<p:column>
+          				<h:outputText value="Solución PDF" style="font-weight: bold;"/>
+          			</p:column>
+          			<p:column>
+          				<p:commandLink onclick="PF('dlgSolucionPDF').show();">
+          					<p:graphicImage value="../images/Create.png" style="cursor:pointer;"/>
+          				</p:commandLink>
+          			</p:column>
+              	</p:row>
+              </p:panelGrid>
+         </p:outputPanel>
+    	<p:dataTable id="tblSoluciones" var="sol" 
+    				 value="#{agregaContenidoBean.listSoluciones}" 
+    				 widgetVar="solucionTable"
+                     emptyMessage="No hay soluciones agregadas"  
+                     style="width:500px;"
+                     rendered="#{agregaContenidoBean.ocultaLinkEvaluacion != 1}">
+                     		    
+			<p:column  headerText="Nombre archivo" style="">
+	            <h:outputText value="#{sol.nomArchivo}" />
+	        </p:column>
+	        <p:column  headerText="Link Video" style="">
+	            <h:outputText value="#{sol.linkVideo}" />
+	        </p:column>
+	        <p:column  headerText="Tipo Contenido" style="">
+	            <h:outputText value="#{sol.tipoContenido}" />
+	        </p:column>
+    	    <p:column  headerText="Eliminar" style="text-align: center">
+		           <p:commandButton update="tblSoluciones"
+		           				    actionListener="#{agregaContenidoBean.eliminaSolcuion(sol)}"  
+		           				    icon="ui-icon-trash" 
+		           				    title="Eliminar">
+		           	<p:confirm header="Confirmación" message="¿Estas seguro?" icon="ui-icon-alert" />
+		           </p:commandButton>
+    	 	</p:column> 
+        </p:dataTable>
+     	
+         
+	<p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+        <p:commandButton value="SI" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        <p:commandButton value="NO" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    </p:confirmDialog>         
+</h:form>
+
+							<!-- ****************************** -->
+							<!--  EMPIEZA DIALOGO SOLUCION PDF-->
+							<!-- ****************************** -->
+
+<h:form id="idDialogSolucionPDF">
+<p:dialog header="Nueva Solucion" 
+		  widgetVar="dlgSolucionPDF" 
+		  modal="true" 
+		  resizable="true"
+		  showEffect="slide"
+		  hideEffect="fold"
+		  id="idSolucionPDF">
+	  
+ 	<p:panelGrid>
+		<p:row>
+			<p:column>
+				<h:outputText value="Nombre Solución "/>
+			</p:column>
+			<p:column>
+				<p:inputText value="#{agregaContenidoBean.nomSolucion}" required="true"/>
+			</p:column>
+		</p:row>
+	    <p:row>
+			<p:column colspan="2">
+				<p:fileUpload id="id_fileSoluciones"
+							  fileUploadListener="#{agregaContenidoBean.handleFileUploadSolucion}"
+				  			  mode="advanced" 
+				  			  dragDropSupport="false"
+        					  update=":frmSolucion:tblSoluciones"
+        					  sizeLimit="100000000" 
+        					  fileLimit="1" 
+        					  invalidSizeMessage="El tamaño del pdf sobrepasa el limite"
+        					  invalidFileMessage="El formato debe ser pdf"
+        					  fileLimitMessage="Solo puedes agregar un documento"
+        					  allowTypes="/(\.|\/)(pdf)$/" />
+     		</p:column>
+		</p:row>
+	</p:panelGrid>
+	
+</p:dialog> 
+</h:form>    
+							<!-- ****************************** -->
+							<!--  EMPIEZA DIALOGO PRACTICA VIDEO-->
+							<!-- ****************************** -->
+<h:form id="idDialogpSolucionVideo">
+<p:dialog header="Nueva Solucion" 
+		  widgetVar="dlgSolucionVideo" 
+		  modal="true" 
+		  resizable="true"
+		  showEffect="slide"
+		  hideEffect="fold"
+		  id="idSolucionVideo">
+	  
+ 	<p:panelGrid>
+		<p:row>
+			<p:column>
+				<h:outputText value="Nombre Solucion "/>
+			</p:column>
+			<p:column>
+				<p:inputText value="#{agregaContenidoBean.nomSolucion}" required="true" label="Nombre solución"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<h:outputText value="Link Video"/>
+			</p:column>
+			<p:column>
+				<p:inputText value="#{agregaContenidoBean.linkVideosoluc}" required="true" label="Link video"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="2">
+				<p:commandButton value="Guardar" actionListener="#{agregaContenidoBean.guardaSolucionVideo}"/>
+			</p:column>
+		</p:row>
+	</p:panelGrid>
+	
+</p:dialog> 
+</h:form>      							
+</p:column>
+</p:row>
+<p:row rendered="#{agregaContenidoBean.ocultaLinkEvaluacion == 1}">
+	<p:column>
+	<br />
+		<h:form id="frmEval">
+		<p:growl id="msgPro" autoUpdate="true" showDetail="true"/>
+    		<p:panelGrid id="pnlEval" styleClass="borderCero3" style="width:100%">
+       			<p:row>
+        			<p:column>
+        				<h:outputText value="link de la evaluacion: " styleClass="etiqueta2"/>
+        			</p:column>
+        			<p:column>
+        				<p:inputText id="itextEval" label="link evaluacion" value="#{agregaContenidoBean.linkEvaluacion}" size="50"/>
+        			</p:column>
+        		</p:row>
+        		<p:row>
+        			<p:column colspan="2" style="text-align:center;">
+        				<p:commandButton value="Guardar" 
+        								 actionListener="#{agregaContenidoBean.guardaEvaluacionPlus}"/>
+        				
+        			</p:column>
+
+        		</p:row>
+       		</p:panelGrid>
+    	</h:form>
+</p:column>
+</p:row>
+</p:panelGrid>
+</p:panel>
+
+<h:form id="idEditaVideo">
+<p:dialog header="Edita video" 
+		  widgetVar="dlgActuaVideo" 
+		  modal="true" 
+		  resizable="false"
+		  showEffect="slide"
+		  hideEffect="fold"
+		  id="id_editaVideo">
+	  
+ 	<p:panelGrid>
+		<p:row>
+			<p:column>
+				<p:outputLabel value="Nombre del video " style="font-weight: bold;font-size:16px;"/>
+			</p:column>
+			<p:column>
+				<p:inputText id="idNomVid" value="#{agregaContenidoBean.nombreVideo}" 
+						     required="true"
+						     label="Nombre de video"
+						     style="font-size:16px;"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<p:outputLabel value="Link del video: " style="font-weight: bold;font-size:16px;"/>
+			</p:column>
+			<p:column>
+				<p:inputText value="#{agregaContenidoBean.linkVideo}"
+							 required="true"
+							 label="Link del video"
+							 style="font-size:16px;"/>
+	   		 </p:column>
+		</p:row>
+		
+		<p:row>
+			<p:column colspan="2" style="text-align:center;">
+				<p:commandButton id="btnGuardar" 
+								 value="Guardar" 
+								 actionListener="#{agregaContenidoBean.editaVideo}" 
+								 update=":frmVideo:tblVideos"/>
+			</p:column>
+		</p:row>
+	</p:panelGrid>
+	
+</p:dialog> 
+</h:form>
+</h:body>
+</html>

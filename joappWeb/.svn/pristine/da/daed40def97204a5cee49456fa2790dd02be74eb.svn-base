@@ -1,0 +1,263 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+<style type="text/css">
+		.datoGral{font-size:8px;}
+		.ui-layout-west .ui-layout-unit-header {
+			    color: white;
+			    /*background:rgb(0,128,192);*/
+			    background:rgb(71,193,4);
+			    
+			}
+			.ui-layout-west .ui-layout-unit-content{
+				/*background:rgb(0,128,192);*/
+			}
+			
+	</style> 
+	 	   
+</h:head>
+<h:body>
+
+<h:form id="frmGuardaNota">		
+<p:growl id="notaGuardada" showDetail="true" autoUpdate="true"/>    
+<p:dialog header="#{dialogNotesBean.nomNota}"
+		  widgetVar="dlg2" 
+		  maximizable="true" 
+		  minimizable="true"
+		  id="dlgNvaNota"
+		  hideEffect="clip">
+  
+	<div>
+	
+	    <p:commandButton id="btnGuardaNota" 
+						 value="Guardar" 
+						 actionListener="#{dialogNotesBean.guardaNota}"
+		                 icon="ui-icon-disk"/>
+		             
+	</div>           
+	<p:spacer height="10px" width="10px"/>  
+	<p:editor id="editor" 
+			  value="#{dialogNotesBean.contentNote}" 
+			  width="600"/>
+
+</p:dialog>
+</h:form>
+<h:form id="frmNomNota">
+<!-- Le asigna un  nombre a la nota -->
+<p:dialog header="Nombre de la nota" 
+		  widgetVar="dlg3" 
+		  modal="true"
+		  id="dlgNomNota">
+
+ <p:panel header="Asigna un nombre a tu nota">
+  <p:panelGrid columns="2">
+ 	<p:row>
+ 		<p:column>
+ 			<h:outputText value="Nombre de la nota: "/>
+ 		</p:column>
+ 		<p:column>
+ 			<p:inputText id="nombre_nota" value="#{dialogNotesBean.nomNota}" required="true" validatorMessage="Introduce el nombre de tu nota"/>
+ 			
+ 		</p:column>
+ 		
+ 	</p:row>
+ 	<p:row>
+ 		<p:column colspan="2">
+ 			<p:commandButton value="Listo" actionListener="#{dialogNotesBean.generaNomNota}" oncomplete="PF('dlg3').hide();" update=":frmdialog:tblNotes"/>
+ 		</p:column>
+ 	</p:row>
+  </p:panelGrid>
+ </p:panel>
+ <p:messages id="msgGuardaNota" autoUpdate="true"/>
+</p:dialog>
+
+</h:form> 
+
+<h:form id="frmdialog">
+<p:dialog header="Mis notas" 
+		  widgetVar="dlg" 
+		  modal="true" 
+		  resizable="false"
+		  showEffect="slide"
+		  hideEffect="fold"
+		  id="id_notas">
+
+ 
+ 	
+ 			<p:panelGrid styleClass="borderCero">
+				<p:row>
+					<p:column>
+					 <p:commandLink  onclick="PF('dlg3').show();">
+						<p:graphicImage style="cursor:pointer" value="/images/Create.png" title="Nueva nota"/>
+					 </p:commandLink>
+					</p:column>
+				</p:row>
+			</p:panelGrid> 
+         
+            <p:dataTable var="note" value="#{dialogNotesBean.listNotas}"
+            			 id="tblNotes" 
+            		     scrollable="true" 
+            		     scrollWidth="500" 
+            		     scrollHeight="300"
+            		     style="width:430px;">
+                <p:column rendered="false">
+                	<h:outputText value="#{note.noteId}" />  
+                </p:column>
+     
+                <p:column headerText="Nombre" style="text-align:center;
+                									 font:normal bold 110% normal;
+                									 color:black;
+                									 width:135px;">  
+                    <h:outputText value="#{note.noteName}" />  
+                </p:column>  
+  
+                <p:column headerText="Abrir" style="text-align:center;
+                								    width:105px;">
+                <p:commandLink actionListener="#{dialogNotesBean.getValueNotes(note.noteId,note.noteName)}" 
+                			   oncomplete="PF('dlg2').show();PF('dlg').hide();" update=":frmGuardaNota">  
+                    <h:graphicImage value="/images/Note_Yellow.png" style="cursor:pointer" title="Abrir nota"/>
+                </p:commandLink>  
+                </p:column>  
+  
+                <p:column headerText="Eliminar" style="text-align:center;">
+                	<p:commandLink id="linkBorraNota" 
+                				   actionListener="#{dialogNotesBean.borraNota(note.noteId)}"
+                				   oncomplete="PF('dlg').show();"
+                				   update=":frmdialog:tblNotes">  
+                    	<h:graphicImage value="/images/eliminar.png" style="cursor:pointer;" title="Eliminar nota"/>
+                    	<p:confirm header="Confirmación" message="¿Estas seguro que deseas eliminar esta nota?" icon="ui-icon-alert"/>
+                    </p:commandLink>
+                    <!-- Este mensaje no se muestra de deja por si se llega a averiguar despues. -->
+                    <p:growl id="msgEliminar" showDetail="true"/>
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">  
+				        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>  
+				        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>       
+				    </p:confirmDialog>   
+                </p:column>
+                
+            </p:dataTable>
+
+</p:dialog> 
+</h:form>	
+<p:layout fullPage="true" widgetVar="layoutWdgt">  
+ 	  
+    <p:layoutUnit position="north" size="90" 
+    			  styleClass="headColor" 
+    			  header="Bienvenido: #{studentPersonalBean.givenNames}" 
+    			  resizable="true" 
+    			  closable="false" 
+    			  collapsible="false">
+
+        <p:panelGrid id="gridNorth" style="width:1330px;height:10px" styleClass="borderCero2">        
+          <p:row>
+          	<p:column>
+  		          <p:graphicImage value="/images/javaOnline_png.png"/>
+  		           
+          	</p:column>
+          		  
+          
+          	<p:column style="width:120px; height:39px;">
+			  <p:commandLink oncomplete="PF('dlg').show();" update=":frmdialog"> 
+                    		<p:graphicImage value="/images/mis_notas_yellow2.png"/>                    
+                    	</p:commandLink>       	    
+			            		 
+          	</p:column>
+          	<p:column style="width:320px; height:39px;">
+			  <p:commandLink oncomplete="PF('dlg').show();" update=":frmdialog"> 
+                    		<p:graphicImage value="/images/Mi_perfil3.png"/>                    
+                    	</p:commandLink>       	    
+			            		 
+          	</p:column>
+          	<p:column style="width:150px">
+ <!--          	    <p:outputLabel value="Bienvenido :" style="font:normal bold 110% normal;color:black;"/>
+          		<p:outputLabel value=" #{studentPersonalBean.givenNames}" style="font:normal 110% normal;color:white;"/>
+ -->       		<p:spacer height="10px" width="40px"/> <p:outputLabel value="   Rol : " style="font:normal bold 110% normal;color:black;"/>
+          		<p:outputLabel value="#{studentPersonalBean.rolName}" style="font-size:11px;font:normal 110% normal;color:white;"/>
+          		<p:spacer height="10px" width="25px"/> <p:outputLabel value="   No cta : " style="font:normal bold 110% normal;color:black;"/>
+          		<p:outputLabel value="#{studentPersonalBean.numCta}" style="font-size:11px;font:normal 110% normal;color:white;"/>
+          	</p:column>
+         	
+          		<p:column style="text-align: right;width:10px;">
+          		<h:form id="formHome">
+          		<h:commandLink action="#{loginBean.salir}">
+          		<p:graphicImage value="/images/exit2.png" title="Salir"/>
+          		</h:commandLink>
+          		</h:form>
+          		<p:outputLabel value="Salir" style="font:normal bold 100% normal;color:black;"/>
+          	</p:column>
+          	
+          </p:row>
+        </p:panelGrid>
+  	  </p:layoutUnit>
+
+  
+    <p:layoutUnit position="south" size="25"  resizable="true" closable="false" collapsible="true">  
+    <!--     <p:lightBox id="lightPie">
+        <h:outputLink value="#" id="clicVideo">
+        	<h:outputText value="© Copyright 2014 Webnode AG. All rights reserved." />
+        </h:outputLink>
+        <f:facet name="inline">
+         
+        <p:media value="http://vimeo.com/moogaloop.swf?clip_id=18079550"
+		  					         width="400" 
+		  					         height="225"
+		  					         player="flash"/>
+        
+    </f:facet>  
+       </p:lightBox>
+        -->
+        	<h:outputText value="© Copyright 2014 Webnode AG. All rights reserved." />
+
+    </p:layoutUnit>  
+  
+    <p:layoutUnit id="menuCursos" 
+    			  position="west" 
+    			  size="300" 
+    			  header="MENU DE CURSOS" 
+    			  resizable="true" 
+    			  closable="false" 
+    			  collapsible="true">
+    
+        <ui:include src="/oeste/creaArbol.xhtml" />
+
+    </p:layoutUnit>  
+   
+    <p:layoutUnit id="layeste" position="east" size="200" header="Right" visible="false">  
+
+    </p:layoutUnit>  
+   
+    
+    <p:layoutUnit id="layCenter" position="center">  
+
+       <h:form id="frameContent" style="height:100%;"> 
+         
+        <iframe id="contenPrincipal" 
+                src="#{arbolCursosBean.pageLink}"
+                width="100%"  
+                height="100%"
+                frameborder="0"/>  
+        
+        </h:form>
+	
+   
+  <!--
+    <h:form id="frameContent"> 
+     <p:outputPanel id="contenPrincipal" widgetVar="oupnl" layout="block">
+   		<ui:include src="#{arbolCursosBean.pageLink}"/>
+   		
+    </p:outputPanel>
+     
+  </h:form>
+  --> 
+  
+</p:layoutUnit>
+</p:layout>
+
+</h:body>
+</html>

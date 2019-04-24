@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<script type="text/javascript">
+	function redirecciona(){
+		
+		window.location = '/joappWeb/recuperaPass.xhtml';
+		
+		}
+</script>
+	<link rel="stylesheet" type="text/css" href="css/general.css" />
+	<link href="images/headset_icono.png" rel="shortcut icon" type='image/png'/>
+	<style type="text/css">
+body {
+	/*background-color:rgb(224,224,224)  ;*/
+	background-image: url('images/stardust.png');
+}
+/* .top {
+				filter:alpha(opacity=90);
+				opacity:0.8;
+				padding:50px 0 0 50px;
+			}*/
+
+</style>
+</h:head>
+<h:body>
+	<h:form id="frmLogin">
+		<div class="top" style="width: 96%;">
+			<!-- <h:outputText value="What PrimeFaces has so far is just the beginning!" style="color:#FFCC00;font-size:36px;" /> -->
+		</div>
+		<p:focus context="grid" />
+		<div id="divPrincipal">
+			<p:panelGrid id="grid" styleClass="borderCero">
+
+				<f:facet name="header">
+					<p:row>
+						<p:column colspan="4" styleClass="header1">Bienvenido</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="4">
+           ¿Olvidaste tu contraseña?
+           <p:commandLink onclick="javascript:redirecciona()"> haz clic aqui </p:commandLink>
+
+						</p:column>
+					</p:row>
+
+				</f:facet>
+				<p:row>
+					<p:column rowspan="5" style="text-align: center">
+						<p:graphicImage value="/images/candado_azul.png" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="text-align: center">
+						<p:outputLabel styleClass="etiqueta1" value="Usuario: *" />
+					</p:column>
+					<p:column style="text-align: left">
+						<p:inputText id="idUser" value="#{loginBean.user}" required="true"
+							label="Usuario" />
+					</p:column>
+					<p:column colspan="4">
+						<p:message for="idUser" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="text-align: center">
+						<p:outputLabel styleClass="etiqueta1" value="Contraseña:*" />
+					</p:column>
+					<p:column>
+						<p:password id="idPassword" value="#{loginBean.password}"
+							required="true" label="Contraseña" />
+					</p:column>
+					<p:column>
+						<p:message for="idPassword" />
+					</p:column>
+				</p:row>
+				<f:facet name="footer">
+					<p:row>
+						<p:column colspan="4" style="text-align: center">
+							<p:commandButton value="Aceptar"
+								action="#{loginBean.passStudent}" update="grid" />
+						</p:column>
+					</p:row>
+
+
+				</f:facet>
+
+			</p:panelGrid>
+			<p:messages id="messages" showDetail="true" autoUpdate="true"
+				closable="true" />
+		</div>
+
+
+	</h:form>
+</h:body>
+</html>

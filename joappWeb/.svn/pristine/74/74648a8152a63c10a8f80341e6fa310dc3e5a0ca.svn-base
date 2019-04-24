@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+<h:head>
+	<link rel="stylesheet" type="text/css" href="../css/general.css" />
+</h:head>
+<h:body>
+<h:form id="frmCursos" enctype="multipart/form-data">
+  <p:growl id="msgs" showDetail="true" />
+	<center>
+		<p:accordionPanel id="apanel"  activeIndex="#{agregaContenidoBean.activeIndex}">
+        <p:tab title="Cursos">
+        	<p:dataTable id="courses" var="cur" value="#{agregaContenidoBean.listCourses}" selectionMode="single" selection="#{agregaContenidoBean.selectedCurso}" rowKey="#{cur.id_curso}">
+		        <f:facet name="header">
+		            Busqueda de cursos
+			        </f:facet>
+					<p:ajax event="rowSelect" listener="#{agregaContenidoBean.onRowSelect}"     update=":frmCursos:apanel" />
+			        
+			  <p:columns value="#{agregaContenidoBean.columns}" var="column" columnIndexVar="colIndex" sortBy="#{cur[column.property]}" filterBy="#{cur[column.property]}">
+			            <f:facet name="header">
+			                <h:outputText value="#{column.header}" />
+			            </f:facet>
+			            <h:outputText value="#{cur[column.property]}" />
+			  </p:columns>
+			</p:dataTable>
+        </p:tab>
+       
+        <p:tab title="Unidades" id="tabUnits">
+        	 <p:dataTable id="units" var="uni" value="#{agregaContenidoBean.listUnits}" selectionMode="single" selection="#{agregaContenidoBean.selectedUnidad}" rowKey="#{uni.unidad_id}">
+		        <f:facet name="header">
+		            Busqueda de unidades
+			        </f:facet>
+					<p:ajax event="rowSelect" listener="#{agregaContenidoBean.onRowSelectUidad}"     update=":frmCursos:apanel" />
+			        
+			  <p:columns value="#{agregaContenidoBean.columnsUnits}" var="column" columnIndexVar="colIndex" sortBy="#{uni[column.property]}" filterBy="#{uni[column.property]}">
+			            <f:facet name="header">
+			                <h:outputText value="#{column.header}" />
+			            </f:facet>
+			            <h:outputText value="#{uni[column.property]}" />
+			  </p:columns>
+			</p:dataTable>
+        </p:tab>
+      
+        <p:tab title="Topics" id="tabTopics">
+        	 <p:dataTable id="topics" var="top" value="#{agregaContenidoBean.listTopics}" selectionMode="single" selection="#{agregaContenidoBean.selectedTopic}" rowKey="#{top.id_topic}">
+		        <f:facet name="header">
+		            Busqueda de Temas
+			        </f:facet>
+					<p:ajax event="rowSelect" listener="#{agregaContenidoBean.onRowSelectTopics}"     update="@all" />
+			        
+			  <p:columns value="#{agregaContenidoBean.columnsTopics}" var="column" columnIndexVar="colIndex" sortBy="#{top[column.property]}" filterBy="#{top[column.property]}">
+			            <f:facet name="header">
+			                <h:outputText value="#{column.header}" />
+			            </f:facet>
+			            <h:outputText value="#{top[column.property]}" />
+			  </p:columns>
+			</p:dataTable>
+        </p:tab>
+    </p:accordionPanel>
+</center>
+</h:form>
+
+    <p:panel id="pnlContentido" header="#{agregaContenidoBean.topicName}" rendered="#{agregaContenidoBean.topicId > 0}">
+    	<h:form id="frmVideo">
+    	<p:panel id="fileUploadGroup" header="Escribe la iga del video">
+    		<p:panelGrid id="pnlVideo" styleClass="borderCero3" style="width:100%">
+       			<p:row>
+        			<p:column>
+        				<h:outputText value="link del video: " styleClass="etiqueta2"/>
+        			</p:column>
+        			<p:column>
+        				<p:inputText label="link Video" value="#{agregaContenidoBean.linkVideo}"/>
+        			</p:column>
+        		</p:row>
+        		<p:row>
+        			<p:column colspan="2" style="text-align:center;">
+        				<p:commandButton value="Guardar" actionListener="#{agregaContenidoBean.guardaLinkVideo}" update=":frmVideo:pnlVideo"/>
+        				 <p:messages id="msgLinkVideo" showDetail="true"/>
+        			</p:column>
+
+        		</p:row>
+       		</p:panelGrid>
+       		</p:panel>
+       	
+    	</h:form>
+    	<h:form id="frmEval">
+    		<p:panel id="fileUploadGroup" header="Escribe la iga de la evaluacion">
+    		<p:panelGrid id="pnlEval" styleClass="borderCero3" style="width:100%">
+       			<p:row>
+        			<p:column>
+        				<h:outputText value="link de la evaluacion: " styleClass="etiqueta2"/>
+        			</p:column>
+        			<p:column>
+        				<p:inputText label="link evaluacion" value="#{agregaContenidoBean.linkEvaluacion}" size="50"/>
+        			</p:column>
+        		</p:row>
+        		<p:row>
+        			<p:column colspan="2" style="text-align:center;">
+        				<p:commandButton value="Guardar" actionListener="#{agregaContenidoBean.guardaLinkEval}" update=":frmEval:pnlEval"/>
+        				 <p:messages id="msgLinkEval" showDetail="true"/>
+        			</p:column>
+
+        		</p:row>
+       		</p:panelGrid>
+       		</p:panel>
+    	</h:form>
+    	<h:form id="frmLamina">
+    	<center>
+    		<p:panel id="fileUploadGroup" header="Elije una lamina">
+    		<p:media value="/DisplayPDF?accion=lamina" player="pdf"  height="300px" width="60%" />
+								<p:fileUpload fileUploadListener="#{agregaContenidoBean.handleFileUpload}"
+											  mode="advanced" dragDropSupport="false"
+				           					  update="fileUploadGroup"
+				           					  sizeLimit="100000000" 
+				           					  fileLimit="1" 
+				           					  invalidSizeMessage="El tamaño del pdf sobrepasa el limite"
+				           					  invalidFileMessage="El formato debe ser pdf"
+				           					  fileLimitMessage="Solo puedes agregar un documento"
+				           					  allowTypes="/(\.|\/)(pdf)$/" />
+				 
+				    			
+						      <p:growl id="msgPdf" showDetail="true"/>   	
+			</p:panel>
+			</center>
+    	</h:form>
+    		<h:form id="frmPractica">
+    		<center>
+    		<p:panel id="fileUploadGroup" header="Elije una practica">
+    		<p:media value="/DisplayPDF?accion=practica" player="pdf"  height="300px" width="60%"/>
+								<p:fileUpload fileUploadListener="#{agregaContenidoBean.handleFileUpload2}"
+											  mode="advanced" dragDropSupport="false"
+				           					  update="frmPractica"
+				           					  sizeLimit="100000000" 
+				           					  fileLimit="1" 
+				           					  invalidSizeMessage="El tamaño del pdf sobrepasa el limite"
+				           					  invalidFileMessage="El formato debe ser pdf"
+				           					  fileLimitMessage="Solo puedes agregar un documento"
+				           					  allowTypes="/(\.|\/)(pdf)$/" />
+				 
+				    			
+						      <p:messages id="msgPdf2" showDetail="true"/>   	
+			</p:panel>
+			</center>
+    	</h:form>
+    		<h:form id="frmSolucion">
+    		<p:panel id="fileUploadGroup" header="Elije una solucion">
+								<p:fileUpload fileUploadListener="#{agregaContenidoBean.handleFileUpload3}"
+											  mode="advanced" dragDropSupport="false"
+				           					  update="frmSolucion"
+				           					  sizeLimit="100000000" 
+				           					  fileLimit="1" 
+				           					  invalidSizeMessage="El tamaño del pdf sobrepasa el limite"
+				           					  invalidFileMessage="El formato debe ser pdf"
+				           					  fileLimitMessage="Solo puedes agregar un documento"
+				           					  allowTypes="/(\.|\/)(pdf)$/" />
+				 
+				    			
+						      <p:messages id="msgPdf2" showDetail="true"/>   	
+			</p:panel>
+    	</h:form>
+    </p:panel>
+
+
+<p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">
+    <f:facet name="start">
+        <h:graphicImage value="../images/ajax-loader.gif" />
+    </f:facet>
+     
+    <f:facet name="complete">
+        <h:outputText value="" />
+    </f:facet>
+</p:ajaxStatus>
+
+</h:body>
+</html>

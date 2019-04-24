@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+<h:head>
+      <link rel="stylesheet" type="text/css" href="../css/general.css"/>
+  <style type="text/css">
+  	.ui-picklist .ui-picklist-list{
+  		background: #F5ECCE;
+  		font-family: Arial,sans-serif;
+    	font-size: 16px;
+  	}
+  </style>
+</h:head>
+<h:body>
+<h:form>
+<center>
+<p:panel header="Agregar o quitar cursos">
+<p:growl id="msgral" showDetail="true"/>
+<p style="font-size: 13pt;color: #FE642E; font: oblique bold 90% cursive;">
+	Se te recomienda que tomes los cursos de acuerdo a su numero consecutivo para garantizar tu aprendizaje
+</p>
+
+<p:pickList id="pickList" value="#{agregaQuitaCursos.courses}" var="course"
+                itemLabel="#{fn:substringBefore(course, '|')}" itemValue="#{course}" >               
+</p:pickList>
+<p:panelGrid styleClass="borderCero3">
+			<p:row>
+				<p:column>
+					<p:commandButton value="Guardar" actionListener="#{agregaQuitaCursos.procesaCursosAgregados}" update="msgral"/>		
+				</p:column>
+			</p:row>
+			<p:row>
+			</p:row>
+</p:panelGrid> 
+<p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">
+    <f:facet name="start">
+        <h:graphicImage value="../images/ajax-loader.gif" />
+    </f:facet>
+     
+    <f:facet name="complete">
+        <h:outputText value="" />
+    </f:facet>
+</p:ajaxStatus>
+</p:panel>
+
+</center>
+
+
+</h:form>
+</h:body>
+</html>

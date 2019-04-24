@@ -1,0 +1,410 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+<h:head>
+
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css"/>
+<link rel="stylesheet" type="text/css" href="../css/custom.css"/>
+<link rel="stylesheet" type="text/css" href="../css/loginCss.css"/>
+<link rel="stylesheet" type="text/css" href="../css/NuevoEstilo.css"/>
+ <script type="text/javascript" src="../js/bootstrap.js"></script>
+ <script type="text/javascript" src="../js/jquery.min.js"></script>
+<link href="../images/headset_icono.png" rel="shortcut icon" type='image/png'/>
+<style type="text/css">
+
+
+.ui-widget-content {
+	color: white !important;
+}
+.borderCero3 tr,.borderCero3 td {
+	border: none;
+}
+.menuPerfil:hover {
+  color: black !important;
+  background-color: #def !important;
+}
+</style> 
+<script type="text/javascript">
+
+
+	//<![CDATA[ 
+	function direcciona(link,topicId){
+		
+		//var text = window.parent.document.getElementById('menuCursos').getElementsByTagName('a')[0].click();
+		var lol = window.parent.document.getElementById('contenPrincipal');
+		//lol.src = "/joappWeb/carousel/visualizaVideo.xhtml?linkTopic="+link+"&topicId="+topicId;
+		lol.src = "/joappWeb/administracion/miPerfil.xhtml";
+		//var media = window.parent.document.getElementById('clicVideo').click();
+		
+		}
+	//]]> 
+	//<![CDATA[ 
+	function direcciona2(){
+		
+		//var text = window.parent.document.getElementById('menuCursos').getElementsByTagName('a')[0].click();
+		var lol = window.parent.document.getElementById('contenPrincipal');
+		//lol.src = "/joappWeb/carousel/visualizaVideo.xhtml?linkTopic="+link+"&topicId="+topicId;
+		lol.src = "/joappWeb/administracion/ayuda.xhtml";
+		//var media = window.parent.document.getElementById('clicVideo').click();
+		
+		}
+	//]]> 
+	//<![CDATA[ 
+	function direcciona3(){
+		
+		//var text = window.parent.document.getElementById('menuCursos').getElementsByTagName('a')[0].click();
+		var lol = window.parent.document.getElementById('contenPrincipal');
+		//lol.src = "/joappWeb/carousel/visualizaVideo.xhtml?linkTopic="+link+"&topicId="+topicId;
+		lol.src = "/joappWeb/home/antesIniciar.jsp";
+		//var media = window.parent.document.getElementById('clicVideo').click();
+		
+		}
+	//]]> 
+
+	//<![CDATA[ 
+	function abrePregunta(){
+
+		//var text = window.parent.document.getElementById('menuCursos').getElementsByTagName('a')[0].click();
+		var lol = window.parent.document.getElementById('contenPrincipal');
+		//lol.src = "/joappWeb/carousel/visualizaVideo.xhtml?linkTopic="+link+"&topicId="+topicId;
+		lol.src = "/joappWeb/administracion/preguntaTema.xhtml";
+		//var media = window.parent.document.getElementById('clicVideo').click();
+		
+		}
+	//]]>
+	//<![CDATA[ 
+	function abreSubmenus(action){
+		var lol = window.parent.document.getElementById('contenPrincipal');
+		if(action == 1){
+			lol.src = "/joappWeb/administracion/cambiarContrasenia.xhtml";
+		}else if(action == 2){
+			lol.src = "/joappWeb/administracion/actualizaDatos.xhtml";	
+		}else if(action == 3){
+			lol.src = "/joappWeb/administracion/suscripcion.xhtml";
+		}else if(action == 4){
+			lol.src = "/joappWeb/home/comoTomarCursos.jsp";
+		}
+		
+	}
+	//]]>
+</script>	 
+	<!--Start of Zopim Live Chat Script-->
+		<script type="text/javascript">
+		window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+		d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+		_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+		$.src="//v2.zopim.com/?2zsniyMgwqKGzXCmuKbEsRxD6o4fffX4";z.t=+new Date;$.
+		type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+		</script>
+<!--End of Zopim Live Chat Script-->	   
+</h:head>
+<h:body>
+
+<p:dialog header="Session caducada" widgetVar="sessionTimeOutDialog"
+         modal="true" fixedCenter="true" closable="false" width="400" visible="false">
+             <h:outputText value="Tu session ha caducado, por favor pulse sobre el boton para volver a entrar a la aplicación" /><br/>
+             <p:commandButton id="confirmBackToLogin" type="button" value="Volver a entrar" style="text-align:center;"
+                onclick="window.location='#{facesContext.externalContext.requestContextPath}/login.xhtml';" />
+</p:dialog> 
+
+<p:dialog id="dialogRate" 
+		  header="¿Que nos hace falta para tener 5 estrellas?" 
+		  widgetVar="dlgRate" 
+		  modal="true" 
+		  height="170"
+		  width="462" 
+		  resizable="false"
+		  showEffect="fade"
+		  hideEffect="explode"
+		  closable="false">
+    <h:form id="formFiveStarts">
+    <p:inputTextarea id="txtAreaStarts" rows="6" cols="50" value="#{ratingController.commentFiveStarts}"/>
+    <p:growl id="messages" showDetail="true" />
+    <p:spacer width="150" height="10" />
+    			<p:commandButton id="btnEstrellas"
+    							 value="Enviar" 
+    							 action="#{ratingController.sendWhyNotFiveStarts}"
+    							 oncomplete="PF('dlgRate').hide()"
+    							 update="messages"/>
+    		
+    </h:form> 
+</p:dialog>
+<h:form id="frmGuardaNota">		
+<p:growl id="notaGuardada" showDetail="true" autoUpdate="true"/>    
+<p:dialog header="#{dialogNotesBean.nomNota}"
+		  widgetVar="dlg2" 
+		  maximizable="false" 
+		  minimizable="false"
+		  resizable="false"
+		  id="dlgNvaNota"
+		  hideEffect="clip">
+  
+	<div>
+	
+	    <p:commandButton id="btnGuardaNota" 
+						 value="Guardar" 
+						 actionListener="#{dialogNotesBean.guardaNota}"
+		                 icon="ui-icon-disk"/>
+		             
+	</div>           
+	<p:spacer height="10px" width="10px"/>  
+	<p:editor id="editor" 
+			  value="#{dialogNotesBean.contentNote}" 
+			  width="600" />
+	<script>
+            $(document).ready(function() {
+                $('#frmGuardaNota\\:editor').find('iframe').contents().find('body').css({
+                    'font-size': '20px',
+                    'color' : 'black',
+                    'background-color': 'white'
+                });
+            });
+        </script>
+
+</p:dialog>
+</h:form>
+<h:form id="frmNomNota">
+<!-- Le asigna un  nombre a la nota -->
+<p:dialog header="Nombre de la nota" 
+		  widgetVar="dlg3" 
+		  modal="true"
+		  id="dlgNomNota">
+
+ <span class="text-danger" style="text-align:center;font-size: 20px;"><strong>Asigna un nombre a tu nota</strong></span>
+  <p:panelGrid columns="2" styleClass="bordercero">
+ 	<p:row>
+ 		<p:column>
+ 			<h:outputText styleClass="text-info" value="Nombre de la nota: "/>
+ 		</p:column>
+ 		<p:column>
+ 			<p:inputText id="nombre_nota" value="#{dialogNotesBean.nomNota}" required="true" validatorMessage="Introduce el nombre de tu nota"/>
+ 			
+ 		</p:column>
+ 		
+ 	</p:row>
+ 	<p:row>
+ 		<p:column colspan="2">
+ 			<p:commandButton value="Listo" actionListener="#{dialogNotesBean.generaNomNota}" oncomplete="PF('dlg3').hide();" update=":frmdialog:tblNotes"/>
+ 		</p:column>
+ 	</p:row>
+  </p:panelGrid>
+
+ <p:messages id="msgGuardaNota" autoUpdate="true"/>
+</p:dialog>
+
+</h:form> 
+
+<h:form id="frmdialog">
+<p:dialog header="Mis notas" 
+		  widgetVar="dlg" 
+		  modal="true" 
+		  resizable="false"
+		  showEffect="slide"
+		  hideEffect="fold"
+		  id="id_notas"
+		  style="width:500px;">
+
+ 
+ 	
+ 			<p:panelGrid styleClass="borderCero3">
+				<p:row>
+					<p:column>
+					 <p:commandLink  onclick="PF('dlg3').show();">
+						<p:graphicImage style="cursor:pointer" value="/images/Create.png" title="Nueva nota"/>
+					 </p:commandLink>
+					</p:column>
+				</p:row>
+			</p:panelGrid> 
+         
+            <p:dataTable var="note" value="#{dialogNotesBean.listNotas}"
+            			 id="tblNotes"
+            		     style="width:530px;">
+                <p:column rendered="false">
+                	<h:outputText value="#{note.noteId}" />  
+                </p:column>
+     
+                <p:column headerText="Nombre" style="text-align:center;
+                									 font:normal bold 110% normal;
+                									 color:black;
+                									 width:165px;">  
+                    <h:outputText styleClass="text-info" value="#{note.noteName}" />  
+                </p:column>  
+  
+                <p:column headerText="Abrir" style="text-align:center;
+                								    width:95px;">
+                <p:commandLink actionListener="#{dialogNotesBean.getValueNotes(note.noteId,note.noteName)}" 
+                			   oncomplete="PF('dlg2').show();PF('dlg').hide();" update=":frmGuardaNota">  
+                    <h:graphicImage value="/images/Note_Yellow.png" style="cursor:pointer" title="Abrir nota"/>
+                </p:commandLink>  
+                </p:column>  
+  
+                <p:column headerText="Eliminar" style="text-align:center;width:65px;">
+                	<p:commandLink id="linkBorraNota" 
+                				   actionListener="#{dialogNotesBean.borraNota(note.noteId)}"
+                				   oncomplete="PF('dlg').show();"
+                				   update=":frmdialog:tblNotes">  
+                    	<h:graphicImage value="/images/eliminar.png" style="cursor:pointer;" title="Eliminar nota"/>
+                    	<span style="color:white;"><p:confirm header="Confirmación" message="¿Estas seguro que deseas eliminar esta nota?" icon="ui-icon-alert"/></span>
+                    </p:commandLink>
+                    <!-- Este mensaje no se muestra de deja por si se llega a averiguar despues. -->
+                    <p:growl id="msgEliminar" showDetail="true"/>
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">  
+				        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>  
+				        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>       
+				    </p:confirmDialog>   
+                </p:column>
+                
+            </p:dataTable>
+
+</p:dialog> 
+</h:form>
+
+
+<h:form id="frmBuzon">
+	<p:dialog header="Buzon de sugerencias" 
+		  widgetVar="dlgBuzon" 
+		  modal="true" 
+		  resizable="false"
+		  showEffect="slide"
+		  hideEffect="fold"
+		  id="id_buzon">
+
+	<p style="color:white;font-weight: bold;font-size: 16px;">
+		Tus comentarios son muy importantes para nosostros.
+	</p>
+	<p:growl id="msgral" showDetail="true"/>
+	<p:inputTextarea rows="10" 
+					 cols="80"
+					 id="txtAreaId"
+					 value="#{buzonSugerenciasBean.txtAreaValue}"  />
+	
+	<p:panelGrid styleClass="borderCero3">
+				<p:row>
+					<p:column>
+						<p:commandButton value="Enviar" action="#{buzonSugerenciasBean.enviar}" update="frmBuzon" icon="ui-icon-check"/>		
+					</p:column>
+				</p:row>
+				<p:row>
+				</p:row>
+	</p:panelGrid> 
+
+</p:dialog>
+</h:form>
+
+<div id="contenedor" style="z-index: 2000">
+	
+<h:form id="frm1">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <p:outputLabel styleClass="textHeader" value="Bienvenid@:&#160;"/>
+      <p:outputLabel style="font-size: 14px;font-weight: 550;" styleClass="text-info" value="#{studentPersonalBean.givenNames}&#160;&#160;"/>
+      <p:outputLabel styleClass="textHeader" value="No Cta:&#160;"/>
+      <p:outputLabel style="font-size: 14px;font-weight: 550;" styleClass="text-info" value="#{studentPersonalBean.numCta}&#160;&#160;"/>  
+      <p:outputLabel styleClass="textHeader" value="Rol:&#160;"/>
+      <p:outputLabel style="font-size: 14px;font-weight: 550;" styleClass="text-info" value="#{studentPersonalBean.rolName}"/>
+    </div>
+
+    <div class="collapse navbar-collapse" style="position:relative; left: 105px;" id="bs-example-navbar-collapse-1">
+      <ul class="nav nav-pills">
+        <li>
+        <p:commandLink oncomplete="PF('dlg').show();" update=":frmdialog" title="Mis apuntes"> 
+ 	     <span class="menuBarText">Mis Notas</span>
+	    </p:commandLink>
+	    </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="menuBarText">Mi Perfil</span><span class="caret"></span></a>
+    
+          <ul class="dropdown-menu" >
+            <li><a class="menuPerfil" href="javascript:abreSubmenus('1');">Cambiar contraseña</a></li>
+             <li class="divider"></li>
+            <li><a class="menuPerfil" href="javascript:abreSubmenus('2');">Actualiza tus datos</a></li>
+             <li class="divider"></li>
+            <li><a class="menuPerfil" href="javascript:abreSubmenus('3');">Mi suscripción</a></li>
+             <li class="divider"></li>
+            <li><a class="menuPerfil" href="javascript:abreSubmenus('4');">Como tomar los cursos</a></li>
+          </ul>
+        </li>
+        <li>
+			<a href="#" onclick="javascript:abrePregunta();"> <span class="menuBarText">Pregunta</span></a>
+		</li>
+        <li><p:commandLink oncomplete="PF('dlgBuzon').show();" title="buzon de sugerencias"><span class="menuBarText">Buzon</span></p:commandLink></li>
+        <li><h:commandLink action="#{loginBean.salir}" title="Salir">
+		 	   <span class="menuBarText">Salir</span>
+		 	   <img id="salirPng" src="../images/exit2.png"  />
+			 </h:commandLink>
+		</li>
+      </ul>
+    </div>
+  </div>
+</nav>
+</h:form>
+
+</div>
+
+<p:layout style="" widgetVar="layoutWdgt" >
+    <p:layoutUnit id="menuCursos" 
+    			  position="west" 
+    			  size="290" 
+    			  header="MENU DE CURSOS" 
+    			  resizable="true" 
+    			  closable="false" 
+    			  collapsible="true" 
+    			  collapsed="javascript:colapsa()"
+    			  style="height:100px;">
+      <p:accordionPanel value="#{arbolCursosBean.listCourses}" var="cursos" activeIndex="-1" widgetVar="accordion">
+
+	  <p:ajax event="tabChange"  listener="#{arbolCursosBean.onTabChange}" update=":frameContent"/>
+	
+      <p:tab title="#{cursos.courseName}" id="#{cursos.courseId}_#{cursos.courseName}" > 
+      <h:form id="formArbol">
+<!--       <h:outputText value="Porcentaje total del curso" style="text-align:center;font-size:18px;color:red;"/>  -->  
+  		  <div class="progress progress-striped active">
+					  <div class="progress-bar" style="width: #{graficaCursosBean.getPorTotal(cursos.courseId)}% "><strong>#{graficaCursosBean.getPorTotal(cursos.courseId)}%</strong></div>
+		  </div>
+	    <p:tree value="#{arbolCursosBean.cursosEstudiantes2(cursos.courseId)}" var="node" 
+	            id="tree" 
+	            style="border: none;"
+	            selectionMode="single"
+	            selection="#{arbolCursosBean.selectedNode}"
+	            cache="false" > 
+	        <p:ajax event="select" update=":frameContent" listener="#{arbolCursosBean.onNodeSelect}" /> 
+	        <p:treeNode id="treeNode">  
+	          
+	            <h:outputText value="#{fn:substringBefore(node, '|')} " id="lblNode"/>
+	        	
+	        </p:treeNode>  
+	    </p:tree>  
+  
+      </h:form>  
+    </p:tab> 
+</p:accordionPanel>
+        
+    </p:layoutUnit>
+ 
+    <p:layoutUnit id="layCenter" position="center" style="min-height:580px;">
+               <h:form id="frameContent" style="height:100%;" class="restricted"> 
+         
+        <iframe id="contenPrincipal" 
+                src="#{arbolCursosBean.pageLink}"
+                width="100%"  
+                height="100%"
+                frameborder="0" />  
+        
+        </h:form>
+    </p:layoutUnit>
+</p:layout>
+</h:body>
+</html>

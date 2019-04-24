@@ -1,0 +1,543 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:body>
+	<ui:composition template="/WEB-INF/templateApp.xhtml">
+
+<ui:define name="head">
+
+
+ 
+<style type="text/css">
+
+.tableMargin {
+	margin: 10px 10px 10px 10px;
+}
+
+.divcuadrito {
+	border: 1px solid #dddddd;
+	min-height: 152px;
+	color: #021629
+}
+
+.headerColumn {
+	color: #353c4e;
+	font-weight: bold;
+	font-size: 0.875em;
+	font-family: Open Sans, sans-serif;
+	text-align: left !important;
+}
+
+.headerColumn2 {
+	color: #353c4e;
+	font-weight: bold;
+	font-size: 0.875em;
+	font-family: Open Sans, sans-serif;
+	width: 20%;
+	text-align: left !important;
+}
+
+.headerColumn3 {
+	color: #353c4e;
+	text-align: left;
+	font-weight: bold;
+	font-size: 0.875em;
+	font-family: Open Sans, sans-serif;
+	width: 10%;
+	text-align: left !important;
+}
+
+.headerColumnDescargar {
+	color: #353c4e;
+	text-align: center;
+	font-weight: bold;
+	font-size: 0.875em;
+	font-family: Open Sans, sans-serif;
+	width: 15%;
+}
+
+.headerColumn4 {
+	color: #353c4e;
+	text-align: left;
+	font-weight: bold;
+	font-size: 0.875em;
+	font-family: Open Sans, sans-serif;
+	width: 12%;
+	text-align: center !important;
+}
+
+.TextColumn {
+	font-size: 1.0em;
+	color: #353c4e;
+	font-family: Open Sans, sans-serif;
+	font-weight: 400;
+	line-height: 1.5;
+}
+</style>
+
+			<script type="text/javascript">
+
+    //<![CDATA[
+	function start() {
+	    PF('statusDialog').show();
+	}
+
+	function stop() {
+	    PF('statusDialog').hide();
+	}
+	            //]]>
+	//<![CDATA[ 
+	function abreVideo(link,topicId,videoId,tipCont){
+		var text = window.parent.document.getElementById('menuCursos').getElementsByTagName('a')[0].click();
+		var lol = window.parent.document.getElementById('contenPrincipal');
+		//lol.src = "/joappWeb/carousel/visualizaVideo.xhtml?linkTopic="+link+"&topicId="+topicId;
+		lol.src = "/joappWeb/VisalizaVideoServlet?linkTopic="+link+"&topicId="+topicId+"&videoId="+videoId+"&tipCont="+tipCont;
+		//var media = window.parent.document.getElementById('clicVideo').click();
+		
+		}
+	//]]> 
+	//<![CDATA[ 
+	function abreLamina(link,topicId){
+		
+		//var text = window.parent.document.getElementById('menuCursos').getElementsByTagName('a')[0].click();
+		var lol = window.parent.document.getElementById('contenPrincipal');
+		//lol.src = "/joappWeb/carousel/visualizaVideo.xhtml?linkTopic="+link+"&topicId="+topicId;
+		lol.src = "/joappWeb/VisualizaLaminaServlet?topicId="+topicId;
+		//var media = window.parent.document.getElementById('clicVideo').click();
+		
+		}
+	//]]>
+	//<![CDATA[ 
+	function abrePractica(topicId){
+		
+		//var text = window.parent.document.getElementById('menuCursos').getElementsByTagName('a')[0].click();
+		var lol = window.parent.document.getElementById('contenPrincipal');
+		//lol.src = "/joappWeb/carousel/visualizaVideo.xhtml?linkTopic="+link+"&topicId="+topicId;
+		lol.src = "/joappWeb/VisualizaPracticaServlet?topicId="+topicId;
+		//var media = window.parent.document.getElementById('clicVideo').click();
+		
+		}
+	//]]>
+	//<![CDATA[ 
+	function abreSolucion(topicId){
+		
+		//var text = window.parent.document.getElementById('menuCursos').getElementsByTagName('a')[0].click();
+		var lol = window.parent.document.getElementById('contenPrincipal');
+		//lol.src = "/joappWeb/carousel/visualizaVideo.xhtml?linkTopic="+link+"&topicId="+topicId;
+		lol.src = "/joappWeb/VisualizaSolucionServlet?topicId="+topicId;
+		//var media = window.parent.document.getElementById('clicVideo').click();
+		
+		}
+	//]]>
+
+	//<![CDATA[ 
+	function abreEvaluacion(link,topicId){
+	
+		//var text = window.parent.document.getElementById('menuCursos').getElementsByTagName('a')[0].click();
+		var lol = window.parent.document.getElementById('contenPrincipal');
+		//lol.src = "/joappWeb/carousel/visualizaVideo.xhtml?linkTopic="+link+"&topicId="+topicId;
+		lol.src = "/joappWeb/VisualizaEvaluacionServlet?link="+link+"&topicId2="+topicId;
+		//var media = window.parent.document.getElementById('clicVideo').click();
+		
+		}
+	//]]>
+	
+	function redirecciona(){
+		var lol = window.parent.document.getElementById('contenPrincipal');
+		lol.src = '/joappWeb/home/dashCursos.xhtml';
+		
+		}
+	</script>
+			<meta name="viewport"
+				content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+			
+			<!-- Google font-->
+			<!--  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet"/> -->
+
+			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"  />
+			<link rel="stylesheet" type="text/css" href="../bower_components/css/tableBootStrap.css"/>
+
+		</ui:define>
+
+		<ui:define name="barraNavegacion">
+			<div class="route-bar-breadcrumb">
+               <h:link id="backCursos2" outcome="/index" class="fa fa-home"></h:link> 
+               <span>/ <p:commandLink 	title="Mostrar curso"
+			 				  			action="#{listUnidadesBean.dameUnidades(sessionScope.courseId,sessionScope.courseName)}"
+			 				  			style="text-decoration:none;"
+			 				  			update=":frmunits"
+			 				   			oncomplete="PF('dlgConCurso').show();" 
+			 				  			onmouseover="changeClass('linkEntra','resalta')">
+	 				  
+			 			<h:outputText value="#{sessionScope.courseName}" /> 
+			 			</p:commandLink>
+	 			
+	 			/ 
+	 			<p:commandLink 	id="linkUnit"
+	       					action="#{listUnidadesBean.dameTemas(sessionScope.unitId,sessionScope.unitName)}" 
+	    					oncomplete="PF('dlgtopics').show();"
+	    					update=":frmTopics">
+	            	<h:outputText value="#{sessionScope.unitName}" />
+	        	</p:commandLink>
+	 			 /</span>
+               <ui:insert name="viewname" />
+               <p:tooltip id="toolTipBack" for="backCursos2" value="Volver a cursos" trackMouse="true" />
+             </div>
+		</ui:define>
+		<ui:define name="content">
+
+			<p:dialog modal="true" widgetVar="statusDialog" style="width:10px;"
+				      draggable="false" closable="false" resizable="false">
+				<i class="fas fa-spinner fa-spin fa-2x"></i>
+			</p:dialog>
+			<h:form id="frmDasTemas">
+				<div class="ui-g">
+					<div class="ui-g-12 ui-md-6 ui-lg-12">
+						<!--  <h:link id="backCursos" outcome="/index" styleClass="">
+						<i class="fas fa-hand-point-left fa-3x"></i> </h:link> -->
+						
+						<span><h3>
+							<!-- 	<h:outputText value="#{sessionScope.courseName}" />   -->
+									<h:outputText value="#{sessionScope.topicName}" />
+							</h3></span> <span></span>
+						<div class="card-header-right">
+							<i class="icofont icofont-spinner-alt-5"></i>
+						</div>
+					</div>
+
+					<div class="ui-g-12 ui-md-6 ui-lg-6">
+						<h4 class="sub-title">Videos</h4>
+						<div class="browser offline-box">
+							<div class="divCuadrito">
+								<p:dataTable id="tblVideos" var="vid"
+									value="#{topicsCarouselBean.dameVideos(sessionScope.topicId)}"
+									widgetVar="VideoTable"
+									emptyMessage="No es necesario videos para este tema"
+									styleClass="tableMargin">
+
+									<p:column styleClass="headerColumn" headerText="Nombre Video">
+										<h:outputText value="#{vid.nomVideo}" styleClass="TextColumn" />
+									</p:column>
+									<p:column headerText="¿Cómo vas?" styleClass="headerColumn2">
+										<div class="progress progress-striped active"
+											style="text-align: center">
+											<div class="progress-bar"
+												style="width: #{topicsCarouselBean.getTopicStatusBar(sessionScope.topicId,'video',vid.idVideo,'videos_tab')}% ">
+												<strong style="color: black;">#{topicsCarouselBean.getTopicStatusBar(sessionScope.topicId,'video',vid.idVideo,'videos_tab')}%</strong>
+											</div>
+										</div>
+									</p:column>
+									<p:column headerText="Ver" styleClass="headerColumnDescargar"
+										style="">
+										<p:commandLink
+											onclick="javascript:abreVideo('#{vid.linkVideo}',#{sessionScope.topicId},#{vid.idVideo},'videos_tab')">
+											<i class="fab fa-youtube fa-2x" style="color: #4680ff"></i>
+										</p:commandLink>
+									</p:column>
+									<p:column headerText="Estatus" styleClass="headerColumn4"
+										style="text-align: center">
+										<!-- <p:graphicImage url="#{topicsCarouselBean.getStatusIcon(sessionScope.topicId,'video',vid.idVideo,'videos_tab')}" /> -->
+										<i
+											class="#{topicsCarouselBean.getStatusIcon(sessionScope.topicId,'video',vid.idVideo,'videos_tab')}"></i>
+									</p:column>
+								</p:dataTable>
+							</div>
+						</div>
+					</div>
+					<div class="ui-g-12 ui-md-6 ui-lg-6">
+						<h4 class="sub-title">Material de Apoyo</h4>
+
+						<p:dataTable id="tblLaminas" var="lam"
+							value="#{topicsCarouselBean.dameLaminas(sessionScope.topicId)}"
+							widgetVar="laminaTable"
+							emptyMessage="No es necesario laminas para este tema"
+							styleClass="tableMargin">
+
+							<p:column styleClass="headerColumn" headerText="Nombre Archivo">
+								<h:outputText value="#{lam.nom_lamina}" styleClass="TextColumn" />
+							</p:column>
+							<p:column headerText="¿Cómo vas?" styleClass="headerColumn2">
+								<div class="progress progress-striped active"
+									style="text-align: center">
+									<div class="progress-bar"
+										style="width: #{topicsCarouselBean.getTopicStatusBar(sessionScope.topicId,'lamina',lam.id_laminas,'laminas_tab')}% ">
+										<strong style="color: black;">#{topicsCarouselBean.getTopicStatusBar(sessionScope.topicId,'lamina',lam.id_laminas,'laminas_tab')}%</strong>
+									</div>
+								</div>
+							</p:column>
+							<p:column headerText="Descargar"
+								styleClass="headerColumnDescargar">
+								<p:commandLink id="downloadLink" ajax="false"
+									onclick="PrimeFaces.monitorDownload(start,stop);"
+									style="color:tomato;text-align:center;">
+									<i class="fas fa-download fa-2x"
+										style="text-align: center; color: #93BE52;"></i>
+									<p:fileDownload
+										value="#{fileDownloadController.getArchivoPlus(sessionScope.topicId,'lamina',lam.id_laminas,'laminas_tab')}" />
+								</p:commandLink>
+
+							</p:column>
+							<p:column headerText="Estatus" styleClass="headerColumn4"
+								style="text-align:center;">
+								<!--  <p:graphicImage url="#{topicsCarouselBean.getStatusIcon(sessionScope.topicId,'lamina',lam.id_laminas,'laminas_tab')}" /> -->
+								<i
+									class="#{topicsCarouselBean.getStatusIcon(sessionScope.topicId,'lamina',lam.id_laminas,'laminas_tab')}"></i>
+							</p:column>
+						</p:dataTable>
+
+					</div>
+					<div class="ui-g-12 ui-md-6 ui-lg-6">
+						<h4 class="sub-title">Practicas</h4>
+						<div class="browser offline-box">
+							<p:dataTable id="tblPracticas" var="prac"
+								value="#{topicsCarouselBean.damePracticas(sessionScope.topicId)}"
+								widgetVar="practicaTable"
+								emptyMessage="No es necesario practicas para este tema"
+								styleClass="tableMargin">
+
+								<p:column headerText="Nombre" styleClass="headerColumn">
+									<h:outputText value="#{prac.nomPractica}"
+										styleClass="TextColumn" rendered="#{prac.idContentType == 1}" />
+									<h:outputText value="#{prac.nomArchivo}"
+										styleClass="TextColumn" rendered="#{prac.idContentType == 2}" />
+								</p:column>
+								<p:column headerText="¿Cómo vas?" styleClass="headerColumn2">
+									<ui:fragment rendered="#{prac.idContentType == 1}">
+										<div class="progress progress-striped active"
+											style="width: 85px;">
+											<div class="progress-bar"
+												style="width: #{topicsCarouselBean.getTopicStatusBar(sessionScope.topicId,'video',prac.idPracticas,'practicas_tab')}% ">
+												<strong style="color: black;">#{topicsCarouselBean.getTopicStatusBar(sessionScope.topicId,'video',prac.idPracticas,'practicas_tab')}%</strong>
+											</div>
+										</div>
+									</ui:fragment>
+
+									<ui:fragment rendered="#{prac.idContentType == 2}">
+										<div class="progress progress-striped active"
+											style="text-align: center">
+											<div class="progress-bar"
+												style="width: #{topicsCarouselBean.getTopicStatusBar(sessionScope.topicId,'laminaPractica',prac.idPracticas,'practicas_tab')}% ">
+												<strong style="color: black;">#{topicsCarouselBean.getTopicStatusBar(sessionScope.topicId,'laminaPractica',prac.idPracticas,'practicas_tab')}%</strong>
+											</div>
+										</div>
+									</ui:fragment>
+								</p:column>
+								<p:column headerText="Descargar"
+									styleClass="headerColumnDescargar">
+
+									<p:commandLink id="downloadLink" ajax="false"
+										onclick="PrimeFaces.monitorDownload(start, stop);"
+										rendered="#{prac.idContentType == 2}"
+										style="color:tomato;text-align:center;">
+										<i class="fas fa-download fa-2x"
+											style="text-align: center; color: #93BE52;"></i>
+										<p:fileDownload
+											value="#{fileDownloadController.getArchivoPlus(sessionScope.topicId,'laminaPractica',prac.idPracticas,'practicas_tab')}" />
+									</p:commandLink>
+
+									<p:commandLink
+										onclick="javascript:abreVideo('#{prac.link_video}',#{sessionScope.topicId},#{prac.idPracticas},'practicas_tab')"
+										rendered="#{prac.idContentType == 1}">
+										<i class="fab fa-youtube fa-2x" style="color: #4680ff"></i>
+									</p:commandLink>
+
+								</p:column>
+
+								<p:column headerText="Estatus" styleClass="headerColumn4"
+									style="text-align:center;">
+
+									<c:choose>
+										<c:when test="#{prac.idContentType == 1}">
+											<i
+												class="#{topicsCarouselBean.getStatusIcon(sessionScope.topicId,'video',prac.idPracticas,'practicas_tab')}"></i>
+										</c:when>
+										<c:otherwise>
+											<i
+												class="#{topicsCarouselBean.getStatusIcon(sessionScope.topicId,'laminaPractica',prac.idPracticas,'practicas_tab')}"></i>
+										</c:otherwise>
+									</c:choose>
+
+								</p:column>
+
+							</p:dataTable>
+						</div>
+					</div>
+
+					<div class="ui-g-12 ui-md-6 ui-lg-6">
+						<h4 class="sub-title">Solución</h4>
+						<div class="browser offline-box">
+							<div class="divCuadrito">
+								<p:dataTable id="tblSolucion" var="sol"
+									value="#{topicsCarouselBean.dameSolucion(sessionScope.topicId)}"
+									widgetVar="solucionTable"
+									emptyMessage="No es necesario una solución para este tema"
+									styleClass="tableMargin">
+
+									<p:column headerText="Nombre" styleClass="headerColumn">
+										<h:outputText value="#{sol.solutionsName}"
+											styleClass="TextColumn" rendered="#{sol.idContentType == 1}" />
+										<h:outputText value="#{sol.nomArchivo}"
+											styleClass="TextColumn" rendered="#{sol.idContentType == 2}" />
+									</p:column>
+									<p:column headerText="¿Cómo vas?" styleClass="headerColumn2">
+										<ui:fragment rendered="#{sol.idContentType == 1}">
+											<div class="progress progress-striped active"
+												style="width: 85px;">
+												<div class="progress-bar"
+													style="width: #{topicsCarouselBean.getTopicStatusBar(sessionScope.topicId,'video',sol.solutionsId,'solutions_tab')}% ">
+													<strong style="color: black;">#{topicsCarouselBean.getTopicStatusBar(sessionScope.topicId,'video',sol.solutionsId,'solutions_tab')}%</strong>
+												</div>
+											</div>
+										</ui:fragment>
+
+										<ui:fragment rendered="#{sol.idContentType == 2}">
+											<div class="progress progress-striped active"
+												style="width: 85px;">
+												<div class="progress-bar"
+													style="width: #{topicsCarouselBean.getTopicStatusBar(sessionScope.topicId,'laminaSolucion',sol.solutionsId,'solutions_tab')}% ">
+													<strong style="color: black;">#{topicsCarouselBean.getTopicStatusBar(sessionScope.topicId,'laminaSolucion',sol.solutionsId,'solutions_tab')}%</strong>
+												</div>
+											</div>
+										</ui:fragment>
+									</p:column>
+									<p:column headerText="Descargar"
+										styleClass="headerColumnDescargar">
+										<p:commandLink id="downloadLink" ajax="false"
+											onclick="PrimeFaces.monitorDownload(start, stop);"
+											rendered="#{sol.idContentType == 2}"
+											style="color:tomato;text-align:center;"
+											update="pnlSolucion:id_lamSol">
+											<i class="fas fa-download fa-2x"
+												style="text-align: center; color: #93BE52;"></i>
+											<p:fileDownload
+												value="#{fileDownloadController.getArchivoPlus(sessionScope.topicId,'laminaSolucion',sol.solutionsId,'solutions_tab')}" />
+										</p:commandLink>
+
+										<p:commandLink
+											onclick="javascript:abreVideo('#{sol.linkVideo}',sessionScope.topicId,#{sol.solutionsId},'solutions_tab')"
+											rendered="#{sol.idContentType == 1}">
+											<i class="fab fa-youtube fa-2x" style="color: #4680ff"></i>
+										</p:commandLink>
+									</p:column>
+
+									<p:column headerText="Estatus" styleClass="headerColumn4"
+										style="text-align:center;">
+										<c:choose>
+											<c:when test="#{prac.idContentType == 1}">
+												<i
+													class="#{topicsCarouselBean.getStatusIcon(sessionScope.topicId,'video',sol.solutionsId,'solutions_tab')}"></i>
+											</c:when>
+											<c:otherwise>
+												<i
+													class="#{topicsCarouselBean.getStatusIcon(sessionScope.topicId,'laminaSolucion',sol.solutionsId,'solutions_tab')}"></i>
+											</c:otherwise>
+										</c:choose>
+									</p:column>
+
+								</p:dataTable>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+
+
+
+			</h:form>
+<!-- ************************************APARTADO DE DIALOGS*************************************** -->
+
+<h:form id="frmunits" prependId="false">
+    <p:dialog widgetVar="dlgConCurso"  closeOnEscape="true"  modal="true" dynamic="true" resizable="false"  header="Temario de #{listUnidadesBean.nomCurso}">
+	
+<div class="ui-g-12 ui-md-12 ui-lg-12 ui-xl-6">
+                                                
+<table id="e-product-list" class="table table-striped dt-responsive nowrap">
+	<thead>
+	    <tr>
+	        <th>Unidad</th>
+	        <th>Objetivo</th>
+	        <th>Progreso</th>
+	    </tr>
+	</thead>
+	<tbody>
+	<p:repeat value="#{listUnidadesBean.listCurUni}" var="unit"> 
+	    <tr>
+	        <td class="pro-list-img">
+	       <p:commandLink 	id="linkUnit"
+	       					action="#{listUnidadesBean.dameTemas(unit.unitId,unit.unitName)}" 
+	    					oncomplete="PF('dlgtopics').show();"
+	    					update=":frmTopics">
+	            <h:outputText value="#{unit.unitName}"/>
+	        </p:commandLink>
+	          <p:tooltip id="toolTipEntrarUni" for="linkUnit" value="Clic para ver el temario" trackMouse="true" />
+	        </td>
+	        
+	        <td class="pro-name">
+	            <h:outputText value="#{unit.segment1}"/>
+	        </td>
+	        <td>
+	        	<!-- 
+	             div class="progress progress-striped active">
+					  <div class="progress-bar progress-bar-danger" style="width: #{topicsCarouselBean.getUnitBarraGral(unit.unitId)}% "><strong style="color:black;">#{topicsCarouselBean.getUnitBarraGral(unit.unitId)}%</strong></div>
+					</div>
+					-->
+				<strong style="color:#44be2c;align-content: right;">#{topicsCarouselBean.getUnitBarraGral(unit.unitId)}%</strong>
+			</td>                                                 
+		</tr>
+	</p:repeat>                                                            
+     </tbody>
+ </table>
+</div>
+</p:dialog>
+</h:form>
+
+<h:form id="frmTopics" prependId="false">
+
+<p:dialog widgetVar="dlgtopics"   modal="true" header="#{listUnidadesBean.nomUnidad}">
+
+<table id="e-product-list" class="table table-striped dt-responsive nowrap">
+    <thead>
+        <tr>
+            <th>Tema</th>
+            <th>Objetivo</th>
+        </tr>
+    </thead>
+    <tbody>
+              <p:repeat value="#{listUnidadesBean.listTopics}" var="topic"> 
+                      <tr>
+                          <td class="pro-list-img">
+                          <p:commandLink  id="linkTomarClase2"
+                      					  action="#{redirectPageBean.loadPage}">
+	                      	<f:param name="topicName"   value="#{topic.topicName}" />
+	                      	<f:param name="courseName"  value="#{listUnidadesBean.nomCurso}" />
+	                      	<f:param name="topicId"     value="#{topic.topicId}" />
+	                      	<f:param name="unitName"    value="#{listUnidadesBean.nomUnidad}" />
+	                      	<f:param name="courseId"    value="#{listUnidadesBean.courseId}" />
+	                      	<f:param name="unitId"      value="#{listUnidadesBean.unitId}" />
+                            <h:outputText value="#{topic.topicName}"/>
+                           </p:commandLink>   
+                          </td>
+                          <td class="pro-name">
+                              <h:outputText value="#{topic.segment1}"/>
+                          </td>
+                          
+                      </tr>
+			  </p:repeat>                                                                       
+                                                                           
+    </tbody>
+</table>                       
+</p:dialog>
+</h:form>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>

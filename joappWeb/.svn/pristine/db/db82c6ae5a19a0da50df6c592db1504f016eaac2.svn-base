@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css"/>
+<link rel="stylesheet" type="text/css" href="../css/custom.css"/>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+ <script type="text/javascript" src="../js/jquery.min.js"></script>
+</h:head>
+<h:body>
+<h:form>
+<center>
+<p:panel id="pnlBuzon" header="Buzón de sugerencias">
+<span style="font-size: 13pt;font: oblique bold 90% cursive;" class="text-info">
+	Tus comentarios son muy importantes para nosostros.
+</span>
+<p:growl id="msgral" showDetail="true"/>
+<p:inputTextarea rows="10" 
+				 cols="80"
+				 id="txtAreaId"
+				 value="#{buzonSugerenciasBean.txtAreaValue}"  />
+
+<p:panelGrid styleClass="borderCero3">
+			<p:row>
+				<p:column>
+					<p:commandButton value="Enviar" action="#{buzonSugerenciasBean.enviar}" update="pnlBuzon" icon="ui-icon-check"/>		
+				</p:column>
+			</p:row>
+			<p:row>
+			</p:row>
+</p:panelGrid> 
+</p:panel>
+</center>
+</h:form>
+</h:body>
+</html>

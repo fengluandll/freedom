@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+</h:head>
+<h:body>
+<h:form>
+<center>
+<p:panel id="pnlBuzon" header="Buzon de sugerencias">
+<p style="font-size: 13pt;color: #FE642E; font: oblique bold 90% cursive;">
+	Tus comentarios son muy importantes para nosostros.
+</p>
+<p:growl id="msgral" showDetail="true"/>
+<p:inputTextarea rows="10" 
+				 cols="80"
+				 id="txtAreaId"
+				 value="#{buzonSugerenciasBean.txtAreaValue}"  />
+
+<p:panelGrid styleClass="borderCero3">
+			<p:row>
+				<p:column>
+					<p:commandButton value="Enviar" action="#{buzonSugerenciasBean.enviar}" update="pnlBuzon" icon="ui-icon-check"/>		
+				</p:column>
+			</p:row>
+			<p:row>
+			</p:row>
+</p:panelGrid> 
+</p:panel>
+</center>
+</h:form>
+</h:body>
+</html>

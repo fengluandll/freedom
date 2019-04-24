@@ -1,0 +1,511 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+<link href="../images/headset_icono.png" rel="shortcut icon" type='image/png'/>
+<style type="text/css">
+.datoGral{font-size:8px;}
+.ui-layout-west .ui-layout-unit-header{
+	    /*color: white;*/
+	    /*background:rgb(0,128,192);*/
+	    background:rgb(71,193,4);
+	    
+	}
+.ui-layout-west .ui-layout-unit-content{
+	/*background:rgb(0,128,192);*/
+}
+.restricted{overflow-y: hidden;}
+a{
+	text-decoration: none;
+}			
+#startOnlineLogo{
+	position: relative;
+    top: 10px;
+    right: 10px;
+    left: 25px;
+}
+#startPalabraH{
+	position: relative;
+    top: 8px;
+    right: 0px;
+    left: 25px;
+    color: red;
+    font-size: 22pt;
+    font-weight:demi-bold;
+    font-family: monospace;
+}
+#onPalabraH{
+position: relative;
+    top: 8px;
+    right: 0px;
+    left: 21px;
+    color: blue;
+    font-size: 22pt;
+    font-weight:100;
+    font-family: monospace;
+}
+#linePalabraH{
+position: relative;
+    top: 8px;
+    right: 0px;
+    left: 18px;
+    color: red;
+    font-size: 22pt;
+    font-weight:100;
+    font-family: monospace;
+}
+#misNotasPalabra{
+	/*position: absolute;
+    top: 58%;
+    right: 0%;
+    left: 33%;*/
+    color: black;
+    font-size:14pt;
+    font-weight:100;
+    font-family: serif;
+}
+#posiNotpng{
+	/*position:absolute;
+    top: 8%;
+    right: 0px;
+    left: 35%;*/
+}
+#salirPng{
+/*	position:absolute;
+    top: -75px;
+    right: 0px;
+    left: 1180px;*/
+}
+#salirPalabra{
+	/*position:absolute;
+    top: -63px;
+    right: 0px;
+    left: 1150px;*/
+    color: blue;
+    font-size:14pt;
+    font-weight:100;
+    font-family: serif;
+}
+#perfilPng{
+	/*position:absolute;
+    top: 8%;
+    right: 0px;
+    left: 40%;*/
+}
+
+#perfilPalabra{
+	/*position: relative;
+    top: 22px;
+    right: 0px;
+    left: 23%;*/
+    color: black;
+    font-size:14pt;
+    font-weight:100;
+    font-family: serif;
+}
+
+#ayudaPng{
+	/*position:absolute;
+    top: 9%;
+    right: 0px;
+    left: 45%;*/
+}
+#ayudaPalabra{
+	/*position: relative;
+    top: 22px;
+    right: 0px;
+    left: 48%;*/
+    color: black;
+    font-size:14pt;
+    font-weight:100;
+    font-family: serif;
+}
+#buzonPng{
+	/*position:relative;
+    top: -72px;
+    right: 0px;
+    left: 53%;*/
+}
+#buzonPalabra{
+	/*position: relative;*/
+   /* top: -60px;*/
+    right: 0px;
+   /* left: 50%;*/
+    color: black;
+    font-size:14pt;
+    font-weight:100;
+    font-family: serif;
+}
+
+/*
+.ui-layout-north {                    
+                overflow:hidden !important;
+            }
+
+.ui-layout-north .ui-layout-unit-content {
+    overflow:hidden !important;
+}   
+*/  
+</style> 
+<script type="text/javascript">
+
+
+	//<![CDATA[ 
+	function direcciona(link,topicId){
+		
+		//var text = window.parent.document.getElementById('menuCursos').getElementsByTagName('a')[0].click();
+		var lol = window.parent.document.getElementById('contenPrincipal');
+		//lol.src = "/joappWeb/carousel/visualizaVideo.xhtml?linkTopic="+link+"&topicId="+topicId;
+		lol.src = "/joappWeb/administracion/miPerfil.xhtml";
+		//var media = window.parent.document.getElementById('clicVideo').click();
+		
+		}
+	//]]> 
+	//<![CDATA[ 
+	function direcciona2(){
+		
+		//var text = window.parent.document.getElementById('menuCursos').getElementsByTagName('a')[0].click();
+		var lol = window.parent.document.getElementById('contenPrincipal');
+		//lol.src = "/joappWeb/carousel/visualizaVideo.xhtml?linkTopic="+link+"&topicId="+topicId;
+		lol.src = "/joappWeb/administracion/ayuda.xhtml";
+		//var media = window.parent.document.getElementById('clicVideo').click();
+		
+		}
+	//]]> 
+	//<![CDATA[ 
+	function direcciona3(){
+		
+		//var text = window.parent.document.getElementById('menuCursos').getElementsByTagName('a')[0].click();
+		var lol = window.parent.document.getElementById('contenPrincipal');
+		//lol.src = "/joappWeb/carousel/visualizaVideo.xhtml?linkTopic="+link+"&topicId="+topicId;
+		lol.src = "/joappWeb/home/antesIniciar.jsp";
+		//var media = window.parent.document.getElementById('clicVideo').click();
+		
+		}
+	//]]> 
+</script>	 
+	<!--Start of Zopim Live Chat Script-->
+		<script type="text/javascript">
+		window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+		d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+		_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+		$.src="//v2.zopim.com/?2zsniyMgwqKGzXCmuKbEsRxD6o4fffX4";z.t=+new Date;$.
+		type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+		</script>
+<!--End of Zopim Live Chat Script-->	   
+</h:head>
+<h:body>
+<h:form id="frmSessionT">
+
+</h:form>
+<p:dialog header="Session caducada" widgetVar="sessionTimeOutDialog"
+         modal="true" fixedCenter="true" closable="false" width="400" visible="false">
+             <h:outputText value="Tu session ha caducado, por favor pulse sobre el boton para volver a entrar a la aplicación" /><br/>
+             <p:commandButton id="confirmBackToLogin" type="button" value="Volver a entrar" style="text-align:center;"
+                onclick="window.location='#{facesContext.externalContext.requestContextPath}/login.xhtml';" />
+</p:dialog> 
+
+<p:dialog id="dialogRate" 
+		  header="¿Que nos hace falta para tener 5 estrellas?" 
+		  widgetVar="dlgRate" 
+		  modal="true" 
+		  height="170"
+		  width="462" 
+		  resizable="false"
+		  showEffect="fade"
+		  hideEffect="explode"
+		  closable="false">
+    <h:form id="formFiveStarts">
+    <p:inputTextarea id="txtAreaStarts" rows="6" cols="50" value="#{ratingController.commentFiveStarts}"/>
+    <p:growl id="messages" showDetail="true" />
+    <p:spacer width="150" height="10" />
+    			<p:commandButton id="btnEstrellas"
+    							 value="Enviar" 
+    							 action="#{ratingController.sendWhyNotFiveStarts}"
+    							 oncomplete="PF('dlgRate').hide()"
+    							 update="messages"/>
+    		
+    </h:form> 
+</p:dialog>
+<h:form id="frmGuardaNota">		
+<p:growl id="notaGuardada" showDetail="true" autoUpdate="true"/>    
+<p:dialog header="#{dialogNotesBean.nomNota}"
+		  widgetVar="dlg2" 
+		  maximizable="true" 
+		  minimizable="true"
+		  id="dlgNvaNota"
+		  hideEffect="clip">
+  
+	<div>
+	
+	    <p:commandButton id="btnGuardaNota" 
+						 value="Guardar" 
+						 actionListener="#{dialogNotesBean.guardaNota}"
+		                 icon="ui-icon-disk"/>
+		             
+	</div>           
+	<p:spacer height="10px" width="10px"/>  
+	<p:editor id="editor" 
+			  value="#{dialogNotesBean.contentNote}" 
+			  width="600"/>
+
+</p:dialog>
+</h:form>
+<h:form id="frmNomNota">
+<!-- Le asigna un  nombre a la nota -->
+<p:dialog header="Nombre de la nota" 
+		  widgetVar="dlg3" 
+		  modal="true"
+		  id="dlgNomNota">
+
+ <p:panel header="Asigna un nombre a tu nota">
+  <p:panelGrid columns="2">
+ 	<p:row>
+ 		<p:column>
+ 			<h:outputText value="Nombre de la nota: "/>
+ 		</p:column>
+ 		<p:column>
+ 			<p:inputText id="nombre_nota" value="#{dialogNotesBean.nomNota}" required="true" validatorMessage="Introduce el nombre de tu nota"/>
+ 			
+ 		</p:column>
+ 		
+ 	</p:row>
+ 	<p:row>
+ 		<p:column colspan="2">
+ 			<p:commandButton value="Listo" actionListener="#{dialogNotesBean.generaNomNota}" oncomplete="PF('dlg3').hide();" update=":frmdialog:tblNotes"/>
+ 		</p:column>
+ 	</p:row>
+  </p:panelGrid>
+ </p:panel>
+ <p:messages id="msgGuardaNota" autoUpdate="true"/>
+</p:dialog>
+
+</h:form> 
+
+<h:form id="frmdialog">
+<p:dialog header="Mis notas" 
+		  widgetVar="dlg" 
+		  modal="true" 
+		  resizable="false"
+		  showEffect="slide"
+		  hideEffect="fold"
+		  id="id_notas">
+
+ 
+ 	
+ 			<p:panelGrid styleClass="borderCero">
+				<p:row>
+					<p:column>
+					 <p:commandLink  onclick="PF('dlg3').show();">
+						<p:graphicImage style="cursor:pointer" value="/images/Create.png" title="Nueva nota"/>
+					 </p:commandLink>
+					</p:column>
+				</p:row>
+			</p:panelGrid> 
+         
+            <p:dataTable var="note" value="#{dialogNotesBean.listNotas}"
+            			 id="tblNotes" 
+            		     scrollable="true" 
+            		     scrollWidth="500" 
+            		     scrollHeight="300"
+            		     style="width:430px;">
+                <p:column rendered="false">
+                	<h:outputText value="#{note.noteId}" />  
+                </p:column>
+     
+                <p:column headerText="Nombre" style="text-align:center;
+                									 font:normal bold 110% normal;
+                									 color:black;
+                									 width:135px;">  
+                    <h:outputText value="#{note.noteName}" />  
+                </p:column>  
+  
+                <p:column headerText="Abrir" style="text-align:center;
+                								    width:105px;">
+                <p:commandLink actionListener="#{dialogNotesBean.getValueNotes(note.noteId,note.noteName)}" 
+                			   oncomplete="PF('dlg2').show();PF('dlg').hide();" update=":frmGuardaNota">  
+                    <h:graphicImage value="/images/Note_Yellow.png" style="cursor:pointer" title="Abrir nota"/>
+                </p:commandLink>  
+                </p:column>  
+  
+                <p:column headerText="Eliminar" style="text-align:center;">
+                	<p:commandLink id="linkBorraNota" 
+                				   actionListener="#{dialogNotesBean.borraNota(note.noteId)}"
+                				   oncomplete="PF('dlg').show();"
+                				   update=":frmdialog:tblNotes">  
+                    	<h:graphicImage value="/images/eliminar.png" style="cursor:pointer;" title="Eliminar nota"/>
+                    	<p:confirm header="Confirmación" message="¿Estas seguro que deseas eliminar esta nota?" icon="ui-icon-alert"/>
+                    </p:commandLink>
+                    <!-- Este mensaje no se muestra de deja por si se llega a averiguar despues. -->
+                    <p:growl id="msgEliminar" showDetail="true"/>
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">  
+				        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>  
+				        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>       
+				    </p:confirmDialog>   
+                </p:column>
+                
+            </p:dataTable>
+
+</p:dialog> 
+</h:form>
+
+
+<h:form id="frmBuzon">
+	<p:dialog header="Buzon de sugerencias" 
+		  widgetVar="dlgBuzon" 
+		  modal="true" 
+		  resizable="false"
+		  showEffect="slide"
+		  hideEffect="fold"
+		  id="id_buzon">
+
+	<p style="color: gray;font-weight: bold;font-size: 16px;">
+		Tus comentarios son muy importantes para nosostros.
+	</p>
+	<p:growl id="msgral" showDetail="true"/>
+	<p:inputTextarea rows="10" 
+					 cols="80"
+					 id="txtAreaId"
+					 value="#{buzonSugerenciasBean.txtAreaValue}"  />
+	
+	<p:panelGrid styleClass="borderCero3">
+				<p:row>
+					<p:column>
+						<p:commandButton value="Enviar" action="#{buzonSugerenciasBean.enviar}" update="frmBuzon" icon="ui-icon-check"/>		
+					</p:column>
+				</p:row>
+				<p:row>
+				</p:row>
+	</p:panelGrid> 
+
+</p:dialog>
+</h:form>
+<div id="copy" style="position: absolute;left: 75%;top:2%; z-index: 100">
+<span style="font-size: 9pt;color: white;">© Copyright 2014 startOnline. Todos los derechos reservados.</span>
+</div> 	
+<p:layout fullPage="true" widgetVar="layoutWdgt">  
+	  
+<p:layoutUnit position="north" size="100" 
+			  header="Bienvenid@: #{studentPersonalBean.givenNames}&#160;&#160;&#160;&#160;No Cta: #{studentPersonalBean.numCta}&#160;&#160;&#160;&#160;Rol: #{studentPersonalBean.rolName}" 
+			  resizable="false" 
+			  closable="false" 
+			  collapsible="false" maxSize="100">
+<h:form id="frm1">
+	<div id="divHeader" style="height: 50px;border: black solid 0px ;">
+	 <a id="logoStart" onclick="direcciona3();" style="cursor:pointer" >
+	   <img src="../images/headset_icono.png"  id="startOnlineLogo"/>
+	   <span id="startPalabraH">start</span>
+	   <span id="onPalabraH">Web</span>
+	   <!--<span id="linePalabraH">line</span>-->
+	 </a>
+<p:panelGrid style="position:absolute;left:30%;top:1%;" styleClass="borderCero2">
+<p:row>
+	<p:column>
+	 <p:commandLink oncomplete="PF('dlg').show();" update=":frmdialog" title="Mis apuntes"> 
+	 	<img id="posiNotpng" src="../images/edit-tomboy-icon.png"   />
+ 	     <span id="misNotasPalabra">Mis notas</span>
+	 </p:commandLink>
+	</p:column>
+	<p:column>
+	  <p:commandLink onclick="javascript:direcciona()" title="Mi perfil">
+	 	  <img id="perfilPng" src="../images/user-icon.png"   />
+ 	      <span id="perfilPalabra">Mi perfil</span>
+	 </p:commandLink>
+	</p:column>	
+	<p:column>
+		<p:lightBox iframe="true" 
+					id="id_ayuda3" onHide="true" widgetVar="wid_preg">
+			 <h:outputLink value="/joappWeb/administracion/preguntaTema.xhtml">
+			 	  <img id="ayudaPng" src="../images/pregunta.png"   />
+		 	      <span id="ayudaPalabra">Pregunta</span>
+			 </h:outputLink>
+		</p:lightBox>	
+ 	</p:column>
+ 	<p:column>
+	 <p:commandLink oncomplete="PF('dlgBuzon').show();" title="buzon de sugerencias">
+	 	  <img id="buzonPng" src="../images/buzon_32.png"   />
+ 	      <span id="buzonPalabra">Buzón</span>
+	 </p:commandLink>
+	</p:column>
+	<p:column>
+	  <h:commandLink action="#{loginBean.salir}" title="Salir"> 
+	 	<img id="salirPng" src="../images/exit2.png"   />
+ 	     <span id="salirPalabra">Salir</span>
+	 </h:commandLink>
+	 </p:column>
+	</p:row>	 
+</p:panelGrid>
+	</div>
+</h:form>	
+</p:layoutUnit>
+
+  <!-- 
+    <p:layoutUnit position="south" size="25"  resizable="true" closable="false" collapsible="true">  
+        <p:lightBox id="lightPie">
+        <h:outputLink value="#" id="clicVideo">
+        	<h:outputText value="© Copyright 2014 Webnode AG. All rights reserved." />
+        </h:outputLink>
+        <f:facet name="inline">
+         
+        <p:media value="http://vimeo.com/moogaloop.swf?clip_id=18079550"
+		  					         width="400" 
+		  					         height="225"
+		  					         player="flash"/>
+        
+    </f:facet>  
+       </p:lightBox>
+        
+        	<h:outputText value="© Copyright 2014 Webnode AG. All rights reserved." />
+
+    </p:layoutUnit>  
+  -->
+    <p:layoutUnit id="menuCursos" 
+    			  position="west" 
+    			  size="270" 
+    			  header="MENU DE CURSOS" 
+    			  resizable="true" 
+    			  closable="false" 
+    			  collapsible="true" collapsed="javascript:colapsa()">
+    
+        <ui:include src="/oeste/creaArbol.xhtml" />
+
+    </p:layoutUnit>  
+   
+    <p:layoutUnit id="layeste" position="east" size="200" header="Right" visible="false">  
+
+    </p:layoutUnit>  
+   
+    
+    <p:layoutUnit id="layCenter" position="center">  
+
+       <h:form id="frameContent" style="height:100%;" class="restricted"> 
+         
+        <iframe id="contenPrincipal" 
+                src="#{arbolCursosBean.pageLink}"
+                width="100%"  
+                height="100%"
+                frameborder="0" />  
+        
+        </h:form>
+	
+   
+  <!--
+    <h:form id="frameContent"> 
+     <p:outputPanel id="contenPrincipal" widgetVar="oupnl" layout="block">
+   		<ui:include src="#{arbolCursosBean.pageLink}"/>
+   		
+    </p:outputPanel>
+     
+  </h:form>
+  --> 
+  
+</p:layoutUnit>
+</p:layout>
+
+</h:body>
+</html>

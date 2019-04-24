@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+<script type="text/javascript" >
+function atras(){
+	var lol = window.parent.document.getElementById('contenPrincipal');
+	//lol.src = '/joappWeb/dashboards/dashBoardCourses.xhtml?'+'unitId='+unitId;
+	lol.src = '/joappWeb/administracion/miPerfil.xhtml';
+	
+	}
+</script>
+</h:head>
+<h:body>
+<h:form id="frmDatos">
+<p:panel header="Actualiza mis datos" >
+<p:growl id="mensajes" showDetail="true"/>
+<div id="atras">
+<a href="javascript:atras()" style="text-decoration: none">
+	<img src="../images/Arrow-Left-blue-48.png"/>
+</a>	
+</div>
+	<p:panelGrid style="margin: 0 auto;" styleClass="borderCero3">
+		<p:row>
+			<p:column>
+				<h:outputText value="No cuenta: " styleClass="etiqueta2"/>
+			</p:column>
+			<p:column>
+				<p:inputText value="#{actualizaDatosBean.noCuenta}" disabled="true"/>
+			</p:column>
+			<p:column>
+				<h:outputText value="Nombres: " styleClass="etiqueta2"/>
+			</p:column>
+			<p:column>
+				<p:inputText value="#{actualizaDatosBean.nombres}"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<h:outputText value="Apellidos: " styleClass="etiqueta2"/>
+			</p:column>
+			<p:column>
+				<p:inputText value="#{actualizaDatosBean.apellidos}"/>
+			</p:column>
+			<p:column>
+				<h:outputText value="mail: " styleClass="etiqueta2"/>
+			</p:column>
+			<p:column>
+				<p:inputText value="#{actualizaDatosBean.mail}" />
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<h:outputText value="Fecha de nacimiento: " styleClass="etiqueta2"/>
+			</p:column>
+			<p:column colspan="4">
+				<p:selectOneMenu id="dia" value="#{actualizaDatosBean.dia}">
+					<f:selectItems value="#{actualizaDatosBean.listDays}" />
+				</p:selectOneMenu>
+				<p:spacer height="1px" width="7px" />
+				<p:selectOneMenu id="mes" value="#{actualizaDatosBean.mes}">
+					<f:selectItems value="#{actualizaDatosBean.listMonths}" />
+				</p:selectOneMenu>
+				<p:spacer height="1px" width="7px" />
+				<p:selectOneMenu id="anio" value="#{actualizaDatosBean.anio}">
+					<f:selectItems value="#{actualizaDatosBean.listYears}" />
+				</p:selectOneMenu>
+			</p:column>
+			
+		</p:row>
+		<p:row>
+			<p:column colspan="4" style="text-align:center;">
+				<p:commandButton value="Actualizar" icon="ui-icon-disk" action="#{actualizaDatosBean.actualizaDatos}" update=":frmDatos"/>
+			</p:column>
+		</p:row>
+	</p:panelGrid>
+</p:panel>
+</h:form>
+	<p:spacer width="5px;" height="10px;"/>
+	
+<h:form id="frmFoto">	
+	<p:panel header="Sube tu foto" style="width:600px;margin: 0 auto;text-align:center;">
+			 <h:graphicImage value="/DisplayImage" width="90" height="90"/>
+				<p:fileUpload fileUploadListener="#{actualizaDatosBean.actualizaImagen}"
+							  mode="advanced" dragDropSupport="false"
+           					  update=":frmFoto"
+           					  sizeLimit="1000000" 
+           					  fileLimit="1" 
+           					  invalidSizeMessage="El tamaño de la imagen sobrepasa el limite"
+           					  invalidFileMessage="El formato debe ser jpg,gif o png"
+           					  fileLimitMessage="Solo puedes agregar una imagen"
+           					  allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+ 
+    			      	
+	</p:panel>
+
+</h:form>
+</h:body>
+</html>

@@ -1,0 +1,150 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/templateApp.xhtml">
+	
+
+<ui:define name="head">  
+ <link rel="icon" href="images/headset_icono.png" type="image/x-icon"/> 
+<style type="text/css">
+    .ui-panelgrid.ui-panelgrid>*>tr,
+	.ui-panelgrid.ui-panelgrid .ui-panelgrid-cell {
+	    border: none;
+	}
+</style>
+	<script type="text/javascript">
+	//<![CDATA[ 
+	function direcciona(){
+		
+		//var text = window.parent.document.getElementById('menuCursos').getElementsByTagName('a')[0].click();
+		var lol = window.parent.document.getElementById('contenPrincipal');
+		//lol.src = "/joappWeb/carousel/visualizaVideo.xhtml?linkTopic="+link+"&topicId="+topicId;
+		lol.src = "/joappWeb/home/comoTomarCursos.jsp";
+		//var media = window.parent.document.getElementById('clicVideo').click();
+		
+		}
+	//]]> 
+	</script>
+</ui:define>
+    
+    
+   
+<ui:define name="content">
+
+	<center>
+<h:form id="frmDatos">	
+
+<div class="row justify-content-center">
+<div class="col-sm-12 col-md-8 col-xl-8">
+	<div class="card">
+		<div class="card-block user-detail-card">
+	<div class="row">
+       <div class="col-sm-4">
+           <img src="assets/images/widget/Group-user.jpg " alt="" class="img-fluid p-b-10"/>
+           <div class="contact-icon">
+               <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="View" ><i class="icofont icofont-eye m-0"></i></button>
+               <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Print" ><i class="icofont icofont-printer m-0"></i></button>
+               <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Download" ><i class="icofont icofont-download-alt m-0"></i></button>
+               <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Share" ><i class="icofont icofont-share m-0"></i></button>
+           </div>
+       </div>
+<div class="col-sm-8 user-detail">
+<div class="row">
+    <div class="col-sm-5">
+        <h6 class="f-w-400 m-b-30" style="text-align: left;"><i class="icofont icofont-ui-user"></i>Nombre :</h6>
+    </div>
+    <div class="col-sm-7">
+        <h6 class="m-b-30"><h:outputText value="#{actualizaDatosBean.nombres}" /> <h:outputText value="&#32;#{actualizaDatosBean.apellidos}" /></h6>
+        <h:outputText value="#{actualizaDatosBean.rolName}" style="color:#919aa3"/>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-5">
+        <h6 class="f-w-400 m-b-30" style="text-align: left;"><i class="icofont icofont-ui-calendar"></i>No. Cuenta :</h6>
+    </div>
+    <div class="col-sm-7">
+        <h6 class="m-b-30"><h:outputText value="#{actualizaDatosBean.noCuenta}" style="color:#919aa3"/></h6>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-5">
+        <h6 class="f-w-400 m-b-30" style="text-align: left;"><i class="icofont icofont-ui-email"></i>E-mail :</h6>
+    </div>
+    <div class="col-sm-7">
+        <h6 class="m-b-30"><a href="mailto:#{actualizaDatosBean.mail}">#{actualizaDatosBean.mail}</a></h6>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-5">
+        <h6 class="f-w-400 m-b-30" style="text-align: left;"><i class="icofont icofont-ui-home"></i>Ciudad :</h6>
+    </div>
+    <div class="col-sm-7">
+        <h6 class="m-b-30"><h:outputText value="#{actualizaDatosBean.city}"/></h6>
+    </div>
+</div>
+<div class="w-100" style="border-bottom:0px;"></div>
+<div class="row">
+	<div class="col-12">
+		<p:commandButton value="Editar" class="btn btn-success btn-lg" onclick="PF('dlgPerfil').show();"/>
+	</div>
+</div>
+	</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+                                          
+
+
+
+<p:messages id="messages" showDetail="true" closable="true">
+        <p:autoUpdate />
+    </p:messages>
+</h:form>
+                                            
+	</center>
+	
+	
+ <h:form id="idFormDialog">
+	<p:dialog widgetVar="dlgPerfil"  closeOnEscape="true" header="Editar mi Perfil"  modal="true" dynamic="true" resizable="false" closable="true">
+		
+
+	<p:panelGrid style="width:350px;">
+		<p:row>
+			<p:column>
+				<p:inputText styleClass="form-control input-sm" value="#{actualizaDatosBean.noCuenta}" disabled="true"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<p:inputText styleClass="form-control input-sm"  value="#{actualizaDatosBean.nombres}" placeholder="Nombre(s):"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="3">
+				<p:inputText styleClass="form-control input-sm" value="#{actualizaDatosBean.apellidos}" placeholder="Apellidos"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="4">
+				<p:inputText styleClass="form-control input-sm" value="#{actualizaDatosBean.mail}" placeholder="E-mail"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="4">
+				<p:inputText styleClass="form-control input-sm" value="#{actualizaDatosBean.city}" placeholder="Ciudad"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="4" style="text-align:center;">
+				<p:commandButton value="Actualizar"  action="#{actualizaDatosBean.actualizaDatos}" update=":frmDatos" oncomplete="PF('dlgPerfil').hide();"/>
+			</p:column>
+		</p:row>
+	</p:panelGrid>
+	</p:dialog>
+</h:form>	                      	
+</ui:define>
+</ui:composition>

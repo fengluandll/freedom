@@ -1,0 +1,232 @@
+package mx.javaonline.daos;
+
+import java.io.FileInputStream;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.naming.NamingException;
+
+
+
+
+
+
+
+
+import mx.javaonline.admin.beans.CursosBean;
+import mx.javaonline.model.ConectionWrapper;
+import mx.javaonline.model.CursosBeanTableModel;
+import mx.javaonline.model.TopicBeanTableModel;
+import mx.javaonline.model.UnitsBeanTableModel;
+
+import org.apache.log4j.Logger;
+
+public class AgregaContenidoDAO {
+	
+	private org.apache.log4j.Logger logger = Logger.getLogger(AgregaContenidoDAO.class);
+	ConectionWrapper conectionWrapper;
+	Connection con;
+	CursosBeanTableModel coursesBean;
+	UnitsBeanTableModel unitsBean;
+	TopicBeanTableModel topicBean;
+	List<CursosBeanTableModel> listCourses;
+	List<UnitsBeanTableModel>  listUnits;
+	List<TopicBeanTableModel>  listTopics;
+
+	public AgregaContenidoDAO() {
+	
+	}
+	
+	public List<CursosBeanTableModel> dameCursosDb(){
+		listCourses = new ArrayList<>();
+			conectionWrapper = new ConectionWrapper();
+			String sql = "SELECT course_id, \n"+
+					 "	    course_name,\n"+
+					 "	    creation_date\n"+
+					 " FROM courses";
+		try {
+				con = conectionWrapper.getConexion();
+				PreparedStatement psmt =  con.prepareStatement(sql);
+				ResultSet rs = psmt.executeQuery();
+				while(rs.next()){
+					coursesBean = new CursosBeanTableModel();
+					coursesBean.setId_curso(rs.getInt(1));
+					coursesBean.setNombre_curso(rs.getString(2));
+					coursesBean.setFecha_creacion(rs.getDate(3));
+					listCourses.add(coursesBean);
+				}
+				
+			} catch (NamingException | SQLException e) {
+				logger.error(e);
+			}finally{
+				try {
+					con.close();
+				} catch (SQLException e) {
+					logger.error(e);
+				}
+		
+		
+			}
+		return listCourses;
+	}
+	
+	public List<UnitsBeanTableModel> dameUnidadesDb(int courseId){
+		listUnits = new ArrayList<>();
+		String sql = "SELECT unit_id, \n"+
+					 "	    unit_name \n"+
+					 "	FROM units \n"+
+					 "	WHERE course_id = ?";
+		try {
+			con = conectionWrapper.getConexion();
+			PreparedStatement psmt =  con.prepareStatement(sql);
+			psmt.setInt(1, courseId);
+			ResultSet rs =  psmt.executeQuery();
+			while(rs.next()){
+				unitsBean = new UnitsBeanTableModel();
+				unitsBean.setUnidad_id(rs.getInt(1));
+				unitsBean.setNombre_unidad(rs.getString(2));
+				listUnits.add(unitsBean);
+			}
+		} catch (NamingException | SQLException e) {
+			logger.error(e);
+		}finally{
+			try {
+				con.close();
+			} catch (SQLException e) {
+				logger.error(e);
+			}
+	
+		}
+		return listUnits;
+	}
+	
+	public List<TopicBeanTableModel> dameTopicsDb(int unitId){
+		listTopics = new ArrayList<>();
+		String sql = "SELECT topic_id,topic_name FROM topics WHERE unit_id = ?";
+		
+		try {
+			con = conectionWrapper.getConexion();
+			PreparedStatement psmt = con.prepareStatement(sql);
+			psmt.setInt(1, unitId);
+			ResultSet rs = psmt.executeQuery();
+			while(rs.next()){
+				topicBean = new TopicBeanTableModel();
+				topicBean.setId_topic(rs.getInt(1));
+				topicBean.setNombre_topic(rs.getString(2));
+				listTopics.add(topicBean);
+			}
+			
+		} catch (NamingException | SQLException e) {
+			logger.error(e);
+		}finally{
+			try {
+				con.close();
+			} catch (SQLException e) {
+				logger.error(e);
+			}
+	
+		}
+		return listTopics;
+		
+	}
+	
+	public boolean guardaLinkVideo(int topicId,String linkVideo){
+		boolean bandera = false;
+		String sql    = "SELECT COUNT(*) FROM content_topics WHERE topic_id = ?";
+		String update = "UPDATE content_topics SET link_video = ? WHERE topic_id = ?";
+		String insert = "INSERT INTO content_topics(topic_id,link_video,creation_date) VALUES(?,?,sysdate())";
+			
+			try {
+				con = conectionWrapper.getConexion();
+				PreparedStatement psmt = con.prepareStatement(sql);
+				psmt.setInt(1, topicId);
+				ResultSet rs = psmt.executeQuery();
+				int count = 0;
+				while(rs.next()){
+					count = rs.getInt(1);
+				}
+				PreparedStatement psmt2 = null;
+				if(count > 0){
+					psmt2 = con.prepareStatement(update);
+					psmt2.setString(1, linkVideo);
+					psmt2.setInt(2, topicId);
+					psmt2.executeUpdate();
+				}else{
+					psmt2 = con.prepareStatement(insert);
+					psmt2.setInt(1, topicId);
+					psmt2.setString(2, linkVideo);
+					psmt2.executeUpdate();
+				}
+				bandera = true;
+			} catch (NamingException | SQLException e) {
+				logger.error(e);
+			}finally{
+				try {
+					con.close();
+				} catch (SQLException e) {
+					logger.error(e);
+				}
+			}
+			return bandera;
+	}
+	
+	public boolean subeContenido(FileInputStream event,int topicId,String accion){
+		boolean bandera = false;
+		conectionWrapper = new ConectionWrapper();
+		String sql    = " SELECT COUNT(*) FROM content_topics WHERE topic_id = ?";
+		String update = "";
+		String insert = "";
+		if(accion.equals("lamina")){
+			update = " UPDATE content_topics SET lamina = ? WHERE topic_id = ?";
+			insert = " INSERT INTO content_topics(lamina,topic_id,creation_date) VALUES(?,?,sysdate())";
+		}else if(accion.equals("practica")){
+			update = " UPDATE content_topics SET practica = ? WHERE topic_id = ?";
+			insert = " INSERT INTO content_topics(practica,topic_id,creation_date) VALUES(?,?,sysdate())";
+		}else if(accion.equals("solucion")){
+			update = " UPDATE content_topics SET solucion = ? WHERE topic_id = ?";
+			insert = " INSERT INTO content_topics(solucion,topic_id,creation_date) VALUES(?,?,sysdate())";
+		}
+		
+		try {
+			con = conectionWrapper.getConexion();
+			PreparedStatement psmt = con.prepareStatement(sql);
+			psmt.setInt(1, topicId);
+			ResultSet rs = psmt.executeQuery();
+			int count = 0;
+			while(rs.next()){
+				count = rs.getInt(1);
+			}
+			PreparedStatement psmt2 = null;
+			if(count > 0){
+				psmt2 = con.prepareStatement(update);
+				psmt2.setBinaryStream(1, event);
+				psmt2.setInt(2, topicId);
+				psmt2.executeUpdate();
+				bandera = true;
+			}else{
+				psmt2 = con.prepareStatement(insert);
+				psmt2.setBinaryStream(1, event);
+				psmt2.setInt(2, topicId);
+				psmt2.executeUpdate();
+				bandera = true;
+			}
+			
+			
+		} catch (NamingException | SQLException e) {
+			logger.error(e);
+		}finally{
+			if(con != null){
+				try {
+					con.close();
+				} catch (SQLException e) {
+					logger.error(e);
+				}
+			}
+		}
+		return bandera;
+	}
+}

@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+<script type="text/javascript">
+//<![CDATA[
+function cancelar(){
+	var lol = window.parent.document.getElementById('contenPrincipal');
+	
+	window.open('https://www.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=3UFXS8KJGHMKA',
+			    '',
+			    'width=900,height=500,left=50,top=50,toolbar=yes');
+	
+	}
+//]]>	
+</script>
+<style type="text/css">
+.textoGral {
+	font-family: Verdana, Geneva, sans-serif;
+	text-align: center;
+	font-style: italic;
+	font-weight: bold;
+}
+
+.precio {
+	color: #C30;
+	font-style: italic;
+	font-family: "Courier New", Courier, monospace;
+	text-align: center;
+	font-weight: bold;
+	font-size: x-large;
+}
+.dia {
+	text-align: center;
+	color: #C30;
+}
+</style>
+</h:head>
+<h:body>
+<h:form>
+
+<center>
+<p:panel header="Información de mi suscripción">
+
+
+<p:panelGrid>
+  <p:row>
+    <p:column class="textoGral">Tu fecha de corte serán todos los días</p:column>
+  </p:row>
+  <p:row>
+    <p:column align="center"><h1 class="dia"><strong><h:outputText style="text-align:center;" value="#{suscripcionBean.leyendaSuscr}"/></strong></h1></p:column>
+  </p:row>
+  <p:row>
+    <p:column class="textoGral">de cada mes</p:column>
+  </p:row>
+  <p:row>
+    <p:column class="textoGral">y se cargaran </p:column>
+  </p:row>
+  <p:row>
+    <p:column class="precio">$599.00</p:column>
+  </p:row>
+  <p:row>
+    <p:column class="textoGral">Al mes</p:column>
+  </p:row>
+</p:panelGrid>
+<h:outputText value="Para cancelar tu suscripción haz click"/><h:commandLink onclick="javascript:cancelar();"><h:outputText value=" Aqui" style="color: #C30;"/></h:commandLink>
+
+</p:panel>
+</center>
+</h:form>
+</h:body>
+</html>

@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+      <h:head>
+<script type="text/javascript">
+	function redirecciona(unitId){
+		var lol = window.parent.document.getElementById('contenPrincipal');
+		lol.src = '/joappWeb/TopicCarouselServlet?'+'unitId='+unitId;
+		
+		}
+	
+</script>
+<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css"/>
+<link rel="stylesheet" type="text/css" href="../css/custom.css"/>
+<link rel="stylesheet" type="text/css" href="../css/NuevoEstilo.css"/>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>     
+
+      <style type="text/css">
+.resalta{
+	font-weight: bold;
+}
+
+.ui-commandlink{
+	 	text-decoration:none;
+	 	
+	 }
+	 
+
+	
+.ui-progressbar-value {
+ 
+}
+.ui-datagrid-row,.ui-datagrid-column{ 
+width: 50%;
+}
+.ui-panelgrid{
+width: 100%;
+}
+
+.animated .ui-progressbar-value { 
+                background-image: url(../images/pbar-ani.gif); 
+            }
+            
+.ui-widget-header{
+	background: #4E5D6C;
+}            
+      </style>
+</h:head>
+<h:body>      
+	
+          <div class="page-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <!-- Product list card start -->
+                            <div class="">
+                                <div class="card-block">
+                                    <div class="table-responsive">
+                                        <div class="table-content">
+                                            <div class="project-table">
+                                                <table id="e-product-list" class="table table-striped dt-responsive nowrap">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Unidad</th>
+                                                            <th>Objetivo</th>
+                                                            <th>Progreso</th>
+                                                            <th>Acción</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+              <p:repeat value="#{listUnidadesBean.listCurUni}" var="unit"> 
+                                                                            <tr>
+                                                                                <td class="pro-list-img">
+                                                                                    <h:outputText value="#{unit.unitName}"/>
+                                                                                </td>
+                                                                                <td class="pro-name">
+                                                                                    <h:outputText value="#{unit.segment1}"/>
+                                                                                </td>
+                                                                                <td>
+                                                                                	<div class="progress progress-striped active">
+																					  <div class="progress-bar progress-bar-danger" style="width: #{topicsCarouselBean.getUnitBarraGral(unit.unitId)}% "><strong style="color:black;">#{topicsCarouselBean.getUnitBarraGral(unit.unitId)}%</strong></div>
+																					</div>
+																				</td>
+                                                                                <td class="action-icon">
+                                                                                    <a href="#!" class="m-r-15 text-muted" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="icofont icofont-ui-edit"></i></a>
+                                                                                    <a href="#!" class="text-muted" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="icofont icofont-delete-alt"></i></a>                                                                                    
+                                                                                </td>
+                                                                            </tr>
+			  </p:repeat>                                                                       
+                                                                           
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Product list card end -->
+                                            </div>
+                                        </div>
+                                    </div>
+</h:body>                                    
+</html>

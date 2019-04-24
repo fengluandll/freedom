@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+<script type="text/javascript">
+function conMayusculas(field) {
+    field.value = field.value.toUpperCase()
+}
+function cambiacheck(comp){
+	//var val = $('chk1').checked;
+	//alert(val);
+	//var chk1 = document.getElementById('frmNvoUser:chk1_input').checked;
+	
+	chk2.uncheck();	
+	
+}
+function cambiacheck2(){
+
+	chk1.uncheck();	
+ //var v = document.getElementById('frmNvoUser:chk1_input').checked;
+ //document.getElementById("frmNvoUser:chk1_input").checked = true;
+ //alert(v);
+// $("#chk1").prop("checked", true);
+
+}
+</script>
+</h:head>
+<h:body>
+<h:outputScript name="../js/jquery-1.11.1.min.js" target="head" />  
+<center>
+
+<h:form id="frmNvoUser">
+
+<p:dataTable id="preReg" 
+			 var="pre" 
+			 value="#{nuevoUsuarioBean.listPreResgistro}" 
+			 selectionMode="single" 
+			 selection="#{nuevoUsuarioBean.selectedPre}" 
+			 rowKey="#{pre.idPreegistro}"
+			 scrollRows="20"
+			 scrollable="true"
+			 liveScroll="true" 
+			 scrollHeight="150" 
+			 style="margin-bottom:0">
+       <f:facet name="header">
+           Pre Registros
+        </f:facet>
+		<p:ajax event="rowSelect" listener="#{nuevoUsuarioBean.onRowSelect}"     update=":frmNvoUser:pnlUser" />
+        
+  <p:column headerText="ID" footerText="ID">
+            <h:outputText value="#{pre.idPreegistro}" />
+  </p:column>
+    <p:column headerText="NOMBRES" footerText="NOMBRES">
+            <h:outputText value="#{pre.nombres}" />
+  </p:column>
+    <p:column headerText="APELLIDOS" footerText="APELLIDOS">
+            <h:outputText value="#{pre.apellidos}" />
+  </p:column>
+    <p:column headerText="FEC_NACIMIENTO" footerText="FEC_NACIMIENTO">
+            <h:outputText value="#{pre.fechaNacimiento}" />
+  </p:column>
+    <p:column headerText="CORREO" footerText="CORREO">
+            <h:outputText value="#{pre.correoPrincipal}" />
+  </p:column>
+  <p:column headerText="FEC_CREACION" footerText="FEC_CREACION">
+            <h:outputText value="#{pre.creationDate}" />
+  </p:column>
+</p:dataTable>
+
+<p:panel id="pnlUser" header="Nuevo usuario" styleClass="borderCero3">
+<p:messages id="mensajes"/>
+<p:panelGrid style="width:700px;">
+<p:row>
+	<p:column>
+		<h:outputText styleClass="etiqueta2" value="Nombre: * "/>
+	</p:column>
+	<p:column>
+		<p:inputText label="Nombre"  value="#{nuevoUsuarioBean.givenNames}" required="true"/>
+	</p:column>
+	<p:column>
+		<h:outputText styleClass="etiqueta2" value="Apellidos: * "/>
+	</p:column>
+	<p:column>
+		<p:inputText label="Apellidos" value="#{nuevoUsuarioBean.surNames}" required="true"/>
+	</p:column>
+</p:row>
+<p:row>
+	<p:column>
+		<h:outputText styleClass="etiqueta2" value="Fecha Nacimiento: * "/>
+	</p:column>
+	<p:column>
+		<p:inputMask label="Fecha de nacimiento" value="#{nuevoUsuarioBean.segment2}" mask="99/99/9999" required="true"/>
+		<h:outputText value="dd/mm/aaaa"/>
+	</p:column>
+	<p:column>
+		<h:outputText styleClass="etiqueta2" value="País: "/>
+	</p:column>
+	<p:column>
+		<p:inputText label="Pais" value="#{nuevoUsuarioBean.country}" onblur="conMayusculas(this);"/>
+	</p:column>
+</p:row>
+<p:row>
+	<p:column>
+		<h:outputText styleClass="etiqueta2" value="Estado: "/>
+	</p:column>
+	<p:column>
+		<p:inputText label="Estado" value="#{nuevoUsuarioBean.state}" onblur="conMayusculas(this);"/>
+	</p:column>
+	<p:column>
+		<h:outputText styleClass="etiqueta2" value="Cd/Municipio: "/>
+	</p:column>
+	<p:column>
+		<p:inputText label="Cd/Municipio" value="#{nuevoUsuarioBean.city}" onblur="conMayusculas(this);"/>
+	</p:column>
+</p:row>
+<p:row>
+	<p:column>
+		<h:outputText styleClass="etiqueta2" value="Correo: * "/>
+	</p:column>
+	<p:column>
+		<p:inputText label="Correo" value="#{nuevoUsuarioBean.mail}" required="true"/>
+	</p:column>
+	<p:column>
+		<h:outputText styleClass="etiqueta2" value="Telefono: "/>
+	</p:column>
+	<p:column>
+		<p:inputMask value="#{nuevoUsuarioBean.phone}" mask="(999) 999-9999"/>
+	</p:column>
+</p:row>
+<p:row>
+	<p:column>
+		<h:outputText styleClass="etiqueta2" value="Rol: *"/>
+	</p:column>
+	<p:column>
+		<p:selectOneMenu id="cmbRol" value="#{nuevoUsuarioBean.rolId}" required="true" label="Rol">
+			<f:selectItem itemLabel="Elije un rol" itemValue=""/>
+			<f:selectItems value="#{nuevoUsuarioBean.roles}" />
+		</p:selectOneMenu>
+	</p:column>
+	<p:column>
+		<h:outputText styleClass="etiqueta2" value="Prueba 10 días: "/>
+	</p:column>
+	<p:column>
+		<p:selectBooleanCheckbox id="chk1" value="#{nuevoUsuarioBean.prueba}" onchange="cambiacheck(this);" widgetVar="chk1"/>
+	</p:column>
+</p:row>
+<p:row>
+	<p:column>
+		<h:outputText styleClass="etiqueta2" value="Prueba 30 días: "/>
+	</p:column>
+	<p:column>
+		<p:selectBooleanCheckbox id="chk2" value="#{nuevoUsuarioBean.prueba2}" onchange="cambiacheck2();" widgetVar="chk2"/>
+	</p:column>
+</p:row>
+<p:row>
+	<p:column colspan="4">
+		<p:commandButton value="Guardar" action="#{nuevoUsuarioBean.guardarUsuario}" update="pnlUser"/>
+	</p:column>
+</p:row>
+</p:panelGrid>
+</p:panel>
+</h:form>
+<p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">
+    <f:facet name="start">
+        <h:graphicImage value="../images/ajax-loader.gif" />
+    </f:facet>
+     
+    <f:facet name="complete">
+        <h:outputText value="" />
+    </f:facet>
+</p:ajaxStatus>
+</center>
+</h:body>
+</html>

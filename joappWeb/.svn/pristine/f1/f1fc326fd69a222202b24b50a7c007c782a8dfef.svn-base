@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+      <h:head>
+<script type="text/javascript">
+	function redirecciona(unitId){
+		var lol = window.parent.document.getElementById('contenPrincipal');
+		lol.src = '/joappWeb/TopicCarouselServlet?'+'unitId='+unitId;
+		
+		}
+	window.onload = function crea(){
+		PF('barGral').setValue(0);
+		}
+</script>
+<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+      <style type="text/css">
+	.ui-panelgrid-footer{
+			
+		}
+/*	.ui-paginator{
+				background: rgb(39,39,39);
+				color:white;
+		}*/
+	.ui-panel-footer{
+		text-align: center;
+		/*background:rgb(0,128,192);*/
+		/*background:rgb(71,193,4);*/	
+			
+	 }
+	 .ui-commandlink{
+	 	text-decoration:none;
+	 	
+	 }
+.borderCero3 tr, .borderCero3 td{
+			 border: none;
+	}
+	.borderCero3 tr{
+			 /*background:rgb(0,128,192);	*/
+			 /*background:rgb(71,193,4);*/
+	}
+	
+.ui-progressbar-value {
+    background-color:yellow;
+}
+.ui-widget-content{ 
+/*	background-color:#F5F195; */
+}
+.ui-tree {
+				    width: 600px;
+				      
+		}
+		 .ui-treenode {
+				  font-weight:bold;
+				  
+				 /*font-size: 9pt;*/ 
+				  color:#660000;
+				  
+				  
+				  				 }
+		.ui-tree .ui-tree-container {
+			    height: 100%;
+			    margin: 0;
+			    overflow: auto;
+			    padding: 0px;
+			    
+				}
+				
+		.ui-treenode-children {
+			    margin: 0;
+			    padding: 0 0 0 16px;
+				font-family:none;
+				font-size: 9pt; 
+		 }
+		.ui-accordion .ui-accordion-header {
+				   
+				    background: rgb(39,39,39);			    
+				}
+		.ui-accordion .ui-accordion-header a{
+					color:orange;	
+		  }
+.animated .ui-progressbar-value { 
+                background-image: url(../images/pbar-ani.gif); 
+            }
+      </style>
+</h:head>
+<h:body>
+
+ 
+<h:form id="frmPrueba">
+	<p:dataGrid var="unit" value="#{dashJavaBasicoBean.listCurUni}" columns="3"
+        rows="6" paginator="true"  
+        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+        rowsPerPageTemplate="3,6,9"> 
+         <p:panel>
+           <p:panelGrid id="gridUnits" style="width:280px;height:80px;text-align:center;" styleClass="borderCero"> 
+            
+            <f:facet name="header">
+            <p:panel header="#{unit.unitName}" style="text-align:center;"/>
+            <p:row>
+                <p:column style="text-align: center;">
+                   <h:outputText value="#{unit.unitName}" style="color:white;font-weight: normal;font-size:14px "/>
+                 </p:column>
+                </p:row>
+            </f:facet>
+            
+              
+            <p:row> 
+            	<p:column>
+                   <p:progressBar value="#{topicsCarouselBean.getUnitBarraGral(unit.unitId)}" 
+                   				  widgetVar="barGral"
+                   				  labelTemplate="{value}%" 
+                   				  displayOnly="true"
+                   				  styleClass="animated" 
+                   				  global="false"
+                   				  ajax="true">
+                   	<p:ajax event="complete" />
+                   	</p:progressBar>
+                </p:column>
+             </p:row>
+             <p:row>
+              <p:column>
+               <p:panelGrid id="gridUnits2" style="width:280px;height:80px;text-align:center;" styleClass="borderCero">
+               		<p:row>
+               		    <p:column rowspan="2">
+               		    <p:commandLink onclick="javascript:redirecciona(#{unit.unitId})"> 
+               				<p:graphicImage value="/images/clase.png" title="Entrar al aula"/>
+               			</p:commandLink>
+               			</p:column>
+               			<p:column>
+               				<h:outputText value="Objetivo:" style="font-weight: bold;"/>
+               			</p:column>
+               		</p:row>
+               		<p:row>
+               		
+               			<p:column>
+               				<h:outputText value="#{unit.segment1}" escape="false" style="font-style: normal;color:#660000;"/>
+               			</p:column>
+               		</p:row>
+               </p:panelGrid>
+               </p:column>
+ <!--             <p:column>     
+  				<h:outputText value="Objetivo:" style="font-weight: bold;"/>
+  			 </p:column>
+  			 </p:row>
+  			 <p:row> 
+  			 <p:column>
+                <h:outputText value="#{unit.segment1}" escape="false" style="font-style: italic;color:#660000;"/>
+             </p:column>
+--> 
+             </p:row> 
+              
+            <f:facet name="footer">
+              <p:row>
+                <p:column style="text-align: center;">
+                  <p:commandLink onclick="javascript:redirecciona(#{unit.unitId})"> 
+                      <h:outputText value="Entrar al aula" style="color:white;font-weight: normal;font-size:14px"/>                      
+				   </p:commandLink> 
+                 </p:column>
+                </p:row>
+             </f:facet> 
+            </p:panelGrid>  
+          </p:panel>
+        
+             
+    </p:dataGrid>
+
+</h:form>
+</h:body>
+</html>
