@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="mx.start.HolaMundoSoap11BindingStub"/>
+<fullyQualifiedTypeName name="mx.start.HolaMundoPortTypeProxy"/>
+<fullyQualifiedTypeName name="mx.start.HolaMundoPortType"/>
+<fullyQualifiedTypeName name="mx.start.HolaWSService"/>
+<fullyQualifiedTypeName name="mx.start.HolaWSServiceLocator"/>
+<fullyQualifiedTypeName name="mx.start.HolaWSProxy"/>
+<fullyQualifiedTypeName name="mx.start.HolaWS"/>
+<fullyQualifiedTypeName name="javax.naming.NamingException"/>
+<fullyQualifiedTypeName name="javax.naming.Context"/>
+<fullyQualifiedTypeName name="javax.naming.InitialContext"/>
+<fullyQualifiedTypeName name="javax.sql.DataSource"/>
+<fullyQualifiedTypeName name="mx.bardahl.model.ConectionWrapper"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="java.sql.SQLException"/>
+<fullyQualifiedTypeName name="mx.bardahl.model.DAO.EmpleadoDAO"/>
+<fullyQualifiedTypeName name="mx.bardahl.beans.EmployeeBean"/>
+<fullyQualifiedTypeName name="com.google.gson.Gson"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="mx.bardahl.beans.CustomerAddressBean"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.io.Serializable"/>
+<fullyQualifiedTypeName name="mx.bardahl.beans.GpsBean"/>
+<fullyQualifiedTypeName name="com.google.gson.reflect.TypeToken"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.5"
+ xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+ <display-name>kazApp</display-name>
+ <filter>
+  <filter-name>LoginFilter</filter-name>
+  <filter-class>mx.com.televisa.derechocorporativo.filter.LoginFilter</filter-class>
+ </filter>
+ <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <servlet-name>Faces Servlet</servlet-name>
+  </filter-mapping>
+ <servlet>
+  <display-name>DownloadFile</display-name>
+  <servlet-name>DownloadFile</servlet-name>
+  <servlet-class>mx.com.televisa.derechocorporativo.servlets.DownloadFile</servlet-class>
+ </servlet>
+ <servlet>
+  <servlet-name>CewolfServlet</servlet-name>
+  <servlet-class>de.laures.cewolf.CewolfRenderer</servlet-class>
+  <init-param>
+   <param-name>storage</param-name>
+   <param-value>de.laures.cewolf.storage.TransientSessionStorage</param-value>
+  </init-param>
+  <init-param>
+   <param-name>overliburl</param-name>
+   <param-value>js/cewolf-js/overlib.js</param-value>
+  </init-param>
+  <init-param>
+   <param-name>debug</param-name>
+   <param-value>true</param-value>
+  </init-param>
+  <load-on-startup>1</load-on-startup>
+ </servlet>
+ <servlet>
+  <display-name>SupportedBrowserCheck</display-name>
+  <servlet-name>SupportedBrowserCheck</servlet-name>
+  <servlet-class>mx.com.televisa.derechocorporativo.modules.login.SupportedBrowserCheck</servlet-class>
+ </servlet>
+ <servlet>
+  <servlet-name>Faces Servlet</servlet-name>
+  <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+  <load-on-startup>1</load-on-startup>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>DownloadFile</servlet-name>
+  <url-pattern>/DownloadFile</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>CewolfServlet</servlet-name>
+  <url-pattern>/cewolf/*</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>SupportedBrowserCheck</servlet-name>
+  <url-pattern>/SupportedBrowserCheck</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>Faces Servlet</servlet-name>
+  <url-pattern>/faces/*</url-pattern>
+ </servlet-mapping>
+ <session-config>
+  <session-timeout>-1</session-timeout>
+ </session-config>
+ <welcome-file-list>
+  <welcome-file>faces/jsp/login/login.jsp</welcome-file>
+ </welcome-file-list>
+ <jsp-config>
+  <taglib>
+   <taglib-uri>pd4ml</taglib-uri>
+   <taglib-location>/WEB-INF/tld/pd4ml.tld</taglib-location>
+  </taglib>
+  <taglib>
+   <taglib-uri>cewolf</taglib-uri>
+   <taglib-location>/WEB-INF/tld/cewolf.tld</taglib-location>
+  </taglib>
+ </jsp-config>
+</web-app>

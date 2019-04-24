@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+<h:form id="frmPerfil">
+    <div class="layout-topbar">
+        <!-- <a href="#" id="topbar-menu-button">
+            <i class="fa fa-angle-left arrow"></i>
+            <i class="fa fa-angle-up mobile"></i>
+        </a>
+		 
+		 <div class="search-input">
+            <i class="fa fa-search icon-search"></i>
+            <input type="text"></input>
+        </div> -->
+		
+        <h:link outcome="/index" styleClass="logo-container">
+            <p:graphicImage name="images/ecuador-logo.png" library="ecuador-layout" />
+        </h:link>
+
+        <a id="topbar-profile-menu-button" href="#">
+            <span><p:outputLabel  value="#{studentPersonalBean.givenNames}&#160;#{studentPersonalBean.surNames}"/></span>
+            <p:graphicImage name="images/avatar.png" library="ecuador-layout" styleClass="topbar-profile" />
+            <i class="fa fa-angle-down"></i>
+        </a>
+
+        <ul id="topbar-usermenu">
+            <li>
+                <a href="/joappWeb/miPerfilPlus.xhtml">
+                    <i class="fa fa-fw fa-user"></i>
+                    <span class="topbar-item-name">Perfil</span>
+                    <span class="topbar-submenuitem-badge">1</span>
+                </a>
+            </li>
+            <li>
+                <a href="/joappWeb/index.xhtml">
+                    <i class="fa fa-fw fa-list"></i>
+                    <span class="topbar-item-name">Mis Cursos</span>
+                </a>
+                
+            </li>
+            <li>
+                <h:commandLink action="#{loginBean.salir}">
+                    <i class="fa fa-fw fa-sign-out"></i>
+                    <span class="topbar-item-name">Salir</span>
+                </h:commandLink>
+               
+            </li>
+        </ul>
+	<!-- 	
+        <a href="#" id="right-panel-button">
+            <i class="fa fa-angle-double-left"></i>
+        </a>
+      -->   
+    </div>
+</h:form>
+</ui:composition>

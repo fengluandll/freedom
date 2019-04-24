@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BitacoraCatalogo" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b60178fa-7312-4912-89b6-f9865499d188">
+	<property name="ireport.zoom" value="1.7715610000000017"/>
+	<property name="ireport.x" value="251"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="valStFecDesde" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="valStFecHasta" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_idCatalogos" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT  (SELECT NOM_CATALOGO
+          FROM DERCORP_ADD_CAMPO_CAT_TAB
+          WHERE id_catalogo = cat.id_catalogo) AS nombre_catalogo,
+        (SELECT nom_user_long_name
+         FROM   ss_user_tab
+         WHERE  id_user = cat.num_created_by) AS creado_por,
+        cat.fec_creation_date AS fecha_creacion,
+         (SELECT nom_user_long_name
+         FROM   ss_user_tab
+         WHERE  id_user = cat.num_last_updated_by) AS modificado_por,
+         cat.fec_last_update_date  AS fecha_modificacion
+FROM    dercorp_bita_mod_cat_tab cat
+WHERE   NVL(TRUNC(cat.fec_last_update_date),SYSDATE)  >= NVL(TRUNC(TO_DATE($P{valStFecDesde},'DD/MM/YY')),(SYSDATE-5000))
+AND     NVL(TRUNC(cat.fec_last_update_date),SYSDATE)  <= NVL(TRUNC(TO_DATE($P{valStFecHasta},'DD/MM/YY')),SYSDATE)
+$P!{p_idCatalogos}
+ORDER BY id_bitacora_mod desc]]>
+	</queryString>
+	<field name="NOMBRE_CATALOGO" class="java.lang.String"/>
+	<field name="CREADO_POR" class="java.lang.String"/>
+	<field name="FECHA_CREACION" class="java.sql.Timestamp"/>
+	<field name="MODIFICADO_POR" class="java.lang.String"/>
+	<field name="FECHA_MODIFICACION" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="1" width="800" height="20" forecolor="#FFFFFF" backcolor="#2B385D" uuid="b36548e4-22c3-4682-a538-a391bcdf8281"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[BITACORA MODIFICACION DE CATÁLOGOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="21" width="14" height="15" uuid="d672c99e-85da-4df4-ba12-fa08ee1af5b0">
+					<printWhenExpression><![CDATA[(!$P{valStFecDesde}.isEmpty()) && (!$P{valStFecHasta}.isEmpty())
+
+]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[al]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="21" width="56" height="15" uuid="27b19e29-6360-4403-bef8-7295b129baf7">
+					<printWhenExpression><![CDATA[(!$P{valStFecDesde}.isEmpty()) && (!$P{valStFecHasta}.isEmpty())
+
+]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Periodo de:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="57" y="21" width="69" height="15" uuid="b536f602-fa41-4bd9-a64f-0ae23bc7ba11">
+					<printWhenExpression><![CDATA[(!$P{valStFecDesde}.isEmpty()) && (!$P{valStFecHasta}.isEmpty())
+
+]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Top">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{valStFecDesde}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="140" y="21" width="112" height="15" uuid="d3facce1-0d1a-4f68-bcb7-2fdff6243508">
+					<printWhenExpression><![CDATA[(!$P{valStFecDesde}.isEmpty()) && (!$P{valStFecHasta}.isEmpty())
+
+]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Top">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{valStFecHasta}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="677" y="1" width="124" height="20" backcolor="#CCCCCC" uuid="4ecdb353-abe9-42dc-86fb-eab064f37798"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+					<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="0.5" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="0.5" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA MODIFICACIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="266" y="0" width="147" height="20" backcolor="#CCCCCC" uuid="ac854209-7e1f-41d0-a45e-fc38a089aeb3"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+					<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="0.5" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="0.5" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[CREADO POR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="266" height="20" backcolor="#CCCCCC" uuid="dc5c062f-2b63-42b0-b48f-a5f01627333d"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+					<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="0.5" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="0.5" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CATÁLOGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="413" y="0" width="117" height="20" backcolor="#CCCCCC" uuid="04df5088-7cfe-4df9-bb2d-d57e2c5fa8ab"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+					<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="0.5" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="0.5" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA CREACION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="530" y="0" width="147" height="20" backcolor="#CCCCCC" uuid="b0d577b7-d5e1-4ddf-9891-358cfcb30006"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+					<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="0.5" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="0.5" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MODIFICADO POR]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="266" height="20" uuid="df7c4082-beb4-49c0-a3b0-191f23888250"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{NOMBRE_CATALOGO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="266" y="0" width="147" height="20" uuid="0834d31e-2ee4-4866-b7fa-1f210b2dbfb1"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{CREADO_POR}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy h.mm a" isBlankWhenNull="true">
+				<reportElement x="677" y="0" width="125" height="20" uuid="d78cf950-6da9-46db-8ac3-4b695293d8e6"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" markup="none"/>
+				<textFieldExpression><![CDATA[$F{FECHA_MODIFICACION}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy h.mm a" isBlankWhenNull="true">
+				<reportElement x="413" y="0" width="117" height="20" uuid="d3c09c5d-cca8-41df-8f18-791d21fdd1c1"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{FECHA_CREACION}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="530" y="0" width="147" height="20" uuid="1a7ca060-d444-42da-a494-70d3fa839bfe"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{MODIFICADO_POR}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="36">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="702" y="8" width="100" height="20" uuid="690518b5-cff9-43ad-a256-e29bca12a26d"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="599" y="8" width="103" height="20" uuid="71f6ae33-1701-433b-acd4-aacd47bee88d"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Fecha Emisión:]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<noData>
+		<band height="17">
+			<staticText>
+				<reportElement mode="Opaque" x="2" y="0" width="800" height="16" forecolor="#FFFFFF" backcolor="#000000" uuid="7064f717-8bfe-4ac3-be36-9bd4ff33843a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[La consulta no arrojó información]]></text>
+			</staticText>
+		</band>
+	</noData>
+</jasperReport>

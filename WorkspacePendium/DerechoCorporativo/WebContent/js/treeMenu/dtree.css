@@ -1,0 +1,41 @@
+.dtree {
+	/*FONT-SIZE: 11px; COLOR: #666; FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif; WHITE-SPACE: nowrap*/
+	FONT-SIZE: 12px; COLOR: #666; WHITE-SPACE: nowrap
+}
+.dtree IMG {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; VERTICAL-ALIGN: middle; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px
+}
+.dtree A {
+	/*COLOR: #333; TEXT-DECORATION: none*/
+	COLOR: #666666; TEXT-DECORATION: none
+}
+.dtree A.node {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; WHITE-SPACE: nowrap
+}
+.dtree A.nodeSel {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; WHITE-SPACE: nowrap
+}
+.dtree A.node:hover {
+	/*COLOR: #333;*/
+	COLOR: #E97C00;
+	/*TEXT-DECORATION: underline*/
+	TEXT-DECORATION: none;
+	
+	
+}
+.dtree A.nodeSel:hover {
+	/*COLOR: #333; 
+	TEXT-DECORATION: underline*/
+	
+	/*BACKGROUND-COLOR: #23008C;*/
+	COLOR: #E97C00;
+}
+.dtree A.nodeSel {
+	/*BACKGROUND-COLOR: #c0d2ec;*/
+	/*BACKGROUND-COLOR: #23008C;*/
+	/*color: #333*/
+	COLOR: #E97C00;
+}
+.dtree .clip {
+	OVERFLOW: hidden
+}

@@ -1,0 +1,136 @@
+@import url("//fonts.googleapis.com/css?family=Open+Sans");
+
+body{
+	font-family: "Open Sans", sans-serif; 
+}
+
+#btnPGAdd { float:right; }
+
+.divSeccHead{
+	background-color:#2B385D;
+	color:#FFF;
+	padding:5px;
+	text-align:left;
+	cursor:pointer;
+	border-bottom: #FFF 2px solid;
+}
+
+.divSeccH{
+	font-align:center;
+	background-color:#2B385D;
+	color:#FFF;
+	padding:5px;	
+	cursor:cursor;
+}
+
+#divPGFormBtnClose{
+	float:right;	
+}
+
+.SubTitleHead{
+	font-weight:bold;
+}
+
+#tabsPoderes {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+#PGForm_DlgApoderados_Grid_gapoderSelecc{
+	height:200px;
+	overflow-x: auto;
+	padding-left: 10px;
+}
+
+#PGForm_DlgApoderados_Div_gapoderSelecc{
+	height:200px;
+	overflow-x: auto;
+	padding-left: 10px;
+}
+
+#PGForm_DlgApoderados_Div_gapoderSelecc>div>table{	
+	padding-left: 10px;
+}
+
+#PGForm_DlgApoderadosOtros_Grid_ApSelecc{
+	height:200px;
+	overflow-x: auto;
+}
+
+/**** PODERES ESPECIALES ****/
+#PEForm_DlgApoderados_Grid_gapoderSelecc{
+	height:200px;
+	overflow-x: auto;
+	padding-left: 10px;
+}
+
+#PEForm_DlgApoderados_Div_gapoderSelecc{
+	height:200px;
+	overflow-x: auto;
+	padding-left: 10px;
+}
+
+#PEForm_DlgApoderados_Div_gapoderSelecc>div>table{	
+	padding-left: 10px;
+}
+
+#PEForm_DlgApoderadosOtros_Grid_ApSelecc{
+	height:200px;
+	overflow-x: auto;
+}
+
+/**** CARTA PODER ****/
+#CPForm_DlgApoderados_Grid_gapoderSelecc{
+	height:200px;
+	overflow-x: auto;
+	padding-left: 10px;
+}
+
+#CPForm_DlgApoderados_Div_gapoderSelecc{
+	height:200px;
+	overflow-x: auto;
+	padding-left: 10px;
+}
+
+#CPForm_DlgApoderados_Div_gapoderSelecc>div>table{	
+	padding-left: 10px;
+}
+
+#CPForm_DlgApoderadosOtros_Grid_ApSelecc{
+	height:200px;
+	overflow-x: auto;
+}
+
+.DlgRevocacion_grid_Revocados{
+	overflow-x:auto;
+	max-height: 350px;
+	
+}
+
+.ApendiceRevocados{	
+	font-size: 10px;
+font-style: italic;
+}
+
+.jGridSortable { 
+	list-style-type: none; 
+	margin: 0; 
+	padding: 0; 
+	width: 60%; 
+	}
+.jGridSortable li {	 
+	padding: 1px;	 
+	cursor: ns-resize;	
+	}
+.jGridSortable li span {
+	float:right;
+	cursor:pointer;
+	background-color: gray;
+	}
+	
+.jGridSortable_li{
+	border: 0px solid #CCC !important;
+	background: #FFFFFF !important;
+	font-weight: normal !important;
+	color: #000 !important;
+}

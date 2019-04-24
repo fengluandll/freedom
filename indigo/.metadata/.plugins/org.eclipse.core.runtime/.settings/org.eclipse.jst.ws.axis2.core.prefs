@@ -1,0 +1,5 @@
+axis2RuntimeLocation=C\:\\jar_config_primeFaces\\axis2-1.6.2
+cleintDatabinding=ADB
+eclipse.preferences.version=1
+serviceDatabinding=ADB
+serviceInterfaceSkeleton=true

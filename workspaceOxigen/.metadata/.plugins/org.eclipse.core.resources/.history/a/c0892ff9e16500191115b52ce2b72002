@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      lang="en">
+
+    <h:head>
+ <meta charset="utf-8"/>
+<link rel="icon" href="images/headset_icono.png" type="image/x-icon" />
+<f:facet name="first">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!-- Favicon icon -->
+<link rel="icon" href="assets/images/favicon.ico" type="image/x-icon"/>
+<!-- Google font-->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet"/>
+<!-- Required Fremwork -->
+<link rel="stylesheet" type="text/css" href="#{request.contextPath}/bower_components/bootstrap/css/bootstrap.min.css"/>
+<!-- themify-icons line icon -->
+<link rel="stylesheet" type="text/css" href="#{request.contextPath}/assets/icon/themify-icons/themify-icons.css"/>
+<!-- ico font -->
+<link rel="stylesheet" type="text/css" href="#{request.contextPath}/assets/icon/icofont/css/icofont.css"/>
+<!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="#{request.contextPath}/assets/css/style.css"/>
+<link rel="stylesheet" type="text/css" href="#{request.contextPath}/bower_components/css/tableBootStrap.css"/> 
+        </f:facet>
+        <title><ui:insert name="title">Startonline</ui:insert></title>
+        <h:outputScript name="js/nanoscroller.js" library="ecuador-layout" />
+        <h:outputScript name="js/layout.js" library="ecuador-layout" />
+        <ui:insert name="head"/>
+    </h:head>
+
+    <h:body>
+        <div class="layout-wrapper #{guestPreferences.menuMode}">
+            <ui:include src="./topbar.xhtml"></ui:include>
+           <!--  <ui:include src="./right_panel.xhtml"></ui:include>  -->
+           <!-- <ui:include src="./menu.xhtml"></ui:include> -->
+			
+            <div class="layout-main">
+              <div class="route-bar">
+                   <!--  <ui:insert name="barraNavegacion"></ui:insert>  -->
+                </div> 
+                
+                <div class="layout-content" style="min-height:300px">
+                    <ui:insert name="content"></ui:insert>
+                </div>
+				<!-- 
+                <div class="layout-footer">
+                    <ui:include src="./footer.xhtml"></ui:include>
+                </div>
+                -->
+            </div>
+
+            <p:ajaxStatus styleClass="layout-ajax-loader">
+                <f:facet name="start">
+                    <i class="fa fa-circle-o-notch fa-spin layout-ajax-loader-icon" aria-hidden="true"></i>
+                </f:facet>
+
+                <f:facet name="complete">
+                    <h:outputText value="" />
+                </f:facet>
+            </p:ajaxStatus>
+        </div>
+       
+        <h:outputStylesheet name="css/nanoscroller.css" library="ecuador-layout" />
+        <h:outputStylesheet name="css/layout-#{guestPreferences.layout}.css" library="ecuador-layout" />
+    </h:body>
+
+</html>

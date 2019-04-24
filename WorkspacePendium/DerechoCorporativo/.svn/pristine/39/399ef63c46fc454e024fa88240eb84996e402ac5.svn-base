@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<WatchedResource>WEB-INF/web.xml</WatchedResource>
+
+	<!-- Es necesario agregar el Resource al archivo context.xml de Tomcat, 
+		o definirlo en el Application Server Correspondiente -->
+
+
+	<!-- driverClassName="oracle.jdbc.OracleDriver" url="jdbc:oracle:thin:@HOST:PORT:SID" -->
+
+	<Resource name="jdbc/DerechoCorpMySQL" auth="Container"
+		type="javax.sql.DataSource" maxActive="100" maxIdle="30" maxWait="10000"
+		username="root" password="root" driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/derecho_cor_db_2" />
+		
+		
+		
+	<Resource name="jdbc/DerechoCorpOracle"
+    auth="Container"
+    factory="oracle.ucp.jdbc.PoolDataSourceImpl"
+    type="oracle.ucp.jdbc.PoolDataSource"
+    connectionFactoryClassName="oracle.jdbc.pool.OracleDataSource"
+    maxActive="100"
+    maxIdle="30"
+    maxWait="10000"
+    user="USRDRC"
+    password="u5rDrC_d28"
+    url="jdbc:oracle:thin:@10.7.39.28:TVDBDRCOD" />
+    
+
+
+
+	<Resource name="jdbc/KazAppDataSource" auth="Container"
+		type="javax.sql.DataSource" maxActive="100" maxIdle="30" maxWait="10000"
+		username="root" password="120315" driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/KAZ_DB_DEV" />
+
+	<Resource name="jdbc/DerechoCorpMySQL" auth="Container"
+		type="javax.sql.DataSource" maxActive="100" maxIdle="30" maxWait="10000"
+		username="root" password="120315" driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/derecho_cor_db_2" />
+
+
+
+		<Resource name="jdbc/DerechoCorpOracle"
+			    auth="Container"
+			    factory="oracle.ucp.jdbc.PoolDataSourceImpl"
+			    type="oracle.ucp.jdbc.PoolDataSource"
+			    connectionFactoryClassName="oracle.jdbc.pool.OracleDataSource"
+			    maxActive="100"
+			    maxIdle="30"
+			    maxWait="10000"
+			    user="USRDRC"
+			    password="u5rDrC_d28"
+			    url="jdbc:oracle:thin:@10.7.39.28:1549:TVDBDRCOD" />
+
+
+		<Resource name="jdbc/DerechoCorp"
+			    auth="Container"
+			    factory="oracle.ucp.jdbc.PoolDataSourceImpl"
+			    type="oracle.ucp.jdbc.PoolDataSource"
+			    connectionFactoryClassName="oracle.jdbc.pool.OracleDataSource"
+			    maxActive="100"
+			    maxIdle="30"
+			    maxWait="10000"
+			    user="USRDRC"
+			    password="u5rDrC_d28"
+			    url="jdbc:oracle:thin:@10.7.39.28:1549:TVDBDRCOD" />
+
+
+
+
+
+</Context>

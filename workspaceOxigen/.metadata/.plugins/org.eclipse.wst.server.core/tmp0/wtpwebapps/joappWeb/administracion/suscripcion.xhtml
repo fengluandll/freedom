@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css"/>
+<link rel="stylesheet" type="text/css" href="../css/custom.css"/>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+ <script type="text/javascript" src="../js/jquery.min.js"></script>
+ 
+<script type="text/javascript">
+//<![CDATA[
+function cancelar(){
+	var lol = window.parent.document.getElementById('contenPrincipal');
+	
+	window.open('https://www.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=3UFXS8KJGHMKA',
+			    '',
+			    'width=900,height=500,left=50,top=50,toolbar=yes');
+	
+	}
+//]]>	
+</script>
+<style type="text/css">
+.ui-widget-header{
+	background: #4E5D6C;
+	
+} 
+.ui-widget-content{
+	background: #2B3E50;
+}
+
+.textoGral {
+	font-family: Verdana, Geneva, sans-serif;
+	text-align: center;
+	font-style: italic;
+	font-weight: bold;
+}
+
+.precio {
+	color: #C30;
+	font-style: italic;
+	font-family: "Courier New", Courier, monospace;
+	text-align: center;
+	font-weight: bold;
+	font-size: x-large;
+}
+.dia {
+	text-align: center;
+	color: #C30;
+}
+</style>
+</h:head>
+<h:body>
+<h:form>
+
+<center>
+<p:panel header="Información de mi suscripción">
+
+
+<p:panelGrid>
+  <p:row>
+    <p:column class="text-warning" style="font-size:20px;"><strong>Tu fecha de corte serán todos los días</strong></p:column>
+  </p:row>
+  <p:row>
+    <p:column align="center"><h1 class="dia"><strong><h:outputText styleClass="text-info" style="text-align:center;" value="#{suscripcionBean.leyendaSuscr}"/></strong></h1></p:column>
+  </p:row>
+  <p:row>
+    <p:column class="text-warning" style="font-size:20px;text-align:center;"><strong>de cada mes</strong></p:column>
+  </p:row>
+  <p:row>
+    <p:column class="text-warning" style="font-size:20px;text-align:center;"><strong>y se cargaran</strong> </p:column>
+  </p:row>
+  <p:row>
+    <p:column class="text-info" style="font-size:30px;text-align:center;"><strong>$299.00</strong></p:column>
+  </p:row>
+  <p:row>
+    <p:column class="text-warning" style="font-size:20px;text-align:center;"><strong>Al mes</strong></p:column>
+  </p:row>
+</p:panelGrid>
+<strong><h:outputText styleClass="text-success" style="font-size:12px;text-align:center;" value="Para cancelar tu suscripción haz click"/></strong><h:commandLink onclick="javascript:cancelar();"><h:outputText value=" Aqui" style="color: #C30;"/></h:commandLink>
+
+</p:panel>
+</center>
+</h:form>
+</h:body>
+</html>

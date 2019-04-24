@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;StyleCustom.java&apos; to &apos;SAO/src/com.movemini.layers.controller.agenda&apos;&#x0D;&#x0A;- Original project: &apos;DemoExcelPoiu&apos;&#x0D;&#x0A;- Destination element: &apos;SAO/src/com.movemini.layers.controller.agenda&apos;&#x0D;&#x0A;- Original element: &apos;StyleCustom.java&apos;" description="Copy compilation unit" destination="=SAO/src&lt;com.movemini.layers.controller.agenda" element1="/src&lt;{StyleCustom.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1527720462849" units="1" version="1.0"/>
+</session>

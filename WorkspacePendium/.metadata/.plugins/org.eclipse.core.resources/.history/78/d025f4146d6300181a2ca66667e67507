@@ -1,0 +1,47 @@
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class ExcelMain {
+	
+	private final String FILE_NAME = "C:\\Users\\argumedo\\Documents\\ProyectoNava\\AGENDA2018.xlsx";
+	Workbook     workbook;
+	Sheet 	 sheet;
+
+	public ExcelMain() {
+		
+		workbook 	= new XSSFWorkbook();
+        sheet 		= workbook.createSheet("Abril");
+        System.out.println("Creating excel");
+        
+        Row row = sheet.createRow(1);
+        Cell cell = row.createCell(2);
+        cell.setCellValue("Lunes 2 de abril");
+        
+        try {
+            FileOutputStream outputStream = new FileOutputStream(FILE_NAME);
+            workbook.write(outputStream);
+            workbook.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Done");
+        
+		
+	}
+
+	public static void main(String[] args) {
+		
+			new ExcelMain();
+	}
+
+}

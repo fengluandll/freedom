@@ -1,0 +1,20 @@
+
+<div id="myslidemenu" class="jqueryslidemenu" style="z-index:300">
+<ul>
+<li><a href="inicio.php">Inicio</a></li>
+<li><a href="manuales.php">Informaci&oacute;n Manuales</a></li>
+<li><a href="enConstruccion.php">Reportes Predefinidos</a></li>
+<li><a href="reportes.php">Reportes Configurados</a></li>
+<li><a href="#">Configuraci&oacute;n</a>
+  <ul>
+  <li><a href="enConstruccion.php">Usuarios</a></li>
+  <li><a href="enConstruccion.php">Responsabilidades</a></li> 
+  <li><a href="enConstruccion.php">Campos</a></li>
+  <li><a href="enConstruccion.php">Cat&aacute;logos</a></li>
+  <li><a href="config_reportes.php">Reportes</a></li>
+  </ul>
+</li>
+<li><a href="acercaDe.php">Acerca de...</a></li>
+</ul>
+<br style="clear: left" />
+</div>

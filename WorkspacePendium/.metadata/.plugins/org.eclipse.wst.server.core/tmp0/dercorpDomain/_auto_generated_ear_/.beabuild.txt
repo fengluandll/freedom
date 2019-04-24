@@ -1,0 +1,3 @@
+C\:/Users/argumedo/WorkspacePendium/DerechoCorporativo/WebContent = DerechoCorporativo.war
+C\:/Users/argumedo/WorkspacePendium/.metadata/.plugins/org.eclipse.core.resources/DerechoCorporativo/build/weboutput = DerechoCorporativo.war
+C\:/Users/argumedo/WorkspacePendium/DerechoCorporativo/bin = DerechoCorporativo.war/WEB-INF/classes

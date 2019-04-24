@@ -1,0 +1,4 @@
+127.0.0.1 - - [25/Jun/2014:14:55:40 -0500] "GET / HTTP/1.1" 404 961
+192.168.0.66 - - [25/Jun/2014:15:04:49 -0500] "POST /ConectOracleService/services/EmpleadoDAO?wsdl HTTP/1.1" 200 436
+127.0.0.1 - - [25/Jun/2014:16:36:21 -0500] "GET / HTTP/1.1" 404 961
+192.168.0.66 - - [25/Jun/2014:16:39:46 -0500] "POST /ConectOracleService/services/EmpleadoDAO?wsdl HTTP/1.1" 200 436

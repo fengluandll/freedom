@@ -1,0 +1,460 @@
+<%@page import="com.movemini.layers.controller.usuario.UsuarioEditBean"%>
+<%@page import="com.movemini.data.OneRecordFactory"%>
+<%@page import="com.movemini.simpleflexgrid.components.SelectList"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@page import="org.apache.tomcat.util.codec.binary.Base64"%>
+<%@ page import="java.sql.*" %> 
+<%@ page import="java.io.*" %> 
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %> 
+
+<%
+try
+{
+// 	Class.forName("com.mysql.jdbc.Driver");
+//     String url="jdbc:mysql://localhost:3306/prosante";
+//     String username="root";
+//     String password="120315";
+//     Connection conn=DriverManager.getConnection(url,username,password);
+    
+    //boolean acceso = session.getAttribute("ID_USER") != null & request.getParameter("ID_USER") != null & request.getParameter("ID_ROLE") != null;
+	
+    boolean acceso = true;
+    
+if(acceso) {
+	    
+	
+// 	List<String> lstMenuPadres = new ArrayList<String>();
+// 	    //List<String> lstMenuHijos = new ArrayList<String>();
+// 	    String Role = "";
+	 	    	   
+//     	Statement stScreen = conn.createStatement();
+//     	ResultSet rsScreen = stScreen.executeQuery("SELECT * FROM screen_role WHERE ID_ROLE = '"+session.getAttribute("ID_ROLE")+"'");
+//     	while(rsScreen.next()){
+//     		Statement stName = conn.createStatement();
+// 	    	ResultSet rsName = stName.executeQuery("SELECT * FROM menu WHERE ID_SCREEN = '"+rsScreen.getInt(1)+"' and ID_PADRE = 0 AND ID_ROLE ="+session.getAttribute("ID_ROLE")+" ORDER BY ID_ORDER, ID");
+// 	    	while(rsName.next()){
+// 	    		lstMenuPadres.add(rsName.getString("NAME"));	    	
+// 	    	}
+// 	    	//Statement stHijos = conn.createStatement();
+// 	    	//ResultSet rsHijos = stHijos.executeQuery("SELECT * FROM menu WHERE ID_SCREEN = '"+rsScreen.getInt(1)+"' and ID_PADRE > 0 AND ID_ROLE ="+session.getAttribute("ID_ROLE")+"");
+// 	    	//while(rsHijos.next()){
+// 	    		//lstMenuHijos.add(rsHijos.getString("NAME"));
+// 	    	//}
+// 	    }
+    	
+//     	Statement stR = conn.createStatement();
+//     	ResultSet rsR = stR.executeQuery("SELECT * FROM role WHERE ID = "+session.getAttribute("ID_ROLE")+"");
+//     	while(rsR.next()){
+//     		Role = rsR.getString(2);
+//     	}
+    	
+//     	String[] dtaUser = new String[10];
+//     	String imagen = "";
+//     	String imagenUser = "";
+//     	Statement stUs = conn.createStatement();
+//     	ResultSet rsUs = stUs.executeQuery("SELECT * FROM user WHERE ID = "+session.getAttribute("ID_USER")+"");
+//     	while(rsUs.next()){
+//     		dtaUser[0] = rsUs.getString(1);
+//     		dtaUser[1] = rsUs.getString(2);
+//     		dtaUser[2] = rsUs.getString(3);
+//     		dtaUser[3] = rsUs.getString(4);
+//     		dtaUser[4] = rsUs.getString(5);
+//     		dtaUser[5] = rsUs.getString(6);
+//     		dtaUser[6] = rsUs.getString(7);
+//     		dtaUser[7] = rsUs.getString(8);
+//     		if(rsUs.getString(9)!= null){    		
+//     			imagen = rsUs.getString(9);
+//     		}
+//     		else{
+//     			Statement stDef = conn.createStatement();
+//     			ResultSet rsDef = stDef.executeQuery("SELECT * FROM configuracion WHERE id_conf = 3");
+//     			while(rsDef.next()){
+//     				imagen = rsDef.getString(3);
+//     			}
+//     		}
+//     		dtaUser[9] = rsUs.getString(10);
+//     	}    	  
+    	
+//     	Statement stEditUser = conn.createStatement();    	
+//     	ResultSet rsEditIser = stEditUser.executeQuery("SELECT * FROM user WHERE ID = "+request.getParameter("ID_USER")+"");
+//     	String[] lstUser = new String[12];
+//     	while(rsEditIser.next()){
+//     		lstUser[0] =  rsEditIser.getString(1);
+//     		lstUser[1] =  rsEditIser.getString(2);
+//     		lstUser[2] =  rsEditIser.getString(3);
+//     		lstUser[3] =  rsEditIser.getString(4);
+//     		lstUser[4] =  rsEditIser.getString(5);
+//     		lstUser[5] =  rsEditIser.getString(6);
+//     		lstUser[6] =  rsEditIser.getString(7);
+//     		lstUser[7] =  rsEditIser.getString(8);
+    		
+//     		lstUser[9] =  rsEditIser.getString(10);
+//     		lstUser[10] =  rsEditIser.getString(11);
+    		
+    		
+//     		if(rsEditIser.getString(9) == null){
+// 	    		Statement stImg = conn.createStatement();
+// 				ResultSet rsImg = stImg.executeQuery("SELECT * FROM configuracion WHERE id_conf = 3");
+// 				while(rsImg.next()){
+// 					imagenUser =  rsImg.getString(3);
+// 				}
+//     		}else{    			
+// 				imagenUser =  rsEditIser.getString(9);
+//     		}
+//     	}
+ 	    
+
+String id_usuario = request.getParameter("id_usuario");
+Record editedUser = OneRecordFactory.getFirstRecord("SELECT * FROM ss_usuario WHERE id_usuario = '" + id_usuario + "'"); 
+	
+
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>SAO - Usuarios</title>
+
+    <!-- Bootstrap -->
+    <link href="../home/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../home/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../home/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <%-- <link href="vendors/iCheck/skins/flat/green.css" rel="stylesheet">--%>
+    <!-- Datatables -->
+    <link href="../home/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../home/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../home/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../home/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="../home/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="../home/build/css/custom.css" rel="stylesheet">
+  </head>
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+      
+      	<%@include file="commonSideBarMenu.jsp" %>
+      
+        
+        
+         <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">                        
+            </div>
+
+            <div class="clearfix"></div>
+
+			<div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <p>
+                    	<strong>
+                    		Datos del Usuario
+                    	</strong>
+                    </p>
+                    <ul class="nav navbar-right panel_toolbox">                                           
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                  <div style="width: 600px;">
+                    <!-- start form for validation -->
+                    <form id="demo-form" data-parsley-validate action="adm_user_edit.jsp" method="post"> 
+                               
+					  <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback" style="padding-left: 0px;">
+					    <label >Nombre (s) :</label>
+					    <input type="hidden" name="id_usuario" value="<%= editedUser.get("id_usuario") %>">
+                        <input type="text" name="nombre" style="padding: 14px;" class="form-control has-feedback-left" placeholder="Nombre (s)" required value="<%= editedUser.get("nombre") %>">                       
+                      </div>
+
+                      <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        <label for="text" style="display: inline-block;">Apellidos :</label>
+                        <input type="text" name="apellidos" class="form-control" placeholder="Apellidos" required value="<%= editedUser.get("apellido") %>">                        
+                      </div>
+
+					  
+					  <hr>
+					  <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback" style="padding-left: 0px;">
+					    <label for="fullname">Usuario de Acceso :</label>
+                        <input type="text" name="username" readonly="readonly" style="padding: 14px;" class="form-control has-feedback-left" id="inputSuccess2" placeholder="Usuario de Acceso" required value="<%= editedUser.get("usuario") %>">                       
+                      </div>
+
+                      <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        <label for="text" style="display: inline-block;">Contraseña de Acceso :</label>
+                        <input type="text" name="userpass" class="form-control" id="inputSuccess3" placeholder="Contraseña de Acceso" required value="<%= editedUser.get("contrasenia") %>">                        
+                      </div>
+
+                      <p>Tipo de Usuario :</p>
+                      
+                      
+                      <div class="item form-group" style="padding-left: 0px;">                                                
+                        
+                        <div class="col-md-6 col-sm-6 col-xs-12" style="padding-left: 0px;">
+                        
+                        
+                        	<%
+                        		String attrs = "style=\"width: 290px;\" class=\"form-control\" style=\"padding-left: 0px;\" required";
+                        	%>
+                        	<%=
+                        	
+                        	
+                        		SelectList.getListByQuery("kindUser", "SELECT * FROM ss_rol", "(Seleccione)", attrs, editedUser.get("id_rol"))
+                        	%>
+                           
+                          <br>                       
+                        </div>
+                        
+                         <br>
+                      </div>     
+                      
+					  <div style="width: 500px; padding: 0px; padding-top: 50px;" >
+						  <div class="col-md-55" style="width: 200px;">
+	                        <div class="thumbnail">
+	                          <div class="image view view-first">
+	                            <img style="width: 100%;" src="<%= editedUser.get("imagen") %>" alt="image" id="blah" />
+	                            <input type="hidden" value="perfil" name="perfil" id="perfil_img">
+	                            
+	                            <!-- 
+	                            <div class="mask">
+	                              <p>Editar Perfil</p>
+	                              <div class="tools tools-bottom">	                                                           
+	                              </div>
+	                            </div>
+	                            -->
+	                          </div>
+	                          <div class="caption">
+	                            <p>Foto de Perfil</p>
+	                          </div>
+	                        </div>
+	                      </div>  
+	                      
+	                      <a>
+	                      <input type="file" name="file" id="file" onchange="readURL(this);"/></a>
+	                      
+	                                         
+                      </div>
+                      <br><br>
+                      <br><br><br><br><br><br><br><br><br>
+                    
+                    <a href="adm_user_list.jsp" class="btn btn-warning" style="float: left;">Cancelar</a>
+                      <button type="submit" name="UserEdit" class="btn btn-primary" style="float: right;">Guardar Datos y Regresar</button>   
+                      &zwnj;
+                       
+                   </form> 
+                    
+                    
+                    <!-- end form for validations -->
+				   </div>
+				   
+                  </div>
+                  </div>
+                </div>
+              </div>
+              	</div>
+       	
+         <footer>						
+          <div class="pull-right">
+            <%--Perfil: < % = Role % >  &Uacute;ltima Conexi&oacute;n: < % =dtaUser[9] % > --%>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+     </div>
+    </div>
+  <!-- jQuery -->
+    <script src="../home/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../home/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../home/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../home/vendors/nprogress/nprogress.js"></script>
+    <!-- iCheck -->
+    <%--<script src="vendors/iCheck/icheck.min.js"></script> --%>
+    <!-- Datatables -->
+    <script src="../home/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../home/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../home/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../home/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../home/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../home/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../home/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../home/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../home/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../home/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../home/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../home/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../home/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../home/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../home/vendors/pdfmake/build/vfs_fonts.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="build/js/custom.min.js"></script>
+
+    <!-- Datatables -->
+    <script>
+      $(document).ready(function() {
+        var handleDataTableButtons = function() {
+          if ($("#datatable-buttons").length) {
+            $("#datatable-buttons").DataTable({
+              dom: "Bfrtip",
+              buttons: [
+                {
+                  extend: "copy",
+                  className: "btn-sm"
+                },
+                {
+                  extend: "csv",
+                  className: "btn-sm"
+                },
+                {
+                  extend: "excel",
+                  className: "btn-sm"
+                },
+                {
+                  extend: "pdfHtml5",
+                  className: "btn-sm"
+                },
+                {
+                  extend: "print",
+                  className: "btn-sm"
+                },
+              ],
+              responsive: true
+            });
+          }
+        };
+
+        TableManageButtons = function() {
+          "use strict";
+          return {
+            init: function() {
+              handleDataTableButtons();
+            }
+          };
+        }();
+
+        $('#datatable').dataTable();
+
+        $('#datatable-keytable').DataTable({
+          keys: true
+        });
+
+        $('#datatable-responsive').DataTable();
+
+        $('#datatable-scroller').DataTable({
+          ajax: "js/datatables/json/scroller-demo.json",
+          deferRender: true,
+          scrollY: 380,
+          scrollCollapse: true,
+          scroller: true
+        });
+
+        $('#datatable-fixed-header').DataTable({
+          fixedHeader: true
+        });
+
+        var $datatable = $('#datatable-checkbox');
+
+        $datatable.dataTable({
+          'order': [[ 1, 'asc' ]],
+          'columnDefs': [
+            { orderable: false, targets: [0] }
+          ]
+        });
+        $datatable.on('draw.dt', function() {
+          $('input').iCheck({
+            checkboxClass: 'icheckbox_flat-green'
+          });
+        });
+
+        TableManageButtons.init();
+      });
+    </script>
+    <!-- /Datatables -->
+    
+  <script type="text/javascript">
+  function readURL(input) {
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+              $('#blah')
+                  .attr('src', e.target.result)
+                  .width(170)
+                  .height(155);
+              $('#perfil_img')
+              .val(e.target.result);
+          };		
+          reader.readAsDataURL(input.files[0]);
+      }
+  }
+  </script>
+  </body>
+</html>
+<%
+    } 
+
+	//else 
+    	
+    if(request.getParameter("UserEdit") != null){
+    	
+    	boolean avanzar = false;
+    	
+    	if(true
+    			
+//     			request.getParameter("gender")           != null 
+//     			& request.getParameter("nombre")    != null
+//     			& request.getParameter("apellidos") != null
+//  				& request.getParameter("fecha")     != null
+//     			& request.getParameter("username")  != null
+//     			& request.getParameter("userpass")  != null
+//     			& request.getParameter("kindUser")  != null
+    			
+    			){
+    			    		
+//     		  Statement stU = conn.createStatement();
+//     		  ResultSet rsU = stU.executeQuery("SELECT * FROM user WHERE USERNAME = '"+request.getParameter("username").toString()+"'");
+//     		  int ID = 0;
+//     		  while(rsU.next()){
+//     			  ID = rsU.getInt(1);
+//     		  }    		      		 
+    		 
+    	      UsuarioEditBean bean = new UsuarioEditBean(request);
+    	      
+    	      String result = bean.updateUser();
+    	      
+    	      
+    	      response.sendRedirect("adm_user_list.jsp");
+    		
+    	}else{
+    		%> <script>alert("Ocurrio un error; \nNo pueden haber valores nulos");</script> <%
+    		response.sendRedirect("adm_user_list.jsp");
+    	}    	    	
+    	
+//     	if(avanzar){
+//     		response.sendRedirect("adm_user_list.jsp");
+//     	}
+    } 
+    
+//     else {
+//     	response.sendRedirect("adm_user_list.jsp");
+//     	System.out.println("Khe?");	
+//     }
+}catch(Exception _e){
+	System.out.println("Error"+_e);	
+	_e.printStackTrace();
+}
+%>

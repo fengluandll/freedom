@@ -1,0 +1,7 @@
+<classpath>
+  <container id="SAO!org.eclipse.jst.j2ee.internal.web.container">
+    <entry id="C:/Users/argumedo/workspaceSao/SAO/WebContent/WEB-INF/lib/poi-3.7-20101029.jar">
+      <source-attachment-path>C:/Users/argumedo/.m2/repository/org/apache/poi/poi/3.7/poi-3.7-sources.jar</source-attachment-path>
+    </entry>
+  </container>
+</classpath>

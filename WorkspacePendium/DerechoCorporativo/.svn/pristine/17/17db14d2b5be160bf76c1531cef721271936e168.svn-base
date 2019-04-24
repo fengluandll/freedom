@@ -1,0 +1,104 @@
+
+body, td, p {
+
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+.fonts {
+
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: small;
+	color: #E9E9E9;
+}
+
+.fontizq {
+
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:x-small;
+	color:#0099CC
+}
+
+
+.fontmenu {
+
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:x-small;
+	color:#666666;
+	text-decoration: none; 
+}
+
+a	{
+
+	text-decoration:none;
+}
+
+a:link, a:visited, a:active {
+
+	color:#0080C0;
+}
+
+a:hover	{
+
+	color:#B70000;
+}	
+
+
+
+.controlerLink {
+
+	text-decoration:none;
+}
+
+.controlerLink:link, .controlerLink:visited, .controlerLink:active {
+
+	color:#000080;
+}
+
+.controlerLink:hover	{
+
+	color:#B70000;
+}	
+
+
+.redLink:link, .redLink:visited, .redLink:active {
+
+	color:#B70000;
+}
+
+.redLink:hover	{
+
+	color:#000080;
+}	
+
+
+.pseudoLink {
+
+	color:#0080C0;
+	cursor:pointer;
+}
+
+
+.readonly {
+
+	color:#959595;	
+}
+
+.readonlySinMarco {
+
+	color:#959595;
+	border:0;
+}
+
+	.inputMayusculas {
+
+		TEXT-TRANSFORM: uppercase; 
+	}
+
+	.inputMinisculas {
+
+		TEXT-TRANSFORM: lowercase; 
+	}
+
+
+

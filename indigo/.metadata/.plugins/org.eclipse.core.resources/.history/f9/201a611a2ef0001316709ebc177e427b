@@ -1,0 +1,88 @@
+package mx.bardahl.model.DAO;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.naming.NamingException;
+
+import com.google.gson.Gson;
+
+import mx.bardahl.beans.CustomerBean;
+import mx.bardahl.beans.EmployeeBean;
+import mx.bardahl.model.ConectionWrapper;
+
+public class EmpleadoDAO {
+	
+	ConectionWrapper conectionWrapper;
+	Connection con;
+	EmployeeBean employeeBean;
+	CustomerBean customerBean;
+	Gson gson;
+	List<CustomerBean> listCustomers;
+	
+	public EmpleadoDAO(){
+		conectionWrapper = new ConectionWrapper();
+		gson = new Gson();
+	}
+	
+	public String dameEmpleado(String employeeNumber){
+		String sql = "select full_name,town_of_birth from per_all_people_f where EMPLOYEE_NUMBER = ?";
+		try {
+			con = conectionWrapper.getConexion();
+			PreparedStatement psmt = con.prepareStatement(sql);
+			psmt.setString(1, employeeNumber);
+			ResultSet rs = psmt.executeQuery();
+			
+			while(rs.next()){
+				employeeBean = new EmployeeBean();
+				employeeBean.setFullName(rs.getString(1));
+				employeeBean.setFecNaci(rs.getString(2));
+			}
+		} catch (SQLException | NamingException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		String objJson = gson.toJson(employeeBean);
+		return objJson;
+	}
+	
+	public String dameCustomer(){
+		listCustomers = new ArrayList<>();
+		String sql = "select account_number,account_name,attribute6 from HZ_CUST_ACCOUNTS where rownum <= 10";
+		try {
+			con = conectionWrapper.getConexion();
+			PreparedStatement psmt = con.prepareStatement(sql);
+			ResultSet rs = psmt.executeQuery();
+			
+			while(rs.next()){
+				customerBean = new CustomerBean();
+				customerBean.setAccountNumber(rs.getInt(1));
+				customerBean.setAccountName(rs.getString(2));
+				customerBean.setDescripcion(rs.getString(3));
+				listCustomers.add(customerBean);
+			}
+		} catch (SQLException | NamingException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		String objJson = gson.toJson(listCustomers,ArrayList.class);
+		return objJson;
+	}
+
+}

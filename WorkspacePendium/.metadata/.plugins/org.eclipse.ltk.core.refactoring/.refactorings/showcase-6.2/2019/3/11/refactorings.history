@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 6 elements from project &apos;showcase-6.2&apos;&#x0D;&#x0A;- Original project: &apos;showcase-6.2&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     jsf-api.jar.zip&#x0D;&#x0A;     jsf-facelets.jar.zip&#x0D;&#x0A;     jsf-impl.jar.zip&#x0D;&#x0A;     jstl.jar.zip&#x0D;&#x0A;     jta-1_1.jar.zip&#x0D;&#x0A;     persistence-api-2.0.jar.zip" description="Delete elements" element1="WebContent/WEB-INF/lib/jstl.jar.zip" element2="WebContent/WEB-INF/lib/jsf-api.jar.zip" element3="WebContent/WEB-INF/lib/jsf-facelets.jar.zip" element4="WebContent/WEB-INF/lib/persistence-api-2.0.jar.zip" element5="WebContent/WEB-INF/lib/jsf-impl.jar.zip" element6="WebContent/WEB-INF/lib/jta-1_1.jar.zip" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="6" stamp="1552607387401" subPackages="false" version="1.0"/>
+</session>

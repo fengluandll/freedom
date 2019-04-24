@@ -1,0 +1,12 @@
+<classpath>
+  <container id="PrototypeGob!org.eclipse.jst.j2ee.internal.web.container">
+    <entry id="C:/workspace/PrototypeGob/WebContent/WEB-INF/lib/javax.faces-2.2.6.jar">
+      <source-attachment-path>C:/Users/argumedo/.m2/repository/org/glassfish/javax.faces/2.2.6/javax.faces-2.2.6-sources.jar</source-attachment-path>
+    </entry>
+  </container>
+  <container id="showcase-6.1!org.eclipse.jst.j2ee.internal.web.container">
+    <entry id="C:/Users/argumedo/workspaceOxigen/showcase-6.1/WebContent/WEB-INF/lib/javax.faces-2.2.10.jar">
+      <source-attachment-path>C:/Users/argumedo/.m2/repository/org/glassfish/javax.faces/2.2.10/javax.faces-2.2.10-sources.jar</source-attachment-path>
+    </entry>
+  </container>
+</classpath>

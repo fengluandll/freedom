@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data-sources>
+	<data-source id="mysql5-1388631295913-1070096182" provider="mysql" driver="mysql5" name="MySQL - sysapps" create-date="1388631295913" save-password="true" show-system-objects="true" read-only="false">
+		<connection host="localhost" port="3306" server="" database="sysapps" url="jdbc:mysql://localhost:3306/sysapps" user="root" password="PQEKM05ORQRXQWbf" type="dev"/>
+	</data-source>
+</data-sources>

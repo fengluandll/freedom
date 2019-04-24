@@ -1,0 +1,104 @@
+@import url("//fonts.googleapis.com/css?family=Open+Sans");
+
+body{	
+	font-size: 13px;
+	font-family: 'Open Sans', sans-serif;	
+}
+
+.divSeccHead{
+	background-color:#2B385D;
+	color:#FFF;
+	padding:5px;
+	text-align:left;
+	cursor:pointer;
+	border-bottom: #FFF 2px solid;
+}
+
+.divSeccH{
+	font-align:center;
+	background-color:#2B385D;
+	color:#FFF;
+	padding:5px;	
+	cursor:cursor;
+}
+
+.SubTitleHead{
+	font-weight:bold;
+}
+
+#tabsPoderes {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+#PGForm_DlgApoderados_Grid_gapoderSelecc{
+	height:200px;
+	overflow-x: auto;
+}
+
+#PGForm_DlgApoderados_Div_gapoderSelecc{
+	height:200px;
+	overflow-x: auto;
+	font-size: 11px;	
+}
+
+#PGForm_DlgApoderadosOtros_Grid_ApSelecc{
+	height:200px;
+	overflow-x: auto;
+}
+
+tr{
+	font-size: 11px;
+}
+
+th{
+	font-size: 13px;
+	font-weight: normal;
+}
+
+.fondoA{
+	background-color:#F8F8F8 !important;
+}
+
+.fondoB{
+	background-color:#CCCCCC !important;
+}
+
+.fondoAInit{
+	background-color:#F8F8F8 !important;
+	border-left: #000 solid 5px;
+}
+
+.fondoBInit{
+	background-color:#CCCCCC !important;
+	border-left: #000 solid 5px;
+}
+
+.tableHeads{
+	background-color: #28385D;
+	color:#FFFFFF;	
+	font-size: 13px;		
+	font-weight: lighter; 
+}
+
+.oddCeld{
+	background-color: #FFFFFF;					
+	font-size: 11px;			
+	vertical-align: top;
+}
+		
+.evenCeld{
+	background-color: #DCE8F6;
+	font-size: 11px;
+	vertical-align: top;
+}
+
+.tablaCaramel tr:nth-child(even){
+	background-color: #DCE8F6;
+	font-size: 11px;
+}
+		
+.tablaCaramel tr:nth-child(odd){
+	background-color: #FFFFFF;
+	font-size: 11px;
+}			

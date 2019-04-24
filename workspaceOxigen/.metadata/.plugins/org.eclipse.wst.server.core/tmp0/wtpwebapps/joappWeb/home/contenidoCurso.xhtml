@@ -1,0 +1,100 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                template="../WEB-INF/templateApp.xhtml">
+
+ <ui:define name="head">
+ <style>
+ .listObj{
+ 	font-family: Montserrat, sans-serif;
+ 	font-size: 18px;
+ 	font-weight: 500;
+ 	color: #333333;
+ }
+ </style>
+ </ui:define>             
+
+<ui:define name="barraNavegacion">
+			<div class="route-bar-breadcrumb">
+               <h:link outcome="/index" class="fa fa-home"></h:link> 
+               <span>/ <h:outputText style="font-size:12px;" value="#{sessionScope['nomCurso']}"/> </span>
+               <ui:insert name="viewname" />
+             </div>
+</ui:define>
+<ui:define name="content">	
+	<h:form id="idContenidoTema" prependId="false">
+		<div class="col-md-12">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                    	<div class="col-sm-12 text-right">
+                                                                <button class="btn btn-primary"> Comprar</button>
+                                                        </div>
+                                                        <div class="card-header-left">
+                                                            <h:outputText style="font-size:25px;" value="#{sessionScope['nomCurso']}"/>
+                                                        </div>
+                                                        <div class="p-20 z-depth-bottom-0 waves-effect" style="background: #f2f2f2;margin-top: 20px;" data-toggle="tooltip" data-placement="top" title=".z-depth-bottom-0">
+                                                            <p class="text-left font-weight-bold">Que aprenderé en este curso</p>
+                                                            
+                                                            <ul>
+                                                           	<p:repeat var="ob" value="#{listUnidadesBean.dameObjetivosCurso(sessionScope['courseId'])}">
+                                                            	
+                                                            	<li class="listObj"> <i class="fa fa-check"/><h:outputText value="&#32;#{ob.descripcion}"/></li>
+                                                           </p:repeat>
+                                                            </ul>
+                                                            
+                                                              <br/><br/>
+                                                            
+                                                    	</div>
+                                                        
+                                                    </div>
+                                                    
+                                                    <div class="card-block marketing-card p-t-0">
+                                                        <div class="table-responsive">
+                      <p:accordionPanel value="#{listUnidadesBean.dameUnidades(sessionScope['courseId'])}" var="u">
+                      
+                      		<p:tab title="#{u.unitName}">
+                                                            <table class="table" style="">
+                                                                <tbody>
+                                                                  
+                      <p:repeat value="#{listUnidadesBean.dameTemas(u.unitId)}" var="t">    
+                                                                    <tr>
+                                                                        <td style="width: 950px;word-wrap: break-word;"><a href="#!"></a>
+                                                                            <div class="table-contain">
+                                                                                <p><h:outputText value="#{t.topicName}"/></p>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <p class="text-muted"> <h:outputText value="#{t.duracion}"/>  min</p>
+                                                                        </td>
+                                                                        <td>
+                                                                            <p class="m-l-20 text-c-green"><i class="fa fa-play-circle-o fa-3x"></i></p>
+                                                                        </td>
+                                                                    </tr>
+                       
+                      </p:repeat>
+                      
+                                                                </tbody>
+                                                            </table>
+                    </p:tab> 
+                   
+                    </p:accordionPanel> 
+                                                        
+                                                        </div>
+                                                        <div class="row marketing-card-footer">
+                                                            
+                                                            <div class="col-sm-12 text-right">
+                                                                <button class="btn btn-primary"> Comprar</button>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                  
+	</h:form>
+</ui:define> 
+	
+</ui:composition>

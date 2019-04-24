@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="CleanDialogSettings">
+		<item value="500" key="DIALOG_WIDTH"/>
+		<item value="true" key="TOGGLE_SELECTED"/>
+		<item value="378" key="DIALOG_HEIGHT"/>
+		<item value="433" key="DIALOG_X_ORIGIN"/>
+		<item value="112" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
+		</list>
+	</section>
+	<section name="ChooseWorkspaceDialogSettings">
+		<item value="381" key="DIALOG_X_ORIGIN"/>
+		<item value="185" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog">
+		<item value="true" key="ShowStatusLine"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History&gt;&#x0D;&#x0A;&lt;historyRootNode&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/WebContent/jsp/reportesFlex/showReportAsHTML.jsp&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/WebContent/jsp/admin/adminCatalog.jsp&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/WebContent/jsp/admin/adminDetalleCatalog.jsp&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/src/mx/com/televisa/derechocorporativo/modules/reports/BitaCatalogoServlet.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/src/mx/com/televisa/derechocorporativo/daos/CatalogoDAO.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/WebContent/jsp/admin/contenidoCatDet.jsp&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/src/mx/com/televisa/derechocorporativo/servlets/EditaDetalleCatagServlet.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/src/mx/com/televisa/derechocorporativo/modules/reports/ReporteControlServlet.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/WebContent/jsp/captura/ajax/flexTableFormAllow.jsp&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/WebContent/jsp/captura/pupUp/flexTableDetail.jsp&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/src/mx/com/televisa/derechocorporativo/reports/FlexReportToExcel.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/src/mx/com/televisa/derechocorporativo/modules/reports/HistoricoFuncionariosServlet.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/src/mx/com/televisa/derechocorporativo/modules/captura/EmpresaValues.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/WebContent/jsp/components/customTablePupUp/customTableAsunto.jsp&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/WebContent/js/asunto/asunto.js&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/WebContent/js/asunto/agregar.js&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/WebContent/jsp/captura/ajax/flexTableSave.jsp&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/WebContent/jsp/components/multiselectPupUp/multiselect.jsp&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/src/mx/com/televisa/derechocorporativo/servlets/AddAsuntoServlet.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/WebContent/jsp/captura/part/flexTab.js&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/WebContent/img/tableHeaderBack-alfa.png&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/src/mx/com/televisa/derechocorporativo/modules/flextabs/FlexColumn.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/src/mx/com/televisa/derechocorporativo/modules/reports/ecs/FlexReportECSToExcel.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/src/mx/com/televisa/derechocorporativo/util/NumberFormatter.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/src/mx/com/televisa/derechocorporativo/modules/reports/adminvig/FlexReportVigToExcel.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/src/mx/com/televisa/derechocorporativo/modules/flextabs/FlexTable.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/src/mx/com/televisa/derechocorporativo/config/HardCodeConstants.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/DerechoCorporativo/src/mx/com/televisa/derechocorporativo/data/ConnectionWrapper.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;/historyRootNode&gt;&#x0D;&#x0A;&lt;/History&gt;" key="History"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;workingSet workingSetName=&quot;&quot;/&gt;" key="WorkingSet"/>
+		<item value="false" key="ShowDerived"/>
+		<section name="DialogBoundsSettings">
+			<item value="600" key="DIALOG_WIDTH"/>
+			<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+			<item value="500" key="DIALOG_HEIGHT"/>
+			<item value="280" key="DIALOG_X_ORIGIN"/>
+			<item value="178" key="DIALOG_Y_ORIGIN"/>
+		</section>
+	</section>
+</section>

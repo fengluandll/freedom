@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Layout resource="/joappWeb/WebContent/WEB-INF/faces-config.xml">
+ <TreeFormPage>
+  <Memento type="FacesConfig22">
+   <Memento collapsed="false" type="Factories"/>
+   <Memento collapsed="false" type="Lifecycle"/>
+   <Memento collapsed="false" type="Advanced"/>
+  </Memento>
+  <Memento type="%No text%">
+   <Memento collapsed="false" type="Managed Beans"/>
+   <Memento collapsed="false" type="Referenced Beans"/>
+   <Memento collapsed="false" type="Navigation Rules"/>
+  </Memento>
+  <Memento type="JSFManagedBean20">
+   <Memento type="Managed Bean"/>
+   <Memento type="Properties"/>
+   <Memento type="Advanced"/>
+  </Memento>
+  <Memento type="JSFNavigationCase22">
+   <Memento collapsed="false" type="Navigation Case"/>
+   <Memento collapsed="false" type="Advanced"/>
+  </Memento>
+  <Memento type="JSFNavigationRule22">
+   <Memento collapsed="false" type="Navigation Rule"/>
+   <Memento collapsed="false" type="Navigation Cases"/>
+   <Memento collapsed="false" type="Advanced"/>
+  </Memento>
+  <Memento type="JSFRedirect20">
+   <Memento collapsed="false" type="Redirect"/>
+   <Memento collapsed="false" type="View Params"/>
+  </Memento>
+ </TreeFormPage>
+</Layout>

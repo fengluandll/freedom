@@ -1,0 +1,23 @@
+﻿var data = [
+{ id: 0, parent: null, empresa : "MEDIOS Y ESTRATEGIAS PROMOCIONALES, S.A. DE C.V. ", directo: "99.987654", indirecto: "00.023456" },
+{ id: 1, parent: 0, empresa : "MEDIOS Y ESTRATEGIAS PROMOCIONALES, S.A. DE C.V. ", directo: "99.987654", indirecto: "00.023456" },
+{ id: 2, parent: 1, empresa : "MEDIOS Y ESTRATEGIAS PROMOCIONALES, S.A. DE C.V. ", directo: "99.987654", indirecto: "00.023456" },
+{ id: 3, parent: 2, empresa : "MEDIOS Y ESTRATEGIAS PROMOCIONALES, S.A. DE C.V. ", directo: "99.987654", indirecto: "00.023456" },
+{ id: 4, parent: 3, empresa : "MEDIOS Y ESTRATEGIAS PROMOCIONALES, S.A. DE C.V. ", directo: "99.987654", indirecto: "00.023456" },
+{ id: 5, parent: 3, empresa : "MEDIOS Y ESTRATEGIAS PROMOCIONALES, S.A. DE C.V. ", directo: "99.987654", indirecto: "00.023456" },
+{ id: 6, parent: 5, empresa : "MEDIOS Y ESTRATEGIAS PROMOCIONALES, S.A. DE C.V. ", directo: "99.987654", indirecto: "00.023456" },
+{ id: 7, parent: 5, empresa : "MEDIOS Y ESTRATEGIAS PROMOCIONALES, S.A. DE C.V. ", directo: "99.987654", indirecto: "00.023456" },
+{ id: 8, parent: 5, empresa : "MEDIOS Y ESTRATEGIAS PROMOCIONALES, S.A. DE C.V. ", directo: "99.987654", indirecto: "00.023456" },
+{ id: 9, parent: 3, empresa : "MEDIOS Y ESTRATEGIAS PROMOCIONALES, S.A. DE C.V. ", directo: "99.987654", indirecto: "00.023456" },
+{ id: 10, parent: 3, empresa : "MEDIOS Y ESTRATEGIAS PROMOCIONALES, S.A. DE C.V. ", directo: "99.987654", indirecto: "00.023456" },
+{ id: 11, parent: 10, empresa : "MEDIOS Y ESTRATEGIAS PROMOCIONALES, S.A. DE C.V. ", directo: "99.987654", indirecto: "00.023456" },
+{ id: 12, parent: 3, empresa : "MEDIOS Y ESTRATEGIAS PROMOCIONALES, S.A. DE C.V. ", directo: "99.987654", indirecto: "00.023456" },
+{ id: 13, parent: 3, empresa : "MEDIOS Y ESTRATEGIAS PROMOCIONALES, S.A. DE C.V. ", directo: "99.987654", indirecto: "00.023456" },
+{ id: 14, parent: 2, empresa : "MEDIOS Y ESTRATEGIAS PROMOCIONALES, S.A. DE C.V. ", directo: "99.987654", indirecto: "00.023456" },
+{ id: 15, parent: 14, empresa : "MEDIOS Y ESTRATEGIAS PROMOCIONALES, S.A. DE C.V. ", directo: "99.987654", indirecto: "00.023456" },
+{ id: 16, parent: 14, empresa : "MEDIOS Y ESTRATEGIAS PROMOCIONALES, S.A. DE C.V. ", directo: "99.987654", indirecto: "00.023456" },
+{ id: 17, parent: 14, empresa : "MEDIOS Y ESTRATEGIAS PROMOCIONALES, S.A. DE C.V. ", directo: "99.987654", indirecto: "00.023456" },
+{ id: 18, parent: 14, empresa : "MEDIOS Y ESTRATEGIAS PROMOCIONALES, S.A. DE C.V. ", directo: "99.987654", indirecto: "00.023456" },
+{ id: 19, parent: 14, empresa : "MEDIOS Y ESTRATEGIAS PROMOCIONALES, S.A. DE C.V. ", directo: "99.987654", indirecto: "00.023456" },
+{ id: 20, parent: 2,  empresa : "MEDIOS Y ESTRATEGIAS PROMOCIONALES, S.A. DE C.V. ", directo: "99.987654", indirecto: "00.023456" }
+];

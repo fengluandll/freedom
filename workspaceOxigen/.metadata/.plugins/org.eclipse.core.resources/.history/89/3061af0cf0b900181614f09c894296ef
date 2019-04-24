@@ -1,0 +1,232 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!-- Favicon icon -->
+<link rel="icon" href="assets/images/favicon.ico" type="image/x-icon"/>
+<!-- Google font-->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet"/>
+<!-- Required Fremwork -->
+<link rel="stylesheet" type="text/css" href="#{request.contextPath}/bower_components/bootstrap/css/bootstrap.min.css"/>
+<!-- themify-icons line icon -->
+<link rel="stylesheet" type="text/css" href="../assets/icon/themify-icons/themify-icons.css"/>
+<!-- ico font -->
+<link rel="stylesheet" type="text/css" href="../assets/icon/icofont/css/icofont.css"/>
+<!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css"/>
+<link rel="stylesheet" type="text/css" href="../bower_components/css/tableBootStrap.css"/> 
+</h:head>                
+
+
+<h:body>
+<h:form id="idDashCursos" prependId="false">
+<div class="layout-dashboard">
+<div class="ui-g">
+	<p:repeat value="#{arbolCursosBean.listCourses}" var="curso">
+		<div class="ui-g-12 ui-md-6 ui-lg-4">
+			<div class="overview-box #{curso.segment3}">
+                                             
+				<p:graphicImage name="images/icon-users.png" library="ecuador-layout"  styleClass="image-icon" />
+				<div class="overview-title">Entrar</div>
+				<div class="overview-numbers">
+					    
+			    <p:commandLink 	title="Entrar al curso"
+	 				  			action="#{listUnidadesBean.dameUnidades(curso.courseId,curso.courseName)}"
+	 				  			style="text-decoration:none;"
+	 				  			update=":frmunits"
+	 				   			oncomplete="PF('dlgConCurso').show();" 
+	 				  			onmouseover="changeClass('linkEntra','resalta')">
+	 				  
+	 			<h:outputText value="#{curso.courseName}" style="color:white;font-size:20px;"/>
+	 			</p:commandLink>
+				</div>
+				<div class="overview-subinfo">
+				    <div class="ui-g-6 progressbar">
+				        <div class="progress sale" style="width: #{graficaCursosBean.getPorTotal(curso.courseId)}%"></div>
+				    </div>
+				    <span class="ui-g-6">#{graficaCursosBean.getPorTotal(curso.courseId)}%</span>
+				</div>        
+                                                 
+</div>
+</div>
+</p:repeat>
+             
+</div>
+
+<div class="ui-g-12 ui-md-12 ui-lg-12">
+
+  <div class="card">
+    <div class="card-block user-detail-card">
+        <div class="row">
+            <div class="col-sm-4">
+                <img src="assets/images/widget/Group-user.jpg " alt="" class="img-fluid p-b-10"/>
+                <div class="contact-icon">
+                    <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="View" ><i class="icofont icofont-eye m-0"></i></button>
+                    <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Print" ><i class="icofont icofont-printer m-0"></i></button>
+                    <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Download" ><i class="icofont icofont-download-alt m-0"></i></button>
+                    <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Share" ><i class="icofont icofont-share m-0"></i></button>
+                </div>
+            </div>
+            <div class="col-sm-8 user-detail">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-user"></i>Name :</h6>
+                    </div>
+                    <div class="col-sm-7">
+                        <h6 class="m-b-30">Gregory Durk</h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-calendar"></i>Date of brith :</h6>
+                    </div>
+                    <div class="col-sm-7">
+                        <h6 class="m-b-30">24 October 2017</h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-email"></i>Email Id :</h6>
+                    </div>
+                    <div class="col-sm-7">
+                        <h6 class="m-b-30"><a href="mailto:dummy@example.com">techdemo@example.com</a></h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-home"></i>Address :</h6>
+                    </div>
+                    <div class="col-sm-7">
+                        <h6 class="m-b-30">23/Encrypt square, Melbourn, Australia</h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-touch-phone"></i>Phone :</h6>
+                    </div>
+                    <div class="col-sm-7">
+                        <h6 class="m-b-30">+(345)234-5287</h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-web"></i>Website :</h6>
+                    </div>
+                    <div class="col-sm-7">
+                        <h6 class="m-b-30"><a href="#!">http://www.demotheme.com</a></h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-fax"></i>Fax :</h6>
+                    </div>
+                    <div class="col-sm-7">
+                        <h6 class="m-b-30">+(723)542-2823</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+	
+</div>
+</div>
+      
+</h:form>	
+
+	
+<h:form id="frmunits" prependId="false">
+    <p:dialog widgetVar="dlgConCurso"  closeOnEscape="true"  modal="true" dynamic="true" resizable="false"  header="Temario de #{listUnidadesBean.nomCurso}">
+	
+<div class="ui-g-12 ui-md-12 ui-lg-12 ui-xl-6">
+                                                
+<table id="e-product-list" class="table table-striped dt-responsive nowrap">
+	<thead>
+	    <tr>
+	        <th>Unidad</th>
+	        <th>Objetivo</th>
+	        <th>Progreso</th>
+	    </tr>
+	</thead>
+	<tbody>
+	<p:repeat value="#{listUnidadesBean.listCurUni}" var="unit"> 
+	    <tr>
+	        <td class="pro-list-img">
+	       <p:commandLink 	id="linkUnit"
+	       					action="#{listUnidadesBean.dameTemas(unit.unitId,unit.unitName)}" 
+	    					oncomplete="PF('dlgtopics').show();"
+	    					update=":frmTopics">
+	    		<f:param name="unitId"      value="#{unit.unitId}" />
+	            <h:outputText value="#{unit.unitName}"/>
+	        </p:commandLink>
+	          <p:tooltip id="toolTipEntrarUni" for="linkUnit" value="Clic para ver el temario" trackMouse="true" />
+	        </td>
+	        
+	        <td class="pro-name">
+	            <h:outputText value="#{unit.segment1}"/>
+	        </td>
+	        <td>
+	        	<!-- 
+	             div class="progress progress-striped active">
+					  <div class="progress-bar progress-bar-danger" style="width: #{topicsCarouselBean.getUnitBarraGral(unit.unitId)}% "><strong style="color:black;">#{topicsCarouselBean.getUnitBarraGral(unit.unitId)}%</strong></div>
+					</div>
+					-->
+				<strong style="color:#44be2c;align-content: right;">#{topicsCarouselBean.getUnitBarraGral(unit.unitId)}%</strong>
+			</td>                                                 
+		</tr>
+	</p:repeat>                                                            
+     </tbody>
+ </table>
+</div>
+</p:dialog>
+</h:form>
+
+<h:form id="frmTopics" prependId="false">
+
+<p:dialog widgetVar="dlgtopics"   modal="true" header="#{listUnidadesBean.nomUnidad}">
+
+<table id="e-product-list" class="table table-striped dt-responsive nowrap">
+    <thead>
+        <tr>
+           <!--  <th>Entrar</th>   -->
+            <th>Tema</th>
+            <th>Objetivo</th>
+        </tr>
+    </thead>
+    <tbody>
+              <p:repeat value="#{listUnidadesBean.listTopics}" var="topic"> 
+                      <tr>
+                      	
+                          <td class="pro-list-img">
+                          <p:commandLink  id="linkTomarClase2"
+                      					  action="#{redirectPageBean.loadPage}">
+	                      	<f:param name="topicName"   value="#{topic.topicName}" />
+	                      	<f:param name="courseName"  value="#{listUnidadesBean.nomCurso}" />
+	                      	<f:param name="topicId"     value="#{topic.topicId}" />
+	                      	<f:param name="unitName"    value="#{listUnidadesBean.nomUnidad}" />
+	                      	<f:param name="courseId"    value="#{listUnidadesBean.courseId}" />
+	                      	<f:param name="unitId"      value="#{listUnidadesBean.unitId}" />
+                            <h:outputText value="#{topic.topicName}"/>
+                           </p:commandLink>   
+                          </td>
+                          <td class="pro-name">
+                              <h:outputText value="#{topic.segment1}"/>
+                          </td>
+                          
+                      </tr>
+			  </p:repeat>                                                                       
+                                                                           
+    </tbody>
+</table>                       
+</p:dialog>
+</h:form>
+	
+
+</h:body>
+</html>

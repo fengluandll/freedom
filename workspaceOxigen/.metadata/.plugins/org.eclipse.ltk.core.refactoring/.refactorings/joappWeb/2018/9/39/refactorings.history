@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;contenidoCurso.xhtml&apos; to &apos;home&apos;" description="Move &apos;contenidoCurso.xhtml&apos; to &apos;home&apos;" destination="WebContent/home" element1="WebContent/contenidoCurso.xhtml" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1537834278086" updateReferences="true"/>
+</session>

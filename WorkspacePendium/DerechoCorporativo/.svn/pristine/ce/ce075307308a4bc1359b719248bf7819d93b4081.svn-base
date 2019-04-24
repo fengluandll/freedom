@@ -1,0 +1,90 @@
+<%
+response.setHeader("Cache-Control","no-cache"); //HTTP 1.1
+response.setHeader("Pragma","no-cache"); //HTTP 1.0
+response.setDateHeader ("Expires", 0); //prevents caching at the proxy server
+%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page import="mx.com.televisa.derechocorporativo.data.HQLBeanList"%>
+<%@page import="mx.com.televisa.derechocorporativo.model.*"%>
+<%@page import="java.util.*"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<%
+	HQLBeanList<HrSpecialityGroup> hqlGroups = new HQLBeanList<HrSpecialityGroup>();
+	HQLBeanList<HrSpeciality> hqlSpecs = new HQLBeanList<HrSpeciality>();
+	
+	List<HrSpecialityGroup> groups = null;
+	List<HrSpeciality> specs = null;  
+	  
+	try {
+		groups = hqlGroups.getList("from HrSpecialityGroup");
+		specs = hqlSpecs.getList("from HrSpeciality");	
+	
+	/**/
+	} catch(Exception e) {
+		e.printStackTrace();
+	} finally {
+		hqlGroups.close();
+		//hqlSpecs.close();
+	}
+	//*/
+%>
+<table width="80%" align="center" border="1">
+	<tr>
+	<% 
+	
+		int cont = 1;
+	
+		for(HrSpecialityGroup group : groups) { 
+	
+	%>
+		<td valign="top">
+			<table width="80%" align="center" border="1">
+				<tr>
+					<th colspan="2"><%= group.getName() %></th>
+				</tr>
+				<% 
+				
+					//for(Speciality spec : group.getSpecialities()) { 
+					for(HrSpeciality spec : specs) { 
+					if(spec.getHrSpecialityGroup().getSpecialityGroupId().equals(group.getSpecialityGroupId())) {  //Usar Id directamente
+					
+					%>
+				<tr>
+					<td><input type="checkbox"></td>
+					<td><%= spec.getName() %></td>
+				</tr>
+				<% }} %>
+			</table>
+		</td>
+	<% 
+		// 2 grupos m�ximo por linea, inicia una nueva tabla para alinear al centro
+		if(cont%2==0){
+			out.println("</tr></table><br><table  width=\"80%\" align=\"center\"  border=\"1\"><tr>");
+		}
+	
+		cont++;
+		} 
+	%>
+	</tr>
+</table>
+<%
+/*
+	} catch(Exception e) {
+		e.printStackTrace();
+	} finally {
+		hqlGroups.close();
+		//hqlSpecs.close();
+	}
+*/
+ %>
+
+</body>
+</html>

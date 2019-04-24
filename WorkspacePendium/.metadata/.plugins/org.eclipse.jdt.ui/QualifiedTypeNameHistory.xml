@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="mx.com.televisa.derechocorporativo.model.Catalog"/>
+<fullyQualifiedTypeName name="mx.com.televisa.derechocorporativo.model.CatalogElement"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="mx.com.televisa.derechocorporativo.bean.AdminVigBean"/>
+<fullyQualifiedTypeName name="org.apache.poi.util.StringUtil"/>
+<fullyQualifiedTypeName name="java.sql.Statement"/>
+<fullyQualifiedTypeName name="mx.com.televisa.derechocorporativo.modules.reports.ecs.ReporteECSFlexTable"/>
+<fullyQualifiedTypeName name="mx.com.televisa.derechocorporativo.util.StringUtils"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="mx.com.televisa.derechocorporativo.modules.captura.EmpresaValues"/>
+<fullyQualifiedTypeName name="java.io.Serializable"/>
+<fullyQualifiedTypeName name="mx.com.televisa.derechocorporativo.bean.AgregarOtrosBean"/>
+<fullyQualifiedTypeName name="mx.com.televisa.derechocorporativo.data.packages.PENDIUM_AGREGAR_OTROS_PKG"/>
+<fullyQualifiedTypeName name="mx.com.televisa.derechocorporativo.daos.AgregarOtrosDAO"/>
+<fullyQualifiedTypeName name="mx.com.televisa.derechocorporativo.util.NumberFormatter"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,3 @@
+192.168.201.88 - - [10/Jun/2014:11:14:45 -0500] "GET /ConectOracleService/services/EmpleadoDAO?wsdl HTTP/1.1" 200 3790
+192.168.201.88 - - [10/Jun/2014:11:14:50 -0500] "POST /ConectOracleService/services/EmpleadoDAO?wsdl HTTP/1.1" 200 446
+192.168.201.88 - - [10/Jun/2014:12:06:24 -0500] "POST /ConectOracleService/services/EmpleadoDAO?wsdl HTTP/1.1" 200 2043

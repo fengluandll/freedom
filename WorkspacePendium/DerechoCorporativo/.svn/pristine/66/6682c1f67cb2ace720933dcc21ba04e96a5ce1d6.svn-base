@@ -1,0 +1,490 @@
+<%
+response.setHeader("Cache-Control","no-cache"); //HTTP 1.1
+response.setHeader("Pragma","no-cache"); //HTTP 1.0
+response.setDateHeader ("Expires", 0); //prevents caching at the proxy server
+%>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+
+<%@ taglib uri="pd4ml" prefix="pd4ml"%>
+
+	
+	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<pd4ml:transform
+	screenWidth="780" pageFormat="LETTER" fileName="DEMO.pdf"
+	pageInsets="10,10,10,10,mm" adjustScreenWidth="true"
+	enableTableBreaks="false" enableImageSplit="false" debug="true">
+	<pd4ml:footer areaHeight="30">
+
+	</pd4ml:footer>
+
+	
+ 	
+
+
+	
+<html>
+<head>
+
+<style>
+html {
+	font-family: Verdana, Arial, Helvetica;
+	color: #000000;
+	font-size: 8pt;
+}
+
+td {
+	FONT: 10.5px Verdana, sans-serif;
+	COLOR: #000000;
+}
+</style>
+<!-- print style sheet -->
+<style type="text/css" media="print">
+div.tableContainer {
+	overflow: visible;
+	page-break-inside: avoid;
+}
+
+div.container {
+	writing-mode: lr-tb;
+	page-break-inside: avoid;
+}
+
+table>tbody {
+	overflow: visible;
+}
+
+td {
+	height: 10.5px Verdana;
+} /*adds control for test purposes*/
+thead td {
+	FONT: 10.5px Verdana, sans-serif;
+	COLOR: #000000;
+}
+
+tfoot td {
+	text-align: center;
+	font-size: 9pt;
+	border-bottom: solid 1px slategray;
+}
+
+thead {
+	display: table-header-group;
+}
+
+tfoot {
+	display: table-footer-group;
+}
+
+thead th,thead td {
+	position: static;
+}
+
+thead tr {
+	position: static;
+	page-break-inside: avoid;
+} /*prevent problem if print after scrolling table*/
+table tfoot tr {
+	position: static;
+}
+
+.noprint {
+	display: none
+}
+</style>
+
+
+
+
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+
+
+
+
+<style type="text/css">
+
+/*Argumedo*/
+
+.infoTab {
+	text-align: center;
+	font-size: 12px;
+}
+.headTab {
+	font-size: 14px;
+}
+.nvoCta {
+	text-align: right;
+	font-weight: bold;
+	font-style: italic;
+	color: #06F;
+}
+.centerNew {
+	text-align: center;
+}
+a:hover {
+	background-color: #ACBCED;
+}
+a:hover.encima{
+	background-color: #7D7FD2;
+}
+
+/****************************************/
+
+.letraNegrita{
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.lightText{ 
+		color : #D9D5D5; 
+		}
+body {
+/*
+	background-image:
+		url("/DerechoCorporativo/img/page_background.jpg");*/
+	background-attachment:fixed;
+	/*margin-top: 0;
+		margin-left: 0;
+		margin-right: 0;
+		margin-bottom: 0;*/
+}
+
+body,td,th,p {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+input, button, select, textarea, optgroup, option {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+}
+
+btnGuardar{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+
+big {
+
+	color: #444444;
+}
+
+
+.infoMessageText {
+	color: #66AA66;
+    font-weight: bold;
+}
+
+.errorMessageText {
+	color: #AA6666;
+    font-weight: bold;
+}
+
+.coloredText {
+	color: #2E4E67;
+}
+
+.loginMessages{
+	color: #FF0000;
+}
+
+.smallText {
+	font-size: 10px;
+}
+
+.tableHeader {
+	/*background-color: #23008C;*/
+	background-image:
+		url("/DerechoCorporativo/img/tableHeaderBack.png");
+	color: white;
+}
+
+.tableHeaderAlfa {
+	/*background-color: #23008C;*/
+	background-image:
+		url("");/*/DerechoCorporativo/img/tableHeaderBack-alfa.png*/
+	color: yellow;/*white*/
+	font-weight: bold;
+	text-align: center;
+	/*color: #23008C;*/
+}
+
+.tableHeaderAlfa2 {
+	/*background-color: #23008C;*/
+	background-image:
+		url("");/*/DerechoCorporativo/img/tableHeaderBack-alfa.png*/
+	color: red;/*white*/
+	font-weight: bold;
+	text-align: center;
+	/*color: #23008C;*/
+}
+
+
+
+.headerMenu {
+	background-image:
+		url("/DerechoCorporativo/img/headerTab.png");
+}
+
+.flexTable {
+	
+	border-color: #F5F5F5;
+	border-width: thin;
+}
+
+.tableRow2{
+	/*background:#C2E3EA;*/
+	/*background:#DCE8F6;*/
+	background: #F6F9FD;
+}
+
+/*ECM 20 AGOSTO 2015*/
+.tableRow3{
+	font-size: 14px;
+	font-weight: bold;
+	font-style: italic;
+	color: white;
+}
+.tableRow4{
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.pageTitle {
+	/*color: #2B4963;*/
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.pageTitle2 {
+	
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	font-size: 14px;
+	background-image:
+		url("/DerechoCorporativo/img/borders/page_border/border02.png");
+}
+
+a {
+	text-decoration: none;
+}
+
+a:link,a:visited {
+	color: #23008C;
+}
+
+a:hover {
+	color: #E97C00;
+	background-color: #23008C;
+}
+
+.headLineFactura {
+	color: #FFFFFF
+}
+
+.fondoLineFactura {
+	background-color: #0066FF
+}
+
+
+legend {
+
+	color:#000099;
+	font-size: 15px;
+	font-weight: bolder;
+}
+
+.legendThin {
+
+	color:#000099;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+
+.blueBoldText {
+
+	color:#000099;
+	/*font-weight: bold;*/
+	font-size: 11px;
+}
+
+
+
+
+
+
+</style>
+
+
+<script type="text/javascript" src="/DerechoCorporativo/js/jquery/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="/DerechoCorporativo/js/ajax/simpleAjaxUtil.js"></script> 
+
+
+
+
+
+
+
+
+	
+<script src="/DerechoCorporativo/js/SpryAssets/SpryTabbedPanels.js" type="text/javascript"></script>
+<link href="/DerechoCorporativo/js/SpryAssets/SpryTabbedPanels4Print.css" rel="stylesheet" type="text/css" />
+
+	
+	
+	
+
+
+
+<script type="text/javascript" src="part/flexTab.js"></script>
+
+<script type="text/javascript" src="part/ajaxPage.js"></script>
+
+<script type="text/javascript" src="part/pupUp.js"></script>
+
+<script type="text/javascript" src="apoderados/apoderados.js"></script>
+
+<script type="text/javascript" src="reformas/reformas.js"></script>
+
+
+
+
+
+
+</head>
+<body onLoad="" class="fontmenu" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0" >
+
+	
+
+	<form method="post" action="">
+
+		<table width="95%" height="100%" border="0" align="center">
+			<tr>
+				<td>
+				
+					 
+					
+					<table border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td><img
+								src="http://localhost:8082/DerechoCorporativo/img/borders/page_border/border01_4Print.png">
+							</td>
+							<td width="100%" style="color:white;text-align: center;font-weight: bold;font-size: 14px;"
+								background="http://localhost:8082/DerechoCorporativo/img/borders/page_border/border02_4Print.png">
+								
+			
+					
+					
+						<table style="width:95%">
+						<tr>
+							<td width=170><span id="idTitle" style="color:white;text-align: center;font-weight: bold;font-size: 14px;">
+							EMPRESA PRUEBA 3, S.A. DE C.V.
+							
+								
+								 - Objeto Social
+								
+							</span>
+						</td>
+						</tr>
+						</table>
+
+					
+
+
+
+
+</td>
+<td><img
+	src="http://localhost:8082/DerechoCorporativo/img/borders/page_border/border03_4Print.png">
+</td>
+</tr>
+<tr>
+	<td
+		>
+	</td>
+	<td width="100%">
+					
+						
+					
+
+					<table width="98%" border="0" cellspacing="2" cellpadding="3"
+						id="sec_1_1">
+						<tr>
+							<td width="60%">
+							</td>
+							<td width="20%">
+							
+								
+							</td>
+							<td width="20%">
+							
+							
+							</td>
+						</tr>
+						
+						<tr>
+							<td colspan="3">
+							<%-- 
+								<div id="TabbedPanels1" class="TabbedPanels"><ul class="TabbedPanelsTabGroup"></ul><div class="TabbedPanelsContentGroup"><div class="TabbedPanelsContent"><table width='100%' align='center' border='0'><tr><td>&nbsp;</td></tr>	<tr><td></td></tr><tr><td><fieldset><legend>Objeto Social</legend><table width='97%' border='0'><tr><td width='17%'></td><td width='8%'></td><td width='8%'></td><td width='17%'></td><td width='17%'></td><td width='8%'></td><td width='8%'></td><td width='17%'></td></tr><tr><td colspan='8'></td></tr><tr bgcolor=''><td colspan='8'><table width='90%' align='center' class='flexTable' border='0' cellspacing='3' cellpadding='3'><td align='center'><a onClick="closeForm();sleep(2000);setFlexTableId('5');loadFlexTableForm('5-0');"></a></td></tr><tr><th style='background-image:url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;' width='10%'>Id</th><th style='background-image:url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;' width='70%'>Objeto Social</th></tr><tr class="tableRow2"><td  align='null'></td><td  align='null'>La Sociedad tiene por objeto: <br><br>UNO.- Operar todo g?nero de sociedades mercantiles, civiles, asociaciones o empresas industriales, comerciales, de servicios, o de otra ?ndole, tanto nacionales como extranjeras, por medios propios o de terceros, con actividad de:<br><br>a).- La instalaci?n, operaci?n, mantenimiento y explotaci?n comercial de estaciones de radio y televisi?n y de sistemas de telecomunicaciones para la prestaci?n de servicios de audio o de audio y video asociado que se presta a trav?s de redes p?blicas de telecomunicaciones, as? como el servicio de radiodifusi?n, mediante la instalaci?n, funcionamiento y operaci?n de estaciones radiodifusoras por los sistemas de modulaci?n, amplitud o frecuencia, televisi?n, facs?mile o cualquier otro procedimiento t?cnico posible, dentro de las bandas de frecuencias del espectro radioel?ctrico atribuidas a tal servicio cualquier sistema conocido o por conocer, previa concesi?n que otorgue la Secretar?a de Comunicaciones y Transportes y/o cualquier otra autoridad competente en M?xico;<br><br>b).- Instalar, mantener, operar o explotar redes p?blicas o privadas de telecomunicaciones y usar, aprovechar o explotar bandas de frecuencias en el territorio nacional;<br><br>c).- Prestar toda clase de servicios de telecomunicaciones en territorio nacional, previa concesi?n que en su caso le otorgue la Secretar?a de Comunicaciones y Transportes o como empresa comercializadora para prestar servicios de telecomunicaciones, mediante el uso de capacidad de concesionarios de redes p?blicas de telecomunicaciones, previo permiso de la Secretar?a de Comunicaciones y Transportes;<br><br>d).- Prestar servicios de valor agregado, previo su registro ante la Secretar?a de Comunicaciones y Transportes;<br><br>e).- Instalar, mantener y operar sistemas de comunicaci?n v?a sat?lite, previa autorizaci?n de la Secretar?a de Comunicaciones y Transportes;<br><br>f).- Obtener, ser titular de y explotar todo tipo de concesiones, permisos y/o autorizaciones que otorgue la Secretar?a de Comunicaciones y Transportes y/o cualquier otra autoridad competente en M?xico;<br><br>g).- Obtener, ser titular de y explotar todo tipo de concesiones, permisos y/o autorizaciones que otorgue la Secretar?a de Comunicaciones y Transportes para prestar servicios de transporte a?reo;<br><br>h).- Editar, coeditar, publicar, distribuir, comprar, vender, imprimir, producir, reproducir, importar, exportar y en general, comercializar de cualquier forma toda clase de obras musicales, con letra o sin ella, literarias, as? como aquellas que correspondan a cualquiera de las ramas de fotograf?a, cinematograf?a, audiovisuales, de radio y televisi?n, de danza, coreogr?ficas y pantom?micas y todas las dem?s que por analog?a pudieran considerarse comprendidas dentro de los tipos gen?ricos de obras art?sticas e intelectuales antes mencionadas;<br><br>i).- Producir, reproducir, importar, exportar, editar, coeditar, imprimir, publicar, distribuir, comprar, vender y en general, comercializar de cualquier forma con toda clase de fonogramas y videogramas, entendi?ndose por esto cualquier grabaci?n o fijaci?n de sonidos y/o im?genes, sobre un soporte material; (discos fonogr?ficos grabados, sonidos magnetof?nicos, grabados, videogramas y cualquier otra forma de publicaci?n de un fonograma o videograma conocido o por conocer) y con todo tipo de material impreso, tanto en un soporte f?sico (papel) como magn?tico o audiovisual, incluyendo enunciativa pero no limitativamente, revistas, libros, magazines, fasc?culos y todo tipo de publicaciones;<br><br>j).- Obtener, adquirir, transmitir y conceder el uso o goce de toda clase de licencias de se?ales de obras de radiodifusi?n, de audio y audio y video asociado;<br><br>k).- La programaci?n de estaciones de radio y televisi?n comerciales y redes p?blicas de telecomunicaciones;<br><br>l).- La producci?n, distribuci?n, representaci?n, compra, venta, arrendamiento y el comercio en general de toda clase de obras art?sticas e intelectuales para radio, cine, televisi?n, sistemas de televisi?n por cable, redes p?blicas de telecomunicaciones y cualquier otro sistema de telecomunicaciones;<br><br>m).- La producci?n, compra, venta, comisi?n, mediaci?n y comercio en general, de publicidad y propaganda comercial de ideas, sistemas, instituciones, empresas, productos y bienes en general, utilizando todo tipo de tecnolog?as publicitarias y preferentemente los medios masivos de publicidad, tales como el radio, el cine, la televisi?n, sistemas de telecomunicaciones, medios electr?nicos de publicidad, peri?dicos y revistas;<br><br>n).- Administrar, manejar, dirigir y reglamentar el funcionamiento operacional de equipos de f?tbol;<br><br>o).- Organizar, reglamentar y desarrollar todo tipo de torneos de f?tbol con equipos de otras ligas, clubes, escuelas, asociaciones y organizaciones relacionadas en forma directa o indirecta con la pr?ctica del f?tbol dentro y fuera de la Rep?blica Mexicana; <br><br>p).- La producci?n, licenciamiento, compra, venta, comisi?n, mediaci?n y comercio general, de obras audiovisuales de contenido deportivo para se transmitidos preferentemente a trav?s de cualquier medio masivo de comunicaci?n, tales como la radio abierta o restringida, televisi?n abierta o restringida, sistemas de televisi?n por cable, circuito cerrado de televisi?n, sistemas de transmisi?n restringido en autobuses, aeronaves, barcos, ferrocarriles o cualquier otro medio de transporte, hilo cinematogr?fico, cable, fibra ?ptica, microondas, sistema de difusi?n v?a sat?lite punto a punto o Directa al hogar (?DTH?), redes inform?ticas en ambiente o multi-usuarios, incluyendo sin limitar WAP (?protocolo de acceso inal?mbrico?), GPRS, UMTS, PDA (?asistente personal digital?), SMS (?Sistema de mensajes cortos?), sistemas o redes globales de informaci?n tales como el ?Internet?, o cualquier otro medio electr?nico, inform?tico, digital o an?logo, conocido o por conocerse, as? como los formatos o soportes materiales que se utilizan para la difusi?n de las obras audiovisuales tales como los discos compactos (compact disc), los discos compactos con contenido inform?tico (?cd-roms?), cintas, videocasettes, discos vers?tiles digitales (?DVDs?), medios impresos, incluyendo sin limitar, tarjetas postales, posters e inserciones en peri?dicos y revistas, o cualquier otra clase de formato o soporte material que se use en el presente o se invente en el futuro, ya sea en lo individual o a trav?s de compilaciones o colecciones que contengan cualquier obra audiovisual;<br><br>q).- La producci?n, dise?o, desarrollo y comercializaci?n de progral?gica (software), sitios web y aplicaciones m?viles; y<br><br>r).- Comprar, vender, arrendar, subarrendar, dar y tomar en comodato, disponer, poseer, permutar, usar, construir, reparar, gravar, operar y administrar toda clase de bienes inmuebles, urbanos o r?sticos, propios para las actividades de esta Sociedad o para las operaciones u objetos sociales de las sociedades, asociaciones o empresas que opere, incluyendo la adquisici?n y enajenaci?n de muebles, inmuebles y derechos reales que se consideren indispensables y que las leyes permitan.<br><br>DOS).- Reclutamiento y selecci?n de personal adecuado para cumplir con su objeto.<br><br>Para el desarrollo de su objeto, la sociedad podr?:<br>i).- Proporcionar todo tipo de servicios de personal especializado a terceros en todas las ramas de la ciencia, del conocimiento y del entretenimiento, dentro de las que, en forma  ejemplificativa m?s no limitativa, se mencionan las siguientes: legal o jur?dica, contable, fiscal, financiera, administrativa, de auditor?a, inform?tica, de computaci?n, sistemas, ingenier?a en todas sus ramas, arquitectura, dise?o gr?fico, dise?o industrial, publicidad, mercadotecnia, periodismo, medicina, biolog?a, econom?a, ciencias sociales, filosof?a, psicolog?a, comunicaci?n, telecomunicaciones, electr?nica y cualquier otra conocida o por conocerse; <br><br>ii).- Elaborar todo tipo de estudios y proyectos t?cnicos, econ?micos, sociales, financieros y administrativos, incluyendo la planeaci?n, programaci?n y control de obras y proyectos y su administraci?n y supervisi?n en general, incluyendo la elaboraci?n de proyectos y construcci?n de instalaciones mec?nicas, el?ctricas, y el desarrollo de ingenier?a de redes p?blicas de telecomunicaciones, dise?o de partes, equipos y sistemas electr?nicos y electromec?nicos;<br><br>iii).- Importar, exportar, adquirir, comprar, vender, arrendar, manufacturar, producir, distribuir y en general, comercializar con toda clase de bienes y servicios, materias primas, productos terminados o semi terminados y de cualquier otra forma celebrar todos los actos de comercio o de industria civil o mercantil que est?n permitidos por las leyes; <br><br>iv).- Prestar servicios t?cnicos y profesionales en materia de desarrollo de redes p?blicas de telecomunicaciones, as? como servicios profesionales de instalaci?n, mantenimiento y/o operaci?n de sistemas de redes y/o equipos de telecomunicaciones;<br><br>v).- Arrendar, subarrendar, tomar y dar en comodato, usar, poseer, adquirir, comprar, vender, construir, reparar, enajenar y operar por cualquier t?tulo legal toda clase de equipos, bodegas, almacenes, plantas, oficinas, salones, locales y dem?s establecimientos necesarios o convenientes para la realizaci?n de los objetos de la Sociedad, incluyendo la adquisici?n y enajenaci?n de muebles, inmuebles y derechos reales que se consideren indispensables y que las leyes permitan;<br><br>vi).- Prestar servicios, asistencia t?cnica, asesor?a o consultor?a de distribuci?n de bienes y servicios, servicios de seguridad, servicios de entretenimiento, servicios de mercadotecnia y publicidad, servicios de producci?n y postproducci?n de eventos y programas para los medios masivos de comunicaci?n y servicios de promoci?n de eventos y espect?culos en vivo;<br><br>vii).- Representar en calidad de agente, intermediario o mediador, comisionista, factor, consignatario, representante legal o mandatario de toda clase de personas, f?sicas o morales, nacionales o extranjeras;<br><br>viii).- Patrocinar y asesorar, a todo tipo de personas en toda clase de procedimientos, juicios, tr?mites y gestiones, ante toda clase de personas o autoridades de cualquier materia,  orden y grado, ante toda clase de entidades, as? como prestar dichos servicios conjuntamente con otros profesionistas en M?xico y en otros pa?ses en asuntos de car?cter internacional o local en los Estados Unidos Mexicanos o en cualquier pa?s del extranjero;<br><br>ix).- Adquirir, negociar, custodiar y enajenar por cualquier t?tulo de acciones, bonos, derechos, bienes, instrumentos financieros, t?tulos de cr?dito, valores y partes sociales de sociedades mercantiles, civiles o asociaciones de cualquier ?ndole, tanto nacionales como extranjeras, incluyendo el otorgamiento o recepci?n de las garant?as relacionadas con las actividades anteriores;<br><br>x).- Contratar, capacitar y entrenar a trabajadores, empleados, profesionales, pasantes, t?cnicos, obreros, talento art?stico y en general, todo tipo de personal que se haga necesario para la realizaci?n del objeto social;<br><br>xi).- Celebrar acuerdos, actos jur?dicos, convenios o contratos con todo tipo de despachos profesionales, colegios de profesionistas nacionales o extranjeros, as? como la recepci?n e intercambio de informaci?n y asistencia respecto de principios, normas, y pol?ticas profesionales, entrenamiento y capacitaci?n de personal y los programas para el mismo, el desarrollo de sistemas de computaci?n para todo tipo de servicios, desarrollo de base de datos para la coordinaci?n de servicio a clientes, as? como la utilizaci?n de instalaciones y el servicio de investigaci?n legislativa y de resoluciones judiciales, de contabilidad, de administraci?n, de finanzas, de estad?stica, de computaci?n, de ingenier?a, y de cualquier otra rama del conocimiento o de investigaci?n;<br><br> xii).- Contratar, aceptar y ejercer los poderes o mandatos que le otorguen las personas f?sicas o morales a las que la Sociedad les preste servicios y delegar en sus funcionarios o empleados el ejercicio de dichos poderes, as? como otorgar poderes generales o especiales a terceros a fin de cumplir con su objeto social; <br><br>xiii).- Contraer o conceder pr?stamos, otorgando o recibiendo las garant?as correspondientes, aceptar, girar, endosar y avalar toda clase de t?tulos de cr?dito y otorgar fianzas o garant?as de cualquier clase respecto de las obligaciones contra?das por la Sociedad o de los t?tulos emitidos o aceptados por terceros;<br><br>xiv).- Producir y usar obras susceptibles de protecci?n por el derecho de autor y los derechos conexos, as? como adquirir o transmitir la titularidad de derechos sobre las mismas y realizar todo acto jur?dico al respecto, inclusive, constituirse en causahabiente sobre los derechos de cualquier tipo de autores;<br><br>xv).- Producir, adquirir, ejercer, usar y transmitir derechos de propiedad industrial;<br><br>xvi).- Obtener, adquirir, transmitir, usar, registrar, negociar y conceder el uso o goce de toda clase de permisos, licencias, franquicias y concesiones;<br><br>xvii).- Ejecutar todos los actos y celebrar los convenios o contratos de cualquier naturaleza, que se relacionen con los fines anteriores.<br></td></tr></table></td></tr><tr><td>&nbsp;</td><td>&nbsp;</td></tr>	</table></fieldset></td></tr><tr><td>&nbsp;</td></tr></table></div></div></div>
+							--%>
+							</td>
+						</tr>
+					</table> 
+					
+					<script type="text/javascript">
+						var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
+					</script>
+					
+					
+					
+
+<td>
+</td>
+</tr>
+<tr>
+	<td>
+	</td>
+	<td width="100%"
+		>
+
+		<!-- Contenido Central -->
+	</td>
+	<td>
+	</td>
+</tr>
+</table>
+
+
+				</td>
+			</tr>
+		</table>
+	</form>
+	
+</body>
+</html>
+
+ 
+ 
+ 
+
+ 	
+ 
+
+</pd4ml:transform>
+ 
+  

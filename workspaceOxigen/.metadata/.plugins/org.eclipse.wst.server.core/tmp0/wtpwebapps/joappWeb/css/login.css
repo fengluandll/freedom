@@ -1,0 +1,35 @@
+.uno{
+	background-color: #2b3e50;
+	/*padding-bottom: 1%;*/
+}
+#startPalabra {
+	position: relative;
+	top: 8px;
+	right: 0px;
+	/*left: 41px;*/
+	color: white;
+	font-size: 32pt;
+	font-weight: 100;
+	font-family: Helvetica, sans-serif;
+}
+#linePalabra {
+	position: relative;
+	top: 8px;
+	right: px;
+	left: 19px;
+	color: white;
+	font-size: 32pt;
+	font-weight: 100;
+	font-family: Helvetica, sans-serif;
+}
+
+#web {
+	position: relative;
+	top: 8px;
+	right: px;
+	/*left: 4px;*/
+	color: white;
+	font-size: 10pt;
+	font-weight: 100;
+	font-family: Helvetica, sans-serif;
+}

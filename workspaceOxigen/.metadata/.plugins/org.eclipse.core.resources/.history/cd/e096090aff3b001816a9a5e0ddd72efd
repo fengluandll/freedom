@@ -1,0 +1,355 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	lang="es">
+<h:head>
+	<link rel="stylesheet" type="text/css" href="css/general.css" />
+	<link href="images/headset_icono.png" rel="shortcut icon" type='image/png'/>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="css/loginCss.css"/>
+    <!-- <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+     -->
+    
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/css/bootstrap.min.css"/>
+    <!-- themify-icons line icon -->
+    <link rel="stylesheet" type="text/css" href="assets/icon/themify-icons/themify-icons.css"/>
+    <!-- ico font -->
+    <link rel="stylesheet" type="text/css" href="assets/icon/icofont/css/icofont.css"/>
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
+	
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<!-- <script type="text/javascript" src="bower_components/jquery/js/jquery.min.js"></script>  -->
+    <!-- <script type="text/javascript" src="bower_components/jquery-ui/js/jquery-ui.min.js"></script>-->
+    <script type="text/javascript" src="bower_components/popper.js/js/popper.min.js"></script>
+    <script type="text/javascript" src="bower_components/bootstrap/js/bootstrap.min.js"></script>
+    <!-- jquery slimscroll js -->
+    <script type="text/javascript" src="bower_components/jquery-slimscroll/js/jquery.slimscroll.js"></script>
+    <!-- modernizr js -->
+    <script type="text/javascript" src="bower_components/modernizr/js/modernizr.js"></script>
+    <script type="text/javascript" src="bower_components/modernizr/js/css-scrollbars.js"></script>
+    
+    <script type="text/javascript" src="bower_components/i18next-xhr-backend/js/i18nextXHRBackend.min.js"></script>
+    <script type="text/javascript" src="bower_components/i18next-browser-languagedetector/js/i18nextBrowserLanguageDetector.min.js"></script>
+    <script type="text/javascript" src="bower_components/jquery-i18next/js/jquery-i18next.min.js"></script>
+    <script type="text/javascript" src="assets/js/common-pages.js"></script>
+	<script src="js/fontawesome/fontawesome-all.js"></script>
+
+<div id="fb-root"></div>
+
+	<script type="text/javascript">
+
+//SDK de FaceBook
+	$("document").ready(function(){
+		//init();	
+	
+		//$("#frmLogin:idUserFace").val('hola');	
+		
+			//document.getElementById('form:linkButton2').click();;
+	});
+
+	
+	
+	 // This is called with the results from from FB.getLoginStatus().
+	  function statusChangeCallback(response) {
+	    console.log('statusChangeCallback');
+	    
+	    console.log(response.status);
+	    
+	    // The response object is returned with a status field that lets the
+	    // app know the current login status of the person.
+	    // Full docs on the response object can be found in the documentation
+	    // for FB.getLoginStatus().
+	    if (response.status === 'connected') {
+	      // Logged into your app and Facebook.
+	      //redirecciona();
+	      testAPI();
+	    } else {
+	      // The person is not logged into your app or we are unable to tell.
+	      document.getElementById('status').innerHTML = "Please log " +
+	        "into this app. "+ response.status;
+	    }
+	  }
+
+	  // This function is called when someone finishes with the Login
+	  // Button.  See the onlogin handler attached to it in the sample
+	  // code below.
+	  function checkLoginState() {
+		 /* 
+		  if(response.status === 'unknown'){
+			  FB.login(function(response) {
+			        if (response.authResponse) {
+			         console.log('Welcome!  Fetching your information.... ');
+			         FB.api('/me', function(response) {
+			           console.log('Good to see you, ' + response.name + '.');
+			         });
+			        } else {
+			         console.log('User cancelled login or did not fully authorize.');
+			        }
+			    });
+		}*/
+	  /*  FB.getLoginStatus(function(response) {
+	    	if(response.status === 'unknown'){
+				  FB.login(function(response) {
+				        if (response.authResponse) {
+				         console.log('Welcome!  Fetching your information.... ');
+				         FB.api('/me', function(response) {
+				           console.log('Good to see you, ' + response.name + '.');
+				         });
+				        } else {
+				         console.log('User cancelled login or did not fully authorize.');
+				        }
+				    });
+				  statusChangeCallback(response);
+			}
+	     
+	    });*/
+		  FB.login(function(response) {
+			  if (response.authResponse) {
+			         console.log('Welcome!  Fetching your information.... ');
+			         FB.api('/me?fields=id,name,email,picture', function(response) {
+			           console.log('Good to see you, ' + response.name + '.' + response.gender + ' ' + response.picture);
+			          
+			         });
+			        } else {
+			         console.log('User cancelled login or did not fully authorize.');
+			        }
+			}, {scope: 'email',return_scopes: true});
+		  statusChangeCallback(response);
+	  }
+
+	  window.fbAsyncInit = function() {
+	    FB.init({
+	      appId      : '160670994618804',
+	      cookie     : true,  // enable cookies to allow the server to access 
+	                          // the session
+	      xfbml      : true,  // parse social plugins on this page
+	      version    : 'v2.12' // use graph api version 2.8
+	    });
+
+	    // Now that we've initialized the JavaScript SDK, we call 
+	    // FB.getLoginStatus().  This function gets the state of the
+	    // person visiting this page and can return one of three states to
+	    // the callback you provide.  They can be:
+	    //
+	    // 1. Logged into your app ('connected')
+	    // 2. Logged into Facebook, but not your app ('not_authorized')
+	    // 3. Not logged into Facebook and can't tell if they are logged into
+	    //    your app or not.
+	    //
+	    // These three cases are handled in the callback function.
+
+	    FB.getLoginStatus(function(response) {
+	      statusChangeCallback(response);
+	    });
+
+	  };
+
+	  // Load the SDK asynchronously
+	  (function(d, s, id) {
+	    var js, fjs = d.getElementsByTagName(s)[0];
+	    if (d.getElementById(id)) return;
+	    js = d.createElement(s); js.id = id;
+	    js.src = "https://connect.facebook.net/en_US/sdk.js";
+	    fjs.parentNode.insertBefore(js, fjs);
+	  }(document, 'script', 'facebook-jssdk'));
+
+	  // Here we run a very simple test of the Graph API after login is
+	  // successful.  See statusChangeCallback() for when this call is made.
+	  function testAPI() {
+	    console.log('Welcome!  Fetching your information.... ');
+	    FB.api('/me?fields=id,name,first_name,last_name,age_range,gender,locale,email,picture', function(response) {
+	      console.log('Successful login for: ' + response.name);
+	      document.getElementById('status').innerHTML =
+	   	        'Permisos, ' + response.name + '! '+ response.first_name + ' '+ response.last_name +
+	   	        		 ' ' + response.age_range + ' '   + response.gender + response.locale +  ' ' + response.picture + ' ' +
+	   	        		       response.email + ' json '+JSON.stringify(response);
+
+	      document.getElementById('frmLogin:idUserFace').value = response.email;	       
+	     
+	    });
+	  }
+
+	  function cierraSesion(){
+		  //alert('cerrando sesion');
+		  FB.logout(function(response) {
+			  document.getElementById('status').innerHTML =
+			        'cerraste sesión en facebook, ' + response.name + '!';
+			});
+	}
+		
+	function redirecciona(){
+		
+		window.location = '/joappWeb/index.xhtml';
+		
+		}
+	function redireccionaWeb(){
+		
+		window.open('http://www.startonline.com.mx');
+		
+		}
+</script>
+	
+	
+	
+	<style type="text/css">
+body {
+	/*background-color:rgb(224,224,224)  ;*/
+	/*background-image: url("images/background_black.jpg");*/
+	background-color: #353c4e;
+	
+	
+}
+
+/* .top {
+				filter:alpha(opacity=90);
+				opacity:0.8;
+				padding:50px 0 0 50px;
+			}*/
+
+</style>
+</h:head>
+<h:body>
+
+	
+<span id="startPalabra" onclick="redireccionaWeb()" style="cursor: pointer;">
+	start
+</span>
+<span class="text-danger" onclick="redireccionaWeb()" style="cursor: pointer;position: relative;
+															top: 8px;
+															right: px;
+															left: 32px;
+															font-size: 30pt;
+															font-weight: 100;
+															font-family: Helvetica, sans-serif">
+	Web
+</span>
+<span id="linePalabra" onclick="redireccionaWeb()" style="cursor: pointer;">
+	
+</span>
+<span id="web" onclick="redireccionaWeb()" style="cursor: pointer;">
+	www.startonline.com.mx
+</span>
+<center>
+    <section class="login p-fixed d-flex text-center bg-primary common-img-bg" >
+        <!-- Container-fluid starts -->
+        <div class="container-fluid" style="margin-top: -90px !important;">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- Authentication card start -->
+                    <div class="signin-card card-block auth-body mr-auto ml-auto">
+                       <!--  <form class="md-float-material"> -->
+                       
+                       <h:form id="frmLogin">
+                       <p:inputText type="email"
+							         			  id="idUserFace" 
+							         			   rendered="true"
+							         			  value="#{loginBean.user}" 
+							         			  required="false" 
+							         			  label="Usuario"
+							         			  style="position:relative;top:20px;" />
+                            <div class="auth-box">
+                                <div class="row m-b-20">
+                                    <div class="col-md-3">
+                                        <h3 class="text-center txt-primary">Iniciar Sesión</h3>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <p class="text-inverse m-t-25 text-left">¿No tienes una cuenta? <a href=""> Registrate </a> Aqui!</p>
+                                    </div>
+                                </div>
+                                <p class="text-inverse b-b-default text-left p-b-5">Logearse es sencillo con tu cuenta de red Social:</p>
+                                <div class="row m-b-20">
+                                    <div class="col-md-6">
+                                        <button class="btn btn-facebook m-b-20" onclick="checkLoginState();"><i class="fab fa-facebook-f"></i> Entrar con facebook</button>
+                                        <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button class="btn btn-twitter m-b-20"><i class="fab fa-twitter"></i> Entrar con twitter</button>
+                                      	<button class="btn btn-twitter m-b-20"  onclick="cierraSesion();"><i class="fas fa-sign-out-alt"></i> Salir</button>
+                                      	
+                                    </div>
+                                </div>
+                                <p class="text-inverse b-b-default text-left p-b-5">Entrar con tu cuenta normal</p>
+                                 
+                                 <div class="input-group">
+                                     <!-- <input type="email" class="form-control" placeholder="Username"/>  -->
+                                     <p:inputText type="email"
+									         			  id="idUser" 
+									         			  placeholder="Email" 
+									         			  styleClass="form-control" 
+									         			  value="#{loginBean.user}" 
+									         			  required="true" 
+									         			  label="Usuario"
+									         			   />
+									         <p:message for="idUser" />
+                                    <span class="md-line"></span>
+                                </div>
+                                <!--<div class="input-group">
+                                    <input type="password" class="form-control" placeholder="password"/>
+                                    <span class="md-line"></span>
+                                </div>
+                                 -->
+                                <div class="row m-t-25 text-left">
+                                    <div class="col-12">
+                                        <div class="checkbox-fade fade-in-primary">
+                                            <!-- 
+                                             <label>
+                                                 <input type="checkbox" value=""/>
+                                                <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+                                                <span class="text-inverse">Remember me</span>  
+                                            </label> 
+                                            -->
+                               <div class="input-group">
+                                             
+								</div>
+								<div class="input-group">
+									         <p:password id="password" 
+									         			 type="password" 
+									         			 placeholder="Contraseña"
+									         			 styleClass="form-control"
+									         			 value="#{loginBean.password}"
+														 required="true" 
+														 label="Contraseña"
+														 style="position:relative;top:35px;" />
+											<p:message for="password" />
+								</div>
+                                        </div>
+                                        <div class="forgot-phone text-right f-right">
+                                            <!-- <a href="auth-reset-password.html" class="text-right f-w-600 text-inverse"> Olvide mi contraseña</a>-->
+                                            <p:commandLink onclick="javascript:redirecciona()" style="font-color:#303548; font-size:12px;font-weight:300"> Olvide mi contraseña </p:commandLink>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row m-t-30">
+                                    <div class="col-md-12">
+                                        <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">LOGIN</button>
+                                        
+                                    </div>
+                                    
+                                    <div id="status" style="color:black;padding-top: 50px;">
+									    
+									    
+									</div>
+                                </div>
+                            </div>
+                        </h:form>
+                        <!-- end of form -->
+                    </div>
+                    <!-- Authentication card end -->
+                </div>
+                <!-- end of col-sm-12 -->
+            </div>
+            <!-- end of row -->
+        </div>
+        <!-- end of container-fluid -->
+    </section>
+    
+</center>
+
+</h:body>
+</html>

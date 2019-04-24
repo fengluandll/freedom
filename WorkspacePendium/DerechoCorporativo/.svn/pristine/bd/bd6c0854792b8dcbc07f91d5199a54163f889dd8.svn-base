@@ -1,0 +1,111 @@
+package mx.com.televisa.derechocorporativo.modules.captura;
+
+import java.sql.CallableStatement;
+import java.util.ArrayList;
+
+import mx.com.televisa.derechocorporativo.data.ConnectionWrapper;
+import mx.com.televisa.derechocorporativo.data.packages.DERCORP_CONSULTA_PKG;
+
+/**
+ * 
+ */
+public class EmpresaValues {
+
+	
+	boolean isAsociacionCivil;
+
+	public EmpresaValues(ConnectionWrapper conn, String idEmpresa) {
+
+		try {
+			
+			CallableStatement callStmt = conn.prepareCall(DERCORP_CONSULTA_PKG.GET_VALUES_PR);
+			
+			callStmt.setString(1, idEmpresa);
+			callStmt.registerOutParameter(2, java.sql.Types.NUMERIC);
+			
+			callStmt.execute();
+			
+			isAsociacionCivil = (callStmt.getInt(2) == 1);
+			
+			
+			
+			
+		} catch(Exception ex) {
+			
+			ex.printStackTrace();
+			
+		} finally {
+			
+			//ConnectionWrapper.closeAll(conn);
+		}
+		
+	}
+	
+	
+	
+	
+
+	public ArrayList<Seccion> getVisibleSeccionList(ArrayList<Seccion> seccionList) {
+		
+		ArrayList<Seccion> newSeccionList = new ArrayList<Seccion>(); 
+		
+		for (Seccion secc : seccionList) {
+			
+			boolean addElement = true;
+
+			
+			if(secc.getNomSeccion().toUpperCase().contains("CAPITAL") 
+					&& secc.getNomSeccion().toUpperCase().contains("SOCIAL")) {
+			
+				if(isAsociacionCivil) {
+					//ICL 12/11/2015 No ocultar EST CAP SOC
+					//addElement = false;
+				}
+			}
+			
+						
+			if(addElement) {
+				
+				newSeccionList.add(secc);
+			}			
+		}
+		
+		return newSeccionList;
+	}
+	
+	
+	
+
+	public ArrayList<SubSeccion> getVisibleSubSeccionList(ArrayList<SubSeccion> subseccionList) {
+		
+		ArrayList<SubSeccion> newSubSeccionList = new ArrayList<SubSeccion>(); 
+		
+		for (SubSeccion subsecc : subseccionList) {
+			
+			boolean addElement = true;
+
+			
+			if(subsecc.getNomSubSeccion().toUpperCase().contains("CAPITAL") 
+					&& subsecc.getNomSubSeccion().toUpperCase().contains("SOCIAL")) {
+			
+				if(isAsociacionCivil) {
+					//ICL 12/11/2015 No ocultar EST CAP SOC
+					//addElement = false;
+				}
+			}
+			
+						
+			if(addElement) {
+				
+				newSubSeccionList.add(subsecc);
+			}			
+		}
+		
+		return newSubSeccionList;
+	}
+	
+	
+	
+	
+	
+}

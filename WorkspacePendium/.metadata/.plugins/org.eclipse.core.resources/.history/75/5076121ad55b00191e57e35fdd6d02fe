@@ -1,0 +1,283 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"
+    import="mx.com.televisa.derechocorporativo.modules.reports.ecs.ReporteECSeccion,
+            mx.com.televisa.derechocorporativo.modules.captura.Pagina,
+            org.apache.commons.lang3.StringUtils,
+            mx.com.televisa.derechocorporativo.modules.reports.ecs.ReporteECSFlexTable,
+            mx.com.televisa.derechocorporativo.modules.captura.EmpresaValues,
+            mx.com.televisa.derechocorporativo.bean.AdminVigBean,
+            java.util.List,
+            java.util.Calendar,
+            java.util.Date,
+            mx.com.televisa.derechocorporativo.daos.ConsultaDAO"%>
+            
+<%@ taglib uri="pd4ml" prefix="pd4ml"%>            
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<pd4ml:transform
+	 screenWidth="1000" pageFormat="LETTER" fileName="Reporte Administración y Vigilancia"
+	 adjustScreenWidth="true"
+	 pageInsets="5,5,10,5,mm"
+	enableTableBreaks="true" enableImageSplit="false" debug="true">
+  <pd4ml:footer areaHeight="25" pageNumberTemplate="$[page] de $[total]" initialPageNumber="1"  pageNumberAlignment="right">
+  <%    
+       Calendar fecha = Calendar.getInstance();
+       
+       String[] meses = new String[]{
+         "Enero",
+         "Febrero",
+         "Marzo",
+         "Abril",
+         "Mayo",
+         "Junio",
+         "Julio",
+         "Agosto",
+         "Septiembre",
+         "Octubre",
+         "Noviembre",
+         "Diciembre"};
+       int anio = fecha.get(Calendar.YEAR);
+       int mes = fecha.get(Calendar.MONTH);
+       int dia = fecha.get(Calendar.DATE);
+      %>
+       <table style="width: 100%;">
+       	<tr>
+       		<td align="right" width="10%" style="text-align: right;"><font style="font-size: 12px;"><i>Página $[page] de $[total]</i></font>  </td>
+       	</tr>  
+  	  </table>
+ </pd4ml:footer>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<%@include file="/css/kaz-styles4Print.jsp"%>
+
+<script type="text/javascript" src="<%= request.getContextPath() %>/js/ejercicio/ejercicio.js"></script>
+<title>Reporte Administración y Vigilancia</title>
+</head>
+<body>
+<%		
+Calendar fecha = Calendar.getInstance();
+       
+       String[] meses = new String[]{
+         "Enero",
+         "Febrero",
+         "Marzo",
+         "Abril",
+         "Mayo",
+         "Junio",
+         "Julio",
+         "Agosto",
+         "Septiembre",
+         "Octubre",
+         "Noviembre",
+         "Diciembre"};
+       int anio = fecha.get(Calendar.YEAR);
+       int mes = fecha.get(Calendar.MONTH);
+       int dia = fecha.get(Calendar.DATE);
+      %>
+
+
+<%String hiddenEmpresa  = 	(request.getParameter("hiddenEmpresa") != null) ? request.getParameter("hiddenEmpresa") : "";%>
+<%String idPersona 		= 	(request.getParameter("idPersona") != null) ? request.getParameter("idPersona") : "";%>
+<%String totAdminVig	=    request.getParameter("totAdminVig");
+	
+	
+
+	EmpresaValues empresaValues = new EmpresaValues();
+	ConsultaDAO luConsultaDAO   = new ConsultaDAO();%>
+
+<table width="100%">
+<tr>
+<td><span style="text-align: center"><h1>Reporte: Administraci&oacute;n y Vigilancia</h1></span><strong></td>
+<td align="right"><span style="color:gray;">Fecha de emisión: <%=dia+"/"+meses[mes]+"/"+anio %></span></strong></td>
+</tr>
+</table>
+<%String outHtml 	 = "";
+  String outTable    = "";%>		
+
+<%if(!hiddenEmpresa.equals("")){ %>
+<strong><span style="color:gray;">Empresa(s):</span></strong><br>
+<span style="color:gray;"><%= EmpresaValues.getNomEmpresas(hiddenEmpresa) %></span><br>
+<%} %>
+<%if(idPersona.length() > 0){ %>
+<strong><span style="color:gray;">Nombre(s):</span></strong><br>
+<span style="color:gray;"><%= EmpresaValues.getNombresFuncionarios(idPersona) %></span><br>
+<%} %>
+
+
+<%	
+  ReporteECSFlexTable 	reporteECSFlexTable;
+  AdminVigBean 			adminVigBean = new AdminVigBean();
+  String[] 				arrayidFlex;
+
+	if(idPersona.length() > 0){
+		adminVigBean = empresaValues.getEmpresasByNombreFuncionario(idPersona, totAdminVig);
+		if(hiddenEmpresa.length() > 0){
+			hiddenEmpresa = hiddenEmpresa + ","+ adminVigBean.getIdEmpresa();
+		}else{
+			hiddenEmpresa = hiddenEmpresa + adminVigBean.getIdEmpresa();
+		}
+		if(!hiddenEmpresa.equals("")){
+			hiddenEmpresa = empresaValues.ordenaEmpresas(hiddenEmpresa);	
+		}
+		
+	}  
+	
+	String[] empresas    = StringUtils.split(hiddenEmpresa.trim(),",");
+	String[] idPersonas  = StringUtils.split(idPersona.trim(),",");
+	if(idPersona.length() > 0){
+		arrayidFlex = StringUtils.split(adminVigBean.getIdFlex(),",");	
+	}else{
+		arrayidFlex = StringUtils.split(totAdminVig,",");	
+	}
+	
+	String nomEmpresa = "";
+	int count 		= 0;
+	int countFlex	= 0;
+if(!hiddenEmpresa.equals("") && idPersona.equals("")){
+
+%>
+<table width="100%" border="0" id="tbl_stat_0" name="tbl_stat_0">
+<tbody>
+<% 
+
+	if(empresas.length > 0){
+	 
+		%>
+
+	
+<%	for(String empresa : empresas){ 
+	count ++;
+	countFlex = 0;
+	nomEmpresa = EmpresaValues.getNomEmpresa(empresa);
+	if(count > 1){%>
+		<tr>
+			<td>
+				<div style="height: 100px;"></div>
+			</td>
+		</tr>
+		
+	<%} %>	
+		<tr>
+			<td align="center">
+				<strong><span style='font-size:22px;'><%=nomEmpresa%></span></strong>		
+			</td>
+		</tr>
+       
+			<% 
+				for(String idFlex : arrayidFlex){
+					int liCountRegistros = luConsultaDAO.consultar_Adm_Vig(empresa, Integer.parseInt(idFlex));
+					if(liCountRegistros > 0){
+				%>
+				<tr bgcolor="">
+				<td colspan="8">
+				<div id="flexTable_<%=idFlex%>">
+			<%	reporteECSFlexTable = new ReporteECSFlexTable(Integer.parseInt(idFlex.trim()),empresa);
+				outTable = reporteECSFlexTable.toHTMLHorizontal(request,empresa,"",idPersona); %>
+			<% if(outTable.equals("")){ 
+				countFlex++;%>
+				
+			<%}else{ %>
+				<%=outTable%>
+			<%} 
+				if(countFlex == 16){%>
+				<h4>NO EXISTE INFORMACIÓN PARA ESTA EMPRESA</h4>	
+			<%}%>
+				</div>
+				</td>
+				</tr>
+				
+				
+			<%   } 
+				} %>
+
+	<%}%>
+
+<%}else{ %>
+	
+		
+			<h1>NADA</h1>
+		
+<%}%>
+</tbody>
+</table>
+
+<%}else if(!idPersona.equals("") && !hiddenEmpresa.equals("")){ %>
+		
+	<table width="100%" border="0" id="tbl_stat_0" name="tbl_stat_0">
+<tbody>
+<% 
+	if(empresas.length > 0){%>
+
+	
+<%	for(String empresa : empresas){ 
+		StringBuilder idFlex = new StringBuilder();
+		nomEmpresa = EmpresaValues.getNomEmpresa(empresa);
+		count ++;
+		countFlex = 0;
+		if(count > 1){%>
+		<tr>
+			<td>
+				<div style="height: 100px;"></div>
+			</td>
+		</tr>
+		
+	<%} %>
+		<tr>
+			<td align="center">
+				<strong><span style='font-size:22px;'><%=nomEmpresa%></span></strong>		
+			</td>
+		</tr>
+       
+			<% 
+			    List<AdminVigBean> listAdmin = empresaValues.getListAdminVigBean();
+			
+				for(AdminVigBean admin : listAdmin){
+					if(empresa.equals(admin.getIdEmpresa())){
+						idFlex.append(admin.getIdFlex());
+						idFlex.append(",");						
+					}
+				}
+				idFlex.delete(idFlex.length()-1, idFlex.length());
+				arrayidFlex = StringUtils.split(idFlex.toString(),",");	
+				for(String idFlexx : arrayidFlex){
+				 int liCountRegistros = luConsultaDAO.consultar_Adm_Vig(empresa, Integer.parseInt(idFlexx));
+					if(liCountRegistros > 0){%>
+				<tr bgcolor="">
+				<td colspan="8">
+				<div id="flexTable_<%=idFlexx%>">
+			<%	reporteECSFlexTable = new ReporteECSFlexTable(Integer.parseInt(idFlexx.trim()),empresa);
+				outTable = reporteECSFlexTable.toHTMLHorizontal(request,empresa,"",idPersona); %>
+			<% if(outTable.equals("")){ 
+				countFlex++;%>
+				
+			<%}else{ %>
+				<%=outTable%>
+			<%} 
+				if(countFlex == 16){%>
+				<h4>NO EXISTE INFORMACIÓN PARA ESTA EMPRESA</h4>	
+			<%}%>
+				</div>
+				</td>
+				</tr>
+				
+				
+			<%}
+					} %>
+
+	<%}%>
+
+	<%}else{ %>
+	
+		
+			<h1>NADA</h1>
+		
+	<%}%>
+	</tbody>
+	</table>
+		
+<%}else{%>
+<strong><h3>EL reporte no arrojo ningún resultado</h3></strong>
+<%} %>
+</body>
+</html>
+</pd4ml:transform>

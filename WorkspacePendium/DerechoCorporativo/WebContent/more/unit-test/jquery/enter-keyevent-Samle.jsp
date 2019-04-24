@@ -1,0 +1,36 @@
+<html>
+<head>
+
+<script type="text/javascript"
+	src="<%= request.getContextPath() %>/js/jquery/jquery-1.4.3.min.js"></script>
+
+</head>
+<body>
+	<h1>Check if "enter" is pressed with jQuery</h1>
+
+	<label>TextBox : </label>
+	<input id="textbox" type="text" size="50" />
+
+	<script type="text/javascript">
+ 
+$('#textbox').keypress(function(event){
+ 
+	var keycode = (event.keyCode ? event.keyCode : event.which);
+	if(keycode == '13'){
+		alert('You pressed a "enter" key in textbox');	
+	}
+	event.stopPropagation();
+});
+ 
+$(document).keypress(function(event){
+ 
+	var keycode = (event.keyCode ? event.keyCode : event.which);
+	if(keycode == '13'){
+		alert('You pressed a "enter" key in somewhere');	
+	}
+ 
+});
+ 
+</script>
+</body>
+</html>

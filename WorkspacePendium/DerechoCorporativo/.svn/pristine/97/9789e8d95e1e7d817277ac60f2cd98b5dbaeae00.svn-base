@@ -1,0 +1,88 @@
+.Img_Semaforo_red {  
+  width: 32px;
+  height:32px;
+  background-image: url("../img/semaforo_red.png");
+  background-repeat: no-repeat; 
+  cursor:pointer;
+}
+
+.Img_Semaforo_green {  
+  width: 32px;
+  height:32px;
+  background-image: url("../img/semaforo_green.png");
+  background-repeat: no-repeat; 
+  cursor:pointer;
+}
+
+.Img_Semaforo_yellow {  
+  width: 32px;
+  height:32px;
+  background-image: url("../img/semaforo_yellow.png");
+  background-repeat: no-repeat; 
+  cursor:pointer;
+}
+
+.Img_Semaforo_gray{
+	width: 32px;
+  height:32px;
+  background-image: url("../img/semaforo_gray.png");
+  background-repeat: no-repeat; 
+  cursor:pointer;
+}
+
+.Img_Icon_edit{  
+  width: 32px;
+  height:32px;
+  background-image: url("../img/icons/edit.png");
+  background-repeat: no-repeat; 
+  cursor:pointer;
+}
+
+
+.Img_Icon_delete{  
+  width: 32px;
+  height:32px;
+  background-image: url("../img/icons/delete.png");
+  background-repeat: no-repeat; 
+  cursor:pointer;
+}
+
+.Img_Icon_new{  
+  width: 32px;
+  height:32px;
+  background-image: url("../img/icons/new.png");
+  background-repeat: no-repeat; 
+  cursor:pointer;
+}
+
+.Img_Icon_update{  
+  width: 32px;
+  height:32px;
+  background-image: url("../img/icons/update.png");
+  background-repeat: no-repeat; 
+  cursor:pointer;
+}
+
+.Img_Icon_details{  
+  width: 32px;
+  height:32px;
+  background-image: url("../img/icons/List.png");
+  background-repeat: no-repeat; 
+  cursor:pointer;
+}
+
+.Img_Icon_Documentum{  
+  width: 32px;
+  height:32px;
+  background-image: url("../img/icons/List.png");
+  background-repeat: no-repeat; 
+  cursor:pointer;  
+}
+
+.Waiting{  
+  width: 60px;
+  height:64px;
+  background-image: url("../img/Waiting.GIF");
+  background-repeat: no-repeat; 
+  cursor:wait;  
+}

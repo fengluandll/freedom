@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;adminUser.xhtml&apos; to &apos;admin&apos;" description="Move &apos;adminUser.xhtml&apos; to &apos;admin&apos;" destination="WebContent/admin" element1="WebContent/adminUser.xhtml" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1519775828707" updateReferences="true"/>
+</session>

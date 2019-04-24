@@ -1,0 +1,11 @@
+INDEX VERSION 1.4+C:\Users\argumedo\workspaceOxigen\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+7497660.index
+3616301126.index
+509557785.index
+2067611539.index
+1397685052.index
+3443137980.index
+4161843796.index
+370122012.index
+3680592165.index
+2000004499.index

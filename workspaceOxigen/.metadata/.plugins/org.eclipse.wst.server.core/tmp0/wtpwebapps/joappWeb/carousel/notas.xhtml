@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css"/>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+
+<style type="text/css">
+.ui-widget,.ui-widget .ui-widget {
+	   font-size: 80%;
+	}
+	body{
+		background-color: black;
+	}
+	.ui-widget-content{
+		background-color: white;
+	}
+</style>
+<script type="text/javascript">
+function atras(){
+	
+	var lol = window.parent.document.getElementById('contenPrincipal');
+	//lol.src = '/joappWeb/dashboards/dashBoardCourses.xhtml?'+'unitId='+unitId;
+	lol.src = '/joappWeb/dashboards/dashBoardCourses.xhtml';
+	
+	}
+</script>
+</h:head>
+<h:body>
+<h:form>
+ 
+<center>
+<p:panelGrid styleClass="borderCero3">
+<p:row>
+	<p:column colspan="2" style="background-color:black;">
+		<h:outputText style="color:white;font-size:18px;" value="#{sessionScope['nombreNota']}"/>
+		<p:growl id="msg" showDetail="true" autoUpdate="true"/>
+	</p:column>
+	<p:column style="background-color:black;">
+		<p:commandButton id="btnGuardaNota" 
+						 value="Guardar" 
+						 actionListener="#{dialogNotesBean.guardaNota}"
+		                 icon="ui-icon-disk"/>
+	</p:column>
+	<p:column style="background-color:black;">
+		 <p:commandLink   action="#{dialogNotesBean.ligaAtras}" ajax="false">
+			<p:graphicImage style="cursor:pointer" value="/images/back.png" title="Regresar"/>
+		 </p:commandLink>
+	</p:column>
+</p:row>
+</p:panelGrid>
+<br/>
+<p:editor id="editor" 
+			  value="#{dialogNotesBean.contentNote}" 
+			  width="410"/>
+</center>
+</h:form>
+</h:body>
+</html>

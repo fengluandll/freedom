@@ -1,0 +1,15 @@
+127.0.0.1 - - [18/Jun/2014:12:33:19 -0500] "GET / HTTP/1.1" 404 961
+127.0.0.1 - - [18/Jun/2014:17:05:27 -0500] "GET / HTTP/1.1" 404 961
+192.168.0.61 - - [18/Jun/2014:17:07:00 -0500] "POST /ConectOracleService/services/EmpleadoDAO?wsdl HTTP/1.1" 200 551
+192.168.0.61 - - [18/Jun/2014:17:08:19 -0500] "POST /ConectOracleService/services/EmpleadoDAO?wsdl HTTP/1.1" 200 16197
+192.168.0.61 - - [18/Jun/2014:17:08:19 -0500] "POST /ConectOracleService/services/EmpleadoDAO?wsdl HTTP/1.1" 200 21119
+192.168.0.61 - - [18/Jun/2014:17:08:26 -0500] "POST /ConectOracleService/services/EmpleadoDAO?wsdl HTTP/1.1" 200 16197
+192.168.0.61 - - [18/Jun/2014:17:08:32 -0500] "POST /ConectOracleService/services/EmpleadoDAO?wsdl HTTP/1.1" 200 21119
+192.168.0.61 - - [18/Jun/2014:17:10:28 -0500] "POST /ConectOracleService/services/EmpleadoDAO?wsdl HTTP/1.1" 200 551
+192.168.0.61 - - [18/Jun/2014:17:10:52 -0500] "POST /ConectOracleService/services/EmpleadoDAO?wsdl HTTP/1.1" 200 551
+192.168.0.61 - - [18/Jun/2014:17:11:46 -0500] "POST /ConectOracleService/services/EmpleadoDAO?wsdl HTTP/1.1" 200 554
+192.168.0.61 - - [18/Jun/2014:17:11:58 -0500] "POST /ConectOracleService/services/EmpleadoDAO?wsdl HTTP/1.1" 200 539
+192.168.0.61 - - [18/Jun/2014:17:16:33 -0500] "POST /ConectOracleService/services/EmpleadoDAO?wsdl HTTP/1.1" 200 16197
+192.168.0.61 - - [18/Jun/2014:17:16:39 -0500] "POST /ConectOracleService/services/EmpleadoDAO?wsdl HTTP/1.1" 200 21119
+192.168.0.61 - - [18/Jun/2014:17:20:25 -0500] "POST /ConectOracleService/services/EmpleadoDAO?wsdl HTTP/1.1" 200 19308
+192.168.0.61 - - [18/Jun/2014:17:20:32 -0500] "POST /ConectOracleService/services/EmpleadoDAO?wsdl HTTP/1.1" 200 64637

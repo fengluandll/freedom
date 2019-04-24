@@ -1,0 +1,70 @@
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFFont;
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.ss.util.CellUtil;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class ExcelMain {
+	
+	private final String FILE_NAME = "C:\\Users\\argumedo\\Documents\\ProyectoNava\\AGENDA2018.xlsx";
+	Workbook    workbook;
+	Sheet 	 	sheet;
+	CellStyle 	style;
+	Font 	font;
+
+	public ExcelMain() {
+		
+		workbook 	= new XSSFWorkbook();
+        sheet 		= workbook.createSheet("Abril");
+        
+        sheet.addMergedRegion(new CellRangeAddress(0,0,1,5));//first row,last row(hacia abajo),first column,last column
+        Row row = sheet.createRow(0); 
+        Cell cell = row.createCell(1);
+        cell.setCellValue("Lunes 2 de abril");
+        cell.setCellStyle(StyleCustom.diaSemanaBlack(workbook));
+        
+        sheet.addMergedRegion(new CellRangeAddress(0,0,6,10));
+        //Row row2 = sheet.createRow(0);
+        Cell cell2 = row.createCell(6);
+        cell2.setCellValue("Martes 3 de abril");
+        cell2.setCellStyle(StyleCustom.diaSemanaBlack(workbook));
+        
+        
+        
+        try {
+            FileOutputStream outputStream = new FileOutputStream(FILE_NAME);
+            workbook.write(outputStream);
+            outputStream.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Done");
+        
+		
+	}
+
+	public static void main(String[] args) {
+		
+			new ExcelMain();
+	}
+
+}

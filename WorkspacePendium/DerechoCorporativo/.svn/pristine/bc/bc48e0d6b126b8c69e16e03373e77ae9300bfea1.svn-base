@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<!-- 
+<link href="css/main_style.css" rel="stylesheet" type="text/css">
+ -->
+
+<%@include file="/css/kaz-styles.jsp"%>
+<%@include file="/css/jqueryslidemenu.jsp"%>
+
+
+<!--[if lte IE 7]>
+<style type="text/css">
+html .jqueryslidemenu{height: 1%;} /*Holly Hack for IE7 and below*/
+</style>
+<![endif]-->
+
+
+<script type="text/javascript"
+	src="<c:out value="${applicationBean.contextPath}"/>/js/jquery/jquery-1.4.3.min.js"></script>
+<script type="text/javascript"
+	src="<c:out value="${applicationBean.contextPath}"/>/js/ajax/simpleAjaxUtil.js"></script>
+	
+<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+-->
+<script type="text/javascript" src="<c:out value="${applicationBean.contextPath}"/>/js/slideMenu/jqueryslidemenu.js"></script>
+<script type="text/javascript" src="js/simpleAjaxUtil.js"></script>
+<%@include file="part/validaciones.jsp" %>
+<%@include file="/jsp/components/calendar/include_calendar.jsp"%>
+<script type="text/javascript">
+
+function performSearch() {
+
+    var ajaxRequest = simpleAjaxUtil_getXmlHttpObject();     
+	
+    if (ajaxRequest==null) {alert ("Browser does not support HTTP Request");return;}
+	
+	
+	var empresa = document.getElementById('empresa').value;
+	var concepto = document.getElementById('concepto').value;
+	var criterio = document.getElementById('criterio').value;
+	
+	
+	
+	document.getElementById('output').innerHTML = "<center>Buscando ... <img src='img/esperar.gif'></center>";
+	
+    var url = 'cap.jsp';
+	var parameters = 	"empresa=" + empresa + "&" + 
+						"concepto=" + concepto + "&" + 
+						"criterio=" + criterio;
+	
+
+    ajaxRequest.open("post", url, true);
+    ajaxRequest.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    ajaxRequest.onreadystatechange=function(){
+    
+	    if(ajaxRequest.readyState == 4 && ajaxRequest.status==200){
+	
+			//alert('Response');
+
+		    var response = ajaxRequest.responseText;
+		    document.getElementById('output').innerHTML = response;
+	      } 
+		  /*else {
+			  alert(ajaxRequest.readyState);
+			  alert(ajaxRequest.status);
+			}*/
+    };    
+    ajaxRequest.send(parameters);
+}
+
+
+
+</script>
+
+
+
+<% 
+mx.com.televisa.derechocorporativo.util.FacesUtils.getSessionBean().setIdCurrentEmpresa(request.getParameter("idEmp"));
+mx.com.televisa.derechocorporativo.util.FacesUtils.getSessionBean().setNomEmpresa(request.getParameter("NomEmp"));
+%>
+
+
+
+
+
+</head>
+<body background="img/bg.jpg" onLoad="" class="fontmenu" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+
+<%--
+<jsp:include page="menu.jsp"></jsp:include>
+--%>								
+									
+
+<a name="TOP"></a>
+
+
+
+<table width="780" height="100%" border="0" align="center">
+	<tr>
+	  <td>
+	  
+	  		<div style="display: none">
+	  
+				<jsp:include page="/jsp/components/pages_border/open-pre-title.jsp"></jsp:include>				
+
+                        B�squeda
+                        
+                <jsp:include page="/jsp/components/pages_border/open-post-title.jsp"></jsp:include>
+
+						
+						
+						<table width="80%" border="0" cellspacing="0" cellpadding="0">
+						  <tr>
+						    <td width="18%">Empresa:</td>
+						    <td width="57%">
+                            <select name="empresa" id="empresa">
+                            	<option value="0">(Todas)</option>
+                            	<option value="1">Televisa</option>
+                                <option value="2">Editorial Televisa</option>
+                                <option value="3">Intermex</option>
+                                <option value="4">AISA</option>
+                            </select>
+                            
+                            </td>
+						    <td width="25%">&nbsp;</td>
+					      </tr>
+						  <tr>
+						    <td>&nbsp;</td>
+						    <td>&nbsp;</td>
+						    <td>&nbsp;</td>
+					      </tr>
+						  <tr>
+						    <td>Concepto:</td>
+						    <td><input type="text" id="concepto" name="concepto" size="30"></td>
+						    <td>&nbsp;</td>
+					      </tr>
+						  <tr>
+						    <td>Criterio</td>
+						    <td><input type="text" id="criterio" name="criterio" size="30"></td>
+						    <td>&nbsp;</td>
+					      </tr>
+						  <tr>
+						    <td>&nbsp;</td>
+						    <td align="right"><input type="button" value="   Buscar   " onClick="performSearch()"></td>
+						    <td>&nbsp;</td>
+					      </tr>
+					    </table>
+					    
+				<jsp:include page="/jsp/components/pages_border/close.jsp"></jsp:include>
+				
+				
+				</div>
+			  
+			  
+			  <p>
+			    
+	    </p>
+			  
+              
+
+
+<form name="form1" method="post" action="" onSubmit="">
+
+              
+              <div id="output">
+              
+              </div>
+</form>	
+              
+		  
+    
+</td>
+  
+  </tr>
+</table> 
+
+
+
+
+<script type="text/javascript">
+
+performSearch();
+
+
+</script>
+
+</body>
+</html>

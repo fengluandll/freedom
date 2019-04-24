@@ -1,0 +1,42 @@
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+
+
+public class StyleCustom {
+	
+	
+	public static CellStyle diaSemanaBlack(Workbook workbook){
+		CellStyle style = workbook.createCellStyle();
+        style.setFillBackgroundColor(IndexedColors.BLACK.getIndex());
+        style.setFillPattern(XSSFCellStyle.BIG_SPOTS);
+        Font font = workbook.createFont();
+        font.setFontHeightInPoints((short) 14);
+        font.setFontName("Arial");
+        font.setColor(HSSFColor.WHITE.index);
+        font.setBoldweight(Font.BOLDWEIGHT_BOLD);
+        style.setFont(font);
+        style.setAlignment(XSSFCellStyle.ALIGN_CENTER);
+        return style;
+	}
+	
+	/**
+	 * 
+	 * @param workbook
+	 * @param colorcelda en mayusculas el color a desear
+	 * @return
+	 */
+	public static CellStyle colorCelda(Workbook workbook,String colorcelda){
+		CellStyle style = workbook.createCellStyle();
+		if(colorcelda.equals("AZUL")){
+			style.setFillBackgroundColor(IndexedColors.BLUE.getIndex());
+		}
+        
+        style.setFillPattern(XSSFCellStyle.SOLID_FOREGROUND);
+        return style;
+	}
+
+}

@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+<ui:composition template="/WEB-INF/templateApp.xhtml">	
+
+<ui:define name="head">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"/>
+	
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <!-- Favicon icon -->
+    <link rel="icon" href="images/headset_icono.png" type="image/x-icon"/>
+    <!-- Required Fremwork -->
+</ui:define>
+
+<!--  <ui:define name="barraNavegacion">
+			<div class="route-bar-breadcrumb">
+               <h:link outcome="/index" class="fa fa-home"></h:link> 
+               <span>/</span>
+               <ui:insert name="viewname" />
+             </div>
+</ui:define> -->  
+
+<ui:define name="content">
+	<ui:include src="./home/content.xhtml"></ui:include>
+</ui:define>
+
+
+
+</ui:composition>
+</h:body>
+</html>

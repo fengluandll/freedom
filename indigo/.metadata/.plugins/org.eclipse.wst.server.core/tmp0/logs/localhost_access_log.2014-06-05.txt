@@ -1,0 +1,9 @@
+127.0.0.1 - - [05/Jun/2014:09:31:24 -0500] "GET / HTTP/1.1" 404 961
+192.168.201.88 - - [05/Jun/2014:09:31:37 -0500] "GET /ConectOracleService/services/EmpleadoDAO?wsdl HTTP/1.1" 200 2553
+127.0.0.1 - - [05/Jun/2014:17:51:15 -0500] "GET / HTTP/1.1" 404 961
+192.168.201.88 - - [05/Jun/2014:17:51:38 -0500] "GET /ConectOracleService/services/EmpleadoDAO?wsdl HTTP/1.1" 200 2553
+192.168.201.88 - - [05/Jun/2014:17:51:38 -0500] "GET /favicon.ico HTTP/1.1" 404 983
+192.168.0.56 - - [05/Jun/2014:17:53:33 -0500] "POST /ConectOracleService/services/EmpleadoDAO?wsdl HTTP/1.1" 200 551
+192.168.0.58 - - [05/Jun/2014:17:55:41 -0500] "POST /ConectOracleService/services/EmpleadoDAO?wsdl HTTP/1.1" 200 551
+192.168.0.58 - - [05/Jun/2014:17:56:44 -0500] "POST /ConectOracleService/services/EmpleadoDAO?wsdl HTTP/1.1" 200 540
+192.168.201.88 - - [05/Jun/2014:18:03:30 -0500] "GET /ConectOracleService/services/EmpleadoDAO?wsdl HTTP/1.1" 200 2553

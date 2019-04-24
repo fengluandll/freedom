@@ -1,0 +1,93 @@
+{   "name": "GRUPO TELEVISA, S.A.B.",   "children": [     { "name":"PROMO-INDUSTRIAS (99.999955%)"        , "children": [          { "name":"     CADENA RADIODIFUSORA (49.999965%)"             , "children": [               { "name":"          XEZZ (49.499965%)"                  , "children": [                    { "name":"               SERVICIOS XEZZ (49.499975%)"                    }                    ]                    },                   { "name":"          RADIO MELODIA (49.499965%)"               },               { "name":"          RADIOTAPATIA (49.500044%)"               }               ]               },              { "name":"     COISA (1.999999%)"          },          { "name":"     ACACIAS (.100000%)"          },          { "name":"     CANELOS (11.764874%)"          },          { "name":"     JANA (.000361%)"          },          { "name":"     BOSQUES (1.960975%)"             , "children": [               { "name":"          CANELOS (11.764874%)"               }               ]               },              { "name":"     TELEINMOBILIARIA (.000000%)"          },          { "name":"     TELEVISA (.001785%)"             , "children": [               { "name":"          FUNDACIÓN  (0%)"               }          ]}]          },      { "name":"SISTEMA RADIOPOLIS (50.000000%)"        , "children": [          { "name":"     CADENA RADIODIFUSORA (49.999965%)"             , "children": [               { "name":"          XEZZ (49.499965%)"                  , "children": [                    { "name":"               SERVICIOS XEZZ (49.499975%)"                    }                    ]                    },                   { "name":"          RADIO MELODIA (49.499965%)"               },               { "name":"          RADIOTAPATIA (49.500044%)"               }               ]               },              { "name":"     RADIO COMERCIALES (49.986798%)"             , "children": [               { "name":"          SERVICIOS RADIOPOLIS (50%)"               },               { "name":"          SERVICIOS XEZZ (49.499975%)"               }               ]               },              { "name":"     RADIO TELEVISORA DE MEXICALI (49.999876%)"          },          { "name":"     SERVICIOS RADIOPOLIS (50%)"          }          ]          },         { "name":"FUNDACIÓN  (0%)"     }     ]}
+
+
+
+
+<%-- 
+{
+ "name": "Grupo Televisa",
+ "children": [
+  {
+   "name": "RADIO",
+   "children": [
+    {
+     "name": "XEZZ",
+     	"children": [
+		      {"name": "Servicios Xezz"}
+		     ]
+    },
+    {
+     "name": "La Z",
+     "children": [
+      {"name": "Concursos"}
+     ]
+    }
+   ]
+  },
+  {
+   "name": "AISA",
+   "children": [
+    {"name": "Sorteos del Trebol"},
+    {"name": "Multijuegos"}
+   ]
+  }
+ ]
+}
+--%>
+
+
+
+<%--
+{
+   "name": "CADENA RADIODIFUSORA MEXICANA, S.A. DE C.V.",
+   "children": [
+     { "name":"XEZZ (99.000000% * 99.000000%)"
+        , "children": [
+
+          { "name":"     SERVICIOS XEZZ (99.998000% * 98.998020%)"
+          }
+          ]
+     },
+     { "name":"RADIO MELODIA (99.000000% * 99.000000%)"
+     },
+     { "name":"RADIOTAPATIA (99.000158% * 99.000158%)"
+     }
+     ]
+}
+ --%>
+ 
+ 
+<%-- 
+ {
+   "name": "SISTEMA RADI�POLIS, S. A. DE  C. V.",
+   "children": [
+     { "name":"CADENA RADIODIFUSORA (99.999858%)"
+        , "children": [
+          { "name":"     XEZZ (98.999859%)"
+             , "children": [
+               { "name":"          SERVICIOS XEZZ (98.999878%)"
+               }
+               ]     
+          },    
+          { "name":"     RADIO MELODIA (98.999859%)"
+          },
+          { "name":"     RADIOTAPATIA (99.000017%)"
+          }
+          ]     
+     },    
+     { "name":"RADIO COMERCIALES (99.973596%)"
+        , "children": [
+          { "name":"     SERVICIOS RADIOPOLIS (99.999999%)"
+          },
+          { "name":"     SERVICIOS XEZZ (98.999878%)"
+          }
+          ]     
+     },    
+     { "name":"RADIO TELEVISORA DE MEXICALI (99.999751%)"
+     },
+     { "name":"SERVICIOS RADIOPOLIS (99.999999%)"
+     }     ]
+}
+--%>
+
+

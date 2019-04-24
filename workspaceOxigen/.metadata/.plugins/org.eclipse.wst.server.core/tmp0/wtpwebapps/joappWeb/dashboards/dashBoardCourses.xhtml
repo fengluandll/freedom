@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+      <h:head>
+<script type="text/javascript">
+	function redirecciona(unitId){
+		var lol = window.parent.document.getElementById('contenPrincipal');
+		lol.src = '/joappWeb/TopicCarouselServlet?'+'unitId='+unitId;
+		
+		}
+	window.onload = function crea(){
+		PF('barGral').setValue(0);
+		}
+
+	function changeClass(My_Element, My_Class) {
+		
+        document.getElementById(My_Element).setAttribute("class", My_Class);
+    }
+</script>
+<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css"/>
+<link rel="stylesheet" type="text/css" href="../css/custom.css"/>
+<link rel="stylesheet" type="text/css" href="../css/NuevoEstilo.css"/>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>     
+
+      <style type="text/css">
+.resalta{
+	font-weight: bold;
+}
+
+.ui-commandlink{
+	 	text-decoration:none;
+	 	
+	 }
+	 
+
+	
+.ui-progressbar-value {
+ 
+}
+.ui-datagrid-row,.ui-datagrid-column{ 
+width: 50%;
+}
+.ui-panelgrid{
+width: 100%;
+}
+
+.animated .ui-progressbar-value { 
+                background-image: url(../images/pbar-ani.gif); 
+            }
+            
+.ui-widget-header{
+	background: #4E5D6C;
+}            
+      </style>
+</h:head>
+<h:body>
+
+ 
+<h:form id="frmPrueba">
+
+<!-- 
+<p:dialog header="Session caducada" widgetVar="sessionTimeOutDialog2"
+         modal="true" fixedCenter="true" closable="false" width="400" visible="false">
+             <h:outputText value="Tu session ha caducado, por favor pulse sobre el boton para volver a entrar a la aplicación" /><br/>
+             <p:commandButton id="confirmBackToLogin" type="button" value="Volver a entrar" style="text-align:center;"
+                onclick="window.top.location='#{facesContext.externalContext.requestContextPath}/login.xhtml';" />
+</p:dialog>
+-->
+	<p:dataGrid var="unit" value="#{dashJavaBasicoBean.listCurUni}" columns="2"
+        rows="3" paginator="true"  
+        paginatorTemplate="{CurrentPageReport}  {PageLinks} {RowsPerPageDropdown}"  
+        rowsPerPageTemplate="3,6,9"> 
+         <p:panel style="">
+           <p:panelGrid id="gridUnits"> 
+            
+            <f:facet name="header">
+            <p:panel header="#{unit.unitName}" style="text-align:center;"/>
+            <p:row>
+                <p:column style="text-align: center;">
+                   <h:outputText value="#{unit.unitName}" style="color:white;font-weight: normal;font-size:18px "/>
+                 </p:column>
+                </p:row>
+            </f:facet>
+            
+              
+            <p:row> 
+            	<p:column>
+                   <div class="progress progress-striped active">
+					  <div class="progress-bar progress-bar-danger" style="width: #{topicsCarouselBean.getUnitBarraGral(unit.unitId)}% "><strong style="color:black;">#{topicsCarouselBean.getUnitBarraGral(unit.unitId)}%</strong></div>
+					</div>
+                </p:column>
+             </p:row>
+             <p:row>
+              <p:column>
+               <p:panelGrid id="gridUnits2" style="text-align:center;" styleClass="borderCero">
+               		<p:row>
+               		    <p:column rowspan="2">
+               		    <p:commandLink onclick="javascript:redirecciona(#{unit.unitId})"> 
+               			<!-- 	<p:graphicImage value="/images/lyx_64.png" title="Entrar al aula"/>  -->
+               			</p:commandLink>
+               			</p:column>
+               			<p:column>
+               				<h:outputText class="text-primary" value="Objetivo:" style="font-size: 14pt;"/>
+               			</p:column>
+               		</p:row>
+               		<p:row>
+               		
+               			<p:column style="height:50px;">
+               				<h:outputText class="text-info" value="#{unit.segment1}" escape="false" style="font-size: 11pt;font-style: normal;"/>
+               			</p:column>
+               		</p:row>
+               </p:panelGrid>
+               </p:column>
+ <!--             <p:column>     
+  				<h:outputText value="Objetivo:" style="font-weight: bold;"/>
+  			 </p:column>
+  			 </p:row>
+  			 <p:row> 
+  			 <p:column>
+                <h:outputText value="#{unit.segment1}" escape="false" style="font-style: italic;color:#660000;"/>
+             </p:column>
+--> 
+             </p:row> 
+              
+            <f:facet name="footer">
+              <p:row>
+                <p:column style="text-align: center;">
+                  <p:commandLink onclick="javascript:redirecciona(#{unit.unitId})" style="text-decoration:none;" onmouseover="changeClass('linkEntra','resalta')"> 
+                      <h:outputText id="linkEntra" class="text-success" value="Entrar al aula" style="font-weight: normal;font-size:18px"/>                      
+				   </p:commandLink> 
+                 </p:column>
+                </p:row>
+             </f:facet> 
+            </p:panelGrid>  
+          </p:panel>
+        
+             
+    </p:dataGrid>
+
+</h:form>
+</h:body>
+</html>

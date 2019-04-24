@@ -1,0 +1,129 @@
+﻿/* tables */
+table.tablesorter {
+	font-family:arial;
+	background-color: #FFFFFF;
+	margin:10px 0pt 15px;
+	font-size: 8pt;
+	width: 100%;
+	text-align: left;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+	background-color: #D8D8D8;	
+	font-size: 8pt;
+	padding: 4px;
+	color:Black;
+}
+table.tablesorter thead tr .header {
+	background-image: url(bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter tbody td {
+	color: #15346D;
+	padding: 4px;
+	vertical-align: top;
+}
+table.tablesorter tbody tr.odd td {
+	background-color:#F0F0F6;
+}
+table.tablesorter thead tr .headerSortUp {
+	background-image: url(asc.gif);
+	color:White;
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url(desc.gif);
+	color:White;
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+background-color:#778899;
+}
+
+.cellIndicator0 {
+	background-attachment: scroll;
+	background-image: url(../images/Paneles/Ind0.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	text-indent:-9999px;
+	cursor:pointer;
+}
+
+.cellIndicator1 {
+	background-attachment: scroll;
+	background-image: url(../images/Paneles/Ind1.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	text-indent:-9999px;
+	cursor:pointer;
+}
+
+.cellIndicator2 {
+	background-attachment: scroll;
+	background-image: url(../images/Paneles/Ind2.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	text-indent:-9999px;
+	cursor:pointer;
+}
+
+.cellIndicator3 {
+	background-attachment: scroll;
+	background-image: url(../images/Paneles/Ind3.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	text-indent:-9999px;
+	cursor:pointer;
+}
+
+.cellIndicator4 {
+	background-attachment: scroll;
+	background-image: url(../images/Paneles/Ind4.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	text-indent:-9999px;
+	cursor:pointer;
+}
+
+.even{
+	background-color: #FFFFFF !important;
+}
+.TableNoHead{
+	background-color: #FFFFFF !important;	
+}
+
+table.TableNoHead thead tr th, table.TableNoHead tfoot tr th {
+	background-color: #FFFFFF !important;	
+	font-size: 8pt;
+	padding: 4px;
+	color:white;
+}
+
+.TableDrillHead{
+	background-color: #FFFFFF;	
+}
+
+table.TableDrillHead thead tr th, table.TableNoHead tfoot tr th {
+	background-color: Silver;	
+	font-size: 8pt;
+	padding: 4px;
+	color:white;
+	height:18px;
+}
+
+.jGridDAOMVC_gotoPageToSetting
+{
+	color: Black;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 5px;
+    text-decoration: none;
+}
+.jGridDAOMVC_gotoPageToSetting:hover
+{
+	color:Blue;	
+}
+
+.gridMVCcellClick
+{
+	cursor:pointer;
+}

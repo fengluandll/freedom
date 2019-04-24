@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#jsp#login#login.jsp"
+  PATH="/jsp/login/login.jsp" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#jsp#login#login.jsp:0" NAME="item"
+   PATH="/jsp/login/login.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="authorized_access::#jsp#home#main.jsp"
+    NAME="output" PATH="/jsp/home/main.jsp"
+    TARGET="rules:#jsp#home#main.jsp" TITLE="authorized_access" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="change_password::#jsp#login#loginChangePassword.jsp"
+    NAME="output1" PATH="/jsp/login/loginChangePassword.jsp"
+    TARGET="rules:#jsp#login#loginChangePassword.jsp"
+    TITLE="change_password" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#jsp#home#main.jsp" PATH="/jsp/home/main.jsp"
+  SHAPE="352,64,50,25" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#jsp#login#loginChangePassword.jsp"
+  PATH="/jsp/login/loginChangePassword.jsp" SHAPE="160,152,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#jsp#login#loginChangePassword.jsp:0"
+   NAME="item" PATH="/jsp/login/loginChangePassword.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="authorized_access::#jsp#home#main.jsp"
+    NAME="output" PATH="/jsp/home/main.jsp"
+    TARGET="rules:#jsp#home#main.jsp" TITLE="authorized_access" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

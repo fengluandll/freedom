@@ -1,0 +1,1 @@
+Texto recibido por la función load

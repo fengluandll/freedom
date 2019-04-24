@@ -1,0 +1,9 @@
+package mx;
+
+public enum HolaMundo {
+	
+	public String saluda(String nombre){
+		return "Hola "+nombre;
+	}
+
+}

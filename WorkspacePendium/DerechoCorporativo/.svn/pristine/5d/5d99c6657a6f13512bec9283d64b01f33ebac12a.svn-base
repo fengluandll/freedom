@@ -1,0 +1,44 @@
+package mx.com.televisa.derechocorporativo.data.packages;
+
+import mx.com.televisa.derechocorporativo.data.Procedure;
+
+public interface DERCORP_REPORTFLEX_PKG {
+
+	Procedure GET_REPORTES_PR = new Procedure("DERCORP_REPORTFLEX_PKG.GET_REPORTES_PR", 2);
+	
+	Procedure GET_REPORTE_PR = new Procedure("DERCORP_REPORTFLEX_PKG.GET_REPORTE_PR", 2);
+	
+	Procedure GET_SECCIONES_PR = new Procedure("DERCORP_REPORTFLEX_PKG.GET_SECCIONES_PR", 2);
+	
+	Procedure GET_ROWS_PR = new Procedure("DERCORP_REPORTFLEX_PKG.GET_ROWS_PR", 2);
+	
+	Procedure GET_FIELDS_PR = new Procedure("DERCORP_REPORTFLEX_PKG.GET_FIELDS_PR", 2);
+	
+	Procedure GET_FIELD_PR = new Procedure("DERCORP_REPORTFLEX_PKG.GET_FIELD_PR", 2);
+	
+	Procedure INSERT_REPORT_PR = new Procedure("DERCORP_REPORTFLEX_PKG.INSERT_REPORT_PR", 5);
+	
+	Procedure UPDATE_REPORT_PR = new Procedure("DERCORP_REPORTFLEX_PKG.UPDATE_REPORT_PR", 6);
+	
+	Procedure DELETE_REPORT_PR = new Procedure("DERCORP_REPORTFLEX_PKG.DELETE_REPORT_PR", 1);
+	
+	Procedure INSERT_SECCION_PR = new Procedure("DERCORP_REPORTFLEX_PKG.INSERT_SECCION_PR", 2);
+	
+	Procedure UPDATE_SECCION_PR = new Procedure("DERCORP_REPORTFLEX_PKG.UPDATE_SECCION_PR", 2);
+	
+	Procedure DELETE_SECCION_PR = new Procedure("DERCORP_REPORTFLEX_PKG.DELETE_SECCION_PR", 1);
+	
+	Procedure INSERT_ROW_PR = new Procedure("DERCORP_REPORTFLEX_PKG.INSERT_ROW_PR", 2);
+	
+	Procedure DELETE_ROW_PR = new Procedure("DERCORP_REPORTFLEX_PKG.DELETE_ROW_PR", 1);
+	
+	Procedure GET_CAMPOS_PR = new Procedure("DERCORP_REPORTFLEX_PKG.GET_CAMPOS_PR", 6);
+	
+	Procedure UPDATE_FIELD_PR = new Procedure("DERCORP_REPORTFLEX_PKG.UPDATE_FIELD_PR", 2);
+	
+	Procedure UPDATE_FIELD_COLUMNS_PR = new Procedure("DERCORP_REPORTFLEX_PKG.UPDATE_FIELD_COLUMNS_PR", 2);
+	
+	Procedure GET_PARAM_INFO_PR = new Procedure("DERCORP_REPORTFLEX_PKG.GET_PARAM_INFO_PR", 2);
+	
+	Procedure GET_INFO_MAP_PR = new Procedure("DERCORP_REPORTFLEX_PKG.GET_INFO_MAP_PR", 2);
+}

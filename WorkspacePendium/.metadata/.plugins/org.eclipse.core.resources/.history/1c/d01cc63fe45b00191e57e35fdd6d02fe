@@ -1,0 +1,616 @@
+package mx.com.televisa.derechocorporativo.modules.captura;
+
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+
+
+
+
+
+
+
+
+
+
+
+import java.util.List;
+
+import org.apache.poi.util.StringUtil;
+
+import oracle.jdbc.OracleCallableStatement;
+import oracle.jdbc.OracleTypes;
+import mx.com.televisa.derechocorporativo.bean.AdminVigBean;
+import mx.com.televisa.derechocorporativo.data.ConnectionWrapper;
+import mx.com.televisa.derechocorporativo.data.packages.DERCORP_CONSULTA_PKG;
+import mx.com.televisa.derechocorporativo.modules.reports.ecs.ReporteECSubseccion;
+import mx.com.televisa.derechocorporativo.util.StringUtils;
+
+/**
+ * 
+ */
+public class EmpresaValues {
+
+	
+	boolean isAsociacionCivil;
+	static ConnectionWrapper connectionWrapper;
+	public List<AdminVigBean>  listAdminVigBean;
+	
+	public EmpresaValues(){
+		
+	}
+
+	public EmpresaValues(ConnectionWrapper conn, String idEmpresa) {
+
+		try {
+			
+			CallableStatement callStmt = conn.prepareCall(DERCORP_CONSULTA_PKG.GET_VALUES_PR);
+			
+			callStmt.setString(1, idEmpresa);
+			callStmt.registerOutParameter(2, java.sql.Types.NUMERIC);
+			
+			callStmt.execute();
+			
+			isAsociacionCivil = (callStmt.getInt(2) == 1);
+			
+			
+			
+			
+		} catch(Exception ex) {
+			
+			ex.printStackTrace();
+			
+		} finally {
+			
+			//ConnectionWrapper.closeAll(conn);
+		}
+		
+	}
+	
+	
+	
+	
+
+	public ArrayList<Seccion> getVisibleSeccionList(ArrayList<Seccion> seccionList) {
+		
+		ArrayList<Seccion> newSeccionList = new ArrayList<Seccion>(); 
+		
+		for (Seccion secc : seccionList) {
+			
+			boolean addElement = true;
+
+			
+			if(secc.getNomSeccion().toUpperCase().contains("CAPITAL") 
+					&& secc.getNomSeccion().toUpperCase().contains("SOCIAL")) {
+			
+				if(isAsociacionCivil) {
+					//ICL 12/11/2015 No ocultar EST CAP SOC
+					//addElement = false;
+				}
+			}
+			
+						
+			if(addElement) {
+				
+				newSeccionList.add(secc);
+			}			
+		}
+		
+		return newSeccionList;
+	}
+	
+	
+	
+
+	public ArrayList<SubSeccion> getVisibleSubSeccionList(ArrayList<SubSeccion> subseccionList) {
+		
+		ArrayList<SubSeccion> newSubSeccionList = new ArrayList<SubSeccion>(); 
+		
+		for (SubSeccion subsecc : subseccionList) {
+			
+			boolean addElement = true;
+
+			
+			if(subsecc.getNomSubSeccion().toUpperCase().contains("CAPITAL") 
+					&& subsecc.getNomSubSeccion().toUpperCase().contains("SOCIAL")) {
+			
+				if(isAsociacionCivil) {
+					//ICL 12/11/2015 No ocultar EST CAP SOC
+					//addElement = false;
+				}
+			}
+			
+						
+			if(addElement) {
+				
+				newSubSeccionList.add(subsecc);
+			}			
+		}
+		
+		return newSubSeccionList;
+	}
+	
+	/**
+	 * jjaq 17/01/2019
+	 * @param idEmpresa
+	 * @return
+	 */
+	public static String getNomEmpresa(String idEmpresa){
+		String nomEmpresa 			= "";
+		PreparedStatement 	psmt 	= null;
+		ResultSet 			rs 		= null;
+		Connection 			con		= null;
+		try {
+			connectionWrapper 	= new ConnectionWrapper();
+			con 		=  connectionWrapper.getConnection();
+			
+			String sql = "SELECT val_cat_val \n"+
+					     "   FROM dercorp_add_campo_cat_val_tab \n"+ 
+					     "   WHERE id_catalogo = 1 \n"+
+					     "   AND   id_catalogo_valor = (SELECT val_valor \n"+ 
+					     "                              FROM dercorp_add_campo_valor_tab \n"+ 
+					     "                              WHERE id_empresa = ? \n"+
+					     "                              AND id_add_campo = 500)";
+			psmt = con.prepareStatement(sql);
+			psmt.setInt(1, Integer.parseInt(idEmpresa));
+			rs = psmt.executeQuery();
+			while(rs.next()){
+				nomEmpresa = rs.getString(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				psmt.close();
+				rs.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return nomEmpresa;
+		
+	}
+	
+	/**
+	 * Obtiene las empresas separadas por coma
+	 * @param idEmpresa
+	 * @return
+	 */
+	public static String getNomEmpresas(String idEmpresa){
+		StringBuilder nomEmpresa 			= new StringBuilder();
+		Statement 			smt 	= null;
+		ResultSet 			rs 		= null;
+		Connection 			con		= null;
+		int				    countColum = 0;
+		try {
+			connectionWrapper 	= new ConnectionWrapper();
+			con 		=  connectionWrapper.getConnection();
+			
+			String sql = "SELECT val_cat_val \n"+
+					     "   FROM dercorp_add_campo_cat_val_tab \n"+ 
+					     "   WHERE id_catalogo = 1 \n"+
+					     "   AND   id_catalogo_valor in (SELECT val_valor \n"+ 
+					     "                              FROM dercorp_add_campo_valor_tab \n"+ 
+					     "                              WHERE id_empresa in ("+idEmpresa+") \n"+
+					     "                              AND id_add_campo = 500) order by val_cat_val";
+			smt = con.createStatement();
+			rs = smt.executeQuery(sql);
+			nomEmpresa.append("<table>");
+			
+			
+			
+			
+			while(rs.next()){
+				
+				if(countColum == 0){
+					nomEmpresa.append("<tr>");
+				}
+				if(countColum <= 3){
+					countColum++;
+					nomEmpresa.append("<td>");
+					nomEmpresa.append("<span>"+rs.getString(1)+"</span>");
+					nomEmpresa.append("<td>");
+					if(countColum == 3){
+						countColum = 0;
+						nomEmpresa.append("</tr>");
+					}
+					//nomEmpresa.append("<br>");
+				}
+				
+			}
+			if(nomEmpresa.length() > 0){
+				nomEmpresa.delete(nomEmpresa.length()-1, nomEmpresa.length());
+			}
+			nomEmpresa.append("</td>");
+			nomEmpresa.append("</tr>");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				smt.close();
+				rs.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return nomEmpresa.toString();
+		
+	}
+	
+	/**
+	 * JJA 17/01/2019 Obtiene el nombre de los accionistas por salto de linea
+	 * @param idEmpresa
+	 * @return
+	 */
+	public static String getNomAccionistas(String idAccionistas){
+		StringBuilder nomAccionista	= new StringBuilder();
+		Statement 			smt 	= null;
+		ResultSet 			rs 		= null;
+		Connection 			con		= null;
+		try {
+			connectionWrapper 	= new ConnectionWrapper();
+			con 		=  connectionWrapper.getConnection();
+			
+			String sql = "SELECT VAL_CAT_VAL \n"+
+						"	from DERCORP_ADD_CAMPO_CAT_VAL_TAB\n"+ 
+						"	WHERE ID_CATALOGO = 40\n"+
+						"	AND ID_CATALOGO_VALOR IN ("+idAccionistas+") order by VAL_CAT_VAL";
+			smt = con.createStatement();
+			rs = smt.executeQuery(sql);
+			while(rs.next()){
+				nomAccionista.append(rs.getString(1));
+				nomAccionista.append("<br>");
+			}
+			if(nomAccionista.length() > 0){
+				nomAccionista.delete(nomAccionista.length()-1, nomAccionista.length());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				smt.close();
+				rs.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return nomAccionista.toString();
+		
+	}
+	
+	/**
+	 * 
+	 * @param accionistas recibe id de accionistas separados por comas
+	 * @return
+	 */
+	public String getEmpresaByAccionista(String accionistas){
+		
+		StringBuilder sbIdEmpresa 	= new StringBuilder();
+		Statement 			smt 	= null;
+		ResultSet 			rs 		= null;
+		Connection 			con		= null;
+		
+		try {
+			connectionWrapper 	= new ConnectionWrapper();
+			con 		=  connectionWrapper.getConnection();
+			String sql = "SELECT distinct OUTER_Q.id_empresa \n"+
+		                 "   FROM DERCORP_METATBL_TAB OUTER_Q \n"+
+		                 "   WHERE 1=1\n"+
+		                 "   AND OUTER_Q.ID_FLEX_TBL = 7 \n"+
+		                 "   and OUTER_Q.VAL_C1 IN ("+accionistas+")";
+			
+			smt = con.createStatement();
+			rs = smt.executeQuery(sql);
+			while(rs.next()){
+				sbIdEmpresa.append(rs.getString(1));
+				sbIdEmpresa.append(",");
+			}
+			if(sbIdEmpresa.length() > 0){
+				sbIdEmpresa.delete(sbIdEmpresa.length()-1, sbIdEmpresa.length());
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				smt.close();
+				rs.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return sbIdEmpresa.toString();
+	}
+	
+	public String ordenaEmpresas(String idEmpresas){
+		
+		StringBuilder sbIdEmpresaOrdenada 	= new StringBuilder();
+		Statement 	smt 	= null;
+		ResultSet 			rs 		= null;
+		Connection 			con		= null;
+		
+		try {
+			connectionWrapper 	= new ConnectionWrapper();
+			con 		=  connectionWrapper.getConnection();
+			String sql  = "SELECT   val_cat_val \n"+
+						  "	        ,ab.id_empresa\n"+
+						  "	        FROM dercorp_add_campo_cat_val_tab ac\n"+
+						  "	            ,dercorp_add_campo_valor_tab ab\n"+
+						"	        WHERE ac.id_catalogo = 1\n"+
+						"	        AND   ac.id_catalogo_valor = ab.val_valor\n"+
+						"	        AND   ab.id_empresa in ("+idEmpresas+")\n"+
+						"	        AND   ab.id_add_campo = 500 order by     ac.val_cat_val ";
+			smt = con.createStatement();
+			rs = smt.executeQuery(sql);
+			
+			while(rs.next()){
+				sbIdEmpresaOrdenada.append(rs.getString(2));
+				sbIdEmpresaOrdenada.append(",");
+			}
+			if(sbIdEmpresaOrdenada.length() > 0){
+				sbIdEmpresaOrdenada.delete(sbIdEmpresaOrdenada.length()-1, sbIdEmpresaOrdenada.length());
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				smt.close();
+				rs.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return sbIdEmpresaOrdenada.toString();
+	}
+	
+	/**
+	 * JJAQ 23/01/2019 Obtiene el nombre de los funcionarios para administracion y vigilancia
+	 * @param idPersonas
+	 * @return
+	 */
+	public static String getNombresFuncionarios(String idPersonas){
+		StringBuilder nomFuncionario	= new StringBuilder();
+		Statement 			smt 		= null;
+		ResultSet 			rs 			= null;
+		Connection 			con			= null;
+		StringBuilder sbIdPersona   	= new StringBuilder();
+		String[] strFunc = StringUtils.split(idPersonas, ",");
+		for(String fun : strFunc){
+			sbIdPersona.append("'");
+			sbIdPersona.append(fun);
+			sbIdPersona.append("'");
+			sbIdPersona.append(",");
+		}
+		if(sbIdPersona.length() > 0){
+			sbIdPersona.delete(sbIdPersona.length()-1, sbIdPersona.length());
+		}
+		
+		try {
+			connectionWrapper 	= new ConnectionWrapper();
+			con 				=  connectionWrapper.getConnection();
+			
+			String sql = "SELECT VAL_CAT_VAL FROM DERCORP_ADD_CAMPO_CAT_VAL_TAB WHERE id_catalogo_valor in("+sbIdPersona.toString()+") ORDER BY VAL_CAT_VAL";
+			smt = con.createStatement();
+			rs = smt.executeQuery(sql);
+			while(rs.next()){
+				nomFuncionario.append(rs.getString(1));
+				nomFuncionario.append("<br>");
+			}
+			if(nomFuncionario.length() > 0){
+				nomFuncionario.delete(nomFuncionario.length()-1, nomFuncionario.length());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				smt.close();
+				rs.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return nomFuncionario.toString();
+		
+	}
+
+	public AdminVigBean getEmpresasByNombreFuncionario(String idFuncionarios,String idFlex){
+		StringBuilder sbIdEmpresa	= new StringBuilder();
+		StringBuilder sbIdFlex   	= new StringBuilder();
+		StringBuilder sbIdPersona   = new StringBuilder();
+		Statement 			smt 	= null;
+		ResultSet 			rs 		= null;
+		Connection 			con		= null;
+		AdminVigBean	    adminVigBean = new AdminVigBean();
+		listAdminVigBean				 = new ArrayList<AdminVigBean>();
+		String[] strFunc = StringUtils.split(idFuncionarios, ",");
+		for(String fun : strFunc){
+			sbIdPersona.append("'");
+			sbIdPersona.append(fun);
+			sbIdPersona.append("'");
+			sbIdPersona.append(",");
+		}
+		if(sbIdPersona.length() > 0){
+			sbIdPersona.delete(sbIdPersona.length()-1, sbIdPersona.length());
+		}
+		
+		String sql = "SELECT    id_empresa,META.ID_FLEX_TBL  \n"+
+					 "	FROM     DERCORP_METATBL_TAB META \n"+  
+					 "	WHERE    META.VAL_C1 in ("+sbIdPersona.toString()+")\n"+
+					 "	AND      META.ID_FLEX_TBL IN ("+idFlex+")\n"+
+					 "	AND      META.VAL_C15 IS NOT NULL";
+			try{
+				connectionWrapper 	= new ConnectionWrapper();
+				con 		=  connectionWrapper.getConnection();
+				smt = con.createStatement();
+				rs = smt.executeQuery(sql);
+				while(rs.next()){
+					adminVigBean = new AdminVigBean();
+					sbIdEmpresa.append(rs.getString(1));
+					adminVigBean.setIdEmpresa(rs.getString(1));
+					sbIdEmpresa.append(",");
+					sbIdFlex.append(rs.getString(2));
+					adminVigBean.setIdFlex(rs.getString(2));
+					sbIdFlex.append(",");
+					listAdminVigBean.add(adminVigBean);
+				}
+				adminVigBean = new AdminVigBean();
+				if(sbIdEmpresa.length() > 0){
+					sbIdEmpresa.delete(sbIdEmpresa.length()-1, sbIdEmpresa.length());
+				}
+				if(sbIdFlex.length() > 0){
+					sbIdFlex.delete(sbIdFlex.length()-1, sbIdFlex.length());
+				}
+				adminVigBean.setIdEmpresa(sbIdEmpresa.toString());
+				adminVigBean.setIdFlex(sbIdFlex.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				smt.close();
+				rs.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+			this.setListAdminVigBean(listAdminVigBean);
+			return adminVigBean;
+	}
+	
+	
+	public static String getNombreFlex(int idFlex){
+		Connection				con 	= null;
+		PreparedStatement		psmt 	= null;
+		ResultSet 				rs 	 	= null;
+		String					nomFlex = "";
+		String sql = "SELECT NOM_FLEX FROM dercorp_flex_tbls_tab WHERE id_flex_tbl = ?";
+		
+		try {
+			connectionWrapper 	= new ConnectionWrapper();
+			con 				=  connectionWrapper.getConnection();
+			psmt 				= con.prepareStatement(sql);
+			psmt.setInt(1, idFlex);
+			rs 					= psmt.executeQuery();
+			while(rs.next()){
+				nomFlex = rs.getString(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				psmt.close();
+				rs.close();
+				con.close();
+				connectionWrapper.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return nomFlex;
+		
+	}
+	
+	public static boolean tieneInfoFlex(int idEmpresa,int idFlex){
+		Connection				con 	= null;
+		PreparedStatement		psmt 	= null;
+		ResultSet 				rs 	 	= null;
+		int     				count   = 0;
+		String sql = "SELECT   COUNT(1) \n"+
+					 "	FROM     DERCORP_METATBL_TAB META\n"+ 
+					 "	WHERE    META.ID_EMPRESA  = ?  \n"+
+					 "	AND      META.ID_FLEX_TBL = ? \n"+
+					 "	AND      META.VAL_C15 IS NOT NULL";
+		
+		try {
+			connectionWrapper 	= new ConnectionWrapper();
+			con 				=  connectionWrapper.getConnection();
+			psmt 				= con.prepareStatement(sql);
+			psmt.setInt(1, idEmpresa);
+			psmt.setInt(2, idFlex);
+			rs 					= psmt.executeQuery();
+			while(rs.next()){
+				count = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				psmt.close();
+				rs.close();
+				con.close();
+				connectionWrapper.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return count==0?false:true;
+		
+	}
+	
+	public static boolean tieneInfoFlexFuncionario(int idEmpresa,int idFlex,String funcionarios){
+		Connection				con 	= null;
+		PreparedStatement		psmt 	= null;
+		ResultSet 				rs 	 	= null;
+		int     				count   = 0;
+		String sql = "SELECT   COUNT(1) \n"+
+					 "	FROM     DERCORP_METATBL_TAB META\n"+ 
+					 "	WHERE    META.ID_EMPRESA  = ?  \n"+
+					 "	AND      META.ID_FLEX_TBL = ? \n"+
+					 "  AND      META.VAL_C1 IN ("+funcionarios+") \n"+
+					 "	AND      META.VAL_C15 IS NOT NULL";
+		
+		try {
+			connectionWrapper 	= new ConnectionWrapper();
+			con 				=  connectionWrapper.getConnection();
+			psmt 				= con.prepareStatement(sql);
+			psmt.setInt(1, idEmpresa);
+			psmt.setInt(2, idFlex);
+			rs 					= psmt.executeQuery();
+			while(rs.next()){
+				count = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				psmt.close();
+				rs.close();
+				con.close();
+				connectionWrapper.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return count==0?false:true;
+		
+	}
+	
+
+	public List<AdminVigBean> getListAdminVigBean() {
+		return listAdminVigBean;
+	}
+
+	public void setListAdminVigBean(List<AdminVigBean> listAdminVigBean) {
+		this.listAdminVigBean = listAdminVigBean;
+	}
+	
+	
+}

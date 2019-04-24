@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://DAO.model.bardahl.mx" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://DAO.model.bardahl.mx" xmlns:intf="http://DAO.model.bardahl.mx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://DAO.model.bardahl.mx" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="dameEmpleado">
+    <complexType>
+     <sequence>
+      <element name="employeeNumber" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="dameEmpleadoResponse">
+    <complexType>
+     <sequence>
+      <element name="dameEmpleadoReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="dameCustomer">
+    <complexType/>
+   </element>
+   <element name="dameCustomerResponse">
+    <complexType>
+     <sequence>
+      <element name="dameCustomerReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="misClientes">
+    <complexType>
+     <sequence>
+      <element name="vendedor" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="misClientesResponse">
+    <complexType>
+     <sequence>
+      <element name="misClientesReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertGPS">
+    <complexType>
+     <sequence>
+      <element name="datos" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertGPSResponse">
+    <complexType>
+     <sequence>
+      <element name="insertGPSReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDirecciones">
+    <complexType>
+     <sequence>
+      <element name="vendedor" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDireccionesResponse">
+    <complexType>
+     <sequence>
+      <element name="getDireccionesReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDireccionesCliente">
+    <complexType>
+     <sequence>
+      <element name="numCliente" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDireccionesClienteResponse">
+    <complexType>
+     <sequence>
+      <element name="getDireccionesClienteReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getDireccionesClienteRequest">
+
+      <wsdl:part element="impl:getDireccionesCliente" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="dameEmpleadoResponse">
+
+      <wsdl:part element="impl:dameEmpleadoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDireccionesResponse">
+
+      <wsdl:part element="impl:getDireccionesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDireccionesRequest">
+
+      <wsdl:part element="impl:getDirecciones" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="dameCustomerRequest">
+
+      <wsdl:part element="impl:dameCustomer" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertGPSResponse">
+
+      <wsdl:part element="impl:insertGPSResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertGPSRequest">
+
+      <wsdl:part element="impl:insertGPS" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDireccionesClienteResponse">
+
+      <wsdl:part element="impl:getDireccionesClienteResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="dameEmpleadoRequest">
+
+      <wsdl:part element="impl:dameEmpleado" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="misClientesResponse">
+
+      <wsdl:part element="impl:misClientesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="dameCustomerResponse">
+
+      <wsdl:part element="impl:dameCustomerResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="misClientesRequest">
+
+      <wsdl:part element="impl:misClientes" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="EmpleadoDAO">
+
+      <wsdl:operation name="dameEmpleado">
+
+         <wsdl:input message="impl:dameEmpleadoRequest" name="dameEmpleadoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:dameEmpleadoResponse" name="dameEmpleadoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="dameCustomer">
+
+         <wsdl:input message="impl:dameCustomerRequest" name="dameCustomerRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:dameCustomerResponse" name="dameCustomerResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="misClientes">
+
+         <wsdl:input message="impl:misClientesRequest" name="misClientesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:misClientesResponse" name="misClientesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertGPS">
+
+         <wsdl:input message="impl:insertGPSRequest" name="insertGPSRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:insertGPSResponse" name="insertGPSResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDirecciones">
+
+         <wsdl:input message="impl:getDireccionesRequest" name="getDireccionesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getDireccionesResponse" name="getDireccionesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDireccionesCliente">
+
+         <wsdl:input message="impl:getDireccionesClienteRequest" name="getDireccionesClienteRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getDireccionesClienteResponse" name="getDireccionesClienteResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="EmpleadoDAOSoapBinding" type="impl:EmpleadoDAO">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="dameEmpleado">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="dameEmpleadoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="dameEmpleadoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="dameCustomer">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="dameCustomerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="dameCustomerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="misClientes">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="misClientesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="misClientesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertGPS">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="insertGPSRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="insertGPSResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDirecciones">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getDireccionesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getDireccionesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDireccionesCliente">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getDireccionesClienteRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getDireccionesClienteResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="EmpleadoDAOService">
+
+      <wsdl:port binding="impl:EmpleadoDAOSoapBinding" name="EmpleadoDAO">
+
+         <wsdlsoap:address location="http://localhost:8080/ConectOracleService/services/EmpleadoDAO"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,3261 @@
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+<style>
+html {
+	font-family: Verdana, Arial, Helvetica;
+	color: #000000;
+	font-size: 8pt;
+}
+
+td {
+	FONT: 10.5px Verdana, sans-serif;
+	COLOR: #000000;
+}
+</style>
+<!-- print style sheet -->
+<style type="text/css" media="print">
+div.tableContainer {
+	overflow: visible;
+	page-break-inside: avoid;
+}
+
+div.container {
+	writing-mode: lr-tb;
+	page-break-inside: avoid;
+}
+
+table>tbody {
+	overflow: visible;
+}
+
+td {
+	height: 10.5px Verdana;
+} /*adds control for test purposes*/
+thead td {
+	FONT: 10.5px Verdana, sans-serif;
+	COLOR: #000000;
+}
+
+tfoot td {
+	text-align: center;
+	font-size: 9pt;
+	border-bottom: solid 1px slategray;
+}
+
+thead {
+	display: table-header-group;
+}
+
+tfoot {
+	display: table-footer-group;
+}
+
+thead th, thead td {
+	position: static;
+}
+
+thead tr {
+	position: static;
+	page-break-inside: avoid;
+} /*prevent problem if print after scrolling table*/
+table tfoot tr {
+	position: static;
+}
+
+.noprint {
+	display: none
+}
+</style>
+
+
+
+
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+
+
+
+
+<style type="text/css">
+
+/*Argumedo*/
+.infoTab {
+	text-align: center;
+	font-size: 12px;
+}
+
+.headTab {
+	font-size: 14px;
+}
+
+.nvoCta {
+	text-align: right;
+	font-weight: bold;
+	font-style: italic;
+	color: #06F;
+}
+
+.centerNew {
+	text-align: center;
+}
+
+a:hover {
+	background-color: #ACBCED;
+}
+
+a:hover.encima {
+	background-color: #7D7FD2;
+}
+
+/****************************************/
+.letraNegrita {
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.lightText {
+	color: #D9D5D5;
+}
+
+body {
+	/*
+	background-image:
+		url("/DerechoCorporativo/img/page_background.jpg");*/
+	background-attachment: fixed;
+	/*margin-top: 0;
+		margin-left: 0;
+		margin-right: 0;
+		margin-bottom: 0;*/
+}
+
+body, td, th, p {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+input, button, select, textarea, optgroup, option {
+	font-family: inherit;
+	font-size: inherit;
+	font-style: inherit;
+	font-weight: inherit;
+}
+
+btnGuardar {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+big {
+	color: #444444;
+}
+
+.infoMessageText {
+	color: #66AA66;
+	font-weight: bold;
+}
+
+.errorMessageText {
+	color: #AA6666;
+	font-weight: bold;
+}
+
+.coloredText {
+	color: #2E4E67;
+}
+
+.loginMessages {
+	color: #FF0000;
+}
+
+.smallText {
+	font-size: 10px;
+}
+
+.tableHeader {
+	/*background-color: #23008C;*/
+	background-image: url("/DerechoCorporativo/img/tableHeaderBack.png");
+	color: white;
+}
+
+.tableHeaderAlfa {
+	/*background-color: #23008C;*/
+	background-image:
+		url("/DerechoCorporativo/img/tableHeaderBack-alfa.png");
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	/*color: #23008C;*/
+	color: #4320AC;
+}
+
+.tableHeaderAlfa2 {
+	/*background-color: #23008C;*/
+	background-image:
+		url("/DerechoCorporativo/img/tableHeaderBack-alfa.png");
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	/*color: #23008C;*/
+	color: white;
+}
+
+.headerMenu {
+	background-image: url("/DerechoCorporativo/img/headerTab.png");
+}
+
+.flexTable {
+	border-color: #F5F5F5;
+	border-width: thin;
+}
+
+.tableRow2 {
+	/*background:#C2E3EA;*/
+	/*background:#DCE8F6;*/
+	background: #F6F9FD;
+}
+
+/*ECM 20 AGOSTO 2015*/
+.tableRow3 {
+	font-size: 14px;
+	font-weight: bold;
+	font-style: italic;
+	color: white;
+}
+
+.tableRow4 {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.pageTitle {
+	/*color: #2B4963;*/
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.pageTitle2 {
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	font-size: 14px;
+	background-image:
+		url("/DerechoCorporativo/img/borders/page_border/border02.png");
+}
+
+a {
+	text-decoration: none;
+}
+
+a:link, a:visited {
+	color: #23008C;
+}
+
+a:hover {
+	color: #E97C00;
+	background-color: #23008C;
+}
+
+.headLineFactura {
+	color: #FFFFFF
+}
+
+.fondoLineFactura {
+	background-color: #0066FF
+}
+
+legend {
+	color: #000099;
+	font-size: 15px;
+	font-weight: bolder;
+}
+
+.legendThin {
+	color: #000099;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.blueBoldText {
+	color: #000099;
+	font-weight: bold;
+	font-size: 11px;
+}
+</style>
+
+
+<script type="text/javascript"
+	src="/DerechoCorporativo/js/jquery/jquery-2.1.4.min.js"></script>
+<script type="text/javascript"
+	src="/DerechoCorporativo/js/ajax/simpleAjaxUtil.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="part/flexTab.js"></script>
+
+<script type="text/javascript" src="part/ajaxPage.js"></script>
+
+<script type="text/javascript" src="part/pupUp.js"></script>
+
+<script type="text/javascript" src="apoderados/apoderados.js"></script>
+
+<script type="text/javascript" src="reformas/reformas.js"></script>
+
+
+
+
+
+
+</head>
+<body onLoad="" class="fontmenu" leftmargin="0" rightmargin="0"
+	topmargin="0" marginwidth="0" marginheight="0">
+
+
+
+	<form method="post" action="">
+
+		<table width="95%" height="100%" border="0" align="center">
+			<tr>
+				<td>
+
+
+
+					<table border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td><img
+								src="http://localhost:8082/DerechoCorporativo/img/borders/page_border/border01_4Print.png">
+							</td>
+							<td width="100%"
+								style="color: white; text-align: center; font-weight: bold; font-size: 14px;"
+								background="http://localhost:8082/DerechoCorporativo/img/borders/page_border/border02_4Print.png">
+
+
+
+
+								<table style="width: 95%">
+									<tr>
+										<td width=170><span id="idTitle"
+											style="color: white; text-align: center; font-weight: bold; font-size: 14px;">
+												EMPRESA PRUEBA 3, S.A. DE C.V. </span></td>
+									</tr>
+								</table>
+
+
+
+
+
+
+							</td>
+							<td><img
+								src="http://localhost:8082/DerechoCorporativo/img/borders/page_border/border03_4Print.png">
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td width="100%">
+
+
+
+
+								<table width="98%" border="0" cellspacing="2" cellpadding="3"
+									id="sec_1_1">
+									<tr>
+										<td width="60%"></td>
+										<td width="20%"></td>
+										<td width="20%"></td>
+									</tr>
+
+									<tr>
+										<td colspan="3">
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+											<table width='100%'>
+												<tr>
+													<th
+														style='color: white; text-align: center; font-weight: bold; font-size: 12px; background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png");'>Resumen
+														General</th>
+												</tr>
+											</table>
+											<table width='100%' align='center' border='0'>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+												<tr>
+													<td></td>
+												</tr>
+												<tr>
+													<td><fieldset>
+															<legend>Información General</legend>
+															<table width='97%' border='0'>
+																<tr>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																</tr>
+																<tr>
+																	<td colspan='8'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C1'>
+																			<b>Denominación Actual:</b>
+																		</div></td>
+																	<td colspan='6'>EMPRESA PRUEBA 3, S.A. DE C.V.</td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C2'>
+																			<b>Nombre Corto:</b>
+																		</div></td>
+																	<td colspan='2'>EMPRESA 3</td>
+																	<td colspan='2'><div id='nom_C3'>
+																			<b>Cuenta Oracle:</b>
+																		</div></td>
+																	<td colspan='2'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C4'>
+																			<b>Actividad:</b>
+																		</div></td>
+																	<td colspan='6'>Transmisión de cruce de apuestas,
+																		en eventos, carreras competencias deportivas y juegos,
+																		celebrados dentro y fuera del territorio nacional.</td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C5'>
+																			<b>Giro:</b>
+																		</div></td>
+																	<td colspan='6'>Actividades Relacionadas con el
+																		Arte, Cultura y Educación</td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C6'>
+																			<b>División:</b>
+																		</div></td>
+																	<td colspan='2'></td>
+																	<td colspan='2'><div id='nom_C7'>
+																			<b>Segmento Reportable:</b>
+																		</div></td>
+																	<td colspan='2'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C8'>
+																			<b>Clasificación:</b>
+																		</div></td>
+																	<td colspan='2'>Activa</td>
+																	<td colspan='2'><div id='nom_C9'>
+																			<b>Fecha Clasificación:</b>
+																		</div></td>
+																	<td colspan='2'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C10'>
+																			<b>País:</b>
+																		</div></td>
+																	<td colspan='2'>México</td>
+																	<td colspan='2'><div id='nom_C11'>
+																			<b>Admite extranjeros:</b>
+																		</div></td>
+																	<td colspan='2'>Si</td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C12'>
+																			<b>Domicilio Social:</b>
+																		</div></td>
+																	<td colspan='2'>Morelos</td>
+																	<td colspan='2'><div id='nom_C13'>
+																			<b>Tiene Inmuebles:</b>
+																		</div></td>
+																	<td colspan='2'>Si</td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C14'>
+																			<b>Duración:</b>
+																		</div></td>
+																	<td colspan='2'>99años</td>
+																	<td colspan='2'><div id='nom_C15'>
+																			<b>Fecha Inicial:</b>
+																		</div></td>
+																	<td colspan='2'>01/10/2015</td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C1018'>
+																			<b> </b>
+																		</div></td>
+																	<td colspan='2'></td>
+																	<td colspan='2'><div id='nom_C16'>
+																			<b>Fecha Final:</b>
+																		</div></td>
+																	<td colspan='2'>01/10/2114</td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C17'>
+																			<b>Consolidación Contable:</b>
+																		</div></td>
+																	<td colspan='2'>Si</td>
+																	<td colspan='2'><div id='nom_C18'>
+																			<b>Tipo de Sociedad:</b>
+																		</div></td>
+																	<td colspan='2'>Sociedad Anónima</td>
+																</tr>
+																<tr>
+																	<td>&nbsp;</td>
+																	<td>&nbsp;</td>
+																</tr>
+															</table>
+														</fieldset></td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+												<tr>
+													<td><fieldset>
+															<legend>Capital Social</legend>
+															<table width='97%' border='0'>
+																<tr>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																</tr>
+																<tr>
+																	<td colspan='8'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C19'>
+																			<b>Acciones/Partes Sociales:</b>
+																		</div></td>
+																	<td colspan='2'>Ord. Nominativas</td>
+																	<td colspan='2'><div id='nom_C20'>
+																			<b>Valor Nominal:</b>
+																		</div></td>
+																	<td colspan='2'>$1.00USD</td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C1080'>
+																			<b> </b>
+																		</div></td>
+																	<td colspan='2'></td>
+																	<td colspan='2'><div id='nom_C1076'>
+																			<b>Valor Teórico Nominal</b>
+																		</div></td>
+																	<td colspan='2'>$0.50 MXP</td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C22'>
+																			<b>Socio Externo:</b>
+																		</div></td>
+																	<td colspan='2'>Si</td>
+																	<td colspan='2'><div id='nom_C23'>
+																			<b>% de Participación:</b>
+																		</div></td>
+																	<td colspan='2'>67%</td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C24'>
+																			<b>Capital Fijo:</b>
+																		</div></td>
+																	<td colspan='2'></td>
+																	<td colspan='2'><div id='nom_C25'>
+																			<b>Capital Variable:</b>
+																		</div></td>
+																	<td colspan='2'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C26'>
+																			<b>Mexicanos:</b>
+																		</div></td>
+																	<td colspan='2'></td>
+																	<td colspan='2'><div id='nom_C27'>
+																			<b>Extranjeros:</b>
+																		</div></td>
+																	<td colspan='2'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C1066'>
+																			<b>Requiere autorización/Régimen de Transmisión</b>
+																		</div></td>
+																	<td colspan='6'>Si</td>
+																</tr>
+																<tr>
+																	<td>&nbsp;</td>
+																	<td>&nbsp;</td>
+																</tr>
+															</table>
+														</fieldset></td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+												<tr>
+													<td><fieldset>
+															<legend>Contactos</legend>
+															<table width='97%' border='0'>
+																<tr>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																</tr>
+																<tr>
+																	<td colspan='8'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='8'><table width='90%' align='center'
+																			class='flexTable' border='0' cellspacing='3'
+																			cellpadding='3'>
+																			<td align='center'><a
+																				onClick="closeForm();sleep(2000);setFlexTableId('1');loadFlexTableForm('1-0');"></a></td>
+																			</tr>
+																			<tr>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='25%'>Nombre</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='20%'>Tipo de Contacto</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='15%'>Teléfono</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Celular</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Correo</th>
+																			</tr>
+																			<tr class="tableRow2">
+																				<td align='null'>María de la Luz Rodríguez
+																					Carrillo</td>
+																				<td align='null'>Dir. Fiscal</td>
+																				<td align='null'>5261-2405</td>
+																				<td align='null'>null</td>
+																				<td align='null'>lrodriguez@televisa.com.mx</td>
+																			</tr>
+																			<tr>
+																				<td align='null'>Alicia Gasga Tapia</td>
+																				<td align='null'>Coord. Jurídico Corp.</td>
+																				<td align='null'>5261-2307</td>
+																				<td align='null'>null</td>
+																				<td align='null'>agasgat@televisa.com.mx</td>
+																			</tr>
+																			<tr class="tableRow2">
+																				<td align='null'>María Azucena Domínguez Cobián
+																				</td>
+																				<td align='null'>Dir. Jurídico Corp.</td>
+																				<td align='null'>5261-2302</td>
+																				<td align='null'>null</td>
+																				<td align='null'>azucenad@televisa.com.mx</td>
+																			</tr>
+																		</table></td>
+																</tr>
+																<tr>
+																	<td>&nbsp;</td>
+																	<td>&nbsp;</td>
+																</tr>
+															</table>
+														</fieldset></td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+												<tr>
+													<td><fieldset>
+															<legend>Denominaciones Anteriores</legend>
+															<table width='97%' border='0'>
+																<tr>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																</tr>
+																<tr>
+																	<td colspan='8'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='8'><table width='90%' align='center'
+																			class='flexTable' border='0' cellspacing='3'
+																			cellpadding='3'>
+																			<td align='center'><a
+																				onClick="closeForm();sleep(2000);setFlexTableId('2');loadFlexTableForm('2-0');"></a></td>
+																			</tr>
+																			<tr>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='60%'>Denominaciones Anteriores</th>
+																			</tr>
+																			<tr class="tableRow2">
+																				<td align='null'>Ejemplo Denom. Anterior</td>
+																			</tr>
+																		</table></td>
+																</tr>
+																<tr>
+																	<td>&nbsp;</td>
+																	<td>&nbsp;</td>
+																</tr>
+															</table>
+														</fieldset></td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+												<tr>
+													<td><fieldset>
+															<legend>Información Fiscal</legend>
+															<table width='97%' border='0'>
+																<tr>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																</tr>
+																<tr>
+																	<td colspan='8'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C30'>
+																			<b>RFC:</b>
+																		</div></td>
+																	<td colspan='6'>EMP-003</td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C31'>
+																			<b>Domicilio Fiscal:</b>
+																		</div></td>
+																	<td colspan='6'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C32'>
+																			<b>No DE DOCUMENTO EN DOCUMENTUM</b>
+																		</div></td>
+																	<td colspan='6'><input type='hidden' name='C32'
+																		id='C32' size='38'
+																		value='124-061-651-0628-0005-00003-15-01-001'
+																		maxlength='38'
+																		onkeyup="javascript:getFormatDocumentum(this);">124-061-651-0628-0005-00003-15-01-001<a
+																		href='javascript:getDocumentum("C32");'><abbr
+																			title='Obtener Documento'><img
+																				alt='Obtener Documento'
+																				src='http://localhost:8082/DerechoCorporativo/img/icons/List.png'></abbr>
+																	</a></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C33'>
+																			<b>Sociedad Con Personal:</b>
+																		</div></td>
+																	<td colspan='6'>Si</td>
+																</tr>
+																<tr>
+																	<td>&nbsp;</td>
+																	<td>&nbsp;</td>
+																</tr>
+															</table>
+														</fieldset></td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+												<tr>
+													<td><fieldset>
+															<legend>Observaciones</legend>
+															<table width='97%' border='0'>
+																<tr>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																</tr>
+																<tr>
+																	<td colspan='8'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C34'>
+																			<b>Observaciones Generales:</b>
+																		</div></td>
+																	<td colspan='6'>ok</td>
+																</tr>
+																<tr>
+																	<td>&nbsp;</td>
+																	<td>&nbsp;</td>
+																</tr>
+															</table>
+														</fieldset></td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+											</table>
+											<table width='100%'>
+												<tr>
+													<th
+														style='color: white; text-align: center; font-weight: bold; font-size: 12px; background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png");'>Objeto
+														Social</th>
+												</tr>
+											</table>
+											<table width='100%' align='center' border='0'>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+												<tr>
+													<td></td>
+												</tr>
+												<tr>
+													<td><fieldset>
+															<legend>Objeto Social</legend>
+															<table width='97%' border='0'>
+																<tr>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																</tr>
+																<tr>
+																	<td colspan='8'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='8'><table width='90%' align='center'
+																			class='flexTable' border='0' cellspacing='3'
+																			cellpadding='3'>
+																			<td align='center'><a
+																				onClick="closeForm();sleep(2000);setFlexTableId('5');loadFlexTableForm('5-0');"></a></td>
+																			</tr>
+																			<tr>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Id</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='70%'>Objeto Social</th>
+																			</tr>
+																			<tr class="tableRow2">
+																				<td align='null'></td>
+																				<td align='null'>La Sociedad tiene por objeto:
+																					<br>
+																				<br>UNO.- Operar todo género de sociedades
+																					mercantiles, civiles, asociaciones o empresas
+																					industriales, comerciales, de servicios, o de otra
+																					índole, tanto nacionales como extranjeras, por
+																					medios propios o de terceros, con actividad de:<br>
+																				<br>a).- La instalación, operación,
+																					mantenimiento y explotación comercial de estaciones
+																					de radio y televisión y de sistemas de
+																					telecomunicaciones para la prestación de servicios
+																					de audio o de audio y video asociado que se presta
+																					a través de redes públicas de telecomunicaciones,
+																					así como el servicio de radiodifusión, mediante la
+																					instalación, funcionamiento y operación de
+																					estaciones radiodifusoras por los sistemas de
+																					modulación, amplitud o frecuencia, televisión,
+																					facsímile o cualquier otro procedimiento técnico
+																					posible, dentro de las bandas de frecuencias del
+																					espectro radioeléctrico atribuidas a tal servicio
+																					cualquier sistema conocido o por conocer, previa
+																					concesión que otorgue la Secretaría de
+																					Comunicaciones y Transportes y/o cualquier otra
+																					autoridad competente en México;<br>
+																				<br>b).- Instalar, mantener, operar o explotar
+																					redes públicas o privadas de telecomunicaciones y
+																					usar, aprovechar o explotar bandas de frecuencias
+																					en el territorio nacional;<br>
+																				<br>c).- Prestar toda clase de servicios de
+																					telecomunicaciones en territorio nacional, previa
+																					concesión que en su caso le otorgue la Secretaría
+																					de Comunicaciones y Transportes o como empresa
+																					comercializadora para prestar servicios de
+																					telecomunicaciones, mediante el uso de capacidad de
+																					concesionarios de redes públicas de
+																					telecomunicaciones, previo permiso de la Secretaría
+																					de Comunicaciones y Transportes;<br>
+																				<br>d).- Prestar servicios de valor agregado,
+																					previo su registro ante la Secretaría de
+																					Comunicaciones y Transportes;<br>
+																				<br>e).- Instalar, mantener y operar sistemas
+																					de comunicación vía satélite, previa autorización
+																					de la Secretaría de Comunicaciones y Transportes;<br>
+																				<br>f).- Obtener, ser titular de y explotar
+																					todo tipo de concesiones, permisos y/o
+																					autorizaciones que otorgue la Secretaría de
+																					Comunicaciones y Transportes y/o cualquier otra
+																					autoridad competente en México;<br>
+																				<br>g).- Obtener, ser titular de y explotar
+																					todo tipo de concesiones, permisos y/o
+																					autorizaciones que otorgue la Secretaría de
+																					Comunicaciones y Transportes para prestar servicios
+																					de transporte aéreo;<br>
+																				<br>h).- Editar, coeditar, publicar,
+																					distribuir, comprar, vender, imprimir, producir,
+																					reproducir, importar, exportar y en general,
+																					comercializar de cualquier forma toda clase de
+																					obras musicales, con letra o sin ella, literarias,
+																					así como aquellas que correspondan a cualquiera de
+																					las ramas de fotografía, cinematografía,
+																					audiovisuales, de radio y televisión, de danza,
+																					coreográficas y pantomímicas y todas las demás que
+																					por analogía pudieran considerarse comprendidas
+																					dentro de los tipos genéricos de obras artísticas e
+																					intelectuales antes mencionadas;<br>
+																				<br>i).- Producir, reproducir, importar,
+																					exportar, editar, coeditar, imprimir, publicar,
+																					distribuir, comprar, vender y en general,
+																					comercializar de cualquier forma con toda clase de
+																					fonogramas y videogramas, entendiéndose por esto
+																					cualquier grabación o fijación de sonidos y/o
+																					imágenes, sobre un soporte material; (discos
+																					fonográficos grabados, sonidos magnetofónicos,
+																					grabados, videogramas y cualquier otra forma de
+																					publicación de un fonograma o videograma conocido o
+																					por conocer) y con todo tipo de material impreso,
+																					tanto en un soporte físico (papel) como magnético o
+																					audiovisual, incluyendo enunciativa pero no
+																					limitativamente, revistas, libros, magazines,
+																					fascículos y todo tipo de publicaciones;<br>
+																				<br>j).- Obtener, adquirir, transmitir y
+																					conceder el uso o goce de toda clase de licencias
+																					de señales de obras de radiodifusión, de audio y
+																					audio y video asociado;<br>
+																				<br>k).- La programación de estaciones de radio
+																					y televisión comerciales y redes públicas de
+																					telecomunicaciones;<br>
+																				<br>l).- La producción, distribución,
+																					representación, compra, venta, arrendamiento y el
+																					comercio en general de toda clase de obras
+																					artísticas e intelectuales para radio, cine,
+																					televisión, sistemas de televisión por cable, redes
+																					públicas de telecomunicaciones y cualquier otro
+																					sistema de telecomunicaciones;<br>
+																				<br>m).- La producción, compra, venta,
+																					comisión, mediación y comercio en general, de
+																					publicidad y propaganda comercial de ideas,
+																					sistemas, instituciones, empresas, productos y
+																					bienes en general, utilizando todo tipo de
+																					tecnologías publicitarias y preferentemente los
+																					medios masivos de publicidad, tales como el radio,
+																					el cine, la televisión, sistemas de
+																					telecomunicaciones, medios electrónicos de
+																					publicidad, periódicos y revistas;<br>
+																				<br>n).- Administrar, manejar, dirigir y
+																					reglamentar el funcionamiento operacional de
+																					equipos de fútbol;<br>
+																				<br>o).- Organizar, reglamentar y desarrollar
+																					todo tipo de torneos de fútbol con equipos de otras
+																					ligas, clubes, escuelas, asociaciones y
+																					organizaciones relacionadas en forma directa o
+																					indirecta con la práctica del fútbol dentro y fuera
+																					de la República Mexicana; <br>
+																				<br>p).- La producción, licenciamiento, compra,
+																					venta, comisión, mediación y comercio general, de
+																					obras audiovisuales de contenido deportivo para se
+																					transmitidos preferentemente a través de cualquier
+																					medio masivo de comunicación, tales como la radio
+																					abierta o restringida, televisión abierta o
+																					restringida, sistemas de televisión por cable,
+																					circuito cerrado de televisión, sistemas de
+																					transmisión restringido en autobuses, aeronaves,
+																					barcos, ferrocarriles o cualquier otro medio de
+																					transporte, hilo cinematográfico, cable, fibra
+																					óptica, microondas, sistema de difusión vía
+																					satélite punto a punto o Directa al hogar (?DTH?),
+																					redes informáticas en ambiente o multi-usuarios,
+																					incluyendo sin limitar WAP (?protocolo de acceso
+																					inalámbrico?), GPRS, UMTS, PDA (?asistente personal
+																					digital?), SMS (?Sistema de mensajes cortos?),
+																					sistemas o redes globales de información tales como
+																					el ?Internet?, o cualquier otro medio electrónico,
+																					informático, digital o análogo, conocido o por
+																					conocerse, así como los formatos o soportes
+																					materiales que se utilizan para la difusión de las
+																					obras audiovisuales tales como los discos compactos
+																					(compact disc), los discos compactos con contenido
+																					informático (?cd-roms?), cintas, videocasettes,
+																					discos versátiles digitales (?DVDs?), medios
+																					impresos, incluyendo sin limitar, tarjetas
+																					postales, posters e inserciones en periódicos y
+																					revistas, o cualquier otra clase de formato o
+																					soporte material que se use en el presente o se
+																					invente en el futuro, ya sea en lo individual o a
+																					través de compilaciones o colecciones que contengan
+																					cualquier obra audiovisual;<br>
+																				<br>q).- La producción, diseño, desarrollo y
+																					comercialización de progralógica (software), sitios
+																					web y aplicaciones móviles; y<br>
+																				<br>r).- Comprar, vender, arrendar,
+																					subarrendar, dar y tomar en comodato, disponer,
+																					poseer, permutar, usar, construir, reparar, gravar,
+																					operar y administrar toda clase de bienes
+																					inmuebles, urbanos o rústicos, propios para las
+																					actividades de esta Sociedad o para las operaciones
+																					u objetos sociales de las sociedades, asociaciones
+																					o empresas que opere, incluyendo la adquisición y
+																					enajenación de muebles, inmuebles y derechos reales
+																					que se consideren indispensables y que las leyes
+																					permitan.<br>
+																				<br>DOS).- Reclutamiento y selección de
+																					personal adecuado para cumplir con su objeto.<br>
+																				<br>Para el desarrollo de su objeto, la
+																					sociedad podrá:<br>i).- Proporcionar todo tipo
+																					de servicios de personal especializado a terceros
+																					en todas las ramas de la ciencia, del conocimiento
+																					y del entretenimiento, dentro de las que, en forma
+																					ejemplificativa más no limitativa, se mencionan las
+																					siguientes: legal o jurídica, contable, fiscal,
+																					financiera, administrativa, de auditoría,
+																					informática, de computación, sistemas, ingeniería
+																					en todas sus ramas, arquitectura, diseño gráfico,
+																					diseño industrial, publicidad, mercadotecnia,
+																					periodismo, medicina, biología, economía, ciencias
+																					sociales, filosofía, psicología, comunicación,
+																					telecomunicaciones, electrónica y cualquier otra
+																					conocida o por conocerse; <br>
+																				<br>ii).- Elaborar todo tipo de estudios y
+																					proyectos técnicos, económicos, sociales,
+																					financieros y administrativos, incluyendo la
+																					planeación, programación y control de obras y
+																					proyectos y su administración y supervisión en
+																					general, incluyendo la elaboración de proyectos y
+																					construcción de instalaciones mecánicas,
+																					eléctricas, y el desarrollo de ingeniería de redes
+																					públicas de telecomunicaciones, diseño de partes,
+																					equipos y sistemas electrónicos y electromecánicos;<br>
+																				<br>iii).- Importar, exportar, adquirir,
+																					comprar, vender, arrendar, manufacturar, producir,
+																					distribuir y en general, comercializar con toda
+																					clase de bienes y servicios, materias primas,
+																					productos terminados o semi terminados y de
+																					cualquier otra forma celebrar todos los actos de
+																					comercio o de industria civil o mercantil que estén
+																					permitidos por las leyes; <br>
+																				<br>iv).- Prestar servicios técnicos y
+																					profesionales en materia de desarrollo de redes
+																					públicas de telecomunicaciones, así como servicios
+																					profesionales de instalación, mantenimiento y/o
+																					operación de sistemas de redes y/o equipos de
+																					telecomunicaciones;<br>
+																				<br>v).- Arrendar, subarrendar, tomar y dar en
+																					comodato, usar, poseer, adquirir, comprar, vender,
+																					construir, reparar, enajenar y operar por cualquier
+																					título legal toda clase de equipos, bodegas,
+																					almacenes, plantas, oficinas, salones, locales y
+																					demás establecimientos necesarios o convenientes
+																					para la realización de los objetos de la Sociedad,
+																					incluyendo la adquisición y enajenación de muebles,
+																					inmuebles y derechos reales que se consideren
+																					indispensables y que las leyes permitan;<br>
+																				<br>vi).- Prestar servicios, asistencia
+																					técnica, asesoría o consultoría de distribución de
+																					bienes y servicios, servicios de seguridad,
+																					servicios de entretenimiento, servicios de
+																					mercadotecnia y publicidad, servicios de producción
+																					y postproducción de eventos y programas para los
+																					medios masivos de comunicación y servicios de
+																					promoción de eventos y espectáculos en vivo;<br>
+																				<br>vii).- Representar en calidad de agente,
+																					intermediario o mediador, comisionista, factor,
+																					consignatario, representante legal o mandatario de
+																					toda clase de personas, físicas o morales,
+																					nacionales o extranjeras;<br>
+																				<br>viii).- Patrocinar y asesorar, a todo tipo
+																					de personas en toda clase de procedimientos,
+																					juicios, trámites y gestiones, ante toda clase de
+																					personas o autoridades de cualquier materia, orden
+																					y grado, ante toda clase de entidades, así como
+																					prestar dichos servicios conjuntamente con otros
+																					profesionistas en México y en otros países en
+																					asuntos de carácter internacional o local en los
+																					Estados Unidos Mexicanos o en cualquier país del
+																					extranjero;<br>
+																				<br>ix).- Adquirir, negociar, custodiar y
+																					enajenar por cualquier título de acciones, bonos,
+																					derechos, bienes, instrumentos financieros, títulos
+																					de crédito, valores y partes sociales de sociedades
+																					mercantiles, civiles o asociaciones de cualquier
+																					índole, tanto nacionales como extranjeras,
+																					incluyendo el otorgamiento o recepción de las
+																					garantías relacionadas con las actividades
+																					anteriores;<br>
+																				<br>x).- Contratar, capacitar y entrenar a
+																					trabajadores, empleados, profesionales, pasantes,
+																					técnicos, obreros, talento artístico y en general,
+																					todo tipo de personal que se haga necesario para la
+																					realización del objeto social;<br>
+																				<br>xi).- Celebrar acuerdos, actos jurídicos,
+																					convenios o contratos con todo tipo de despachos
+																					profesionales, colegios de profesionistas
+																					nacionales o extranjeros, así como la recepción e
+																					intercambio de información y asistencia respecto de
+																					principios, normas, y políticas profesionales,
+																					entrenamiento y capacitación de personal y los
+																					programas para el mismo, el desarrollo de sistemas
+																					de computación para todo tipo de servicios,
+																					desarrollo de base de datos para la coordinación de
+																					servicio a clientes, así como la utilización de
+																					instalaciones y el servicio de investigación
+																					legislativa y de resoluciones judiciales, de
+																					contabilidad, de administración, de finanzas, de
+																					estadística, de computación, de ingeniería, y de
+																					cualquier otra rama del conocimiento o de
+																					investigación;<br>
+																				<br> xii).- Contratar, aceptar y ejercer los
+																					poderes o mandatos que le otorguen las personas
+																					físicas o morales a las que la Sociedad les preste
+																					servicios y delegar en sus funcionarios o empleados
+																					el ejercicio de dichos poderes, así como otorgar
+																					poderes generales o especiales a terceros a fin de
+																					cumplir con su objeto social; <br>
+																				<br>xiii).- Contraer o conceder préstamos,
+																					otorgando o recibiendo las garantías
+																					correspondientes, aceptar, girar, endosar y avalar
+																					toda clase de títulos de crédito y otorgar fianzas
+																					o garantías de cualquier clase respecto de las
+																					obligaciones contraídas por la Sociedad o de los
+																					títulos emitidos o aceptados por terceros;<br>
+																				<br>xiv).- Producir y usar obras susceptibles
+																					de protección por el derecho de autor y los
+																					derechos conexos, así como adquirir o transmitir la
+																					titularidad de derechos sobre las mismas y realizar
+																					todo acto jurídico al respecto, inclusive,
+																					constituirse en causahabiente sobre los derechos de
+																					cualquier tipo de autores;<br>
+																				<br>xv).- Producir, adquirir, ejercer, usar y
+																					transmitir derechos de propiedad industrial;<br>
+																				<br>xvi).- Obtener, adquirir, transmitir, usar,
+																					registrar, negociar y conceder el uso o goce de
+																					toda clase de permisos, licencias, franquicias y
+																					concesiones;<br>
+																				<br>xvii).- Ejecutar todos los actos y celebrar
+																					los convenios o contratos de cualquier naturaleza,
+																					que se relacionen con los fines anteriores.<br>
+																				</td>
+																			</tr>
+																		</table></td>
+																</tr>
+																<tr>
+																	<td>&nbsp;</td>
+																	<td>&nbsp;</td>
+																</tr>
+															</table>
+														</fieldset></td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+											</table>
+											<table width='100%'>
+												<tr>
+													<th
+														style='color: white; text-align: center; font-weight: bold; font-size: 12px; background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png");'>Estructura
+														del Capital Social</th>
+												</tr>
+											</table>
+											<table width='100%' align='center' border='0'>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+												<tr>
+													<td></td>
+												</tr>
+												<tr>
+													<td><fieldset>
+															<legend>Estructura de Capital Social</legend>
+															<table width='97%' border='0'>
+																<tr>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																</tr>
+																<tr>
+																	<td colspan='8'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C42'>
+																			<b>Capital Social:</b>
+																		</div></td>
+																	<td colspan='6'>$198.00</td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C1028'>
+																			<b>Capital Fijo o Mínimo</b>
+																		</div></td>
+																	<td colspan='6'>$88.00</td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C1029'>
+																			<b>Capital Variable</b>
+																		</div></td>
+																	<td colspan='6'>$110.00</td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C47'>
+																			<b>Semáforo:</b>
+																		</div></td>
+																	<td colspan='6'>VERDE<img id='im'
+																		src='http://localhost:8082/DerechoCorporativo/img/button_green_sin_fondo.png'></td>
+																</tr>
+																<tr bgcolor=''></tr>
+																<tr bgcolor=''></tr>
+																<tr bgcolor=''></tr>
+																<tr bgcolor=''></tr>
+																<tr bgcolor=''></tr>
+																<tr bgcolor=''></tr>
+																<tr bgcolor=''></tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C1022'>
+																			<b>Fecha de Trámite Pendiente</b>
+																		</div></td>
+																	<td colspan='2'></td>
+																	<td colspan='2'><div id='nom_C1033'>
+																			<b>Estructura de Capital al</b>
+																		</div></td>
+																	<td colspan='2'>11/12/2015</td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'></td>
+																	<td colspan='6'>&nbsp;&nbsp;<input type='checkbox'
+																		name='C1030' id='C1030' size='null' value='C1030'
+																		onclick="javascript:saveCheckBoxAndLoadFlexTable(this, '7');"
+																		checked disabled>Aplica Capital Fijo<br></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'></td>
+																	<td colspan='6'>&nbsp;&nbsp;<input type='checkbox'
+																		name='C1031' id='C1031' size='null' value='C1031'
+																		onclick="javascript:saveCheckBoxAndLoadFlexTable(this, '7');"
+																		checked disabled>Aplica Capital Variable<br></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='8'><table width='90%' align='center'
+																			class='flexTable' border='0' cellspacing='3'
+																			cellpadding='3'>
+																			<td align='center'><a
+																				onClick="closeForm();sleep(2000);setFlexTableId('7');loadFlexTableForm('7-0');"></a></td>
+																			</tr>
+																			<tr>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Grupo</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='30%'>Accionista</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='20%'>Acciones Capital Fijo</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='20%'>Acciones Capital Variable</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>%</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Valor Acciones USD</th>
+																			</tr>
+																			<tr>
+																				<td></td>
+																				<td></td>
+																				<td><div id='DIVC24'></div></td>
+																				<td><div id='DIVC25'></div></td>
+																				<td></td>
+																			</tr>
+																			<tr class="tableRow2">
+																				<td rowspan='1'
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack-alfa.png"); color: white; font-weight: bold; text-align: center; color: #4320AC;'
+																					align='null'>B</td>
+																				<td align='null'>BALUARTE BIENES RAICES, S.A.
+																					DE C.V.</td>
+																				<td align='right'>11</td>
+																				<td align='right'>22</td>
+																				<td align='right'>16.6666667</td>
+																				<td align='right'>33.00</td>
+																			</tr>
+																			<tr>
+																				<td rowspan='1'
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack-alfa.png"); color: white; font-weight: bold; text-align: center; color: #4320AC;'
+																					align='null'>C</td>
+																				<td align='null'>CADENA DE LAS AMERICAS, S.A.
+																					DE C.V.</td>
+																				<td align='right'>77</td>
+																				<td align='right'>88</td>
+																				<td align='right'>83.3333333</td>
+																				<td align='right'>165.00</td>
+																			</tr>
+																			<tr>
+																				<td colspan='8'></td>
+																			</tr>
+																			<tr>
+																				<th></th>
+																				<th></th>
+																				<th>88</th>
+																				<th>110</th>
+																				<th>100.0</th>
+																				<th>198.00</th>
+																			</tr>
+																		</table></td>
+																</tr>
+																<tr>
+																	<td>&nbsp;</td>
+																	<td>&nbsp;</td>
+																</tr>
+															</table>
+														</fieldset></td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+											</table>
+											<table width='100%'>
+												<tr>
+													<th
+														style='color: white; text-align: center; font-weight: bold; font-size: 12px; background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png");'>Administración
+														y Vigilancia</th>
+												</tr>
+											</table>
+											<table width='100%' align='center' border='0'>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+												<tr>
+													<td></td>
+												</tr>
+												<tr>
+													<td><fieldset>
+															<legend>Administración </legend>
+															<table width='97%' border='0'>
+																<tr>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																</tr>
+																<tr>
+																	<td colspan='8'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C1010'>
+																			<b>Órgano de Administración:</b>
+																		</div></td>
+																	<td colspan='6'></td>
+																</tr>
+																<tr bgcolor=''></tr>
+																<tr bgcolor=''></tr>
+																<tr bgcolor=''></tr>
+																<tr bgcolor=''></tr>
+																<tr bgcolor=''></tr>
+																<tr bgcolor=''></tr>
+																<tr bgcolor=''></tr>
+																<tr bgcolor=''></tr>
+																<tr bgcolor=''></tr>
+																<tr bgcolor=''>
+																	<td colspan='8'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='8'><table width='90%' align='center'
+																			class='flexTable' border='0' cellspacing='3'
+																			cellpadding='3'>
+																			<td align='center'><a
+																				onClick="closeForm();sleep(2000);setFlexTableId('11');loadFlexTableForm('11-0');"></a></td>
+																			</tr>
+																			<tr>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='18%'>Consejero</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='7%'>Cargo</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='9%'>F. Desig.</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='9%'>F. Baja</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='18%'>Suplente</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='9%'>F. Desig. Sup.</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='9%'>F. Baja Sup.</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='7%'>Tipo de Suplencia</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='12%'>Observaciones</th>
+																			</tr>
+																			<tr class="tableRow2">
+																				<td rowspan='1'
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack-alfa.png"); color: white; font-weight: bold; text-align: center; color: #4320AC;'
+																					align='null'>Alberto Javier Montiel
+																					Castellanos</td>
+																				<td align='null'>Comisario Propietario Clase II</td>
+																				<td align='null'>13/11/2015</td>
+																				<td align='null'></td>
+																				<td align='null'>Alberto Bailleres González</td>
+																				<td align='null'>14/11/2015</td>
+																				<td align='null'></td>
+																				<td align='null'>Por la misma Clase N</td>
+																				<td align='null'></td>
+																			</tr>
+																			<tr>
+																				<td rowspan='1'
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack-alfa.png"); color: white; font-weight: bold; text-align: center; color: #4320AC;'
+																					align='null'>Alberto Saavedra Olavarrieta</td>
+																				<td align='null'>Comisario Propietario Clase I</td>
+																				<td align='null'>20/11/2015</td>
+																				<td align='null'></td>
+																				<td align='null'>Alejandro Quintero Iñiguez</td>
+																				<td align='null'>27/11/2015</td>
+																				<td align='null'></td>
+																				<td align='null'>Por la misma Clase 2</td>
+																				<td align='null'></td>
+																			</tr>
+																			<tr class="tableRow2">
+																				<td rowspan='1'
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack-alfa.png"); color: white; font-weight: bold; text-align: center; color: #4320AC;'
+																					align='null'>Alejandro Alfredo Wolfgang Diego
+																					Von Dorrer</td>
+																				<td align='null'>Administrador Único</td>
+																				<td align='null'>01/10/2015</td>
+																				<td align='null'>02/10/2015</td>
+																				<td align='null'>Alejandro Benítez Cueto</td>
+																				<td align='null'>03/10/2015</td>
+																				<td align='null'>04/10/2015</td>
+																				<td align='null'>Directa</td>
+																				<td align='null'></td>
+																			</tr>
+																		</table></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='8'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='8'><table width='90%' align='center'
+																			class='flexTable' border='0' cellspacing='3'
+																			cellpadding='3'>
+																			<td align='center'><a
+																				onClick="closeForm();sleep(2000);setFlexTableId('13');loadFlexTableForm('13-0');"></a></td>
+																			</tr>
+																			<tr>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='20%'>Funcionario</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Cargo</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Fecha de Designación</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Fecha de Baja</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='20%'>Suplente</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Fecha Designación Suplente</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Fecha Baja Suplente</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='7%'>Tipo de Suplencia</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='12%'>Observaciones</th>
+																			</tr>
+																			<tr class="tableRow2">
+																				<td rowspan='1'
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack-alfa.png"); color: white; font-weight: bold; text-align: center; color: #4320AC;'
+																					align='null'>Alejandro Burillo Azcárraga</td>
+																				<td align='null'>Comisario Propietario Clase 2</td>
+																				<td align='null'>08/10/2015</td>
+																				<td align='null'>09/10/2015</td>
+																				<td align='null'>Alejandro García Gamboa</td>
+																				<td align='null'>10/10/2015</td>
+																				<td align='null'>11/10/2015</td>
+																				<td align='null'>Indistinta</td>
+																				<td align='null'>IND TEST</td>
+																			</tr>
+																		</table></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='8'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='8'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='8'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='8'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='8'></td>
+																</tr>
+																<tr>
+																	<td>&nbsp;</td>
+																	<td>&nbsp;</td>
+																</tr>
+															</table>
+														</fieldset></td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+												<tr>
+													<td><fieldset>
+															<legend>Vigilancia</legend>
+															<table width='97%' border='0'>
+																<tr>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																</tr>
+																<tr>
+																	<td colspan='8'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='8'><table width='90%' align='center'
+																			class='flexTable' border='0' cellspacing='3'
+																			cellpadding='3'>
+																			<td align='center'><a
+																				onClick="closeForm();sleep(2000);setFlexTableId('9');loadFlexTableForm('9-0');"></a></td>
+																			</tr>
+																			<tr>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='20%'>Funcionario</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Cargo</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Fecha de Designación</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Fecha de Baja</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='20%'>Suplente</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Fecha Designación Suplente</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Fecha Baja Suplente</th>
+																			</tr>
+																			<tr class="tableRow2">
+																				<td align='null'>Alfredo Achar Tussie</td>
+																				<td align='null'>Comisario Propietario Clase N</td>
+																				<td align='null'>24/10/2015</td>
+																				<td align='null'>25/10/2015</td>
+																				<td align='null'>Alfredo Harp Helú</td>
+																				<td align='null'>26/10/2015</td>
+																				<td align='null'>27/10/2015</td>
+																			</tr>
+																		</table></td>
+																</tr>
+																<tr>
+																	<td>&nbsp;</td>
+																	<td>&nbsp;</td>
+																</tr>
+															</table>
+														</fieldset></td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+											</table>
+											<table width='100%'>
+												<tr>
+													<th
+														style='color: white; text-align: center; font-weight: bold; font-size: 12px; background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png");'>Escritura
+														Constitutiva</th>
+												</tr>
+											</table>
+											<table width='100%' align='center' border='0'>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+												<tr>
+													<td></td>
+												</tr>
+												<tr>
+													<td><fieldset>
+															<legend>Escritura</legend>
+															<table width='97%' border='0'>
+																<tr>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																</tr>
+																<tr>
+																	<td colspan='8'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C52'>
+																			<b>Escritura No. :</b>
+																		</div></td>
+																	<td colspan='2'>52,016</td>
+																	<td colspan='2'><div id='nom_C53'>
+																			<b>Fecha Otorgamiento:</b>
+																		</div></td>
+																	<td colspan='2'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C54'>
+																			<b>Licenciado:</b>
+																		</div></td>
+																	<td colspan='2'>Lic. Rafael Oliveros Delgado</td>
+																	<td colspan='2'><div id='nom_C55'>
+																			<b>Notario Público:</b>
+																		</div></td>
+																	<td colspan='2'>26</td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C1019'>
+																			<b> </b>
+																		</div></td>
+																	<td colspan='2'></td>
+																	<td colspan='2'><div id='nom_C56'>
+																			<b>De:</b>
+																		</div></td>
+																	<td colspan='2'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C58'>
+																			<b>Observaciones:</b>
+																		</div></td>
+																	<td colspan='2'></td>
+																	<td colspan='2'><div id='nom_C1007'>
+																			<b>Fecha de Firma:</b>
+																		</div></td>
+																	<td colspan='2'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C68'>
+																			<b>No DE DOCUMENTO EN DOCUMENTUM</b>
+																		</div></td>
+																	<td colspan='6'><input type='hidden' name='C68'
+																		id='C68' size='38'
+																		value='124-061-651-0628-0005-00003-15-01-001'
+																		maxlength='38'
+																		onkeyup="javascript:getFormatDocumentum(this);">124-061-651-0628-0005-00003-15-01-001<a
+																		href='javascript:getDocumentum("C68");'><abbr
+																			title='Obtener Documento'><img
+																				alt='Obtener Documento'
+																				src='http://localhost:8082/DerechoCorporativo/img/icons/List.png'></abbr>
+																	</a></td>
+																</tr>
+																<tr>
+																	<td>&nbsp;</td>
+																	<td>&nbsp;</td>
+																</tr>
+															</table>
+														</fieldset></td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+												<tr>
+													<td><fieldset>
+															<legend>Registro Público de Comercio</legend>
+															<table width='97%' border='0'>
+																<tr>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																</tr>
+																<tr>
+																	<td colspan='8'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C1023'>
+																			<b> </b>
+																		</div></td>
+																	<td colspan='2'></td>
+																	<td colspan='2'><div id='nom_C1049'>
+																			<b>De:(Municipio, Estado):</b>
+																		</div></td>
+																	<td colspan='2'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C1009'>
+																			<b>Fecha de Registro:</b>
+																		</div></td>
+																	<td colspan='2'></td>
+																	<td colspan='2'><div id='nom_C66'>
+																			<b>Número/Folio Mercantil/Folio Electrónico:</b>
+																		</div></td>
+																	<td colspan='2'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C67'>
+																			<b>Observaciones:</b>
+																		</div></td>
+																	<td colspan='6'></td>
+																</tr>
+																<tr>
+																	<td>&nbsp;</td>
+																	<td>&nbsp;</td>
+																</tr>
+															</table>
+														</fieldset></td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+												<tr>
+													<td><fieldset>
+															<legend>Permiso de Constitución / CUD</legend>
+															<table width='97%' border='0'>
+																<tr>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																</tr>
+																<tr>
+																	<td colspan='8'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C70'>
+																			<b>Permiso/CUD:</b>
+																		</div></td>
+																	<td colspan='2'></td>
+																	<td colspan='2'><div id='nom_C73'>
+																			<b>De Fecha:</b>
+																		</div></td>
+																	<td colspan='2'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C71'>
+																			<b>Expediente No.:</b>
+																		</div></td>
+																	<td colspan='2'></td>
+																	<td colspan='2'><div id='nom_C72'>
+																			<b>Folio No.:</b>
+																		</div></td>
+																	<td colspan='2'></td>
+																</tr>
+																<tr>
+																	<td>&nbsp;</td>
+																	<td>&nbsp;</td>
+																</tr>
+															</table>
+														</fieldset></td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+												<tr>
+													<td><fieldset>
+															<legend>Caracteristicas</legend>
+															<table width='97%' border='0'>
+																<tr>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																</tr>
+																<tr>
+																	<td colspan='8'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C1020'>
+																			<b>Domicilio Social:</b>
+																		</div></td>
+																	<td colspan='2'></td>
+																	<td colspan='2'><div id='nom_C1021'>
+																			<b>(Municipio, Estado):</b>
+																		</div></td>
+																	<td colspan='2'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C61'>
+																			<b>Duración:</b>
+																		</div></td>
+																	<td colspan='2'>años</td>
+																	<td colspan='2'><div id='nom_C60'>
+																			<b>País:</b>
+																		</div></td>
+																	<td colspan='2'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C1053'>
+																			<b>Capital Social</b>
+																		</div></td>
+																	<td colspan='2'></td>
+																	<td colspan='2'><div id='nom_C62'>
+																			<b>$:</b>
+																		</div></td>
+																	<td colspan='2'>$0.00</td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C63'>
+																			<b>Tiene Valor Nominal:</b>
+																		</div></td>
+																	<td colspan='2'>Si</td>
+																	<td colspan='2'><div id='nom_C64'>
+																			<b>Valor Nominal:</b>
+																		</div></td>
+																	<td colspan='2'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='2'><div id='nom_C57'>
+																			<b>Admite extranjeros:</b>
+																		</div></td>
+																	<td colspan='2'>Si</td>
+																	<td colspan='2'><div id='nom_C1054'>
+																			<b>Requiere autorización/Régimen de Transmisión</b>
+																		</div></td>
+																	<td colspan='2'>Si</td>
+																</tr>
+																<tr>
+																	<td>&nbsp;</td>
+																	<td>&nbsp;</td>
+																</tr>
+															</table>
+														</fieldset></td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+											</table>
+											<table width='100%'>
+												<tr>
+													<th
+														style='color: white; text-align: center; font-weight: bold; font-size: 12px; background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png");'>Poderes
+														Generales</th>
+												</tr>
+											</table>
+											<table width='100%' align='center' border='0'>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+												<tr>
+													<td></td>
+												</tr>
+												<tr>
+													<td><fieldset>
+															<legend>Poder General</legend>
+															<table width='97%' border='0'>
+																<tr>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																</tr>
+																<tr>
+																	<td colspan='8'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='8'><table width='90%' align='center'
+																			class='flexTable' border='0' cellspacing='3'
+																			cellpadding='3'>
+																			<td align='center'><a
+																				onClick="closeForm();sleep(2000);setFlexTableId('17');loadFlexTableForm('17-0');"></a></td>
+																			</tr>
+																			<tr>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Delegado por</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Requiere Protocolización</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Requiere Inscripción RPPC</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Enviada a Notaría N°</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Fecha de envío a NP</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Escritura No</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Fecha Otorgamiento</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Semaforo</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Detalle</th>
+																			</tr>
+																		</table></td>
+																</tr>
+																<tr>
+																	<td>&nbsp;</td>
+																	<td>&nbsp;</td>
+																</tr>
+															</table>
+														</fieldset></td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+											</table>
+											<table width='100%'>
+												<tr>
+													<th
+														style='color: white; text-align: center; font-weight: bold; font-size: 12px; background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png");'>Poderes
+														Especiales</th>
+												</tr>
+											</table>
+											<table width='100%' align='center' border='0'>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+												<tr>
+													<td></td>
+												</tr>
+												<tr>
+													<td><fieldset>
+															<legend>Poder Especial</legend>
+															<table width='97%' border='0'>
+																<tr>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																</tr>
+																<tr>
+																	<td colspan='8'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='8'><table width='90%' align='center'
+																			class='flexTable' border='0' cellspacing='3'
+																			cellpadding='3'>
+																			<td align='center'><a
+																				onClick="closeForm();sleep(2000);setFlexTableId('18');loadFlexTableForm('18-0');"></a></td>
+																			</tr>
+																			<tr>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Delegado por</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Requiere Protocolización</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Requiere Inscripción RPPC</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Enviada a Notaría N°</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Fecha de envío a NP</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Escritura No</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Fecha Otorgamiento</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Semaforo</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Detalle</th>
+																			</tr>
+																			<tr class="tableRow2">
+																				<td align='null'>Apoderado</td>
+																				<td align='null'>Si</td>
+																				<td align='null'>Si</td>
+																				<td align='null'>6576</td>
+																				<td align='null'>10/12/2015</td>
+																				<td align='null'>65767</td>
+																				<td align='null'>01/01/2016</td>
+																				<td align='null'><img id='18__VAL_C16'
+																					value='VAL_C16'
+																					src='http://localhost:8082/DerechoCorporativo/img/semaforo_green.png'></td>
+																				<td align='center'><a
+																					onClick="openFlexTableDetail('18','1710');"><img
+																						src='http://localhost:8082/DerechoCorporativo/img/icons/List.png'></a></td>
+																			</tr>
+																		</table></td>
+																</tr>
+																<tr>
+																	<td>&nbsp;</td>
+																	<td>&nbsp;</td>
+																</tr>
+															</table>
+														</fieldset></td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+											</table>
+											<table width='100%'>
+												<tr>
+													<th
+														style='color: white; text-align: center; font-weight: bold; font-size: 12px; background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png");'>Apoderados</th>
+												</tr>
+											</table>
+											<table width='100%' align='center' border='0'>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+												<tr>
+													<td></td>
+												</tr>
+												<tr>
+													<td><fieldset>
+															<legend>Apoderados</legend>
+															<table width='97%' border='0'>
+																<tr>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																</tr>
+																<tr>
+																	<td colspan='8'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='8'>
+																		<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+																		<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body onload="">
+	<br>
+	<br>
+	<fieldset>
+		<legend>Escritura: 65767</legend>
+		<table width='96%' cellspacing='3' cellpadding='3' border=0
+			class='flexTable'>
+			<tr>
+				<td align='left' colspan=6 class='tableRow3'><b>ESCRITURA:
+						65767</b></td>
+			</tr>
+			<tr>
+				<td align='right' colspan=6 class='tableRow4'><b>PODERES
+						GENERALES</b></td>
+			</tr>
+			<tr>
+				<th width='16%'
+					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'>APODERADOS</th>
+				<th width='16%'
+					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'>ACTOS
+					DE DOMINIO</th>
+				<th width='16%'
+					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'>ACTOS
+					DE ADMINISTRACION</th>
+				<th width='16%'
+					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'>TITULOS
+					DE CREDITO</th>
+				<th width='16%'
+					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'>PLEITOS
+					Y COBRANZAS</th>
+				<th width='16%'
+					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'>PODER
+					ESPECIAL</th>
+			</tr>
+		</table>
+		<br>
+		<br>
+		<br>
+		<table width='96%' cellspacing='3' cellpadding='3' border=0
+			class='flexTable'>
+			<tr>
+				<td align='right' colspan=6 class='tableRow4'><b>PODERES
+						ESPECIALES</b></td>
+			</tr>
+			<tr>
+				<th width='16%'
+					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'>APODERADOS</th>
+				<th width='16%'
+					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'>ACTOS
+					DE DOMINIO</th>
+				<th width='16%'
+					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'>ACTOS
+					DE ADMINISTRACION</th>
+				<th width='16%'
+					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'>TITULOS
+					DE CREDITO</th>
+				<th width='16%'
+					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'>PLEITOS
+					Y COBRANZAS</th>
+				<th width='16%'
+					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'>PODER
+					ESPECIAL</th>
+			</tr>
+		</table>
+	</fieldset>
+	<br>
+	<br>
+	<fieldset>
+		<legend>Escritura: 52,016</legend>
+		<table width='96%' cellspacing='3' cellpadding='3' border=0
+			class='flexTable'>
+			<tr>
+				<td align='left' colspan=6 class='tableRow3'><b>ESCRITURA:
+						52,016</b></td>
+			</tr>
+			<tr>
+				<td align='right' colspan=6 class='tableRow4'><b>PODERES
+						GENERALES</b></td>
+			</tr>
+			<tr>
+				<th width='16%'
+					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'>APODERADOS</th>
+				<th width='16%'
+					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'>ACTOS
+					DE DOMINIO</th>
+				<th width='16%'
+					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'>ACTOS
+					DE ADMINISTRACION</th>
+				<th width='16%'
+					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'>TITULOS
+					DE CREDITO</th>
+				<th width='16%'
+					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'>PLEITOS
+					Y COBRANZAS</th>
+				<th width='16%'
+					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'>PODER
+					ESPECIAL</th>
+			</tr>
+			<tr class="tableRow2">
+				<td><b>Tesorería </b>
+				<UL type=disk>
+						</br>
+						<LI>Armando Pérez Sánchez(Fec. Baja:10/12/15 ,Tipo
+							Baja:Ejemplo ,Doc:534,564565)</br>
+						<LI>Bernardo Gómez Martínez(Fec. Baja:11/12/15 ,Tipo Baja:
+							,Doc:)</br>
+						<LI>Carlos Ortega Mercado</br>
+						<LI>María Azucena Domínguez Cobián (Fec. Baja:15/12/15 ,Tipo
+							Baja: ,Doc:)</br>
+						<LI>Armando Guillermo Nava Gómez-Tagle(Fec. Baja:16/12/15
+							,Tipo Baja: ,Doc:)
+					</UL></td>
+				<td><UL type=disk>
+						</br>
+						<LI>Hasta US$1 millón, por 2 VIP-2, Ilimitado, 1-VIP-2 con
+							EAJ ó 1 VIP-1. Delegable
+					</UL></td>
+				<td><UL type=disk></UL></td>
+				<td><UL type=disk></UL></td>
+				<td><UL type=disk></UL></td>
+				<td><UL type=disk></UL></td>
+			</tr>
+			<tr>
+				<td><b>VIP-1</b>
+				<UL type=disk>
+						</br>
+						<LI>Rocío Elizabeth Pérez Nava</br>
+						<LI>Jorge Ruben Vilchis Hernández
+					</UL></td>
+				<td><UL type=disk>
+						</br>
+						<LI>Conjuntamente un apoderado del Grupo A, o un apoderado
+							del Grupo B, con un apoderado del Grupo C
+					</UL></td>
+				<td><UL type=disk></UL></td>
+				<td><UL type=disk></UL></td>
+				<td><UL type=disk></UL></td>
+				<td><UL type=disk></UL></td>
+			</tr>
+		</table>
+		<br>
+		<br>
+		<br>
+		<table width='96%' cellspacing='3' cellpadding='3' border=0
+			class='flexTable'>
+			<tr>
+				<td align='right' colspan=6 class='tableRow4'><b>PODERES
+						ESPECIALES</b></td>
+			</tr>
+			<tr>
+				<th width='16%'
+					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'>APODERADOS</th>
+				<th width='16%'
+					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'>ACTOS
+					DE DOMINIO</th>
+				<th width='16%'
+					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'>ACTOS
+					DE ADMINISTRACION</th>
+				<th width='16%'
+					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'>TITULOS
+					DE CREDITO</th>
+				<th width='16%'
+					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'>PLEITOS
+					Y COBRANZAS</th>
+				<th width='16%'
+					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'>PODER
+					ESPECIAL</th>
+			</tr>
+			<tr class="tableRow2">
+				<td><b>Gerentes Especiales</b>
+				<UL type=disk>
+						</br>
+						<LI>Guadalupe Phillips Margain
+					</UL></td>
+				<td><UL type=disk></UL></td>
+				<td><UL type=disk></UL></td>
+				<td><UL type=disk></UL></td>
+				<td><UL type=disk></UL></td>
+				<td><UL type=disk></UL></td>
+			</tr>
+		</table>
+	</fieldset>
+</body>
+																		</html>
+																	</td>
+																</tr>
+																<tr>
+																	<td>&nbsp;</td>
+																	<td>&nbsp;</td>
+																</tr>
+															</table>
+														</fieldset></td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+											</table>
+											<table width='100%'>
+												<tr>
+													<th
+														style='color: white; text-align: center; font-weight: bold; font-size: 12px; background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png");'>Reformas
+														y Movimientos Corporativos</th>
+												</tr>
+											</table>
+											<table width='100%' align='center' border='0'>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+												<tr>
+													<td></td>
+												</tr>
+												<tr>
+													<td><fieldset>
+															<legend>Reformas y Movimientos Corporativos</legend>
+															<table width='97%' border='0'>
+																<tr>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																</tr>
+																<tr>
+																	<td colspan='8'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='8'>
+																		<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+																		<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body onload="">
+	<table width="100%">
+		<tr>
+			<td width="5%"></td>
+			<td width="95%"><br>
+			<br>
+				<fieldset>
+					<legend>Reforma Total de Estatutos</legend>
+					<table width='90%' align='center' class='flexTable' border='0'
+						cellspacing='3' cellpadding='3'>
+						<td align='center'><a
+							onClick="closeForm();sleep(2000);setFlexTableId('20');loadFlexTableForm('20-0');"></a></td>
+						</tr>
+						<tr>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='null'>Tipo de Reunión</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='null'>Fecha</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='null'>Hora</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='null'>Otros acuerdos u Observaciones</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Semaforo</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Enviada a Notaría N°</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Fecha de envío a NP</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Escritura No</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Fecha de Registro</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Detalle</th>
+						</tr>
+						<tr class="tableRow2">
+							<td align='null'>Resoluciones por Votación Unánime de los
+								Accionistas</td>
+							<td align='null'>10/12/2015</td>
+							<td align='null'></td>
+							<td align='null'></td>
+							<td align='null'><img id='20__VAL_C83' value='VAL_C83'
+								src='http://localhost:8082/DerechoCorporativo/img/semaforo_red.png'></td>
+							<td align='null'></td>
+							<td align='null'>31/12/2015</td>
+							<td align='null'></td>
+							<td align='null'>12/12/2015</td>
+							<td align='center'><a
+								onClick="openFlexTableDetail('20','1738');"><img
+									src='http://localhost:8082/DerechoCorporativo/img/icons/List.png'></a></td>
+						</tr>
+						<tr>
+							<td align='null'>Asamblea General Extraordinaria de
+								Asociados</td>
+							<td align='null'>11/12/2015</td>
+							<td align='null'></td>
+							<td align='null'></td>
+							<td align='null'><img id='20__VAL_C83' value='VAL_C83'
+								src='http://localhost:8082/DerechoCorporativo/img/semaforo_yellow.png'></td>
+							<td align='null'>25</td>
+							<td align='null'>12/12/2015</td>
+							<td align='null'>456565,877</td>
+							<td align='null'>17/12/2015</td>
+							<td align='center'><a
+								onClick="openFlexTableDetail('20','1747');"><img
+									src='http://localhost:8082/DerechoCorporativo/img/icons/List.png'></a></td>
+						</tr>
+						<tr class="tableRow2">
+							<td align='null'>Resoluciones del Administrador</td>
+							<td align='null'>18/12/2015</td>
+							<td align='null'></td>
+							<td align='null'></td>
+							<td align='null'><img id='20__VAL_C83' value='VAL_C83'
+								src='http://localhost:8082/DerechoCorporativo/img/semaforo_red.png'></td>
+							<td align='null'></td>
+							<td align='null'></td>
+							<td align='null'></td>
+							<td align='null'>17/12/2015</td>
+							<td align='center'><a
+								onClick="openFlexTableDetail('20','1748');"><img
+									src='http://localhost:8082/DerechoCorporativo/img/icons/List.png'></a></td>
+						</tr>
+					</table>
+				</fieldset> <br>
+			<br>
+				<fieldset>
+					<legend>Reforma Parcial de Estatutos</legend>
+					<table width='90%' align='center' class='flexTable' border='0'
+						cellspacing='3' cellpadding='3'>
+						<td align='center'><a
+							onClick="closeForm();sleep(2000);setFlexTableId('21');loadFlexTableForm('21-0');"></a></td>
+						</tr>
+						<tr>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='null'>Tipo de Reunión</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='null'>Fecha</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Semaforo</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Enviada a Notaría N°</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Fecha de envío a NP</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Escritura No</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Fecha de Registro</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Detalle</th>
+						</tr>
+						<tr class="tableRow2">
+							<td align='null'>Resoluciones del Administrador</td>
+							<td align='null'>09/12/2015</td>
+							<td align='null'><img id='21__VAL_C83' value='VAL_C83'
+								src='http://localhost:8082/DerechoCorporativo/img/semaforo_green.png'></td>
+							<td align='null'>54776</td>
+							<td align='null'>09/12/2015</td>
+							<td align='null'>654656</td>
+							<td align='null'>17/12/2015</td>
+							<td align='center'><a
+								onClick="openFlexTableDetail('21','1712');"><img
+									src='http://localhost:8082/DerechoCorporativo/img/icons/List.png'></a></td>
+						</tr>
+						<tr>
+							<td align='null'>Asamblea de Socios</td>
+							<td align='null'>17/12/2015</td>
+							<td align='null'><img id='21__VAL_C83' value='VAL_C83'
+								src='http://localhost:8082/DerechoCorporativo/img/semaforo_green.png'></td>
+							<td align='null'>NOT 002</td>
+							<td align='null'>17/12/2015</td>
+							<td align='null'>ESC 002</td>
+							<td align='null'>17/12/2015</td>
+							<td align='center'><a
+								onClick="openFlexTableDetail('21','1783');"><img
+									src='http://localhost:8082/DerechoCorporativo/img/icons/List.png'></a></td>
+						</tr>
+					</table>
+				</fieldset> <br>
+			<br>
+				<fieldset>
+					<legend>Transformación</legend>
+					<table width='90%' align='center' class='flexTable' border='0'
+						cellspacing='3' cellpadding='3'>
+						<td align='center'><a
+							onClick="closeForm();sleep(2000);setFlexTableId('22');loadFlexTableForm('22-0');"></a></td>
+						</tr>
+						<tr>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Tipo de Reunión</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='null'>Fecha</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Semaforo</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Enviada a Notaría N°</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Fecha de envío a NP</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Escritura No</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Fecha de Registro</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Detalle</th>
+						</tr>
+						<tr class="tableRow2">
+							<td align='null'>Asamblea Extraordinaria de Asociados</td>
+							<td align='null'>19/12/2015</td>
+							<td align='null'><img id='22__VAL_C83' value='VAL_C83'
+								src='http://localhost:8082/DerechoCorporativo/img/semaforo_green.png'></td>
+							<td align='null'>86877</td>
+							<td align='null'>11/12/2015</td>
+							<td align='null'>76586</td>
+							<td align='null'>01/01/2016</td>
+							<td align='center'><a
+								onClick="openFlexTableDetail('22','1713');"><img
+									src='http://localhost:8082/DerechoCorporativo/img/icons/List.png'></a></td>
+						</tr>
+						<tr>
+							<td align='null'>Asamblea de Asociados</td>
+							<td align='null'>06/12/2015</td>
+							<td align='null'><img id='22__VAL_C83' value='VAL_C83'
+								src='http://localhost:8082/DerechoCorporativo/img/semaforo_green.png'></td>
+							<td align='null'>NOT - 001</td>
+							<td align='null'>17/12/2015</td>
+							<td align='null'>ESC - 001</td>
+							<td align='null'>17/12/2015</td>
+							<td align='center'><a
+								onClick="openFlexTableDetail('22','1784');"><img
+									src='http://localhost:8082/DerechoCorporativo/img/icons/List.png'></a></td>
+						</tr>
+					</table>
+				</fieldset> <br>
+			<br>
+				<fieldset>
+					<legend>Aprobación de Ejercicio Social</legend>
+					<table width='90%' align='center' class='flexTable' border='0'
+						cellspacing='3' cellpadding='3'>
+						<td align='center'><a
+							onClick="closeForm();sleep(2000);setFlexTableId('23');loadFlexTableForm('23-0');"></a></td>
+						</tr>
+						<tr>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='null'>Tipo de Reunión</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='null'>Fecha</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Semaforo</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Enviada a Notaría N°</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Fecha de envío a NP</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Escritura No</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Fecha de Registro</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Detalle</th>
+						</tr>
+						<tr class="tableRow2">
+							<td align='null'>Asamblea Especial de Accionistas de la
+								Serie "D"</td>
+							<td align='null'>11/12/2015</td>
+							<td align='null'><img id='23__VAL_C103' value='VAL_C103'
+								src='http://localhost:8082/DerechoCorporativo/img/semaforo_red.png'></td>
+							<td align='null'></td>
+							<td align='null'></td>
+							<td align='null'></td>
+							<td align='null'></td>
+							<td align='center'><a
+								onClick="openFlexTableDetail('23','1751');"><img
+									src='http://localhost:8082/DerechoCorporativo/img/icons/List.png'></a></td>
+						</tr>
+						<tr>
+							<td align='null'>Asamblea Especial de Accionistas de la
+								Serie "D"</td>
+							<td align='null'>06/12/2015</td>
+							<td align='null'><img id='23__VAL_C103' value='VAL_C103'
+								src='http://localhost:8082/DerechoCorporativo/img/semaforo_red.png'></td>
+							<td align='null'></td>
+							<td align='null'>30/11/2015</td>
+							<td align='null'></td>
+							<td align='null'>07/12/2015</td>
+							<td align='center'><a
+								onClick="openFlexTableDetail('23','1786');"><img
+									src='http://localhost:8082/DerechoCorporativo/img/icons/List.png'></a></td>
+						</tr>
+					</table>
+				</fieldset> <br>
+			<br>
+				<fieldset>
+					<legend>Acta Otros</legend>
+					<table width='90%' align='center' class='flexTable' border='0'
+						cellspacing='3' cellpadding='3'>
+						<td align='center'><a
+							onClick="closeForm();sleep(2000);setFlexTableId('28');loadFlexTableForm('28-0');"></a></td>
+						</tr>
+						<tr>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='null'>Tipo de Reunión</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='null'>Fecha</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Semaforo</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Enviada a Notaría N°</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Fecha de envío a NP</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Escritura No</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Fecha de Registro</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Detalle</th>
+						</tr>
+						<tr class="tableRow2">
+							<td align='null'>Resoluciones del Administrador</td>
+							<td align='null'>17/12/2015</td>
+							<td align='null'><img id='28__VAL_C83' value='VAL_C83'
+								src='http://localhost:8082/DerechoCorporativo/img/semaforo_green.png'></td>
+							<td align='null'>647646</td>
+							<td align='null'>01/01/2016</td>
+							<td align='null'>6476</td>
+							<td align='null'>25/12/2015</td>
+							<td align='center'><a
+								onClick="openFlexTableDetail('28','1716');"><img
+									src='http://localhost:8082/DerechoCorporativo/img/icons/List.png'></a></td>
+						</tr>
+					</table>
+				</fieldset> <br>
+			<br>
+				<fieldset>
+					<legend>Aumento de Capital</legend>
+					<table width='90%' align='center' class='flexTable' border='0'
+						cellspacing='3' cellpadding='3'>
+						<td align='center'><a
+							onClick="closeForm();sleep(2000);setFlexTableId('29');loadFlexTableForm('29-0');"></a></td>
+						</tr>
+						<tr>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='null'>Tipo de Reunión</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='null'>Fecha</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Semaforo</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Enviada a Notaría N°</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Fecha de envío a NP</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Escritura No</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Fecha de Registro</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Detalle</th>
+						</tr>
+						<tr class="tableRow2">
+							<td align='null'></td>
+							<td align='null'></td>
+							<td align='null'><img id='29__VAL_C83' value='VAL_C83'
+								src='http://localhost:8082/DerechoCorporativo/img/semaforo_null.png'></td>
+							<td align='null'></td>
+							<td align='null'></td>
+							<td align='null'></td>
+							<td align='null'>N/A</td>
+							<td align='center'><a
+								onClick="openFlexTableDetail('29','1781');"><img
+									src='http://localhost:8082/DerechoCorporativo/img/icons/List.png'></a></td>
+						</tr>
+					</table>
+				</fieldset> <br>
+			<br>
+				<fieldset>
+					<legend>Decreto de Dividendos</legend>
+					<table width='90%' align='center' class='flexTable' border='0'
+						cellspacing='3' cellpadding='3'>
+						<td align='center'><a
+							onClick="closeForm();sleep(2000);setFlexTableId('31');loadFlexTableForm('31-0');"></a></td>
+						</tr>
+						<tr>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='null'>Tipo de Reunión</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='null'>Fecha</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Semaforo</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Enviada a Notaría N°</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Fecha de envío a NP</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Escritura No</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Fecha de Registro</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Detalle</th>
+						</tr>
+						<tr class="tableRow2">
+							<td align='null'>Asamblea General Ordinaria de Socios</td>
+							<td align='null'>09/12/2015</td>
+							<td align='null'><img id='31__VAL_C83' value='VAL_C83'
+								src='http://localhost:8082/DerechoCorporativo/img/semaforo_green.png'></td>
+							<td align='null'>4234</td>
+							<td align='null'>10/12/2015</td>
+							<td align='null'>3243</td>
+							<td align='null'>N/A</td>
+							<td align='center'><a
+								onClick="openFlexTableDetail('31','1719');"><img
+									src='http://localhost:8082/DerechoCorporativo/img/icons/List.png'></a></td>
+						</tr>
+					</table>
+				</fieldset> <br>
+			<br>
+				<fieldset>
+					<legend>Disminución de Capital</legend>
+					<table width='90%' align='center' class='flexTable' border='0'
+						cellspacing='3' cellpadding='3'>
+						<td align='center'><a
+							onClick="closeForm();sleep(2000);setFlexTableId('32');loadFlexTableForm('32-0');"></a></td>
+						</tr>
+						<tr>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='null'>Tipo de Reunión</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='null'>Fecha</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Semaforo</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Enviada a Notaría N°</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Fecha de envío a NP</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Escritura No</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Fecha de Registro</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Detalle</th>
+						</tr>
+						<tr class="tableRow2">
+							<td align='null'>Asamblea General Ordinaria de Socios</td>
+							<td align='null'>04/12/2015</td>
+							<td align='null'><img id='32__VAL_C83' value='VAL_C83'
+								src='http://localhost:8082/DerechoCorporativo/img/semaforo_green.png'></td>
+							<td align='null'>32535</td>
+							<td align='null'>09/12/2015</td>
+							<td align='null'>3253</td>
+							<td align='null'>30/12/2015</td>
+							<td align='center'><a
+								onClick="openFlexTableDetail('32','1720');"><img
+									src='http://localhost:8082/DerechoCorporativo/img/icons/List.png'></a></td>
+						</tr>
+					</table>
+				</fieldset> <br>
+			<br>
+				<fieldset>
+					<legend>Escisión</legend>
+					<table width='90%' align='center' class='flexTable' border='0'
+						cellspacing='3' cellpadding='3'>
+						<td align='center'><a
+							onClick="closeForm();sleep(2000);setFlexTableId('33');loadFlexTableForm('33-0');"></a></td>
+						</tr>
+						<tr>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='null'>Tipo de Reunión</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='null'>Fecha</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Semaforo</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Enviada a Notaría N°</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Fecha de envío a NP</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Escritura No</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Fecha de Registro</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Detalle</th>
+						</tr>
+						<tr class="tableRow2">
+							<td align='null'>Asamblea Ordinaria de Asociados</td>
+							<td align='null'>17/12/2015</td>
+							<td align='null'><img id='33__VAL_C83' value='VAL_C83'
+								src='http://localhost:8082/DerechoCorporativo/img/semaforo_green.png'></td>
+							<td align='null'>3243</td>
+							<td align='null'>09/12/2015</td>
+							<td align='null'>2343</td>
+							<td align='null'>09/12/2015</td>
+							<td align='center'><a
+								onClick="openFlexTableDetail('33','1721');"><img
+									src='http://localhost:8082/DerechoCorporativo/img/icons/List.png'></a></td>
+						</tr>
+						<tr>
+							<td align='null'>Asamblea Extraordinaria de Asociados</td>
+							<td align='null'>24/12/2015</td>
+							<td align='null'><img id='33__VAL_C83' value='VAL_C83'
+								src='http://localhost:8082/DerechoCorporativo/img/semaforo_red.png'></td>
+							<td align='null'></td>
+							<td align='null'></td>
+							<td align='null'></td>
+							<td align='null'></td>
+							<td align='center'><a
+								onClick="openFlexTableDetail('33','1764');"><img
+									src='http://localhost:8082/DerechoCorporativo/img/icons/List.png'></a></td>
+						</tr>
+					</table>
+				</fieldset> <br>
+			<br>
+				<fieldset>
+					<legend>Fusión</legend>
+					<table width='90%' align='center' class='flexTable' border='0'
+						cellspacing='3' cellpadding='3'>
+						<td align='center'><a
+							onClick="closeForm();sleep(2000);setFlexTableId('34');loadFlexTableForm('34-0');"></a></td>
+						</tr>
+						<tr>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='null'>Tipo de Reunión ? SOCIEDAD FUSIONANTE</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='null'>Fecha</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Semaforo</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Enviada a Notaría N°</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Fecha de envío a NP</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Escritura No</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Fecha de Registro</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Detalle</th>
+						</tr>
+						<tr class="tableRow2">
+							<td align='null'>Resoluciones por Votación Unánime de los
+								Accionistas</td>
+							<td align='null'>10/12/2015</td>
+							<td align='null'><img id='34__VAL_C83' value='VAL_C83'
+								src='http://localhost:8082/DerechoCorporativo/img/semaforo_green.png'></td>
+							<td align='null'>3243</td>
+							<td align='null'>18/12/2015</td>
+							<td align='null'>32434</td>
+							<td align='null'>01/01/2016</td>
+							<td align='center'><a
+								onClick="openFlexTableDetail('34','1722');"><img
+									src='http://localhost:8082/DerechoCorporativo/img/icons/List.png'></a></td>
+						</tr>
+						<tr>
+							<td align='null'>Asamblea Especial de Accionistas de la
+								Serie "D"</td>
+							<td align='null'>09/12/2015</td>
+							<td align='null'><img id='34__VAL_C83' value='VAL_C83'
+								src='http://localhost:8082/DerechoCorporativo/img/semaforo_null.png'></td>
+							<td align='null'></td>
+							<td align='null'></td>
+							<td align='null'></td>
+							<td align='null'>N/A</td>
+							<td align='center'><a
+								onClick="openFlexTableDetail('34','1765');"><img
+									src='http://localhost:8082/DerechoCorporativo/img/icons/List.png'></a></td>
+						</tr>
+					</table>
+				</fieldset> <br>
+			<br>
+				<fieldset>
+					<legend>Sesión de Consejo</legend>
+					<table width='90%' align='center' class='flexTable' border='0'
+						cellspacing='3' cellpadding='3'>
+						<td align='center'><a
+							onClick="closeForm();sleep(2000);setFlexTableId('35');loadFlexTableForm('35-0');"></a></td>
+						</tr>
+						<tr>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='null'>Tipo de Reunión</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='null'>Fecha</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Semaforo</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Enviada a Notaría N°</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Fecha de envío a NP</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Escritura No</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Fecha de Registro</th>
+							<th
+								style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+								width='10%'>Detalle</th>
+						</tr>
+						<tr class="tableRow2">
+							<td align='null'>Resoluciones del Administrador</td>
+							<td align='null'>23/12/2015</td>
+							<td align='null'><img id='35__VAL_C83' value='VAL_C83'
+								src='http://localhost:8082/DerechoCorporativo/img/semaforo_green.png'></td>
+							<td align='null'>25435</td>
+							<td align='null'>31/12/2015</td>
+							<td align='null'>3235</td>
+							<td align='null'>N/A</td>
+							<td align='center'><a
+								onClick="openFlexTableDetail('35','1723');"><img
+									src='http://localhost:8082/DerechoCorporativo/img/icons/List.png'></a></td>
+						</tr>
+					</table>
+				</fieldset></td>
+		</tr>
+	</table>
+	<br>
+	<br>
+	<br>
+	<div id="reformasInfoDiv"></div>
+</body>
+																		</html>
+																	</td>
+																</tr>
+																<tr>
+																	<td>&nbsp;</td>
+																	<td>&nbsp;</td>
+																</tr>
+															</table>
+														</fieldset></td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+											</table>
+											<table width='100%'>
+												<tr>
+													<th
+														style='color: white; text-align: center; font-weight: bold; font-size: 12px; background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png");'>Contratos</th>
+												</tr>
+											</table>
+											<table width='100%' align='center' border='0'>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+												<tr>
+													<td></td>
+												</tr>
+												<tr>
+													<td><fieldset>
+															<legend>Contratos</legend>
+															<table width='97%' border='0'>
+																<tr>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																</tr>
+																<tr>
+																	<td colspan='8'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='8'><table width='90%' align='center'
+																			class='flexTable' border='0' cellspacing='3'
+																			cellpadding='3'>
+																			<td align='center'><a
+																				onClick="closeForm();sleep(2000);setFlexTableId('30');loadFlexTableForm('30-0');"></a></td>
+																			</tr>
+																			<tr>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='null'>Tipo de Reunión</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='null'>Fecha</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Semaforo</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Enviada a Notaría N°</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Fecha de envío a NP</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Escritura No</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Fecha de Registro</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Detalle</th>
+																			</tr>
+																			<tr class="tableRow2">
+																				<td align='null'>Resoluciones del Administrador</td>
+																				<td align='null'>09/12/2015</td>
+																				<td align='null'><img id='30__VAL_C83'
+																					value='VAL_C83'
+																					src='http://localhost:8082/DerechoCorporativo/img/semaforo_green.png'></td>
+																				<td align='null'>56</td>
+																				<td align='null'>12/12/2015</td>
+																				<td align='null'>32434</td>
+																				<td align='null'>09/12/2015</td>
+																				<td align='center'><a
+																					onClick="openFlexTableDetail('30','1718');"><img
+																						src='http://localhost:8082/DerechoCorporativo/img/icons/List.png'></a></td>
+																			</tr>
+																		</table></td>
+																</tr>
+																<tr>
+																	<td>&nbsp;</td>
+																	<td>&nbsp;</td>
+																</tr>
+															</table>
+														</fieldset></td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+											</table>
+											<table width='100%'>
+												<tr>
+													<th
+														style='color: white; text-align: center; font-weight: bold; font-size: 12px; background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png");'>Escrituras
+														Otros</th>
+												</tr>
+											</table>
+											<table width='100%' align='center' border='0'>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+												<tr>
+													<td></td>
+												</tr>
+												<tr>
+													<td><fieldset>
+															<legend>Escrituras Otros</legend>
+															<table width='97%' border='0'>
+																<tr>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																	<td width='17%'></td>
+																	<td width='8%'></td>
+																	<td width='8%'></td>
+																	<td width='17%'></td>
+																</tr>
+																<tr>
+																	<td colspan='8'></td>
+																</tr>
+																<tr bgcolor=''>
+																	<td colspan='8'><table width='90%' align='center'
+																			class='flexTable' border='0' cellspacing='3'
+																			cellpadding='3'>
+																			<td align='center'><a
+																				onClick="closeForm();sleep(2000);setFlexTableId('27');loadFlexTableForm('27-0');"></a></td>
+																			</tr>
+																			<tr>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='null'>Tipo de Reunión</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='null'>Acta de Hechos levantada a
+																					solicitud de</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Semaforo</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Enviada a Notaría N°</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Fecha de envío a NP</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Escritura No</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Fecha de Registro</th>
+																				<th
+																					style='background-image: url("http://localhost:8082/DerechoCorporativo/img/tableHeaderBack.png"); color: white;'
+																					width='10%'>Detalle</th>
+																			</tr>
+																			<tr class="tableRow2">
+																				<td align='null'>Resoluciones del Administrador</td>
+																				<td align='null'>AUDIOMASTER</td>
+																				<td align='null'><img id='27__VAL_C83'
+																					value='VAL_C83'
+																					src='http://localhost:8082/DerechoCorporativo/img/semaforo_green.png'></td>
+																				<td align='null'>45767</td>
+																				<td align='null'>09/12/2015</td>
+																				<td align='null'>6476</td>
+																				<td align='null'>09/12/2015</td>
+																				<td align='center'><a
+																					onClick="openFlexTableDetail('27','1715');"><img
+																						src='http://localhost:8082/DerechoCorporativo/img/icons/List.png'></a></td>
+																			</tr>
+																		</table></td>
+																</tr>
+																<tr>
+																	<td>&nbsp;</td>
+																	<td>&nbsp;</td>
+																</tr>
+															</table>
+														</fieldset></td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table> <script type="text/javascript">
+									var TabbedPanels1 = new Spry.Widget.TabbedPanels(
+											"TabbedPanels1");
+								</script>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td width="100%">
+								<!-- Contenido Central -->
+							</td>
+							<td></td>
+						</tr>
+					</table>
+
+
+				</td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+</html>
+
+
+
+

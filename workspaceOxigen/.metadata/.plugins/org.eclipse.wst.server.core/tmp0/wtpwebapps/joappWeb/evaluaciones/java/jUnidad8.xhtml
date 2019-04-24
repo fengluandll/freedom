@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+      <link rel="stylesheet" type="text/css" href="../css/general.css"/>
+<script type="text/javascript">
+function atras(){
+	var lol = window.parent.document.getElementById('contenPrincipal');
+	lol.src = '/joappWeb/dashboards/dashBoardCourses.xhtml';
+	
+	}
+</script>
+<style type="text/css">
+
+}
+</style>
+</h:head>
+<h:body>
+<h:form id="frmEval">
+<!-- 
+<p:panel header="Evaluacion de conocimientos"> -->
+<div style="text-align: center;">
+<p:commandLink onclick="javascript:atras();">
+			   		<p:graphicImage url="/images/Arrow-Left-blue-48.png" 
+			   						style="margin-top:-12px;margin-bottom:-7px;" 
+			   						title="Regresar al dashBoard"/>
+</p:commandLink>
+</div>
+<p:messages id="msGral" showDetail="false"/>
+<h4 style="margin-top:0">1.- ¿Es la palabra reservada para crear una interface?</h4>
+    <h:panelGrid columns="1" style="margin-bottom:10px" cellpadding="5">
+        <p:selectOneRadio id="preg1" value="#{evaluacionBean.preg1}"  columns="1" layout="grid">
+            <f:selectItem itemLabel="implements" itemValue="/images/eliminar.png" />
+            <f:selectItem itemLabel="interface" itemValue="/images/Accept-32.png" />
+            <f:selectItem itemLabel="class" itemValue="/images/eliminar.png" />
+        </p:selectOneRadio>
+
+    </h:panelGrid>
+    
+    <h4 style="margin-top:0">2.- En una interfaz los métodos son implícitamente</h4>
+    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+        <p:selectOneRadio id="preg2" value="#{evaluacionBean.preg2}" columns="1" layout="grid">
+            <f:selectItem itemLabel="públicos y abstractos" itemValue="/images/Accept-32.png" />
+            <f:selectItem itemLabel="Sólo abstractos" itemValue="/images/eliminar.png" />
+            <f:selectItem itemLabel="Sólo públicos" itemValue="/images/eliminar.png" />
+        </p:selectOneRadio>
+    </h:panelGrid>
+    
+     <h4 style="margin-top:0">3.- Para accesar a una variable de un bean es mediante</h4>
+    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+        <p:selectOneRadio id="preg3" value="#{evaluacionBean.preg3}" columns="1" layout="grid" >
+            <f:selectItem itemLabel="Metodos get y set" itemValue="/images/Accept-32.png" />
+            <f:selectItem itemLabel="Llamando a la variable como tal" itemValue="/images/eliminar.png" />
+            <f:selectItem itemLabel="No es posible" itemValue="/images/eliminar.png" />
+        </p:selectOneRadio>
+    </h:panelGrid>
+    
+    <h4 style="margin-top:0">4.- Para asignar un valor a un atributo de un bean se usa el método</h4>
+    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" >
+        <p:selectOneRadio id="preg4" value="#{evaluacionBean.preg4}" columns="1" layout="grid">
+            <f:selectItem itemLabel="insert" itemValue="/images/eliminar.png" />
+            <f:selectItem itemLabel="get" itemValue="/images/eliminar.png" />
+            <f:selectItem itemLabel="set" itemValue="/images/Accept-32.png" />
+        </p:selectOneRadio>
+    </h:panelGrid>
+    
+        <h4 style="margin-top:0">5.- Para devolver un valor de un atributo de un bean se usa el método</h4>
+      
+    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+        <p:selectOneRadio id="preg5" value="#{evaluacionBean.preg5}" columns="1" layout="grid">
+            <f:selectItem itemLabel="insert" itemValue="/images/eliminar.png" />
+            <f:selectItem itemLabel="get" itemValue="/images/Accept-32.png" />
+            <f:selectItem itemLabel="set" itemValue="/images/eliminar.png" />
+        </p:selectOneRadio>
+    </h:panelGrid>
+    
+    <p:commandButton value="Calificar" action="#{evaluacionBean.califica}"  icon="ui-icon-check" update=""/>
+
+    <p:dialog modal="true" resizable="false" widgetVar="dlg" header="Calificacion" showEffect="clip">
+        <p:panelGrid columns="2" id="display" columnClasses="label,value">
+            <h:outputText value="Pregunta 1:" />
+ 			<p:graphicImage value="#{evaluacionBean.preg1}" />
+            <h:outputText value="Pregunta 2:" />
+            <p:graphicImage value="#{evaluacionBean.preg2}" />
+            
+             <h:outputText value="Pregunta 3:" />
+            <p:graphicImage value="#{evaluacionBean.preg3}" />
+            
+             <h:outputText value="Pregunta 4:" />
+            <p:graphicImage value="#{evaluacionBean.preg4}" />
+            
+             <h:outputText value="Pregunta 5:" />
+            <p:graphicImage value="#{evaluacionBean.preg5}" />
+        </p:panelGrid>
+    </p:dialog>
+    <p:dialog  modal="true" resizable="false" widgetVar="dlgExito" header="!Felicidades!" showEffect="clip">
+    	 <p:graphicImage value="/images/duke_java_50.png" /><p:spacer height="1" width="12" />
+    	 <h:outputText value="Has completado esta unidad" 
+    	 				style="font-family:Lucidatypewriter, monospace; 
+							   font-size: 20pt;"/>
+    </p:dialog>
+<!--    </p:panel> -->
+
+
+
+</h:form>
+</h:body>
+</html>

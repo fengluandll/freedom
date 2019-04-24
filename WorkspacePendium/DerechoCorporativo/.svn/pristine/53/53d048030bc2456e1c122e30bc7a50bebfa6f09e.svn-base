@@ -1,0 +1,52 @@
+/**
+* Project: Derecho Corporativo
+*
+* File: Agrupaciones.java
+*
+* Created on: Agosto 31, 2015 at 12:00
+*
+* Copyright (c) - Televisa - 2015
+*/
+
+package mx.com.televisa.derechocorporativo.modules.captura;
+
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import mx.com.televisa.derechocorporativo.reflexion.ReflexionUtil;
+
+/**
+ * Clase agrupadora de componentes web html.
+ *
+ * @author KAZ - CONSULTING/
+ *         Iván Castañeda Loeza
+ *         Jesús Argumedo
+ *         Eduardo Nava
+ *         Ernesto Corona Mendoza
+ *
+ * Manda llamar una función para agrupar catálogos.
+ *
+ * @version 1.0.0
+ *
+ * @date Agosto 31, 2015 at 12:00 pm
+ *
+ */
+public class Agrupaciones {
+	
+	int idAgrupacion;
+	int countCampos;
+	String isFlex;
+	String isPair;
+
+   /**
+    * Manda llamar al método fillObject que se encuentra almacenado en la clase ReflexionUtil
+    * para obtener los metadata.
+    * 
+    * @param tuResultSet
+    * @param tuMetaData
+    * @throws Exception
+    */
+	public Agrupaciones(ResultSet tuResultSet, ResultSetMetaData tuMetaData)
+			throws Exception {
+			ReflexionUtil.fillObject(tuResultSet, tuMetaData, this, Agrupaciones.class);
+	}
+}

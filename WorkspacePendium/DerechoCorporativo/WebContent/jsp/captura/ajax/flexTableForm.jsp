@@ -1,0 +1,106 @@
+<%@page import="java.util.StringTokenizer"%>
+<%@page import="mx.com.televisa.derechocorporativo.modules.flextabs.FlexTable"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%-- 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+--%>
+
+<%-- 
+<script type="text/javascript" src="../../js/jquery/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="<c:out value="${applicationBean.contextPath}"/>/js/accounting/accounting.min.js"></script>
+ --%>
+ <script type="text/javascript" src="<c:out value="${applicationBean.contextPath}"/>/js/jquery/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="<c:out value="${applicationBean.contextPath}"/>/js/jsCal/jquery.mask.js"></script>
+<script type="text/javascript" src="<c:out value="${applicationBean.contextPath}"/>/js/ejercicio/formato.js"></script>
+
+
+<%
+	
+	String params = request.getParameter("params");
+
+	StringTokenizer tok = new StringTokenizer(params,"-");
+	//String[] paramsArr = params.split("-");
+
+
+	String idFlexTab = tok.nextToken();
+	String key =  tok.nextToken();
+	
+	FlexTable ft = new FlexTable(idFlexTab);
+	
+	String globalFlexTableId = request.getParameter("globalFlexTableId");
+	String alterFlexTableId = request.getParameter("alterFlexTableId");
+
+%>				
+									
+<div>
+<table width="80%" border="0" cellspacing="0" cellpadding="0" align="center">
+						<tr style="background-image: url('<%= request.getContextPath() %>/img/Back2.png')">
+							<th width="100%" align="center">
+								<font style="color: white;">
+									<%=ft.nomFlex %> - Editar Información
+								</font>
+							</th>
+							<td  align="right">
+								<% if(idFlexTab.equals("41")||idFlexTab.equals("35")){ %>
+						      	<img src="<%= request.getContextPath() %>/img/close.png" onclick="closeFormAutoma(); deleteForm('<%=key%>','<%=globalFlexTableId%>');deleteEjerciciosTemp();deleteAsuntosTemp();"></img>
+						      	<%}else if(idFlexTab.equals("27")){%>
+						      		<img src="<%= request.getContextPath() %>/img/close.png" onclick="closeFormAutoma(); deleteForm('<%=key%>','<%=globalFlexTableId%>');deleteEjerciciosTemp();deleteAgregarOtrosTemp();"></img>	
+								<% }else{ %>
+						      	<img src="<%= request.getContextPath() %>/img/close.png" onclick="closeFormAutoma(); deleteForm('<%=key%>','<%=globalFlexTableId%>');deleteEjerciciosTemp()"></img>
+						      	<%} %>
+							</td>
+						</tr>
+					    <tr>
+					      <td colspan="2" >
+							
+																
+															
+									<%
+										
+										String form = ft.toHTMLForm(key, globalFlexTableId, alterFlexTableId);
+									
+										/* System.out.println("");
+										System.out.println(form);
+										System.out.println(""); */
+										
+										
+										out.println(form);
+										%>
+
+							</td>
+				        </tr>
+				        <%--
+					    <tr>
+					      <td width="35%">&nbsp;</td>
+					      <td>&nbsp;</td>
+				        </tr>
+					    <tr>
+					      <td>&nbsp;</td>
+					      <td>&nbsp;</td>
+				        </tr>
+				         --%>
+					    <tr>
+					      <td>&nbsp;</td>
+					      <td align="right">
+					      	<img src='<%= request.getContextPath() %>/img/wait-bar.gif' id='imgFlexTableWait' style="display: none">
+					      	<input type="button" id='flexTableformButton' Value='Guardar' onclick="flexTableSave(); deleteForm('<%=key%>','<%=globalFlexTableId%>');">
+					      </td>
+				        </tr>
+				      </table>
+
+</div>
+<%-- 
+</body>
+</html>
+--%>

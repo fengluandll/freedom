@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from EmpleadoDAOService WSDL service -->
+
+  <service name="EmpleadoDAO" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://DAO.model.bardahl.mx"/>
+      <parameter name="wsdlServiceElement" value="EmpleadoDAOService"/>
+      <parameter name="schemaQualified" value="http://DAO.model.bardahl.mx"/>
+      <parameter name="wsdlServicePort" value="EmpleadoDAO"/>
+      <parameter name="className" value="mx.bardahl.model.DAO.EmpleadoDAO"/>
+      <parameter name="wsdlPortType" value="EmpleadoDAO"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://DAO.model.bardahl.mx" xmlns:retNS="http://DAO.model.bardahl.mx" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="dameEmpleado" qname="operNS:dameEmpleado" returnQName="retNS:dameEmpleadoReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://DAO.model.bardahl.mx" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:employeeNumber" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://DAO.model.bardahl.mx" xmlns:retNS="http://DAO.model.bardahl.mx" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="dameCustomer" qname="operNS:dameCustomer" returnQName="retNS:dameCustomerReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://DAO.model.bardahl.mx" xmlns:retNS="http://DAO.model.bardahl.mx" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="misClientes" qname="operNS:misClientes" returnQName="retNS:misClientesReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://DAO.model.bardahl.mx" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:vendedor" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://DAO.model.bardahl.mx" xmlns:retNS="http://DAO.model.bardahl.mx" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="insertGPS" qname="operNS:insertGPS" returnQName="retNS:insertGPSReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://DAO.model.bardahl.mx" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:datos" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://DAO.model.bardahl.mx" xmlns:retNS="http://DAO.model.bardahl.mx" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getDirecciones" qname="operNS:getDirecciones" returnQName="retNS:getDireccionesReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://DAO.model.bardahl.mx" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:vendedor" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://DAO.model.bardahl.mx" xmlns:retNS="http://DAO.model.bardahl.mx" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getDireccionesCliente" qname="operNS:getDireccionesCliente" returnQName="retNS:getDireccionesClienteReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://DAO.model.bardahl.mx" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:numCliente" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="getDirecciones dameEmpleado dameCustomer insertGPS getDireccionesCliente misClientes"/>
+
+  </service>
+</deployment>

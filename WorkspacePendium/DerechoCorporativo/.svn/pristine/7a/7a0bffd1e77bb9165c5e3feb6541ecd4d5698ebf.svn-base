@@ -1,0 +1,205 @@
+﻿/* tables */
+table.tablesorter {
+	font-family:arial;
+	background-color: #FFFFFF;
+	margin:10px 0pt 15px;
+	font-size: 8pt;
+	width: 100%;
+	text-align: left;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+	background-color: #e8e8e8;	
+	font-size: 8pt;
+	padding: 4px;
+	color:#363636;
+	font-weight:bold;
+}
+table.tablesorter thead tr .header {
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter tbody td {
+	color: #15346D;
+	padding: 4px;
+	vertical-align: middle;
+	height:25px;
+}
+table.tablesorter tbody tr.odd {
+	background-color:#F5F5F5;
+}
+table.tablesorter tbody tr:hover {
+	background-color:#CEE3F6 !important;	
+}
+table.tablesorter tbody tr.odd:hover {
+	background-color:#CEE3F6 !important;	
+}
+table.tablesorter thead tr .headerSortUp {
+	background-image: url(asc.gif);
+	color:White;
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url(desc.gif);
+	color:White;
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+background-color:#778899;
+}
+
+.cellIndicator0 {
+	background-attachment: scroll;
+	background-image: url(../images/Paneles/Ind0.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	text-indent:-9999px;
+	cursor:pointer;
+}
+
+.cellIndicator1 {
+	background-attachment: scroll;
+	background-image: url(../images/Paneles/Ind1.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	text-indent:-9999px;
+	cursor:pointer;
+}
+
+.cellIndicator2 {
+	background-attachment: scroll;
+	background-image: url(../images/Paneles/Ind2.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	text-indent:-9999px;
+	cursor:pointer;
+}
+
+.cellIndicator3 {
+	background-attachment: scroll;
+	background-image: url(../images/Paneles/Ind3.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	text-indent:-9999px;
+	cursor:pointer;
+}
+
+.cellIndicator4 {
+	background-attachment: scroll;
+	background-image: url(../images/Paneles/Ind4.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	text-indent:-9999px;
+	cursor:pointer;
+}
+
+.even{
+	background-color: #FFFFFF !important;
+}
+.TableNoHead{
+	background-color: #FFFFFF !important;	
+}
+
+table.TableNoHead thead tr th, table.TableNoHead tfoot tr th {
+	background-color: #FFFFFF !important;	
+	font-size: 8pt;
+	padding: 4px;
+	color:white;
+}
+
+.TableDrillHead{
+	background-color: #FFFFFF;	
+}
+
+table.TableDrillHead thead tr th, table.TableNoHead tfoot tr th {
+	background-color: Silver;	
+	font-size: 8pt;
+	padding: 4px;
+	color:white;
+	height:18px;
+}
+
+.jGridDAOMVC_gotoPageToSetting
+{
+	color: Black;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 5px;
+    text-decoration: none;
+}
+.jGridDAOMVC_gotoPageToSetting:hover
+{
+	color:Blue;	
+}
+
+.jGridContentMVC_MARK{
+	left: -25px;
+    position: absolute;
+    top: -1px;
+}
+
+.rowSelected
+{
+	background-color: #A9D0F5 !important;		
+}
+
+/* tables tablesorterB */
+table.tablesorterB {
+	font-family:arial;
+	background-color: #FFFFFF;
+	margin:0px 0pt 15px;
+	font-size: 8pt;
+	width: 100%;
+	text-align: left;
+	
+}
+
+table.tablesorterB tbody {
+		display: block;
+		overflow:hidden;
+		width: 100%;		    
+  }
+
+table.tablesorterB thead tr
+{
+      display: block;
+      position: relative;
+}
+
+table.tablesorterB thead tr th, table.tablesorterB tfoot tr th {
+	background-color: #e8e8e8;	
+	font-size: 8pt;
+	padding: 4px;
+	color:#363636;
+	font-weight:bold;
+}
+table.tablesorterB thead tr .header {
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorterB tbody td {
+	color: #15346D;
+	padding: 4px;
+	vertical-align: middle;
+	height:25px;
+}
+table.tablesorterB tbody tr.odd {
+	background-color:#F5F5F5;
+}
+table.tablesorterB tbody tr:hover {
+	background-color:#CEE3F6 !important;	
+}
+table.tablesorterB tbody tr.odd:hover {
+	background-color:#CEE3F6 !important;	
+}
+table.tablesorterB thead tr .headerSortUp {
+	background-image: url(asc.gif);
+	color:White;
+}
+table.tablesorterB thead tr .headerSortDown {
+	background-image: url(desc.gif);
+	color:White;
+}
+table.tablesorterB thead tr .headerSortDown, table.tablesorterB thead tr .headerSortUp {
+background-color:#778899;
+}
+
