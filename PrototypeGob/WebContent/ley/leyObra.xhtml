@@ -1,0 +1,21 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="../home/PrincipalHome.xhtml">
+
+
+	
+	
+	
+<ui:define name="source">
+
+	<center>
+	<p:gmap id="gmap" center="23.50743,-103.4272819" zoom="5" type="terrain" model="#{portsMaps.simpleModel}"  style="width:600px;height:400px">
+        <p:ajax event="overlaySelect" listener="#{portsMaps.onMarkerObras}"/>
+    </p:gmap>
+	</center>
+</ui:define>
+
+</ui:composition>

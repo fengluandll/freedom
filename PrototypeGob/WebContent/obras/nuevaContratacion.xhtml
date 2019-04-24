@@ -1,0 +1,317 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<meta http-equiv="x-ua-compatible" content="ie=edge" /> 
+<h:head>
+
+
+<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css"/>
+<link rel="stylesheet" type="text/css" href="../css/custom.css"/>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<link href="images/SCT_24.png" rel="shortcut icon" type='image/png'/>
+<script src="../js/sweetalert.min.js"></script> 
+<link rel="stylesheet" type="text/css" href="../css/sweetalert.css"/>
+
+<style type="text/css">
+.columnWhite.ui-panelgrid-cell{
+	background-color:white;
+}
+.ui-fieldset, .ui-fieldset .ui-fieldset-legend {
+font-size: 10px;
+margin-bottom:20px!important;
+}
+
+.ui-datatable .ui-column-filter {
+	    	display:none;
+		}
+		
+.formulario.ui-outputlabel{
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.ui-layout-north {                    
+                overflow:hidden !important;
+}
+.ui-layout-north .ui-layout-unit-content {
+    overflow:hidden !important;
+} 
+
+.menuButton{
+color:white;
+background-color:rgb(207,36,42);
+
+}
+ul li.ui-menuitem-active>a{
+     background-image: none !important;
+    background-color:rgb(220,38,45) !important;    
+}
+
+.ui-button {
+    /*background-color: rgb(220,38,45) !important;*/
+   }
+ul li.ui-button-text {
+  
+    }
+ul li.ui-button-text-only .ui-button-text {
+
+}
+
+</style>
+<script src="../js/numeral.min.js"/>
+<script type="text/javascript">
+
+function acuerdoNoCero(){
+	var valor  = jQuery('#idAcuerdo').val();
+	var valor2 = jQuery('#idAcuerdo4').val();	
+	if(valor == '0' || valor2 == '0'){
+		swal("El No. Acuerdo debe ser mayor a cero");
+	}
+	
+}
+function habilDesa(action){
+	
+	var valor = PF('w_fec_fallo').getDate();
+	//var valor = jQuery('#id_contractedAmount').val();
+	if(valor == null){
+		if(action == 1){
+		//	alert('Hasta que no este dado el FALLO NO podras Capturar el Monto Contratado');
+			PF('msgPro').renderMessage({"summary":"summary goes here",
+	            "detail":"detail goes here",
+	            "severity":"warn"})
+		}
+		if(action == 2){
+			alert('Hasta que no este dado el FALLO NO podras Capturar el nombre del provedor');
+		}
+		
+		
+	}
+}
+
+function habilDesa_2(action){
+	
+	var valor = PF('w_fec_fallo_2').getDate();
+	//var valor = jQuery('#id_contractedAmount').val();
+	if(valor == null){
+		if(action == 1){
+			alert('Hasta que no este dado el FALLO NO podras Capturar el Monto Contratado');
+		}if(action == 2){
+			alert('Hasta que no este dado el FALLO NO podras Capturar el nombre del provedor');
+		}
+		
+		/*PF('msgPro').renderMessage({"summary":"summary goes here",
+            "detail":"detail goes here",
+            "severity":"warn"})*/
+	}
+}
+
+function currency(){
+	var valor = jQuery('#id_amountHire').val();
+	var string = numeral(valor).format('$0,0.00');
+	jQuery('#id_amountHire_val').text(string);
+}
+function currencyAct(){
+	var valor = jQuery('#id_amountHire_act').val();
+	var string = numeral(valor).format('$0,0.00');
+	jQuery('#id_amountHire_val_2').text(string);
+}
+function currency2(){
+	var valor = jQuery('#id_contractedAmount_act').val();
+	var string = numeral(valor).format('$0,0.00');
+	jQuery('#id_contractedAmount_val_2').text(string);
+}
+function currency3(){
+	var valor = jQuery('#id_contractedAmount').val();
+	var string = numeral(valor).format('$0,0.00');
+	jQuery('#id_contractedAmount_val').text(string);
+}
+
+function incio(){
+	window.location.href = "/PrototypeGob/home/PrincipalHome.xhtml";
+	}
+
+
+PrimeFaces.locales['es'] = {
+	    closeText: 'Cerrar',
+	    prevText: 'Anterior',
+	    nextText: 'Siguiente',
+	    monthNames: ['Enero','Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+	    monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+	    dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+	    dayNamesShort: ['Dom','Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+	    dayNamesMin: ['D','L','M','X','J','V','S'],
+	    weekHeader: 'Semana',
+	    firstDay: 1,
+	    isRTL: false,
+	    showMonthAfterYear: false,
+	    yearSuffix: '',
+	    timeOnlyTitle: 'Sólo hora',
+	    timeText: 'Tiempo',
+	    hourText: 'Hora',
+	    minuteText: 'Minuto',
+	    secondText: 'Segundo',
+	    currentText: 'Fecha actual',
+	    ampm: false,
+	    month: 'Mes',
+	    week: 'Semana',
+	    day: 'Día',
+	    allDayText : 'Todo el día'
+	};
+</script>
+
+</h:head>
+
+<h:body>
+
+<p:layout id="layAll" widgetVar="layoutWdgt" style="width: 100%; margin: 0 auto;">  
+	  
+<p:layoutUnit position="north"			  
+			  resizable="false" 
+			  closable="false" 
+			  collapsible="false" style="width:80%;height:70%;"
+			  styleClass="panel panel-danger">
+<img id="inicio_png" src="../images/logoSCT_hoz3.png" onclick="javascript:incio();" style="cursor: pointer;" title="Inicio"/>				  
+<h:form id="frmMenu">
+<p:menubar style="border-style: none !important">
+	
+	<p:menuitem styleClass="menuButton" value="LEY DE OBRAS PÚBLICAS Y SERVICIOS RELACIONADOS CON LA MISMA" rendered="#{sessionScope['personalBean'].rolId == 7}" icon="ui-icon-pencil" style="color:white;margin:0px 10px;" url="../proyectos/registroProyectos.xhtml"/>
+	<p:menuitem styleClass="menuButton" value="LEY DE ADQUISICIONES,ARRENDAMIENTOS Y SERVICIOS" rendered="#{sessionScope['personalBean'].rolId == 6}" icon="ui-icon-pencil" style="color:white;margin:0px 10px;" url="../obras/registroObra.xhtml"/>
+	<f:facet name="options">
+            <p:commandButton action="#{loginBean.salir}" value="Salir" icon="ui-icon-extlink" />
+    </f:facet>
+
+</p:menubar>
+</h:form>  
+</p:layoutUnit>            
+
+
+<p:layoutUnit id="layoutCenter" position="center" size="100" minSize="40" styleClass="panel panel-danger">
+
+ 	
+<h:form id="frmShowPr">
+	<p:panelGrid style="width:50%;">
+		<p:row>
+			<p:column>
+				<h:commandButton action="#{empresasObrasView.regresar()}" 
+								 value="REGRESAR" 
+								 styleClass="btn btn-primary btn-lg" 
+								 immediate="true"/>
+			</p:column>
+			<p:column style="text-align:center;" width="10px;">
+				<h3><p:outputLabel value="#{sessionScope['obrasBeanSession'].getBuildDescription()}" style="font-size:22px;"/></h3>
+			</p:column>
+		</p:row>
+	</p:panelGrid>
+	
+	<p:growl widgetVar="msgPro" id="msgPro" autoUpdate="true"/>
+	<!-- SECCION EMPRESAS -->
+	
+	<p:outputPanel id="pnlEmpresas" class="panel panel-info">
+			<p:outputPanel class="panel-heading">
+		    	<h3 class="panel-title">Empresas que presentaron Propuestas</h3>
+		  	</p:outputPanel>
+		<p:outputPanel class="panel-body">  	
+			<p:panelGrid>
+				<p:row>
+					<p:column styleClass="columnWhite">
+						<p:outputLabel 	value="Nombre Empresa:" 
+										styleClass="formulario"/>
+					</p:column>
+					<p:column styleClass="columnWhite">
+						<p:inputText value="#{empresasObrasView.nombreRazonSocial}" 
+										     required="false"
+										     label="Nombre Empresa"/>
+					</p:column>
+					<p:column styleClass="columnWhite">
+						<p:outputLabel value="Representante Legal:" styleClass="formulario"/>
+					</p:column>
+					<p:column styleClass="columnWhite">
+						<p:inputText value="#{empresasObrasView.repLegal}" 
+										     required="false"
+										     label="Representante Legal"/>
+					</p:column>
+					<p:column styleClass="columnWhite">
+						<p:outputLabel value="Monto Ofertado:" styleClass="formulario"/>
+					</p:column>
+					<p:column styleClass="columnWhite">
+						<p:inputText value="#{empresasObrasView.montoOfertado}" 
+										     required="false"
+										     label="Monto Ofertado">
+						</p:inputText>
+					</p:column>
+					<p:column styleClass="columnWhite">
+						<p:commandButton id="btnGuardaEmp" 
+								 value="Agregar Empresa" 
+								 actionListener="#{empresasObrasView.guardaEmpresas}"
+								 styleClass="btn btn-info btn-xs"
+								 update="pnlEmpresas"
+								  />
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+			<p:dataTable id="tblEmp" var="emp" value="#{empresasObrasView.listEmpresas}" widgetVar="empTable"
+                 emptyMessage="No existen empresas que presentaron propuestas" 
+                 style="font-size:11px;"
+                 scrollable="true" 
+                 editable="true">
+              
+              <p:ajax event="rowEdit" listener="#{empresasObrasView.onRowEdit}" update="" />
+       		  <p:ajax event="rowEditCancel" listener="#{empresasObrasView.onRowCancel}" update="" />
+              
+         	<p:column  headerText="Nombre Empresa" 
+                	    style="font-size:11px;">
+               <p:cellEditor> 	    
+            	 <f:facet name="output"><h:outputText value="#{emp.nomEmpresa}" /></f:facet>
+            	 <f:facet name="input"><p:inputText value="#{emp.nomEmpresa}" style="width:100%"/></f:facet>
+            	</p:cellEditor>
+         	</p:column>
+         	<p:column  headerText="Representante Legal" 
+                	    style="font-size:11px;">
+				<p:cellEditor>                	    
+            	 <f:facet name="output"><h:outputText value="#{emp.repLegal}" /></f:facet>
+            	 <f:facet name="input"><p:inputText value="#{emp.repLegal}" style="width:100%"/></f:facet>
+            	 </p:cellEditor>
+         	</p:column>
+         	<p:column   headerText="Monto Ofertado" 
+                	    style="font-size:11px;">
+			<p:cellEditor>                	    
+            	 <f:facet name="output"><h:outputText value="#{emp.montoOfertado}">
+            	 	<f:convertNumber type="currency" currencySymbol="$" />
+            	 </h:outputText>
+            	 </f:facet>
+            	 <f:facet name="input"><p:inputText value="#{emp.montoOfertado}" style="width:100%"/></f:facet>
+            </p:cellEditor>
+         	</p:column>
+         	<p:column style="width:32px">
+		           <p:rowEditor />
+		    </p:column>
+		    <p:column headerText="" style="font-size:12px;text-align:center;width:5%;">
+		        <p:commandLink title="Eliminar" 
+		        			   actionListener="#{empresasObrasView.eliminaEmpresa(emp)}"
+		        			   update="tblEmp">
+					<p:confirm header="Confirmación" message="¿Estas seguro que quieres eliminar esta empresa?" icon="ui-icon-alert" />
+					<h:graphicImage value="../images/Erase_16.png" style="cursor:pointer;" title="Eliminar"/>
+					
+			    </p:commandLink>
+        	</p:column>
+		    
+             </p:dataTable>
+              <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+		        <p:commandButton value="SI" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+		        <p:commandButton value="NO" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+		    </p:confirmDialog> 
+		</p:outputPanel>
+	</p:outputPanel>
+	
+</h:form>
+</p:layoutUnit>
+
+
+</p:layout>  
+</h:body>
+</html>

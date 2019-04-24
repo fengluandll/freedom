@@ -1,0 +1,808 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<meta http-equiv="x-ua-compatible" content="ie=edge" /> 
+<h:head>
+
+
+<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css"/>
+<link rel="stylesheet" type="text/css" href="../css/custom.css"/>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<link href="images/SCT_24.png" rel="shortcut icon" type='image/png'/>
+<script src="../js/sweetalert.min.js"></script> 
+<link rel="stylesheet" type="text/css" href="../css/sweetalert.css"/>
+
+<style type="text/css">
+.ui-datatable .ui-column-filter {
+	    	display:none;
+		}
+		
+.formulario{
+	font-weight: bold;
+}
+
+.ui-layout-north {                    
+                overflow:hidden !important;
+}
+.ui-layout-north .ui-layout-unit-content {
+    overflow:hidden !important;
+} 
+
+.menuButton{
+color:white;
+background-color:rgb(207,36,42);
+
+}
+ul li.ui-menuitem-active>a{
+     background-image: none !important;
+    background-color:rgb(220,38,45) !important;    
+}
+
+.ui-button {
+    background-color: rgb(220,38,45) !important;
+   }
+ul li.ui-button-text {
+  
+    }
+ul li.ui-button-text-only .ui-button-text {
+
+}
+
+</style>
+<script src="../js/numeral.min.js"/>
+<script type="text/javascript">
+
+function acuerdoNoCero(){
+	var valor  = jQuery('#idAcuerdo').val();
+	var valor2 = jQuery('#idAcuerdo4').val();	
+	if(valor == '0' || valor2 == '0'){
+		swal("El No. Acuerdo debe ser mayor a cero");
+	}
+	
+}
+function habilDesa(action){
+	
+	var valor = PF('w_fec_fallo').getDate();
+	//var valor = jQuery('#id_contractedAmount').val();
+	if(valor == null){
+		if(action == 1){
+		//	alert('Hasta que no este dado el FALLO NO podras Capturar el Monto Contratado');
+			PF('msgPro').renderMessage({"summary":"summary goes here",
+	            "detail":"detail goes here",
+	            "severity":"warn"})
+		}
+		if(action == 2){
+			alert('Hasta que no este dado el FALLO NO podras Capturar el nombre del provedor');
+		}
+		
+		
+	}
+}
+
+function habilDesa_2(action){
+	
+	var valor = PF('w_fec_fallo_2').getDate();
+	//var valor = jQuery('#id_contractedAmount').val();
+	if(valor == null){
+		if(action == 1){
+			alert('Hasta que no este dado el FALLO NO podras Capturar el Monto Contratado');
+		}if(action == 2){
+			alert('Hasta que no este dado el FALLO NO podras Capturar el nombre del provedor');
+		}
+		
+		/*PF('msgPro').renderMessage({"summary":"summary goes here",
+            "detail":"detail goes here",
+            "severity":"warn"})*/
+	}
+}
+
+function currency(){
+	var valor = jQuery('#id_amountHire').val();
+	var string = numeral(valor).format('$0,0.00');
+	jQuery('#id_amountHire_val').text(string);
+}
+function currencyAct(){
+	var valor = jQuery('#id_amountHire_act').val();
+	var string = numeral(valor).format('$0,0.00');
+	jQuery('#id_amountHire_val_2').text(string);
+}
+function currency2(){
+	var valor = jQuery('#id_contractedAmount_act').val();
+	var string = numeral(valor).format('$0,0.00');
+	jQuery('#id_contractedAmount_val_2').text(string);
+}
+function currency3(){
+	var valor = jQuery('#id_contractedAmount').val();
+	var string = numeral(valor).format('$0,0.00');
+	jQuery('#id_contractedAmount_val').text(string);
+}
+
+function incio(){
+	window.location.href = "/PrototypeGob/home/PrincipalHome.xhtml";
+	}
+
+
+PrimeFaces.locales['es'] = {
+	    closeText: 'Cerrar',
+	    prevText: 'Anterior',
+	    nextText: 'Siguiente',
+	    monthNames: ['Enero','Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+	    monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+	    dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+	    dayNamesShort: ['Dom','Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+	    dayNamesMin: ['D','L','M','X','J','V','S'],
+	    weekHeader: 'Semana',
+	    firstDay: 1,
+	    isRTL: false,
+	    showMonthAfterYear: false,
+	    yearSuffix: '',
+	    timeOnlyTitle: 'Sólo hora',
+	    timeText: 'Tiempo',
+	    hourText: 'Hora',
+	    minuteText: 'Minuto',
+	    secondText: 'Segundo',
+	    currentText: 'Fecha actual',
+	    ampm: false,
+	    month: 'Mes',
+	    week: 'Semana',
+	    day: 'Día',
+	    allDayText : 'Todo el día'
+	};
+</script>
+
+</h:head>
+
+<h:body>
+
+<p:layout id="layAll" widgetVar="layoutWdgt" style="width: 100%; margin: 0 auto;">  
+	  
+<p:layoutUnit position="north"			  
+			  resizable="false" 
+			  closable="false" 
+			  collapsible="false" style="width:80%;height:70%;"
+			  styleClass="panel panel-danger">
+<img id="inicio_png" src="../images/logoSCT_hoz3.png" onclick="javascript:incio();" style="cursor: pointer;" title="Inicio"/>				  
+<h:form id="frmMenu">
+<p:menubar style="border-style: none !important">
+	
+	<p:menuitem styleClass="menuButton" value="LEY DE OBRAS PÚBLICAS Y SERVICIOS RELACIONADOS CON LA MISMA" rendered="#{sessionScope['personalBean'].rolId == 7}" icon="ui-icon-pencil" style="color:white;margin:0px 10px;" url="../proyectos/registroProyectos.xhtml"/>
+	<p:menuitem styleClass="menuButton" value="LEY DE ADQUISICIONES,ARRENDAMIENTOS Y SERVICIOS" rendered="#{sessionScope['personalBean'].rolId == 6}" icon="ui-icon-pencil" style="color:white;margin:0px 10px;" url="../obras/registroObra.xhtml"/>
+	<f:facet name="options">
+            <p:commandButton action="#{loginBean.salir}" value="Salir" icon="ui-icon-extlink" />
+    </f:facet>
+
+</p:menubar>
+</h:form>  
+</p:layoutUnit>            
+<center>
+
+<p:layoutUnit id="layoutCenter" position="center" size="100" minSize="40" styleClass="panel panel-danger">
+	<h:form id="frmShowPr" prependId="false">
+	<p:growl widgetVar="msgObra" id="msgObra" showDetail="true"/>
+	<h3><p:outputLabel value="Puerto: #{sessionScope['nomPto']}" /></h3>
+		
+	<p:dataTable id="tblObra" var="pro" value="#{obrasView.listObras}" widgetVar="obraTable"
+                 emptyMessage="No existen contrataciones con este criterio de busqueda" 
+                 filteredValue="#{obrasView.filteredObra}" style="font-size:11px;"
+                 scrollable="true" rowKey="#{obrasView.idBuilds}" paginator="true" rows="20">
+ 
+        <f:facet name="header">
+            
+            <p:outputPanel>
+            	<p:panelGrid style="width:80%;">
+            		<p:row>
+            			<p:column style="width:170px;" >
+                			<h:outputText value="Busqueda por todos los campos:" style="font-weight: bold;"/>
+                		</p:column>
+                		<p:column>
+                			<p:inputText id="globalFilter" onkeyup="PF('obraTable').filter()" style="width:150px;" placeholder="Ingresa una palabra clave"/>
+                		</p:column>
+                		<p:column style="width:150px;">
+            				<h:outputText value="Nueva Contratación" style="font-weight: bold;"/>
+            			</p:column>
+            			<p:column>
+            				<p:commandLink action="#{obrasView.abreNvaObra()}" >
+            					<p:graphicImage value="../images/Add-24.png" style="cursor:pointer;"/>
+            				</p:commandLink>
+            			</p:column>
+                	</p:row>
+                </p:panelGrid>
+            </p:outputPanel>
+            
+        </f:facet>
+        
+ 		<p:column filterBy="#{pro.idBuilds}" headerText="id obra"  filterMatchMode="contains" 
+                  style="font-size:11px;" footerText="#{pro.idBuilds}" rendered="false">
+              <h:outputText value="#{pro.idBuilds}" />
+          
+        </p:column>
+        
+        <p:column filterBy="#{pro.buildDescription}" headerText="Bien o servicio"  filterMatchMode="contains" 
+                  style="font-size:11px;" footerText="#{pro.buildDescription}">
+              <h:outputText value="#{pro.buildDescription}" />
+          
+        </p:column>
+        <p:column filterBy="#{pro.segment1}" headerText="Num. Acuerdo"  filterMatchMode="contains" 
+                  style="font-size:11px;" footerText="#{pro.segment1}">
+              <h:outputText value="#{pro.segment1}" />
+          
+        </p:column>
+        <p:column filterBy="#{pro.tipoProce}" headerText="Tipo Procedimiento"  filterMatchMode="contains" 
+                  style="font-size:11px;" footerText="#{pro.tipoProce}" width="150px;">
+              <h:outputText value="#{pro.tipoProce}" />
+          
+        </p:column>
+        
+        <p:column filterBy="#{pro.fecContractIni}" headerText="Inicio"  filterMatchMode="contains" style="font-size:11px;text-align:center;"
+        footerText="#{pro.fecContractIni}">
+            <h:outputText value="#{pro.fecContractIni}" />
+        </p:column>
+        <p:column filterBy="#{fecContractFin}" headerText="Término" filterMatchMode="contains" style="font-size:11px;text-align:center;"
+        footerText="#{pro.fecContractFin}">
+            <h:outputText value="#{pro.fecContractFin}" />
+        </p:column>
+        <p:column filterBy="#{pro.resourceType}" headerText="Tipo de Recurso" filterMatchMode="contains" style="font-size:11px;text-align:center;"
+        footerText="#{pro.resourceType}">
+            <h:outputText value="#{pro.resourceType}"/>
+        </p:column>
+        <p:column filterBy="#{pro.fecCompranet}" headerText="Pub. Compranet" filterMatchMode="contains" style="font-size:11px;text-align:center;"
+        footerText="#{pro.fecCompranet}">
+            <h:outputText value="#{pro.fecCompranet}"/>
+        </p:column>
+        <p:column filterBy="#{pro.fecFail}" headerText="Fallo" filterMatchMode="contains" style="font-size:11px;text-align:center;"
+        footerText="#{pro.fecFail}">
+          <h:outputText value="#{pro.fecFail}"/>
+        </p:column>
+        <p:column rendered="false" filterBy="" headerText="resourceNum" filterMatchMode="contains" style="font-size:11px;text-align:center;"
+        footerText="">
+          <h:outputText value="#{pro.resourceTypeNum}"/>
+        </p:column>
+       
+   
+        <p:column headerText="Editar" style="font-size:12px;text-align:center;width:5%;">
+	        <p:commandLink title="Editar" 
+	        			   update=":frmRegActua"
+	        			   action="#{obrasView.editarProject(pro)}"
+	        			   oncomplete="PF('dlgObraActua').show()">
+				<h:graphicImage value="../images/Modify_16.png" style="cursor:pointer;" title="Editar"/>
+		    </p:commandLink>
+            
+        </p:column>
+
+<!-- Era para la version de abri nueva pagina 
+       <p:column headerText="Editar" style="font-size:12px;text-align:center;width:5%;">
+	        <p:commandLink title="Editar" 
+	        			   action="#{obrasView.editarProject(pro)}"
+	        			   ajax="false">
+				<h:graphicImage value="../images/Modify_16.png" style="cursor:pointer;" title="Editar"/>
+		    </p:commandLink>
+            
+        </p:column>
+        -->
+        <p:column headerText="Empresas" style="font-size:12px;text-align:center;width:10%;">
+	        <p:commandLink title="Empresas" 
+	        			   action="#{obrasView.abreEmpresas(pro)}"
+	        			   ajax="false">
+				<h:graphicImage value="../images/Add-24.png" style="cursor:pointer;" title="Editar"/>
+		    </p:commandLink>
+            
+        </p:column>
+     </p:dataTable>   
+</h:form>
+</p:layoutUnit>
+</center>
+
+</p:layout>  
+</h:body>
+
+<h:form id="frmReg" prependId="false" >
+
+<p:dialog header="Nueva Contratación" 
+		  widgetVar="dlgObra" 
+		  modal="true" 
+		  resizable="false"
+		  showEffect="slide"
+		  hideEffect="fold"
+		  id="id_obra">
+ 	<p:growl widgetVar="msgPro" id="msgPro" autoUpdate="true"/>
+ 	<p:messages id="msgAlert" showDetail="true"/>
+<p:scrollPanel mode="native" style="height:410px;"> 	
+ 	<p:panelGrid>
+		<p:row>
+			<p:column>
+				<p:outputLabel value="Bien o Servicio: " styleClass="formulario" />
+			</p:column>
+			<p:column>
+				<p:inputTextarea id="id_bien" rows="3" cols="25" value="#{obrasView.buildDescription}" label="Bien o Servicio" required="true"/>
+			</p:column>
+			<p:column>
+				<p:outputLabel value="Tipo de recursos: " styleClass="formulario"/>
+			</p:column>
+			<p:column>
+				<p:selectOneMenu id="console" value="#{obrasView.resourceType}" required="true" label="Tipo recurso">
+			            <f:selectItem itemLabel="Selecciona" itemValue="" />
+			            <f:selectItems value="#{regProyectoView.mapTipoRecurso}" />
+			    </p:selectOneMenu>
+			</p:column>
+		</p:row>
+		<p:row>
+		<p:column>
+				<p:outputLabel value="Tipo procedimiento: " styleClass="formulario"/>
+			</p:column>
+		<p:column>
+			<p:selectOneMenu id="procedure" value="#{obrasView.idTypeProcedure}" label="Tipo de procedimiento" required="true">
+				<f:selectItem itemLabel="Elije un procedimiento" itemValue=""/>
+				<f:selectItems value="#{regProyectoView.mapProcedures}" />
+				<p:ajax event="change" listener="#{obrasView.mostrar()}" update="msgPro"/>
+			</p:selectOneMenu>
+		</p:column>		
+		<p:column>
+				<p:selectOneMenu id="cmbArt"
+								 value="#{obrasView.tipoArt}" 
+								 required="true" 
+								 label="Articulo"
+								 disabled="#{obrasView.abrirArt}">
+				<f:selectItem itemLabel="Elije un Articulo" itemValue=""/>
+				<f:selectItems value="#{obrasView.articulos}" />
+				<p:ajax event="change" listener="#{obrasView.mostrar()}" update="msgPro"/>
+				</p:selectOneMenu>
+		</p:column>
+		<p:column>
+				<p:selectOneMenu id="cmbFra"
+								 value="#{obrasView.tipoFrac}" 
+								 required="true" 
+								 label="Fracción"
+								 disabled="#{obrasView.abrirFrac}">
+				<f:selectItem itemLabel="Elije una fracción" itemValue=""/>
+				<f:selectItems value="#{obrasView.fraccionesMap}" />
+				<p:ajax event="change" listener="#{obrasView.mostrarLeyenda()}" update="msgPro"/>
+				</p:selectOneMenu>
+		</p:column>
+		
+		</p:row>
+		
+		<p:row>
+		
+			<p:column>
+			<p:outputPanel deferred="false" id="pnlAcuerdo1">
+				<p:outputLabel id="outAcuerdo" value="No. Acuerdo" rendered="#{obrasView.apareceAcuerdo}" for="idAcuerdo" />
+			</p:outputPanel>
+			</p:column>
+			<p:column>
+			<p:outputPanel deferred="false" id="pnlAcuerdo2">
+				<p:inputText id="idAcuerdo" 
+							 value="#{obrasView.numAcuerdo}" 
+							 required="true" 
+							 rendered="#{obrasView.apareceAcuerdo}"
+							 onchange="javascript:acuerdoNoCero();"/>
+			</p:outputPanel>
+			</p:column>
+		
+		</p:row>
+		
+		<p:row>
+			<p:column colspan="4" style="text-align:center;">
+				<p:outputLabel value="Vigencia del Contrato" styleClass="formulario" style="color:#23527c;"/>
+			</p:column>
+		</p:row>
+			<p:row>
+			<p:column>
+				<p:outputLabel value="Inicio: " styleClass="formulario"/>
+			</p:column>
+			<p:column>
+				<p:calendar value="#{obrasView.fecContractIni}" 
+						    required="true" 
+						    label="Vigencia de contrato inicio"
+						    locale="es"
+							pattern="dd/MM/yyyy"/>
+			</p:column>
+			<p:column>
+				<p:outputLabel value="Fin: " styleClass="formulario"/>
+			</p:column>
+			<p:column>
+				<p:calendar value="#{obrasView.fecContractFin}" 
+						    required="true" 
+						    label="Vigencia de contrato Fin"
+						    locale="es"
+							pattern="dd/MM/yyyy"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="4" style="text-align:center;">
+				<p:spacer width="100" height="10" />
+			</p:column>
+		</p:row>		
+		<p:row>
+			<p:column>
+					<p:outputLabel value="Monto a contratar: " styleClass="formulario"/>
+			</p:column>
+			<p:column>
+				 <p:inputText id="id_amountHire" value="#{obrasView.amountHire}" onchange="javascript:currency();" />
+				<p:outputLabel id="id_amountHire_val" />
+			</p:column>	
+			<p:column>
+					<p:outputLabel value="Monto contratado" styleClass="formulario"/>
+			</p:column>
+			<p:column>
+				 <p:inputText id="id_contractedAmount" 
+				 			  value="#{obrasView.contractedAmount}"
+				 			  onchange="javascript:currency3();"/>
+				<p:outputLabel id="id_contractedAmount_val" />
+			</p:column>
+			
+		</p:row>
+		<p:row>
+			<p:column>
+				<p:outputLabel value="Nombre del proveedor" styleClass="formulario"/>
+			</p:column>
+			<p:column>
+				<p:inputText id="id_nomProve"
+						     value="#{obrasView.providerName}" 
+							 label="Nombre del proveedor"  />
+			</p:column>
+			<p:column>
+				<p:outputLabel value="Publicación Compranet" styleClass="formulario"/>
+			</p:column>
+			<p:column>
+				<p:calendar id="idFecCompranet" 
+							value="#{obrasView.fecCompranet}" 
+						    required="#{obrasView.requeridoCompranet}" 
+						    label="Publicación compranet"
+						    locale="es"
+							pattern="dd/MM/yyyy"
+							disabled="#{obrasView.disabledCompranet}"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<p:outputLabel value="Junta aclaraciones" styleClass="formulario"/>
+			</p:column>
+			<p:column>
+				<p:calendar id="idJunAclaraciones"
+							value="#{obrasView.fecClarification_meeting}" 
+						    required="#{obrasView.requeridoJAclaraciones}" 
+						    label="Junta aclaraciones"
+						    locale="es"
+							pattern="dd/MM/yyyy"
+							disabled="#{obrasView.disabledJAclaraciones}"/>
+			</p:column>
+			<p:column>
+				<p:outputLabel value="Presentación propuestas" styleClass="formulario"/>
+			</p:column>
+			<p:column>
+				<p:calendar id="idPresPropuestas"
+							value="#{obrasView.fecPresentationsTender}" 
+						    required="#{obrasView.requeridoPrePro}" 
+						    label="Presentación propuestas"
+						    locale="es"
+							pattern="dd/MM/yyyy"
+							disabled="#{obrasView.disabledPrePro}"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<p:outputLabel value="Fallo" styleClass="formulario"/>
+			</p:column>
+			<p:column>
+				<p:calendar id="id_fecFallo"
+							widgetVar="w_fec_fallo"
+							value="#{obrasView.fecFail}" 
+						    required="false"
+						    label="Fallo"
+						    locale="es"
+							pattern="dd/MM/yyyy"
+							disabled="#{obrasView.disabledFallo}"/>
+			</p:column>
+			<p:column>
+				<p:outputLabel value="Razón social" styleClass="formulario"/>
+			</p:column>
+			<p:column>
+				<p:inputText value="#{obrasView.razonSocial}" 
+						     required="true"
+						     label="Razon social"/>
+			</p:column>
+		</p:row>
+		
+		<p:row>
+			<p:column>
+				<p:outputPanel deferred="false" id="pnlFimraContraNuevo">
+				<p:outputLabel value="Firma del Contrato" styleClass="formulario" rendered="#{obrasView.apareceFecFirmaCont}"/>
+			    </p:outputPanel>
+			</p:column>
+		
+			<p:column>
+			  <p:outputPanel deferred="false" id="pnlFimraContraNuevo2">
+				<p:calendar id="idFecFirmaCont" 
+							value="#{obrasView.fecFirmacontrato}" 
+						    required="false" 
+						    label="Forma del contrato"
+						    locale="es"
+							pattern="dd/MM/yyyy"
+							disabled=""
+							rendered="#{obrasView.apareceFecFirmaCont}"
+							/>
+				</p:outputPanel>		
+			</p:column>
+		</p:row>
+		
+		<p:row>
+			<p:column colspan="4" style="text-align:center;">
+				<p:commandButton id="btnGuardar" value="Guardar" actionListener="#{obrasView.guardaObra}"/>
+			</p:column>
+			<p:column>
+				
+			</p:column>
+			<p:column>
+				<p:ajaxStatus style="width:16px;height:16px;align:center;" id="ajaxStatusPanel">
+				    <f:facet name="start">
+				        <h:graphicImage value="../images/ajaxloading.gif" />
+				    </f:facet>
+				     
+				    <f:facet name="complete">
+				        <h:outputText value="" />
+				    </f:facet>
+				</p:ajaxStatus>
+			</p:column>
+		</p:row>		
+	</p:panelGrid>
+	
+</p:scrollPanel>
+</p:dialog> 
+
+</h:form>
+<h:form id="frmRegActua" prependId="false">
+<p:dialog header="Actualiza Contratación" 
+		  widgetVar="dlgObraActua" 
+		  modal="true" 
+		  resizable="false"
+		  showEffect="slide"
+		  hideEffect="fold"
+		  id="id_obra_actua">
+ 	<p:growl id="msgProAct" autoUpdate="true"/>
+ 	<p:messages id="msgAlert2" showDetail="true"/>
+<p:scrollPanel mode="native" style="height:420px;">  	
+ 	<p:panelGrid>
+		<p:row>
+			<p:column>
+				<p:outputLabel value="Bien o Servicio: " styleClass="formulario" />
+			</p:column>
+			<p:column>
+				<p:inputTextarea rows="3" cols="25" value="#{obrasView.buildDescription}" label="Bien o Servicio" required="true"/>
+			</p:column>
+			<p:column>
+				<p:outputLabel value="Tipo de recursos: " styleClass="formulario"/>
+			</p:column>
+			<p:column>
+				<p:selectOneMenu id="consoleAct" value="#{obrasView.resourceType}" required="true" label="Tipo recurso">
+			            <f:selectItem itemLabel="Selecciona" itemValue="" />
+			            <f:selectItems value="#{regProyectoView.mapTipoRecurso}" />
+			    </p:selectOneMenu>
+			</p:column>
+		</p:row>
+		<p:row>
+		<p:column>
+				<p:outputLabel value="Tipo procedimiento: " styleClass="formulario"/>
+			</p:column>
+		<p:column>
+			<p:selectOneMenu id="procedure_act" value="#{obrasView.idTypeProcedure}" label="Tipo de procedimiento" required="true">
+				<f:selectItem itemLabel="Elije un procedimiento" itemValue=""/>
+				<f:selectItems value="#{regProyectoView.mapProcedures}" />
+				<p:ajax event="change" listener="#{obrasView.mostrar()}"/>
+			</p:selectOneMenu>
+		</p:column>		
+		<p:column>
+				<p:selectOneMenu id="cmbArt_act"
+								 value="#{obrasView.tipoArt}" 
+								 required="true" 
+								 label="Articulo"
+								 disabled="#{obrasView.abrirArt}">
+				<f:selectItem itemLabel="Elije un Articulo" itemValue=""/>
+				<f:selectItems value="#{obrasView.articulos}" />
+				<p:ajax event="change" listener="#{obrasView.mostrar()}"/>
+				</p:selectOneMenu>
+		</p:column>
+		<p:column>
+				<p:selectOneMenu id="cmbFra_act"
+								 value="#{obrasView.tipoFrac}" 
+								 required="true" 
+								 label="Fracción"
+								 disabled="#{obrasView.abrirFrac}">
+				<f:selectItem itemLabel="Elije una fracción" itemValue=""/>
+				<f:selectItems value="#{obrasView.fraccionesMap}" />
+				<p:ajax event="change" listener="#{obrasView.mostrarLeyenda()}" update="msgAlert2"/>
+				</p:selectOneMenu>
+		</p:column>
+		</p:row>
+		<p:row>
+		
+			<p:column>
+			<p:outputPanel deferred="false" id="pnlAcuerdo3">
+				<p:outputLabel id="outAcuerdo3" value="No. Acuerdo" rendered="#{obrasView.apareceAcuerdo}" for="idAcuerdo4"/>
+			</p:outputPanel>
+			</p:column>
+			<p:column>
+			<p:outputPanel deferred="false" id="pnlAcuerdo4">
+				<p:inputText id="idAcuerdo4" 
+							 value="#{obrasView.numAcuerdo}" 
+							 required="true" 
+							 rendered="#{obrasView.apareceAcuerdo}"
+							 onchange="javascript:acuerdoNoCero();"/>
+			</p:outputPanel>
+			</p:column>
+		
+		</p:row>
+		<p:row>
+			<p:column colspan="4" style="text-align:center;">
+				<p:outputLabel value="Vigencia del Contrato" styleClass="formulario" style="color:#23527c;"/>
+			</p:column>
+		</p:row>
+			<p:row>
+			<p:column>
+				<p:outputLabel value="Inicio: " styleClass="formulario"/>
+			</p:column>
+			<p:column>
+				<p:calendar value="#{obrasView.fecContractIni}" 
+						    required="true" 
+						    label="Vigencia de contrato inicio"
+						    locale="es"
+							pattern="dd/MM/yyyy"/>
+			</p:column>
+			<p:column>
+				<p:outputLabel value="Fin: " styleClass="formulario"/>
+			</p:column>
+			<p:column>
+				<p:calendar value="#{obrasView.fecContractFin}" 
+						    required="true" 
+						    label="Vigencia de contrato Fin"
+						    locale="es"
+							pattern="dd/MM/yyyy"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="4" style="text-align:center;">
+				<p:spacer width="100" height="10" />
+			</p:column>
+		</p:row>		
+		<p:row>
+			<p:column>
+					<p:outputLabel value="Monto a contratar: " styleClass="formulario"/>
+			</p:column>
+			<p:column>
+				 <p:inputText id="id_amountHire_act" value="#{obrasView.amountHire}" onchange="javascript:currencyAct();" />
+				<p:outputLabel id="id_amountHire_val_2" />
+			</p:column>	
+			<p:column>
+					<p:outputLabel value="Monto contratado " 
+								   styleClass="formulario"
+								   disabled="#{obrasView.desMonto}"/>
+			</p:column>
+			<p:column>
+				 <p:inputText id="id_contractedAmount_act" 
+				 			  value="#{obrasView.contractedAmount}" 
+				 			  onchange="javascript:currency2();"/>
+				<p:outputLabel id="id_contractedAmount_val_2" />
+			</p:column>
+			
+		</p:row>
+		<p:row>
+			<p:column>
+				<p:outputLabel value="Nombre del proveedor" styleClass="formulario"/>
+			</p:column>
+			<p:column>
+				<p:inputText value="#{obrasView.providerName}" 
+						     label="Nombre del proveedor"/>
+			</p:column>
+			<p:column>
+				<p:outputLabel value="Publicación Compranet" styleClass="formulario"/>
+			</p:column>
+			<p:column>
+				<p:calendar id="idFecCompranet_2" 
+							value="#{obrasView.fecCompranet}" 
+						    required="#{obrasView.requeridoCompranet}" 
+						    label="Publicación compranet"
+						    locale="es"
+							pattern="dd/MM/yyyy"
+							disabled="#{obrasView.disabledCompranet}"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<p:outputLabel value="Junta aclaraciones" styleClass="formulario"/>
+			</p:column>
+			<p:column>
+				<p:calendar id="idJunAclaraciones_2"
+							value="#{obrasView.fecClarification_meeting}" 
+						    required="#{obrasView.requeridoJAclaraciones}" 
+						    label="Junta aclaraciones"
+						    locale="es"
+							pattern="dd/MM/yyyy"
+							disabled="#{obrasView.disabledJAclaraciones}"/>
+			</p:column>
+			<p:column>
+				<p:outputLabel value="Presentación propuestas" styleClass="formulario"/>
+			</p:column>
+			<p:column>
+				<p:calendar id="idPresPropuestas_2"
+							value="#{obrasView.fecPresentationsTender}" 
+						    required="#{obrasView.requeridoPrePro}" 
+						    label="Presentación propuestas"
+						    locale="es"
+							pattern="dd/MM/yyyy"
+							disabled="#{obrasView.disabledPrePro}"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<p:outputLabel value="Fallo" styleClass="formulario"/>
+			</p:column>
+			<p:column>
+				<p:calendar id="id_fecFallo_2"
+							widgetVar="w_fec_fallo_2"
+							value="#{obrasView.fecFail}" 
+						    required="false" 
+						    label="Fallo"
+						    locale="es"
+							pattern="dd/MM/yyyy"
+							disabled="#{obrasView.disabledFallo}"/>
+			</p:column>
+			<p:column>
+				<p:outputLabel value="Razón social" styleClass="formulario"/>
+			</p:column>
+			<p:column>
+				<p:inputText value="#{obrasView.razonSocial}"
+							 required="true" 
+						     label="Razon social"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<p:outputPanel deferred="false" id="pnlFimraContraNuevo3">
+				<p:outputLabel value="Firma del Contrato" styleClass="formulario" rendered="#{obrasView.apareceFecFirmaCont}"/>
+			    </p:outputPanel>
+			</p:column>
+		
+			<p:column>
+			  <p:outputPanel deferred="false" id="pnlFimraContraNuevo4">
+				<p:calendar id="idFecFirmaCont_2" 
+							value="#{obrasView.fecFirmacontrato}" 
+						    required="false" 
+						    label="Forma del contrato"
+						    locale="es"
+							pattern="dd/MM/yyyy"
+							disabled=""
+							rendered="#{obrasView.apareceFecFirmaCont}"
+							/>
+				</p:outputPanel>		
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="4" style="text-align:center;">
+				<p:commandButton id="btnActualizar" value="Guardar" actionListener="#{obrasView.actualizaObra}"/>
+			</p:column>
+			<p:column>
+				
+			</p:column>
+			<p:column>
+				<p:ajaxStatus style="width:16px;height:16px;align:center;" id="ajaxStatusPanel_2">
+				    <f:facet name="start">
+				        <h:graphicImage value="../images/ajaxloading.gif" />
+				    </f:facet>
+				     
+				    <f:facet name="complete">
+				        <h:outputText value="" />
+				    </f:facet>
+				</p:ajaxStatus>
+			</p:column>
+		</p:row>		
+	</p:panelGrid>
+</p:scrollPanel>
+</p:dialog> 
+</h:form>
+
+
+</html>

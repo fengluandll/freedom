@@ -1,0 +1,150 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="../home/PrincipalHome.xhtml">
+
+<ui:define name="source"> 
+
+	<ui:insert name="head">
+	
+	</ui:insert>               
+<center>
+<h:form>
+
+<fieldset>
+<legend class="text-info" style="text-align:left;">Condiciones Proyectos</legend> 
+<p:panelGrid>
+<p:row>
+		<p:column style="text-align:right;">
+	  		<p:outputLabel value="Tipo de formato" for="formato"/>
+	  	</p:column>
+    	<p:column>
+    		<p:selectOneMenu style="width:150px;" required="true" id="formato" value="#{dtReporteObrasView.tipoFormato}"  label="Tipo recurso">
+			            <f:selectItem itemLabel="Selecciona" itemValue="" />
+			            <f:selectItem itemLabel="PDF" itemValue="PDF" />
+			            <f:selectItem itemLabel="EXCEL" itemValue="EXCEL" />
+	   	   </p:selectOneMenu>
+    	</p:column>
+	</p:row>
+  <p:row>
+   		<p:column style="text-align:right;">
+	  		<p:outputLabel value="API:"/>
+	  	</p:column>
+    	<p:column>
+    		<p:selectOneMenu id="procedure" value="#{dtReporteObrasView.idPuerto}" label="puerto">
+				<f:selectItem itemLabel="Todos" itemValue=""/>
+				<f:selectItems value="#{dtReporteObrasView.mapApis}" />
+			</p:selectOneMenu>
+    	</p:column>
+  	<p:column style="text-align:right;">
+  		<p:outputLabel value="Tipo Recurso:"/>
+  	</p:column>
+  	<p:column>
+  		<p:selectOneMenu id="console" value="#{dtReporteObrasView.tipoRecurso}" style=""  label="Tipo recurso">
+			            <f:selectItem itemLabel="Selecciona" itemValue="" />
+			            <f:selectItems value="#{regProyectoView.mapTipoRecurso}" />
+	    </p:selectOneMenu>
+  	</p:column>
+  	
+  </p:row>
+    <p:row>
+  	<p:column style="text-align:right;">
+  		<p:outputLabel value="Monto asignado Inicial:"/>
+  	</p:column>
+  	<p:column>
+  		<p:inputText id="txtMontoInicial" value="#{dtReporteObrasView.montoAsigInicial}"/>
+  	</p:column>
+  	<p:column style="text-align:right;">
+  		<p:outputLabel value="Monto asignado final:"/>
+  	</p:column>
+  	<p:column>
+  		<p:inputText id="txtMontoFinal" value="#{dtReporteObrasView.montoAsigFinal}"/>
+  	</p:column>
+  </p:row>
+  </p:panelGrid>
+</fieldset>
+
+<fieldset>
+<legend class="text-info" style="text-align:left;">Condiciones Licitaciones</legend>  
+<p:panelGrid>
+  <p:row>
+  	<p:column style="text-align:right;">
+  		<p:outputLabel value="Contratista:"/>
+  	</p:column>
+  	<p:column>
+  		<p:inputText id="txtContra" value="#{dtReporteObrasView.contratista}"/>
+  	</p:column>
+  </p:row>
+  <p:row>
+  	<p:column style="text-align:right;">
+  		<p:outputLabel value="Periodo Ejecución Inicial &#160; &#160; &#160; &#160; del:"/>
+  	</p:column>
+  	<p:column>
+		  	<p:calendar value="#{dtReporteObrasView.pEjecInicialIni}" 
+										label="Periodo Ejecucion Inicial Ini"
+										locale="es"
+										pattern="dd/MM/yyyy"/>
+  	</p:column>
+  	<p:column style="text-align:right;">
+  		<p:outputLabel value="al:"/>
+  	</p:column>
+  	<p:column>
+		  	<p:calendar value="#{dtReporteObrasView.pEjecInicialFin}" 
+										label="Periodo Ejecucion Inicial Fin"
+										locale="es"
+										pattern="dd/MM/yyyy"/>
+  	</p:column>
+  </p:row>
+    <p:row>
+  	<p:column style="text-align:right;">
+  		<p:outputLabel value="Periodo Ejecución Final &#160; &#160; &#160; &#160; del:"/>
+  	</p:column>
+  	<p:column>
+		  	<p:calendar value="#{dtReporteObrasView.pEjecFinalIni}" 
+										label="Periodo Ejecucion final Ini"
+										locale="es"
+										pattern="dd/MM/yyyy"/>
+  	</p:column>
+  	<p:column style="text-align:right;">
+  		<p:outputLabel value="al:"/>
+  	</p:column>
+  	<p:column>
+		  	<p:calendar value="#{dtReporteObrasView.pEjecFinalFin}" 
+										label="Periodo Ejecucion final Fin"
+										locale="es"
+										pattern="dd/MM/yyyy"/>
+  	</p:column>
+  </p:row>
+  <p:row>
+	  		<p:column style="text-align:right;">
+	  		<p:outputLabel value="Fecha de fallo &#160; &#160; &#160; &#160; del:"/>
+	  	</p:column>
+	  	<p:column>
+			  	<p:calendar value="#{dtReporteObrasView.fechaFalloIni}" 
+											label="Fecha de fallo Inicial"
+											locale="es"
+											pattern="dd/MM/yyyy"/>
+	  	</p:column>
+	  	<p:column style="text-align:right;">
+	  		<p:outputLabel value="al:"/>
+	  	</p:column>
+	  	<p:column>
+			  	<p:calendar value="#{dtReporteObrasView.fechaFalloFin}" 
+											label="Fecha de fallo final"
+											locale="es"
+											pattern="dd/MM/yyyy"/>
+	  	</p:column>
+  	</p:row>	
+  <p:row>
+  	<p:column colspan="4" style="text-align:center">
+  		<p:commandButton id="btnEjecutar"  styleClass="btn btn-success"  style="font-size:16px;" value="Ejecutar Reporte" actionListener="#{dtReporteObrasView.ejecutaReporte}" ajax="false"/>
+  	</p:column>
+  </p:row>
+</p:panelGrid>
+</fieldset>
+</h:form>
+</center>
+</ui:define> 
+</ui:composition>

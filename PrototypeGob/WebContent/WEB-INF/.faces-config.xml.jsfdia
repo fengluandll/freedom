@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#login.xhtml" PATH="/login.xhtml"
+  SHAPE="800,352,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#login.xhtml:0" NAME="item"
+   PATH="/login.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="principal::#home#PrincipalHome.xhtml"
+    NAME="output" PATH="/home/PrincipalHome.xhtml"
+    TARGET="rules:#home#PrincipalHome.xhtml" TITLE="principal" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="CAMBIO_PASS::#admin#ChangePassword.xhtml"
+    NAME="output1" PATH="/admin/ChangePassword.xhtml"
+    TARGET="rules:#admin#ChangePassword.xhtml" TITLE="CAMBIO_PASS" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#home#PrincipalHome.xhtml"
+  PATH="/home/PrincipalHome.xhtml" SHAPE="544,48,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#home#PrincipalHome.xhtml:0" NAME="item"
+   PATH="/home/PrincipalHome.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="salir::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="salir" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ley#leyObra.xhtml" PATH="/ley/leyObra.xhtml"
+  SHAPE="240,240,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#ley#leyObra.xhtml:0" NAME="item"
+   PATH="/ley/leyObra.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="salir::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="salir" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ley#leyAdquisiciones.xhtml"
+  PATH="/ley/leyAdquisiciones.xhtml" SHAPE="552,280,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#ley#leyAdquisiciones.xhtml:0" NAME="item"
+   PATH="/ley/leyAdquisiciones.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="salir::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="salir" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#proyectos#proyectos.xhtml"
+  PATH="/proyectos/proyectos.xhtml" SHAPE="360,240,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#proyectos#proyectos.xhtml:0" NAME="item"
+   PATH="/proyectos/proyectos.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="salir::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="salir" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ley#seleccionaApi.xhtml"
+  PATH="/ley/seleccionaApi.xhtml" SHAPE="80,248,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#ley#seleccionaApi.xhtml:0" NAME="item"
+   PATH="/ley/seleccionaApi.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="salir::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="salir" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#proyectos#registroProyectos.xhtml"
+  PATH="/proyectos/registroProyectos.xhtml" SHAPE="96,353,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#proyectos#registroProyectos.xhtml:0"
+   NAME="item" PATH="/proyectos/registroProyectos.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="salir::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="salir" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#reportes#reporteLicitaciones.xhtml"
+  PATH="/reportes/reporteLicitaciones.xhtml" SHAPE="248,400,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#reportes#reporteLicitaciones.xhtml:0"
+   NAME="item" PATH="/reportes/reporteLicitaciones.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="salir::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="salir" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#reportes#agendaAperturas.xhtml"
+  PATH="/reportes/agendaAperturas.xhtml" SHAPE="448,465,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#reportes#agendaAperturas.xhtml:0" NAME="item"
+   PATH="/reportes/agendaAperturas.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="salir::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="salir" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#reportes#agendaFallos.xhtml"
+  PATH="/reportes/agendaFallos.xhtml" SHAPE="448,528,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#reportes#agendaFallos.xhtml:0" NAME="item"
+   PATH="/reportes/agendaFallos.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="salir::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="salir" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#reportes#reportesAgregados.xhtml"
+  PATH="/reportes/reportesAgregados.xhtml" SHAPE="448,584,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#reportes#reportesAgregados.xhtml:0"
+   NAME="item" PATH="/reportes/reportesAgregados.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="salir::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="salir" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#obras#registroObra.xhtml"
+  PATH="/obras/registroObra.xhtml" SHAPE="512,648,50,57" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#obras#registroObra.xhtml:0" NAME="item"
+   PATH="/obras/registroObra.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="salir::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="salir" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="nuevasEmpresas::#obras#nuevaContratacion.xhtml" NAME="output1"
+    PATH="/obras/nuevaContratacion.xhtml"
+    TARGET="rules:#obras#nuevaContratacion.xhtml" TITLE="nuevasEmpresas" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#reportes#laassp.xhtml"
+  PATH="/reportes/laassp.xhtml" SHAPE="248,472,50,25" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#reportes#laassp.xhtml:0" NAME="item"
+   PATH="/reportes/laassp.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="salir::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="salir" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#home#secundaryHome.xhtml"
+  PATH="/home/secundaryHome.xhtml" SHAPE="552,128,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#home#secundaryHome.xhtml:0" NAME="item"
+   PATH="/home/secundaryHome.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="salir::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="salir" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#reportes#reporteLeyObras.xhtml"
+  PATH="/reportes/reporteLeyObras.xhtml" SHAPE="448,736,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#reportes#reporteLeyObras.xhtml:0" NAME="item"
+   PATH="/reportes/reporteLeyObras.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="salir::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="salir" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#reportes#reporteAdquisiciones.xhtml"
+  PATH="/reportes/reporteAdquisiciones.xhtml" SHAPE="448,353,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#reportes#reporteAdquisiciones.xhtml:0"
+   NAME="item" PATH="/reportes/reporteAdquisiciones.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="salir::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="salir" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#obras#nuevaContratacion.xhtml"
+  PATH="/obras/nuevaContratacion.xhtml" SHAPE="752,688,50,25" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#obras#nuevaContratacion.xhtml:0" NAME="item"
+   PATH="/obras/nuevaContratacion.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="salir::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="salir" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="regresar::#obras#registroObra.xhtml"
+    NAME="output1" PATH="/obras/registroObra.xhtml"
+    TARGET="rules:#obras#registroObra.xhtml" TITLE="regresar" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="ok::#obras#registroObra.xhtml"
+    NAME="output2" PATH="/obras/registroObra.xhtml"
+    TARGET="rules:#obras#registroObra.xhtml" TITLE="ok" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="refrescaEmpresas::#obras#nuevaContratacion.xhtml" NAME="output3"
+    PATH="/obras/nuevaContratacion.xhtml"
+    SHAPE="801,768,800,768,800,776,728,776,728,696,751,696"
+    TARGET="rules:#obras#nuevaContratacion.xhtml"
+    TITLE="refrescaEmpresas" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#admin#adminUser.xhtml"
+  PATH="/admin/adminUser.xhtml" SHAPE="256,544,50,25" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#admin#adminUser.xhtml:0" NAME="item"
+   PATH="/admin/adminUser.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="salir::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="salir" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#admin#ChangePassword.xhtml"
+  PATH="/admin/ChangePassword.xhtml" SHAPE="880,440,50,25" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#admin#ChangePassword.xhtml:0" NAME="item"
+   PATH="/admin/ChangePassword.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="principal::#home#PrincipalHome.xhtml"
+    NAME="output" PATH="/home/PrincipalHome.xhtml"
+    TARGET="rules:#home#PrincipalHome.xhtml" TITLE="principal" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

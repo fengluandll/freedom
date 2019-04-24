@@ -1,0 +1,845 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<meta http-equiv="x-ua-compatible" content="ie=edge" /> 
+<h:head>
+
+
+<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css"/>
+<link rel="stylesheet" type="text/css" href="../css/custom.css"/>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<link href="images/SCT_24.png" rel="shortcut icon" type='image/png'/>
+
+<style type="text/css">
+
+.ui-datatable .ui-column-filter {
+	    	display:none;
+		}
+		
+.ui-layout-north {                    
+                overflow:hidden !important;
+}
+.ui-layout-north .ui-layout-unit-content {
+    overflow:hidden !important;
+} 
+
+
+/*
+.ui-layout-center {                    
+                overflow:hidden !important;
+}
+.ui-layout-center .ui-layout-unit-content {
+    overflow:hidden !important;
+} 
+*/
+.menuButton{
+color:white;
+background-color:rgb(207,36,42);
+
+}
+ul li.ui-menuitem-active>a{
+     background-image: none !important;
+    background-color:rgb(220,38,45) !important;    
+}
+
+.ui-button {
+    background-color: rgb(220,38,45) !important;
+   }
+ul li.ui-button-text {
+  
+    }
+ul li.ui-button-text-only .ui-button-text {
+
+}
+
+.font_content_table{
+
+	font-size: 9px;
+}
+
+.font_content_table_center{
+
+	font-size: 9px;
+	text-align: center;
+}
+
+</style>
+<script type="text/javascript">
+
+
+function incio(){
+	window.location.href = "/PrototypeGob/home/PrincipalHome.xhtml";
+	}
+function irLicitaciones(){
+
+	window.scrollTo(0,600);
+}
+function enable(){
+
+	alert(2);
+}
+PrimeFaces.locales['es'] = {
+	    closeText: 'Cerrar',
+	    prevText: 'Anterior',
+	    nextText: 'Siguiente',
+	    monthNames: ['Enero','Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+	    monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+	    dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+	    dayNamesShort: ['Dom','Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+	    dayNamesMin: ['D','L','M','X','J','V','S'],
+	    weekHeader: 'Semana',
+	    firstDay: 1,
+	    isRTL: false,
+	    showMonthAfterYear: false,
+	    yearSuffix: '',
+	    timeOnlyTitle: 'Sólo hora',
+	    timeText: 'Tiempo',
+	    hourText: 'Hora',
+	    minuteText: 'Minuto',
+	    secondText: 'Segundo',
+	    currentText: 'Fecha actual',
+	    ampm: false,
+	    month: 'Mes',
+	    week: 'Semana',
+	    day: 'Día',
+	    allDayText : 'Todo el día'
+	};
+</script>
+
+</h:head>
+
+<h:body>
+
+<p:layout id="layAll" widgetVar="layoutWdgt" style="width: 100%; margin: 0 auto;">  
+	  
+<p:layoutUnit position="north"			  
+			  resizable="false" 
+			  closable="false" 
+			  collapsible="false" style="width:80%;height:70%;"
+			  styleClass="panel panel-danger">
+<img id="inicio_png" src="../images/logoSCT_hoz3.png" onclick="javascript:incio();" style="cursor: pointer;" title="Inicio"/>				  
+<h:form id="frmMenu">
+<p:menubar style="border-style: none !important">
+	
+	<p:menuitem styleClass="menuButton" value="LEY DE OBRAS PÚBLICAS Y SERVICIOS RELACIONADOS CON LA MISMA" rendered="#{sessionScope['personalBean'].rolId == 7}" icon="ui-icon-pencil" style="color:white;margin:0px 10px;" url="../proyectos/registroProyectos.xhtml"/>
+	<p:menuitem styleClass="menuButton" value="LEY DE ADQUISICIONES,ARRENDAMIENTOS Y SERVICIOS" rendered="#{sessionScope['personalBean'].rolId == 6}" icon="ui-icon-pencil" style="color:white;margin:0px 10px;" url="../obras/registroObra.xhtml"/>
+	<f:facet name="options">
+            <p:commandButton action="#{loginBean.salir}" value="Salir" icon="ui-icon-extlink" />
+    </f:facet>
+
+</p:menubar>
+</h:form>  
+</p:layoutUnit>            
+<center>
+
+<p:layoutUnit id="layoutCenter" position="center" size="100" minSize="40" styleClass="panel panel-danger">
+	<h:form id="frmShowPr">
+	<p:growl id="msgproject"/>
+	<h3><p:outputLabel value="Puerto seleccionado: #{sessionScope['nomPto']}" /></h3>
+		
+	<p:dataTable id="tblProy" var="pro" value="#{projectView.listProj}" widgetVar="ProyTable"
+                 emptyMessage="No hay proyectos capturados con este criterio de busqueda" 
+                 filteredValue="#{projectView.filteredProy}" style="font-size:12px;"
+                 scrollable="true" scrollHeight="300" selectionMode="single" 
+                 selection="#{projectView.selectedProject}" rowKey="#{pro.idProyect}">
+ 
+        <f:facet name="header">
+            
+            <p:outputPanel>
+            	<p:panelGrid style="width:80%;">
+            		<p:row>
+            			<p:column style="width:170px;" >
+                			<h:outputText value="Busqueda por todos los campos:" style="font-weight: bold;font-size: 9px;"/>
+                		</p:column>
+                		<p:column>
+                			<p:inputText id="globalFilter" onkeyup="PF('ProyTable').filter()" style="width:150px;" placeholder="Ingresa una palabra clave"/>
+                		</p:column>
+                		<p:column style="width:150px;">
+            				<h:outputText value="Nuevo Proyecto" style="font-weight: bold;"/>
+            			</p:column>
+            			<p:column>
+            				<p:commandLink onclick="PF('dlgProy').show();">
+            					<p:graphicImage value="../images/Add-32.png" style="cursor:pointer;"/>
+            				</p:commandLink>
+            			</p:column>
+                	</p:row>
+                </p:panelGrid>
+            </p:outputPanel>
+            
+        </f:facet>
+        
+ 		<p:ajax event="rowSelect" listener="#{regProyectoView.onRowSelect}" update=":frmLici" oncomplete="javascript:irLicitaciones();"/>
+        
+ 		<p:column filterBy="#{pro.idProyect}" headerText="id Proyecto"  filterMatchMode="contains" 
+ 				style="font-size:12px;" footerText="#{pro.idProyect}"
+ 				rendered="false">
+            <h:outputText value="#{pro.idProyect}" />
+        </p:column>
+        
+        <p:column filterBy="#{pro.nomProyecto}" headerText="Nombre Proyecto"  filterMatchMode="contains" 
+                  styleClass="font_content_table" footerText="#{pro.nomProyecto}">
+              <h:outputText value="#{pro.nomProyecto}"  />
+          
+        </p:column>
+        <p:column filterBy="#{pro.desPro}" headerText="Descripcion Proyecto"  filterMatchMode="contains" 
+                  styleClass="font_content_table" footerText="#{pro.desPro}">
+              <h:outputText value="#{pro.desPro}" />
+          
+        </p:column>
+        
+        <p:column filterBy="#{pro.claveCartera}" headerText="Clave de cartera"  filterMatchMode="contains" styleClass="font_content_table_center"
+        footerText="#{pro.claveCartera}">
+            <h:outputText value="#{pro.claveCartera}" />
+        </p:column>
+        <p:column filterBy="#{pro.periodoEjecu}" headerText="Periodo de ejecución" filterMatchMode="contains" styleClass="font_content_table_center"
+        footerText="#{pro.periodoEjecu}">
+            <h:outputText value="#{pro.periodoEjecu}" />
+        </p:column>
+        <p:column filterBy="#{pro.inversionTotal}" headerText="Inversión total" filterMatchMode="contains" styleClass="font_content_table_center"
+        footerText="#{pro.inversionTotal}">
+            <h:outputText value="#{pro.inversionTotal}">
+            	<f:convertNumber type="currency" currencySymbol="$" />
+            </h:outputText>
+        </p:column>
+        <p:column filterBy="#{pro.montoEjercido}" headerText="Monto ejercido" filterMatchMode="contains" styleClass="font_content_table_center"
+        footerText="#{pro.montoEjercido}">
+            <h:outputText value="#{pro.montoEjercido}">
+            	<f:convertNumber type="currency" currencySymbol="$" />
+            </h:outputText>
+        </p:column>
+        <p:column filterBy="#{pro.montoAsignado}" headerText="Monto asignado" filterMatchMode="contains" styleClass="font_content_table_center"
+        footerText="#{pro.montoAsignado}">
+          <h:outputText value="#{pro.montoAsignado}">
+          	<f:convertNumber type="currency" currencySymbol="$" />
+          </h:outputText>
+        </p:column>
+        <p:column filterBy="#{pro.tipoRecurso}" headerText="Tipo de recurso" filterMatchMode="contains" styleClass="font_content_table_center"
+        footerText="#{pro.tipoRecurso}">
+          <h:outputText value="#{pro.tipoRecurso}" />
+        </p:column>
+        <p:column rendered="false" filterBy="" headerText="Tipo de recurso Num" filterMatchMode="" styleClass="font_content_table_center"
+        footerText="">
+          <h:outputText value="#{pro.tipoRecursoNum}" />
+        </p:column>
+         
+        <p:column style="width:52px;text-align: center">
+             <p:commandButton update=":frmRegActua" action="#{regProyectoView.editarProject(pro)}" 
+             				  oncomplete="PF('dlgProyActua').show()" 
+             				  icon="ui-icon-pencil" 
+             				  title="Editar"
+             				  style='width:30px; height:15px'/>
+        </p:column>
+       
+     </p:dataTable>   
+	
+</h:form>
+
+
+<h2>LICITACIONES</h2>
+<h:form id="frmLici">
+		<p:dataTable id="tblLici" var="lici" value="#{regProyectoView.listLici}" widgetVar="LiciTable"
+                     emptyMessage="No existen licitaciones"  style="font-size:12px;"
+                     scrollable="true" scrollHeight="400">
+ 
+        <f:facet name="header">
+            
+            <p:outputPanel>
+            	<p:panelGrid style="width:80%;">
+            		<p:row>
+                		<p:column style="width:90px;">
+            				<h:outputText value="Nueva licitación" style="font-weight: bold;font-size:9px;"/>
+            			</p:column>
+            			<p:column>
+            				<p:commandLink onclick="PF('dlgLici').show();">
+            					<p:graphicImage value="../images/Add-32.png" style="cursor:pointer;" rendered="#{regProyectoView.agregaNoLicitacion}"/>
+            				</p:commandLink>
+            			</p:column>
+                	</p:row>
+                </p:panelGrid>
+            </p:outputPanel>
+          
+        </f:facet>
+     <p:column headerText="id Licitacion"  
+		style="font-size:12px;" footerText="#{lici.idLicitacion}"
+		rendered="false">
+         <h:outputText value="#{lici.idLicitacion}" />
+     </p:column>
+     <p:column headerText="id project"  
+		style="font-size:12px;" footerText="#{lici.idProject}"
+		rendered="false">
+         <h:outputText value="#{lici.idProject}" />
+     </p:column>
+      <p:column headerText="Descripcion de la obra"  
+		styleClass="font_content_table_center" footerText="#{lici.descObra}"
+		rendered="true">
+         <h:outputText value="#{lici.descObra}" />
+     </p:column> 
+     <p:column headerText="Presupuesto base"  
+		styleClass="font_content_table_center" footerText="#{lici.presuBase}"
+		rendered="true">
+         <h:outputText value="#{lici.presuBase}">
+         	<f:convertNumber type="currency" currencySymbol="$" />
+         </h:outputText>
+     </p:column>    
+     <p:column headerText="Publicacion convocatoria"  
+		styleClass="font_content_table_center" footerText="#{lici.publConvocatoria}"
+		rendered="true">
+         <h:outputText value="#{lici.publConvocatoria}" />
+     </p:column>    
+     <p:column headerText="Apertura proposiciones"  
+		styleClass="font_content_table_center" footerText="#{lici.aperProposiciones}"
+		rendered="true">
+         <h:outputText value="#{lici.aperProposiciones}" />
+     </p:column>      
+     <p:column headerText="Participantes"  
+		styleClass="font_content_table_center" footerText="#{lici.participantes}"
+		rendered="true">
+         <h:outputText value="#{lici.participantes}" />
+     </p:column>        
+     <p:column headerText="Fallo"  
+		styleClass="font_content_table_center" footerText="#{lici.fecFallo}"
+		rendered="true">
+         <h:outputText value="#{lici.fecFallo}" />
+     </p:column>     
+     <p:column headerText="Contratista"  
+		styleClass="font_content_table_center" footerText="#{lici.nomContratista}"
+		rendered="true">
+         <h:outputText value="#{lici.nomContratista}" />
+     </p:column>     
+     <p:column headerText="Importe total"  
+		styleClass="font_content_table_center" footerText="#{lici.totalMonto}"
+		rendered="true">
+         <h:outputText value="#{lici.totalMonto}">
+         	<f:convertNumber type="currency" currencySymbol="$" />
+         </h:outputText>
+     </p:column>
+     <p:column headerText="Per. ejecucion inicio"  
+		styleClass="font_content_table_center" footerText="#{lici.iniObra}"
+		rendered="true">
+         <h:outputText value="#{lici.iniObra}" />
+     </p:column>  
+     <p:column headerText="Per. ejecucion término"  
+		style="font-size:12px;" footerText="#{lici.finObra}"
+		rendered="true">
+         <h:outputText value="#{lici.finObra}" />
+     </p:column>     
+     <p:column headerText="Observaciones"  
+		styleClass="font_content_table_center" footerText="#{lici.observaciones}"
+		rendered="true">
+         <h:outputText value="#{lici.observaciones}" />
+     </p:column>   
+     <p:column style="width:52px;text-align: center">
+           <p:commandButton update=":frmAtuaLici" 
+           				    actionListener="#{regProyectoView.editarLicitacion(lici)}" 
+           				    oncomplete="PF('dlgActuaLici').show()" 
+           				    icon="ui-icon-pencil" 
+           				    title="Editar"
+           				    style='width:30px; height:15px'/>
+     </p:column>              
+</p:dataTable>        
+</h:form>
+</p:layoutUnit>
+</center>
+
+</p:layout>  
+</h:body>
+
+<h:form id="frmReg">
+
+<p:dialog header="Nuevo proyecto" 
+		  widgetVar="dlgProy" 
+		  modal="true" 
+		  resizable="false"
+		  showEffect="slide"
+		  hideEffect="fold"
+		  id="id_proy">
+ 	<p:growl id="msgPro" autoUpdate="true"/>
+<p:scrollPanel mode="native" style="height:300px;"> 	
+ 	<p:panelGrid>
+		<p:row>
+			<p:column>
+				<p:outputLabel styleClass="formulario" value="Nombre del proyecto: " />
+			</p:column>
+			<p:column>
+				<p:inputTextarea rows="3" cols="25" value="#{regProyectoView.nomProyecto}" label="Nombre del proyecto" required="true"/>
+		</p:column>
+		<p:column>
+				<p:outputLabel styleClass="formulario" value="Descripción del proyecto: " />
+		</p:column>
+		<p:column>
+				<p:inputTextarea rows="3" cols="25" value="#{regProyectoView.desPro}" label="Descripcion del proyecto" required="true"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+					<p:outputLabel styleClass="formulario" value="Clave de cartera: " />
+			</p:column>
+			<p:column>
+					<p:inputText value="#{regProyectoView.claveCartera}" required="true" label="Clave cartera" />
+			</p:column>
+			<p:column>
+					<p:outputLabel styleClass="formulario" value="Periodo de ejecución: " />
+			</p:column>
+			<p:column>
+					<p:inputText value="#{regProyectoView.periodoEjecu}" required="true" label="Periodo de ejecucion" />
+			</p:column>
+		</p:row>
+		
+		<p:row>
+			<p:column>
+					<p:outputLabel styleClass="formulario" value="Inversión total del proyecto: " />
+			</p:column>
+			<p:column>
+					<p:inputText value="#{regProyectoView.inversionTotal}" required="true" label="Inversion total"/>
+			</p:column>
+			<p:column>
+					<p:outputLabel styleClass="formulario" value="Monto ejercido: " />
+			</p:column>
+			<p:column>
+					<p:inputText value="#{regProyectoView.montoEjercido}" required="true" label="Monto ejercido" />
+			</p:column>
+		</p:row>
+		
+		<p:row>
+			<p:column>
+					<p:outputLabel styleClass="formulario" value="Monto asignado: " />
+			</p:column>
+			<p:column>
+					 <p:inputText value="#{regProyectoView.montoAsignado}" required="true" label="Monto asignado" />
+			</p:column>
+			<p:column>
+					<p:outputLabel styleClass="formulario" value="Tipo de recursos: " />
+			</p:column>
+			<p:column>
+					 <p:selectOneMenu id="console" value="#{regProyectoView.tipoRecurso}" required="true" label="Tipo recurso">
+			            <f:selectItem itemLabel="Selecciona" itemValue="" />
+			            <f:selectItems value="#{regProyectoView.mapTipoRecurso}" />
+			        </p:selectOneMenu>
+			</p:column>
+		</p:row>
+		
+		<p:row>
+			<p:column colspan="4">
+				<p:commandButton id="btnGuardar" value="Guardar" actionListener="#{regProyectoView.guardaProyecto}"
+				                 />
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				
+			</p:column>
+			<p:column>
+				
+			</p:column>
+			<p:column>
+				<p:ajaxStatus style="width:16px;height:16px;align:center;" id="ajaxStatusPanel">
+				    <f:facet name="start">
+				        <h:graphicImage value="../images/ajaxloading.gif" />
+				    </f:facet>
+				     
+				    <f:facet name="complete">
+				        <h:outputText value="" />
+				    </f:facet>
+				</p:ajaxStatus>
+			</p:column>
+		</p:row>		
+	</p:panelGrid>
+	
+</p:scrollPanel>
+</p:dialog> 
+
+</h:form>
+<h:form id="frmRegActua">
+<p:dialog header="Actualiza proyecto" 
+		  widgetVar="dlgProyActua" 
+		  modal="true" 
+		  resizable="false"
+		  showEffect="slide"
+		  hideEffect="fold"
+		  id="id_proy_actua">
+ 	<p:growl id="msgPro" autoUpdate="true"/>
+<p:scrollPanel mode="native" style="height:300px;">  	
+ 	<p:panelGrid>
+		<p:row>
+			<p:column>
+				<p:outputLabel styleClass="formulario" value="Nombre del proyecto: " />
+			</p:column>
+			<p:column>
+				<p:inputTextarea rows="3" cols="25" value="#{regProyectoView.nomProyecto}" label="Nombre del proyecto" required="true"/>
+			</p:column>
+		<p:column>
+				<p:outputLabel styleClass="formulario" value="Descripción del proyecto: " />
+		</p:column>
+		<p:column>
+				<p:inputTextarea rows="3" cols="25" value="#{regProyectoView.desPro}" label="Descripcion del proyecto" required="true"/>
+		</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+					<p:outputLabel styleClass="formulario" value="Clave de cartera: " />
+			</p:column>
+			<p:column>
+					<p:inputText value="#{regProyectoView.claveCartera}" required="true" label="Clave cartera" />
+			</p:column>
+			<p:column>
+					<p:outputLabel styleClass="formulario" value="Periodo de ejecución: " />
+			</p:column>
+			<p:column>
+					<p:inputText value="#{regProyectoView.periodoEjecu}" required="true" label="Periodo de ejecucion" />
+			</p:column>
+		</p:row>
+		
+		<p:row>
+			<p:column>
+					<p:outputLabel styleClass="formulario" value="Inversión total del proyecto: " />
+			</p:column>
+			<p:column>
+					<p:inputText value="#{regProyectoView.inversionTotal}" required="true" label="Inversion total"/>
+			</p:column>
+			<p:column>
+					<p:outputLabel styleClass="formulario" value="Monto ejercido: " />
+			</p:column>
+			<p:column>
+					<p:inputText value="#{regProyectoView.montoEjercido}" required="true" label="Monto ejercido" />
+			</p:column>
+		</p:row>
+		
+		<p:row>
+			<p:column>
+					<p:outputLabel styleClass="formulario" value="Monto asignado: " />
+			</p:column>
+			<p:column>
+					 <p:inputText value="#{regProyectoView.montoAsignado}" required="true" label="Monto asignado" />
+			</p:column>
+			<p:column>
+					<p:outputLabel styleClass="formulario" value="Tipo de recursos: " />
+			</p:column>
+			<p:column>
+					 <p:selectOneMenu id="console" value="#{regProyectoView.tipoRecurso}" required="true" label="Tipo recurso">
+			            <f:selectItem itemLabel="Selecciona" itemValue="" />
+			            <f:selectItems value="#{regProyectoView.mapTipoRecurso}" />
+			        </p:selectOneMenu>
+			</p:column>
+		</p:row>
+		
+		<p:row>
+			<p:column colspan="4">
+				<p:commandButton value="Guardar" actionListener="#{regProyectoView.guardaActualizacion}"  onsuccess="PF('dlgProy').hide();"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column/>	
+			<p:column/>
+			<p:column>
+				<p:ajaxStatus style="width:16px;height:16px;align:center;" id="ajaxStatusPanel">
+				    <f:facet name="start">
+				        <h:graphicImage value="../images/ajaxloading.gif" />
+				    </f:facet>
+				     
+				    <f:facet name="complete">
+				        <h:outputText value="" />
+				    </f:facet>
+				</p:ajaxStatus>
+			</p:column>
+		</p:row>
+	</p:panelGrid>
+</p:scrollPanel>
+</p:dialog> 
+</h:form>
+<h:form id="dialLici">
+<p:dialog header="Nueva licitación" 
+		  widgetVar="dlgLici" 
+		  modal="true" 
+		  resizable="false"
+		  showEffect="slide"
+		  hideEffect="fold"
+		  id="id_Lici">
+	
+	<p:growl id="msgLici" autoUpdate="true"/>
+<p:scrollPanel mode="native" style="height:400px;"> 	
+ 	<p:panelGrid>
+ 	<p:row>
+ 		<p:column>
+				<p:outputLabel styleClass="formulario" value="Tipo de procedimiento: " />
+		</p:column>
+		<p:column>
+			<p:selectOneMenu id="procedure" value="#{regProyectoView.idProcedure}" label="Tipo de procedimiento" required="true">
+				<f:selectItem itemLabel="Elije un procedimiento" itemValue=""/>
+				<f:selectItems value="#{regProyectoView.mapProcedures}" />
+			</p:selectOneMenu>
+		</p:column>
+ 	</p:row>
+		<p:row>
+			<p:column>
+				<p:outputLabel styleClass="formulario" value="Descripción de la obra: " />
+			</p:column>
+			<p:column>
+				<p:inputTextarea rows="3" cols="25" value="#{regProyectoView.descObra}" label="Descripcion obra" required="true"/>
+			</p:column>
+		<p:column>
+				<p:outputLabel styleClass="formulario" value="Presupuesto base: " />
+		</p:column>
+		<p:column>
+				<p:inputText rows="3" cols="25" value="#{regProyectoView.presuBase}" label="Presupuesto Base" required="true"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+					<p:outputLabel styleClass="formulario" value="Publicación convocatoria: " />
+			</p:column>
+			<p:column>
+					<p:calendar value="#{regProyectoView.pubConvocatoria}" 
+								required="true" 
+								label="Publicación convocatoria" 
+								locale="es"
+								pattern="dd/MM/yyyy"/>
+			</p:column>
+			<p:column>
+					<p:outputLabel styleClass="formulario" value="Apertura proposiciones: " />
+			</p:column>
+			<p:column>
+					<p:calendar value="#{regProyectoView.aperProposi}" 
+								required="true" 
+								label="Apertura proposiciones"
+								locale="es"
+								pattern="dd/MM/yyyy"/>
+			</p:column>
+		</p:row>
+		
+		<p:row>
+			<p:column>
+					<p:outputLabel styleClass="formulario" value="Participantes: " />
+			</p:column>
+			<p:column>
+					<p:inputTextarea rows="3" cols="25" value="#{regProyectoView.nomParticipante}" label="Participantes" required="true"/>
+			</p:column>
+			<p:column>
+					<p:outputLabel styleClass="formulario" value="Fecha fallo: " />
+			</p:column>
+			<p:column>
+					<p:calendar value="#{regProyectoView.fecFallo}" 
+								required="true" 
+								label="Fecha fallo"
+								locale="es"
+								pattern="dd/MM/yyyy"/>
+			</p:column>
+		</p:row>
+		
+		<p:row>
+			<p:column>
+					<p:outputLabel styleClass="formulario" value="Contratista: " />
+			</p:column>
+			<p:column>
+					 <p:inputText value="#{regProyectoView.nomContratista}" required="true" label="Contratista" />
+			</p:column>
+			<p:column>
+					<p:outputLabel styleClass="formulario" value="Monto contratado: " />
+			</p:column>
+			<p:column>
+					  <p:inputText value="#{regProyectoView.montoTotal}" required="true" label="Monto contratado" />
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<p:outputLabel styleClass="formulario" value="Periodo ejecucion Inicio: " />
+			</p:column>
+			<p:column>
+				<p:calendar value="#{regProyectoView.perEjecucionIni}" 
+						    required="true" 
+						    label="Periodo ejecucion Inicio"
+						    locale="es"
+							pattern="dd/MM/yyyy"/>
+			</p:column>
+			<p:column>
+				<p:outputLabel styleClass="formulario" value="Periodo ejecucion Fin: " />
+			</p:column>
+			<p:column>
+				<p:calendar value="#{regProyectoView.perEjecucionFin}" 
+						    required="true" 
+						    label="Periodo ejecucion Fin"
+						    locale="es"
+							pattern="dd/MM/yyyy"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<p:outputLabel styleClass="formulario" value="Observaciones: " />
+			</p:column>
+			<p:column>
+				<p:inputTextarea rows="3" cols="30" value="#{regProyectoView.observaciones}" label="Observaciones" required="true"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="2">
+				<p:commandButton value="Guardar" actionListener="#{regProyectoView.guardaLicitacion}" />
+			</p:column>
+			<p:column>
+				<p:ajaxStatus style="width:16px;height:16px;align:center;" id="ajaxStatusPanel">
+				    <f:facet name="start">
+				        <h:graphicImage value="../images/ajaxloading.gif" />
+				    </f:facet>
+				     
+				    <f:facet name="complete">
+				        <h:outputText value="" />
+				    </f:facet>
+				</p:ajaxStatus>
+			</p:column>
+		</p:row>
+	</p:panelGrid>
+</p:scrollPanel>		  
+</p:dialog>		  
+</h:form>
+
+<h:form id="frmAtuaLici">
+<p:dialog header="Edita licitación" 
+		  widgetVar="dlgActuaLici" 
+		  modal="true" 
+		  resizable="false"
+		  showEffect="slide"
+		  hideEffect="fold"
+		  id="id_Actua_Lici">
+<p:scrollPanel mode="native" style="height:400px;"> 		  
+ 	<p:panelGrid>
+ 	<p:row>
+ 		<p:column>
+				<p:outputLabel styleClass="formulario" value="Tipo de procedimiento: " />
+		</p:column>
+		<p:column>
+			<p:selectOneMenu id="procedure" value="#{regProyectoView.idProcedure}" label="Tipo de procedimiento" required="true">
+				<f:selectItem itemLabel="Elije un procedimiento" itemValue=""/>
+				<f:selectItems value="#{regProyectoView.mapProcedures}" />
+			</p:selectOneMenu>
+		</p:column>
+ 	</p:row>
+		<p:row>
+			<p:column>
+				<p:outputLabel styleClass="formulario" value="Descripción de la obra: " />
+			</p:column>
+			<p:column>
+				<p:inputTextarea rows="3" cols="25" value="#{regProyectoView.descObra}" label="Descripcion obra" required="true"/>
+			</p:column>
+		<p:column>
+				<p:outputLabel styleClass="formulario" value="Presupuesto base: " />
+		</p:column>
+		<p:column>
+				<p:inputText rows="3" cols="25" value="#{regProyectoView.presuBase}" label="Presupuesto Base" required="true"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+					<p:outputLabel styleClass="formulario" value="Publicación convocatoria: " />
+			</p:column>
+			<p:column>
+					<p:calendar value="#{regProyectoView.pubConvocatoria}" 
+								required="true" 
+								label="Publicación convocatoria"
+								locale="es"
+								pattern="dd/MM/yyyy"/>
+			</p:column>
+			<p:column>
+					<p:outputLabel styleClass="formulario" value="Apertura proposiciones: " />
+			</p:column>
+			<p:column>
+					<p:calendar value="#{regProyectoView.aperProposi}" 
+								required="true" 
+								label="Apertura proposiciones"
+								locale="es"
+								pattern="dd/MM/yyyy"/>
+			</p:column>
+		</p:row>
+		
+		<p:row>
+			<p:column>
+					<p:outputLabel styleClass="formulario" value="Participantes: " />
+			</p:column>
+			<p:column>
+					<p:inputTextarea rows="3" cols="25" value="#{regProyectoView.nomParticipante}" label="Participantes" required="true"/>
+			</p:column>
+			<p:column>
+					<p:outputLabel styleClass="formulario" value="Fecha fallo: " />
+			</p:column>
+			<p:column>
+					<p:calendar value="#{regProyectoView.fecFallo}" 
+								required="true" 
+								label="Fecha fallo"
+								locale="es"
+								pattern="dd/MM/yyyy"/>
+			</p:column>
+		</p:row>
+		
+		<p:row>
+			<p:column>
+					<p:outputLabel styleClass="formulario" value="Contratista: " />
+			</p:column>
+			<p:column>
+					 <p:inputText value="#{regProyectoView.nomContratista}" required="true" label="Contratista" />
+			</p:column>
+			<p:column>
+					<p:outputLabel styleClass="formulario" value="Monto total: " />
+			</p:column>
+			<p:column>
+					  <p:inputText value="#{regProyectoView.montoTotal}" required="true" label="Monto total" />
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<p:outputLabel styleClass="formulario" value="Periodo ejecucion Inicio: " />
+			</p:column>
+			<p:column>
+				<p:calendar value="#{regProyectoView.perEjecucionIni}" 
+							required="true" 
+							label="Periodo ejecucion Inicio"
+							locale="es"
+							pattern="dd/MM/yyyy"/>
+			</p:column>
+			<p:column>
+				<p:outputLabel styleClass="formulario" value="Periodo ejecucion Fin: " />
+			</p:column>
+			<p:column>
+				<p:calendar value="#{regProyectoView.perEjecucionFin}" 
+							required="true"
+							label="Periodo ejecucion Fin" locale="es"
+							pattern="dd/MM/yyyy"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<p:outputLabel styleClass="formulario" value="Observaciones: " />
+			</p:column>
+			<p:column>
+				<p:inputTextarea rows="3" cols="30" value="#{regProyectoView.observaciones}" label="Observaciones" required="true"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column style="text-align:center;">
+				<p:commandButton value="Guardar" actionListener="#{regProyectoView.actualizaLicitacion}" />
+			</p:column>
+			<p:column/>
+			<p:column>
+				<p:ajaxStatus style="width:16px;height:16px;align:center;" id="ajaxStatusPanel">
+				    <f:facet name="start">
+				        <h:graphicImage value="../images/ajaxloading.gif" />
+				    </f:facet>
+				     
+				    <f:facet name="complete">
+				        <h:outputText value="" />
+				    </f:facet>
+				</p:ajaxStatus>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column/>
+			<p:column/>
+			
+		</p:row>
+	</p:panelGrid>
+</p:scrollPanel>		  
+</p:dialog>		  
+</h:form>
+
+</html>

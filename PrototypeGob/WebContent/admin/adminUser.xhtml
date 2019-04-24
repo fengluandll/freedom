@@ -1,0 +1,399 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<meta http-equiv="x-ua-compatible" content="ie=edge" /> 
+
+<h:head>
+<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css"/>
+<link href="images/SCT_24.png" rel="shortcut icon" type='image/png'/>
+<link rel="stylesheet" type="text/css" href="../css/sweetalert.css"/>
+
+<script src="../js/fontawesome/fontawesome-all.js"></script>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<script src="../js/sweetalert.min.js"></script> 
+
+<style type="text/css">
+
+.anchoCombo{
+	width:170px !important;
+}
+
+
+.ui-layout-north {                    
+                overflow:hidden !important;
+}
+.ui-layout-north .ui-layout-unit-content {
+    overflow:hidden !important;
+} 
+ .ui-layout-north {
+        z-index:20 !important;
+        overflow:visible !important;
+    }
+
+.ui-layout-north .ui-layout-unit-content {
+    overflow:visible !important;
+}
+
+/*
+.ui-layout-center {                    
+                overflow:hidden !important;
+}
+.ui-layout-center .ui-layout-unit-content {
+    overflow:hidden !important;
+} 
+*/
+.menuButton{
+color:white;
+background-color:rgb(207,36,42);
+
+}
+ul li.ui-menuitem-active>a{
+     background-image: none !important;
+    background-color:rgb(220,38,45) !important;    
+}
+
+.ui-button {
+    /*background-color: rgb(220,38,45) !important;*/
+   }
+ul li.ui-button-text {
+  
+    }
+ul li.ui-button-text-only .ui-button-text {
+
+}
+.ui-menu .ui-menuitem-text {
+  color: white;
+}
+.laasspcss .ui-datatable .ui-column-filter{
+ display:none !important;
+ /*width: 60px;
+ margin: auto;*/
+}
+
+.menuBarText .ui-menuitem-text{    
+color: black !important;
+font: normal bold 110% normal;
+}
+
+.tamaCabecero{
+      		font-size:10px;
+      	}
+      	.ui-datatable .ui-column-filter {
+		    display:none;
+		}
+</style>
+
+<script type="text/javascript">
+function incio(){
+	window.location.href = "/PrototypeGob/admin/adminUser.xhtml";
+	}
+</script>
+</h:head>
+
+<h:body>
+	<p:layout id="layAll" widgetVar="layoutWdgt" style="width: 100%; margin: 0 auto;">  
+	  
+<p:layoutUnit position="north"			  
+			  resizable="false" 
+			  closable="false" 
+			  collapsible="false" style="width:90%;height:70%;"
+			  styleClass="panel panel-danger">
+<img id="inicio_png" src="../images/logoSCT_hoz3.png" onclick="javascript:incio();" style="cursor: pointer;" title="Inicio"/>				  
+<h:form id="frmMenu">
+<p:menubar style="border-style: none !important">
+	
+	<p:menuitem styleClass="menuButton" value="ADMINISTRACIÓN DE USUARIOS" rendered="#{sessionScope['personalBean'].rolId == 9 || sessionScope['personalBean'].rolId == 9}" icon="ui-icon-person" style="color:white;margin:0px 10px;" url="/admin/adminUser.xhtml"/>
+	<f:facet name="options">
+            <p:commandButton action="#{loginBean.salir}" value="Salir" icon="ui-icon-extlink" />
+    </f:facet>
+
+</p:menubar>
+</h:form>  
+</p:layoutUnit>
+
+<center>
+	
+<p:layoutUnit id="layoutCenter" position="center" size="100" minSize="40" styleClass="panel panel-danger">
+<p:outputPanel id="contentTable">	
+	<h:form id="frmShowUsr" prependId="false">
+		<p:dataTable id="tblUser" var="usr"  value="#{adminUserView.listUser}" widgetVar="UserTable"
+                 emptyMessage="No existe el usuario con este criterio de busqueda" 
+                 filteredValue="#{adminUserView.filteredUser}" style="font-size:12px;"
+                 scrollable="true" scrollHeight="500" selectionMode="single" 
+                 selection="#{adminUserView.selectedUserBean}" rowKey="#{usr.loginId}"
+                 paginator="true" rows="20">
+        
+        <f:facet name="header">
+            
+            <p:outputPanel>
+            	<p:panelGrid style="width:100%;">
+            		<p:row>
+            			<p:column style="width:170px;" >
+                			<h:outputText value="Busqueda por todos los campos:" style="font-weight: bold;"/>
+                		</p:column>
+                		<p:column>
+                			<p:inputText id="globalFilter" onkeyup="PF('UserTable').filter()" style="width:150px;" placeholder="Ingresa una palabra clave"/>
+                		</p:column>
+                		<p:column style="width:150px;">
+            				
+            			</p:column>
+            			<p:column>
+            			
+            				<p:commandLink oncomplete="PF('dlgNvoUsr').show();" action="#{adminUserView.cleanVariablesUsuario}" title="Nuevo usuario" update=":frmNewUser:id_user_nuevo">
+            					         <i class="fas fa-user-plus fa-3x" style="color: gray;"></i>   					
+            				</p:commandLink>
+            			</p:column>
+                	</p:row>
+                </p:panelGrid>
+            </p:outputPanel>
+            
+        </f:facet>
+        <p:column filterBy="#{usr.loginId}" headerText="login id" filterMatchMode="contains"
+ 				style="font-size:12px;" footerText="#{usr.loginId}"
+ 				rendered="false">
+            <h:outputText value="#{usr.loginId}" />
+        </p:column>
+        <p:column filterBy="#{usr.personalId}" headerText="personalId" filterMatchMode="contains"
+ 				style="font-size:12px;" footerText="#{usr.personalId}"
+ 				rendered="false">
+            <h:outputText value="#{usr.personalId}" />
+        </p:column>
+         <p:column filterBy="#{usr.password}" headerText="password" filterMatchMode="contains"
+ 				style="font-size:12px;" footerText="#{usr.password}"
+ 				rendered="false">
+            <h:outputText value="#{usr.password}" />
+        </p:column>
+        <p:column filterBy="#{usr.userName}" headerText="Nombre de Usuario"  filterMatchMode="contains" 
+ 				style="width:80px;font-size:12px;" footerText="#{usr.userName}">
+            <h:outputText value="#{usr.userName}" />
+        </p:column>
+        <p:column filterBy="#{usr.givenNames}" headerText="Nombre Completo"  filterMatchMode="contains" 
+ 				style="width:80px;font-size:12px;" footerText="#{usr.givenNames}">
+            <h:outputText value="#{usr.givenNames}" />
+        </p:column>
+         <p:column filterBy="#{usr.rolName}" headerText="Perfil"  filterMatchMode="contains"
+ 				style="width:40px;font-size:12px;" footerText="#{usr.rolName}">
+            <h:outputText value="#{usr.rolName}" />
+        </p:column>
+         <p:column filterBy="#{usr.status}" headerText="Status"  filterMatchMode="contains" 
+ 				style="width:50px;font-size:12px;" footerText="#{usr.status}" rendered="true">
+            <h:outputText value="#{usr.status}" />
+        </p:column>
+        
+        <p:column style="width:10px;text-align: center">
+             <p:commandButton update=":frmeditUser" 
+             				  oncomplete="PF('dlgUserActua').show()"  action="#{adminUserView.refresVariablesUsuario(usr)}"
+             				  icon="ui-icon-pencil" 
+             				  title="Editar"
+             				  style="height:15px">
+             	<f:setPropertyActionListener value="#{usr}" target="#{adminUserView.selectedUserBean}" />			  
+              </p:commandButton>
+        </p:column>
+        <p:column style="width:10px; text-align: center">
+             <p:commandButton update=":frmShowUsr"
+             				  actionListener="#{adminUserView.deleteUser(usr)}"
+             				  icon="ui-icon ui-icon-trash" 
+             				  title="Eliminar"
+             				  style="height:15px">
+             		<p:confirm header="Confirmación" message="¿Estas seguro que deseas eliminar el usuario?" icon="ui-icon-alert"/>			  
+              </p:commandButton>
+              
+               <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+			        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+			        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			   </p:confirmDialog>
+        </p:column>
+        
+        </p:dataTable>
+        
+        
+</h:form>     
+
+</p:outputPanel>  
+	</p:layoutUnit>
+</center>
+
+
+</p:layout>
+
+</h:body>
+
+<h:form id="frmeditUser" prependId="false">
+<p:dialog header="Actualiza usuario" 
+		  widgetVar="dlgUserActua" 
+		  modal="true" 
+		  resizable="false"
+		  showEffect="slide"
+		  hideEffect="fold"
+		  id="id_user_actua">
+ 	<p:growl id="msgPro" autoUpdate="true"/>
+<p:scrollPanel mode="native" style="height:300px;">
+ <p:panelGrid>
+ 	<p:row>
+ 		<p:column>
+ 			<p:outputLabel styleClass="formulario" value="login Id:" rendered="false"/>
+ 		</p:column>
+ 		<p:column>
+ 			<p:inputText value="#{adminUserView.loginId}" label="login id" rendered="false"/>
+ 		</p:column>
+ 		<p:column>
+ 			<p:inputText value="#{adminUserView.personalId}" label="personal id" rendered="false"/>
+ 		</p:column>
+ 	</p:row>
+ 	
+ 	<p:row>
+ 		<p:column>
+ 			<p:outputLabel styleClass="formulario" value="Nombre completo:" />
+ 		</p:column>
+ 		<p:column>
+ 			<p:inputText value="#{adminUserView.givenNames}" size="40"  label="Nombre completo" required="true"/>
+ 		</p:column>
+ 	</p:row>
+ 	<p:row>
+ 		<p:column>
+ 			<p:outputLabel styleClass="formulario" value="Usuario:" />
+ 		</p:column>
+ 		<p:column>
+ 			<p:inputText value="#{adminUserView.userName}" size="40" label="Usuario" required="true"/>
+ 		</p:column>
+ 	</p:row>
+ 	<p:row>
+ 		<p:column>
+ 			<p:outputLabel styleClass="formulario" value="Contraseña:" />
+ 		</p:column>
+ 		<p:column>
+ 			<p:password value="#{adminUserView.password}" label="Contraseña" size="40"/>
+ 		</p:column>
+ 	</p:row>
+ 	<p:row>
+ 		<p:column>
+ 			<p:outputLabel styleClass="formulario" value="Status:" />
+ 		</p:column>
+ 		<p:column>
+ 			<p:selectOneMenu id="statusCombo" value="#{adminUserView.tipoStatus}" styleClass="anchoCombo" required="true" label="Perfil">
+			            <f:selectItems value="#{adminUserView.mapStatus}" />
+			 </p:selectOneMenu>
+ 		</p:column>
+ 	</p:row>
+ 	<p:row>
+ 		<p:column>
+ 			<p:outputLabel styleClass="formulario" value="Perfil:" />
+ 		</p:column>
+ 		<p:column>
+ 			<p:selectOneMenu id="rolesCombo" value="#{adminUserView.tipoRol}" styleClass="anchoCombo" required="true" label="Perfil">
+			            <f:selectItems value="#{adminUserView.mapRoles}" />
+			 </p:selectOneMenu>
+ 		</p:column>
+ 	</p:row>
+ 	<p:row>
+ 		<p:column colspan="2">
+ 		<p:spacer height="10" />
+ 		</p:column>
+ 	</p:row>
+ 	<p:row>
+ 		<p:column colspan="2" style="text-align:center;">
+ 			<p:commandButton id="btnGuardar" styleClass="btn btn-info btn-xs" 
+ 			                 value="Guardar Cambios" 
+ 			                 actionListener="#{adminUserView.actualizaUsuario}"
+ 			                 update=":frmShowUsr"/>
+ 		</p:column>
+ 		<p:column>
+				<p:ajaxStatus style="width:16px;height:16px;align:center;" id="ajaxStatusPanel">
+				    <f:facet name="start">
+				        <h:graphicImage value="../images/ajaxloading.gif" />
+				    </f:facet>
+				     
+				    <f:facet name="complete">
+				        <h:outputText value="" />
+				    </f:facet>
+				</p:ajaxStatus>
+			</p:column>
+ 	</p:row>
+ 	
+ </p:panelGrid>
+</p:scrollPanel>
+</p:dialog>
+</h:form>
+
+<h:form id="frmNewUser">
+<p:dialog header="Nuevo usuario" 
+		  widgetVar="dlgNvoUsr" 
+		  modal="true" 
+		  resizable="false"
+		  showEffect="slide"
+		  hideEffect="fold"
+		  id="id_user_nuevo">
+ 	<p:growl id="msgPro" autoUpdate="true"/>
+<p:scrollPanel mode="native" style="height:300px;">
+ <p:panelGrid>
+ 	
+ 	<p:row>
+ 		<p:column>
+ 			<p:outputLabel styleClass="formulario" value="Nombre completo:"/>
+ 		</p:column>
+ 		<p:column>
+ 			<p:inputText value="#{adminUserView.givenNames}" label="Nombre completo" size="40" required="true"/>
+ 		</p:column>
+ 	</p:row>
+ 	<p:row>
+ 		<p:column>
+ 			<p:outputLabel styleClass="formulario" value="Usuario:" />
+ 		</p:column>
+ 		<p:column>
+ 			<p:inputText value="#{adminUserView.userName}" label="Usuario" size="40" required="true"/>
+ 		</p:column>
+ 	</p:row>
+ 	<p:row>
+ 		<p:column>
+ 			<p:outputLabel styleClass="formulario" value="Contraseña:" />
+ 		</p:column>
+ 		<p:column>
+ 			<p:password value="#{adminUserView.password}" label="Contraseña" size="40" required="true"/>
+ 		</p:column>
+ 	</p:row>
+ 	<p:row>
+ 		<p:column>
+ 			<p:outputLabel styleClass="formulario" value="Perfil:" />
+ 		</p:column>
+ 		<p:column>
+ 			<p:selectOneMenu id="rolesCombo" value="#{adminUserView.tipoRol}" styleClass="anchoCombo" required="true" label="Perfil">
+ 						<f:selectItem itemLabel="--Seleccione--" itemValue=""/>
+			            <f:selectItems value="#{adminUserView.mapRoles}" />
+			 </p:selectOneMenu>
+ 		</p:column>
+ 	</p:row>
+ 	<p:row>
+ 		<p:column colspan="2">
+ 		<p:spacer height="10" />
+ 		</p:column>
+ 	</p:row>
+ 	<p:row>
+ 		<p:column colspan="2" style="text-align:center;">
+ 			<p:commandButton id="btnGuardar" styleClass="btn btn-info btn-xs" 
+ 			                 value="Guardar" 
+ 			                 actionListener="#{adminUserView.creaUsuario}"
+ 			                 update=":frmShowUsr"/>
+ 		</p:column>
+ 		<p:column>
+				<p:ajaxStatus style="width:16px;height:16px;align:center;" id="ajaxStatusPanel">
+				    <f:facet name="start">
+				        <h:graphicImage value="../images/ajaxloading.gif" />
+				    </f:facet>
+				     
+				    <f:facet name="complete">
+				        <h:outputText value="" />
+				    </f:facet>
+				</p:ajaxStatus>
+			</p:column>
+ 	</p:row>
+ 	
+ </p:panelGrid>
+</p:scrollPanel>
+</p:dialog>
+</h:form>
+
+</html>

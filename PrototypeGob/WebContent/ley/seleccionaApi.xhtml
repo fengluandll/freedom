@@ -1,0 +1,129 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="../home/secundaryHome.xhtml">
+<ui:define name="head">
+<style type="text/css">
+.ui-panelgrid td, .ui-panelgrid tr
+{
+    border-style: none !important
+}
+</style>
+</ui:define>
+                
+<ui:define name="source">                
+<center>
+<h1>SELECCIONA UN API</h1>
+<div class="ui-grid ui-grid-responsive">
+    <div class="ui-grid-row">
+    	<div class="ui-grid-col-4" style="border:0px solid #8c8c8c;">
+        	<p:panel header="Todos los puertos" style="border:0px">
+				<img id="imgVer" src="../images/puertos/republica_mexicana.jpg" onclick="javascript:abre('todos')" style="cursor: pointer;"/>
+			</p:panel>
+		</div>
+        <div class="ui-grid-col-4" style="border:0px solid #8c8c8c;">
+        	<p:panel header="Altamira" style="border:0px">
+				<img id="imgVer" src="../images/puertos/Altamira.jpg" onclick="javascript:abre('Altamira')" style="cursor: pointer;"/>
+			</p:panel>
+		</div>
+        <div class="ui-grid-col-4">
+        	<p:panel header="Coatzacoalcos" style="border:0px">
+				<img id="imgVer" src="../images/puertos/Coatzacoalcos.jpg" onclick="javascript:abre('Coatzacoalcos')" style="cursor: pointer;"/>
+			</p:panel>
+        </div>
+       
+    </div>
+    
+ <div class="ui-grid-row">
+ 		 <div class="ui-grid-col-4">
+        	<p:panel header="Dos bocas" style="border:0px">
+				<img id="imgVer" src="../images/puertos/Dos Bocas.jpg" onclick="javascript:abre('Dos Bocas')" style="cursor: pointer;"/>
+			</p:panel>
+        </div>
+        <div class="ui-grid-col-4">
+        	<p:panel header="Ensenada" style="border:0px">
+				<img id="imgVer" src="../images/puertos/Ensenada.jpg" onclick="javascript:abre('Ensenada')" style="cursor: pointer;"/>
+			</p:panel>
+		</div>
+        <div class="ui-grid-col-4">
+        	<p:panel header="Guaymas" style="border:0px">
+				<img id="imgVer" src="../images/puertos/guaymas.jpg" onclick="javascript:abre('Guaymas')" style="cursor: pointer;"/>
+			</p:panel>
+        </div>
+       
+    </div>    
+    
+     <div class="ui-grid-row">
+      <div class="ui-grid-col-4">
+        	<p:panel header="Lázaro Cárdenas" style="border:0px">
+				<img id="imgVer" src="../images/puertos/Lazaro.jpg" onclick="javascript:abre('Lazaro Cardenas')" style="cursor: pointer;"/>
+			</p:panel>
+        </div>
+        <div class="ui-grid-col-4">
+        	<p:panel header="Manzanillo" style="border:0px">
+				<img id="imgVer" src="../images/puertos/Manzanillo.jpg" onclick="javascript:abre('Manzanillo')" style="cursor: pointer;"/>
+			</p:panel>
+		</div>
+        <div class="ui-grid-col-4">
+        	<p:panel header="Mazatlan" style="border:0px">
+				<img id="imgVer" src="../images/puertos/Mazatlan.jpg" onclick="javascript:abre('Mazatlan')" style="cursor: pointer;"/>
+			</p:panel>
+        </div>
+
+    </div> 
+    
+     <div class="ui-grid-row">
+        <div class="ui-grid-col-4">
+        	<p:panel header="Progreso" style="border:0px">
+				<img id="imgVer" src="../images/puertos/Progreso.jpg" onclick="javascript:abre('Progreso')" style="cursor: pointer;"/>
+			</p:panel>
+        </div>     
+        <div class="ui-grid-col-4">
+        	<p:panel header="Puerto Madero" style="border:0px">
+				<img id="imgVer" src="../images/puertos/PuertoMadero.jpg" onclick="javascript:abre('Puerto Madero')" style="cursor: pointer;"/>
+			</p:panel>
+		</div>
+        <div class="ui-grid-col-4">
+        	<p:panel header="Puerto Vallarta" style="border:0px">
+				<img id="imgVer" src="../images/puertos/PuertoVallarta.jpg" onclick="javascript:abre('Puerto Vallarta')" style="cursor: pointer;"/>
+			</p:panel>
+        </div>
+    </div> 
+    
+    <div class="ui-grid-row">
+    	<div class="ui-grid-col-4">
+        	<p:panel header="Salina Cruz" style="border:0px">
+				<img id="imgVer" src="../images/puertos/Salina Cruz.jpg" onclick="javascript:abre('Salina Cruz')" style="cursor: pointer;"/>
+			</p:panel>
+        </div>
+        <div class="ui-grid-col-4">
+        	<p:panel header="Tampico" style="border:0px">
+				<img id="imgVer" src="../images/puertos/Tampico.jpg" onclick="javascript:abre('Tampico')" style="cursor: pointer;"/>
+			</p:panel>
+		</div>
+        <div class="ui-grid-col-4">
+        	<p:panel header="Topolobampo" style="border:0px">
+				<img id="imgVer" src="../images/puertos/Tobolobampo.jpg" onclick="javascript:abre('Topolobampo')" style="cursor: pointer;"/>
+			</p:panel>
+        </div>
+    </div>
+    
+        <div class="ui-grid-row">
+        <div class="ui-grid-col-4">
+        	<p:panel header="Tuxpan" style="border:0px">
+				<img id="imgVer" src="../images/puertos/Tuxpan.jpg" onclick="javascript:abre('Tuxpan')" style="cursor: pointer;"/>
+			</p:panel>
+        </div>
+        <div class="ui-grid-col-4">
+        	<p:panel header="Veracruz" style="border:0px">
+				<img id="imgVer" src="../images/puertos/veracruz.jpg" onclick="javascript:abre('Veracruz')" style="cursor: pointer;"/>
+			</p:panel>
+		</div>
+    	</div>
+</div>
+</center>
+</ui:define>
+
+</ui:composition>

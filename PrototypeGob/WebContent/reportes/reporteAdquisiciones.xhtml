@@ -1,0 +1,247 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="../home/PrincipalHome.xhtml">
+
+<ui:define name="source"> 
+
+	<ui:insert name="head">
+	<style>
+		.alignRight{text-align:right;}
+
+	</style>
+	
+	<script type="text/javascript">
+		function currencyAct(){
+		
+		var valor = jQuery('#frmContent\\:id_amountHire').val();
+		var string = numeral(valor).format('$0,0.00');
+		jQuery('#frmContent\\:id_amountHire_val_2').text(string);
+	}
+		function currency2(){
+			var valor = jQuery('#frmContent\\:id_contractedAmount_act').val();
+			var string = numeral(valor).format('$0,0.00');
+			jQuery('#frmContent\\:id_contractedAmount_val_2').text(string);
+		}
+		</script>
+	</ui:insert>               
+<center>
+<h:form prependId="false">
+
+<fieldset>
+<legend class="text-info" style="text-align:left;">Reporte ley de Adquisiciones, Arrendamientos y Servicios</legend> 
+<p:panelGrid>
+	<p:row>
+		<p:column style="text-align:right;">
+	  		<p:outputLabel value="Tipo de formato" for="formato"/>
+	  	</p:column>
+    	<p:column>
+    		<p:selectOneMenu style="width:150px;" required="true" id="formato" value="#{dtReporteAdqView.tipoFormato}"  label="Tipo recurso">
+			            <f:selectItem itemLabel="Selecciona" itemValue="" />
+			            <f:selectItem itemLabel="PDF" itemValue="PDF" />
+			            <f:selectItem itemLabel="EXCEL" itemValue="EXCEL" />
+	   	   </p:selectOneMenu>
+    	</p:column>
+	</p:row>
+  <p:row>
+   		<p:column style="text-align:right;">
+	  		<p:outputLabel value="API:"/>
+	  	</p:column>
+    	<p:column>
+    		<p:selectOneMenu style="width:150px;" id="procedure" value="#{dtReporteAdqView.idPort}" label="puerto">
+				<f:selectItem itemLabel="Todos" itemValue=""/>
+				<f:selectItems value="#{dtReporteObrasView.mapApis}" />
+			</p:selectOneMenu>
+    	</p:column>
+  	<p:column styleClass="alignRight">
+  		<p:outputLabel value="Tipo Recurso:"/>
+  	</p:column>
+  	<p:column>
+  		<p:selectOneMenu style="width:150px;" id="console" value="#{dtReporteAdqView.resourceType}"  label="Tipo recurso">
+			            <f:selectItem itemLabel="Selecciona" itemValue="" />
+			            <f:selectItems value="#{regProyectoView.mapTipoRecurso}" />
+	    </p:selectOneMenu>
+  	</p:column>
+ 	 <p:column styleClass="alignRight">
+  		<p:outputLabel value="Bien o Servicio:"/>
+  	</p:column>
+  	<p:column>
+  		<p:inputText id="txtBien" value="#{dtReporteAdqView.build_description}"/>
+  </p:column>	
+  	
+  	
+  </p:row>
+    <p:row>
+  	<p:column styleClass="alignRight">
+  		<p:outputLabel value="Tipo procedimiento:"/>
+  	</p:column>
+  	<p:column>
+  		<p:selectOneMenu style="width:150px;" id="procedure_act" value="#{dtReporteAdqView.idTypeProcedure}" label="Tipo de procedimiento">
+				<f:selectItem itemLabel="Elije un procedimiento" itemValue=""/>
+				<f:selectItems value="#{regProyectoView.mapProcedures}" />
+				<p:ajax event="change" listener="#{obrasView.mostrar()}"/>
+		</p:selectOneMenu>
+  	</p:column>
+  	<p:column styleClass="alignRight">
+  		<p:outputLabel value="Articulo:"/>
+  	</p:column>
+  	<p:column>
+  		<p:selectOneMenu id="cmbArt_act"
+						 value="#{dtReporteAdqView.idArticulo}" 
+						 label="Articulo"
+						 style="width:150px;">
+				<f:selectItem itemLabel="Elije un Articulo" itemValue=""/>
+				<f:selectItems value="#{obrasView.articulos}" />
+		</p:selectOneMenu>
+  	</p:column>
+  	<p:column styleClass="alignRight">
+  		<p:outputLabel value="Fracción:"/>
+  	</p:column>
+  	<p:column>
+  		<p:selectOneMenu id="cmbFra_act"
+								 value="#{dtReporteAdqView.idFraccion}"
+								 label="Fracción"
+								 style="width:150px;">
+				<f:selectItem itemLabel="Elije una fracción" itemValue=""/>
+				<f:selectItems value="#{obrasView.fraccionesMap}" />
+		</p:selectOneMenu>
+  	</p:column>
+  </p:row>
+  <p:row>
+  		<p:column styleClass="alignRight">
+			<p:outputPanel deferred="false" id="pnlAcuerdo3">
+				<p:outputLabel id="outAcuerdo3" value="No. Acuerdo:"  for="idAcuerdo4"/>
+			</p:outputPanel>
+		</p:column>
+			<p:column>
+			<p:outputPanel deferred="false" id="pnlAcuerdo4">
+				<p:inputText style="width:150px;" id="idAcuerdo4" value="#{dtReporteAdqView.segment1}"/>
+			</p:outputPanel>
+	</p:column>
+	<p:column styleClass="alignRight">
+				<p:outputLabel value="Vigencia del Contrato Inicio: " styleClass="formulario"/>
+	</p:column>
+	<p:column>
+		<p:calendar value="#{dtReporteAdqView.fecContractIni}"
+				    label="Vigencia de contrato inicio"
+				    locale="es"
+					pattern="dd/MM/yyyy"/>
+	</p:column>
+	<p:column styleClass="alignRight">
+		<p:outputLabel value="Vigencia del Contrato Fin: " styleClass="formulario"/>
+	</p:column>
+	<p:column>
+		<p:calendar value="#{dtReporteAdqView.fecContract_fin}"
+				    label="Vigencia de contrato Fin"
+				    locale="es"
+					pattern="dd/MM/yyyy"/>
+	</p:column>
+  	
+  </p:row>
+	<p:row>
+		<p:column styleClass="alignRight">
+				<p:outputLabel value="Monto a contratar: " styleClass="formulario"/>
+		</p:column>
+		<p:column>
+					 <p:inputText id="id_amountHire" name="id_amountHire" value="#{dtReporteAdqView.amountHire}" onchange="javascript:currencyAct();" />
+					<p:outputLabel id="id_amountHire_val_2" />
+		</p:column>	
+	<p:column styleClass="alignRight">
+		<p:outputLabel value="Monto contratado: " 
+					   styleClass="formulario"/>
+	</p:column>
+  	<p:column>
+		  	<p:inputText id="id_contractedAmount_act" 
+				 			  value="#{dtReporteAdqView.contractedAmount}" 
+				 			  onchange="javascript:currency2();"/>
+			<p:outputLabel id="id_contractedAmount_val_2" />
+  	</p:column>
+  	<p:column styleClass="alignRight">
+				<p:outputLabel value="Nombre del proveedor:" styleClass="formulario"/>
+	</p:column>
+	<p:column>
+				<p:inputText value="#{dtReporteAdqView.providerName}" 
+						     label="Nombre del proveedor"/>
+	</p:column>
+	</p:row>
+	 <p:row>
+  	<p:column styleClass="alignRight">
+				<p:outputLabel value="Publicación Compranet:" styleClass="formulario"/>
+	</p:column>
+	<p:column>
+				<p:calendar value="#{dtReporteAdqView.fecCompranet}"
+						    label="Publicación compranet"
+						    locale="es"
+							pattern="dd/MM/yyyy"/>
+	</p:column>
+  	<p:column styleClass="alignRight">
+				<p:outputLabel value="Junta aclaraciones:" styleClass="formulario"/>
+	</p:column>
+	<p:column>
+				<p:calendar value="#{dtReporteAdqView.fecClarificationMeeting}"
+						    label="Junta aclaraciones"
+						    locale="es"
+							pattern="dd/MM/yyyy"/>
+	</p:column>
+	<p:column styleClass="alignRight">
+				<p:outputLabel value="Presentación propuestas:" styleClass="formulario"/>
+    </p:column>
+	<p:column>
+				<p:calendar value="#{dtReporteAdqView.fecPresentationsTender}"
+						    label="Presentación propuestas"
+						    locale="es"
+							pattern="dd/MM/yyyy"/>
+	</p:column>
+  </p:row>
+  <p:row>
+  	<p:column styleClass="alignRight">
+		<p:outputLabel value="Fecha Fallo Desde:" styleClass="formulario"/>
+	</p:column>
+	<p:column>
+		<p:calendar widgetVar="w_fec_fallo_2"
+					value="#{dtReporteAdqView.feFailDesde}"
+				    label="Fallo"
+				    locale="es"
+					pattern="dd/MM/yyyy"/>
+	</p:column>
+	<p:column styleClass="alignRight">
+		<p:outputLabel value="Fecha Fallo Hasta:" styleClass="formulario"/>
+	</p:column>
+	<p:column>
+		<p:calendar widgetVar="w_fec_fallo_3"
+					value="#{dtReporteAdqView.feFailHasta}"
+				    label="Fallo"
+				    locale="es"
+					pattern="dd/MM/yyyy"/>
+	</p:column>
+	<p:column styleClass="alignRight">
+		<p:outputLabel value="Razón social:" styleClass="formulario"/>
+	</p:column>
+	<p:column>
+		<p:inputText value="#{dtReporteAdqView.razonSocial}"
+				     label="Razon social"/>
+	</p:column>
+  </p:row>
+  </p:panelGrid>
+</fieldset>
+
+<p:panelGrid>
+   
+  <p:row>
+  	<p:column colspan="4" style="text-align:center">
+  		<p:commandButton id="btnEjecutar"  
+  						 styleClass="btn btn-success"  
+  						 style="font-size:16px;" 
+  						 value="Ejecutar Reporte" 
+  						 actionListener="#{dtReporteAdqView.ejecutaReporte}" 
+  						 ajax="false"/>
+  	</p:column>
+  </p:row>
+</p:panelGrid>
+
+</h:form>
+</center>
+</ui:define> 
+</ui:composition>

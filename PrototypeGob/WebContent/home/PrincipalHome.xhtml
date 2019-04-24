@@ -1,0 +1,182 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<meta http-equiv="x-ua-compatible" content="ie=edge" /> 
+<h:head>
+
+<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css"/>
+<link rel="stylesheet" type="text/css" href="../css/custom.css"/>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<link href="../images/SCT_24.png" rel="shortcut icon" type='image/png'/>
+<script src="../js/numeral.min.js"/>
+
+<style type="text/css">
+
+.ui-layout-north {                    
+                overflow:hidden !important;
+}
+.ui-layout-north .ui-layout-unit-content {
+    overflow:hidden !important;
+} 
+ .ui-layout-north {
+        z-index:20 !important;
+        overflow:visible !important;
+    }
+
+.ui-layout-north .ui-layout-unit-content {
+    overflow:visible !important;
+}
+
+/*
+.ui-layout-center {                    
+                overflow:hidden !important;
+}
+.ui-layout-center .ui-layout-unit-content {
+    overflow:hidden !important;
+} 
+*/
+.menuButton{
+color:white;
+background-color:rgb(207,36,42);
+
+}
+ul li.ui-menuitem-active>a{
+     background-image: none !important;
+    background-color:rgb(220,38,45) !important;    
+}
+
+.ui-button {
+    /*background-color: rgb(220,38,45) !important;*/
+   }
+ul li.ui-button-text {
+  
+    }
+ul li.ui-button-text-only .ui-button-text {
+
+}
+.ui-menu .ui-menuitem-text {
+  color: white;
+}
+.laasspcss .ui-datatable .ui-column-filter{
+ display:none !important;
+ /*width: 60px;
+ margin: auto;*/
+}
+
+.menuBarText .ui-menuitem-text{    
+color: black !important;
+font: normal bold 110% normal;
+}
+
+</style>
+<script type="text/javascript">
+
+
+	$(document).ready(function(){
+		
+	});
+
+	
+	
+	
+
+PrimeFaces.locales['es'] = {
+	    closeText: 'Cerrar',
+	    prevText: 'Anterior',
+	    nextText: 'Siguiente',
+	    monthNames: ['Enero','Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+	    monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+	    dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+	    dayNamesShort: ['Dom','Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+	    dayNamesMin: ['D','L','M','X','J','V','S'],
+	    weekHeader: 'Semana',
+	    firstDay: 1,
+	    isRTL: false,
+	    showMonthAfterYear: false,
+	    yearSuffix: '',
+	    timeOnlyTitle: 'Sólo hora',
+	    timeText: 'Tiempo',
+	    hourText: 'Hora',
+	    minuteText: 'Minuto',
+	    secondText: 'Segundo',
+	    currentText: 'Fecha actual',
+	    ampm: false,
+	    month: 'Mes',
+	    week: 'Semana',
+	    day: 'Día',
+	    allDayText : 'Todo el día'
+	};
+	
+function incio(){
+	window.location.href = "/PrototypeGob/home/PrincipalHome.xhtml";
+	}
+function abre(action){
+	window.location.href = "/PrototypeGob/SeleccionaApiServlet?puerto="+action;
+	//window.location.href = "/PrototypeGob/proyectos/registroProyectos.xhtml?puerto="+action;
+	}
+//<![CDATA[
+function redirecciona(){
+	window.location.href = "/PrototypeGob/ElijeReporteServlet?action=btn1&rep=obr";
+}
+//]]>
+</script>
+
+</h:head>
+
+<h:body>
+
+<p:layout widgetVar="layoutWdgt" style="width: 100%; margin: 0 auto;height:860px;">  
+	  
+<p:layoutUnit position="north"			  
+			  resizable="false" 
+			  closable="false" 
+			  collapsible="false" 
+			  style="width:80%;height:70%;"
+			  styleClass="panel panel-danger">
+<img id="inicio_png" src="../images/logoSCT_hoz3.png" onclick="javascript:incio();" style="cursor: pointer;" title="Inicio"/>				  
+<h:form id="frmMenu">
+<p:menubar style="border-style: none !important;">
+	
+	<p:menuitem styleClass="menuButton" value="LEY DE OBRAS PÚBLICAS Y SERVICIOS RELACIONADOS CON LA MISMA" rendered="#{sessionScope['personalBean'].rolId == 7}" icon="ui-icon-pencil" style="color:white;margin:0px 10px;" url="../proyectos/registroProyectos.xhtml"/>
+	<p:menuitem styleClass="menuButton" value="LEY DE ADQUISICIONES,ARRENDAMIENTOS Y SERVICIOS" rendered="#{sessionScope['personalBean'].rolId == 6}" icon="ui-icon-pencil" style="color:white;margin:0px 10px;" url="../obras/registroObra.xhtml"/>
+	<p:menuitem styleClass="menuButton" value="LEY DE ADQUISICIONES, ARRENDAMIENTOS Y SERVICIOS" rendered="#{sessionScope['personalBean'].rolId == 4 }" icon="ui-icon-calendar" style="color:white;margin:0px 10px;" onclick="redirecciona()"/>
+	<p:menuitem styleClass="menuButton" value="LEY DE OBRAS PÚBLICAS Y SERVICIOS RELACIONADOS CON LAS MISMA" rendered="#{sessionScope['personalBean'].rolId == 4 || sessionScope['personalBean'].rolId == 8}" icon="ui-icon-calendar" style="color:white;margin:0px 10px;" url="/home/secundaryHome.xhtml?in=0"/>
+	<p:menuitem styleClass="menuButton" value="ADMINISTRACIÓN DE USUARIOS" rendered="#{sessionScope['personalBean'].rolId == 9 || sessionScope['personalBean'].rolId == 9}" icon="ui-icon-person" style="color:white;margin:0px 10px;" url="/admin/adminUser.xhtml"/>
+	
+	<p:submenu styleClass="menuButton" label="REPORTES" icon="ui-icon-script" rendered="#{sessionScope['personalBean'].rolId == 4}">
+            <p:menuitem value="Ley de Obras" url="/reportes/reporteLeyObras.xhtml" styleClass="menuBarText"/>
+            <p:menuitem value="Ley de Adquisiciones" url="/reportes/reporteAdquisiciones.xhtml" styleClass="menuBarText"/>
+    </p:submenu>
+	
+	
+	<f:facet name="options">
+            <p:commandButton action="#{loginBean.salir}" styleClass="btn btn-primary btn-xs" value="Salir" icon="ui-icon-extlink" />
+    </f:facet>
+	
+</p:menubar>
+
+</h:form>  
+</p:layoutUnit>
+
+
+<p:layoutUnit id="layoutCenter" position="center" styleClass="panel panel-danger">
+<h:form id="frmContent">
+				                
+<p:growl id="growl" showDetail="true"/>
+	 <ui:insert name="source">
+	 	<center>
+	 	<img id="mpaInit" src="../images/mapa_o_2.jpg"/>
+	 	</center>
+	 </ui:insert>
+</h:form>	 
+</p:layoutUnit>
+</p:layout>
+
+
+</h:body>
+</html>

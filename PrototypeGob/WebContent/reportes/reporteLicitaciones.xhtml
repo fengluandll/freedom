@@ -1,0 +1,33 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="../home/secundaryHome.xhtml">
+
+<ui:define name="head">
+<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css"/>
+<link rel="stylesheet" type="text/css" href="../css/custom.css"/>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+
+</ui:define>
+	
+	
+<ui:define name="source">
+
+<p:tabView>
+		
+    <p:tab title="LICITACIONES REALIZADAS" id="lr">
+		 <ui:include src="/reportes/licitacionesRealizadas.xhtml" />
+    </p:tab>
+        <p:tab title="LICITACIONES EN PROCESO" id="lp">
+            <ui:include src="/reportes/licitacionesProceso.xhtml" />
+        </p:tab>
+    </p:tabView>
+  
+</ui:define>
+
+</ui:composition>

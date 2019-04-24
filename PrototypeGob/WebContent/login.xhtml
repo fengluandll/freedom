@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<link rel="stylesheet" type="text/css" href="css/login.css"/>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css"/>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<link href="images/SCT_24.png" rel="shortcut icon" type='image/png'/>
+
+
+</h:head>
+<h:body>
+
+<div class="container">
+<div class="row align-items-betweens">
+	<div class="col-md-auto col-lg-auto">
+		<img src="images/logoSCT_hoz3.png"/>		
+	</div>
+	<div class="col">
+		<h5><p id="titleLogin" class="text-success">CONSOLIDACIÓN DE INFORMACIÓN DE CONTRATACIONES EN MATERIA
+									 DE OBRA PUBLICA, ADQUISICIONES, ARRENDAMIENTOS Y SERVICIOS
+		</p></h5>	
+	</div>
+	<div class="col-md-auto col-lg-auto">
+		<img src="images/coordinacion_285x118.png"/>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12">
+<div class="login-form">
+<div class="main-div">
+    <div class="panel">
+		   <h1>Bienvenido</h1>
+		   <p>Por favor ingresa tu usuario y contraseña</p>
+   </div>
+    <h:form id="Login">
+
+        <div class="form-group">
+
+
+            <p:inputText id="idUser" value="#{loginBean.user}" class="form-control" required="true" label="Usuario" placeholder="Usuario"/>
+
+        </div>
+
+        <div class="form-group">
+
+            <p:password id="idPassword" value="#{loginBean.password}" class="form-control" required="true" label="Contraseña" placeholder="Contraseña"/>
+
+        </div>
+        <div class="forgot">
+        	<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+        	<p:ajaxStatus id="ajaxStatusPanel">
+						    <f:facet name="start">
+						    	<p:outputLabel value=""/><br/>
+						        <h:graphicImage value="/images/ajax-loader.gif" />
+						    </f:facet>
+						     
+						    <f:facet name="complete">
+						        <h:outputText value="" />
+						    </f:facet>
+				</p:ajaxStatus>
+		</div>
+        <p:commandButton value="Ingresar" styleClass="btn btn-primary" action="#{loginBean.passUser}" update="Login"/>
+
+    </h:form>
+    </div>
+</div></div>
+
+</div>
+</div>
+</h:body>
+</html>

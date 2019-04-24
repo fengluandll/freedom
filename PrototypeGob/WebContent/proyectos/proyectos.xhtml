@@ -1,0 +1,90 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="../home/PrincipalHome.xhtml">
+
+<ui:define name="head">
+<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+</ui:define>
+	
+	
+<ui:define name="source">
+
+<center>
+	<p:panelGrid>
+		<p:row>
+			<p:column>
+				<p:commandButton value="OBRAS" actionListener="#{projectView.showTblObras}" ajax="false"/>
+			</p:column>
+			<p:column>
+				<p:commandButton value="MANTENIMIENTO" />
+			</p:column>
+			<p:column>
+				<p:commandButton value="AMBAS"/>
+			</p:column>
+		</p:row>
+	</p:panelGrid>
+	
+</center>
+
+<p:dataTable id="proj" var="p" value="#{projectView.listProj}" rendered="#{not empty projectView.tblObras}" style="font-size:12px;">
+    <f:facet name="header">
+        Lista de proyectos
+ 
+        <p:commandButton id="toggler" type="button" value="Columns" style="float:right" icon="ui-icon-calculator" />
+        <p:columnToggler datasource="proj" trigger="toggler" />
+    </f:facet>
+ 
+    <p:column headerText="Nombre" style="font-size:11px;">
+        <h:outputText value="#{p.name}" style="font-size:11px;"/>
+    </p:column>
+ 
+    <p:column headerText="Puerto" style="font-size:11px;">
+        <h:outputText value="#{p.acronym}" style="font-size:11px;"/>
+    </p:column>
+ 
+    <p:column headerText="Descripcion" style="font-size:11px;">
+        <h:outputText value="#{p.description}" style="font-size:11px;"/>
+    </p:column>
+ 
+    <p:column headerText="Codigo" style="font-size:11px;">
+        <h:outputText value="#{p.code}" style="font-size:11px;"/>
+    </p:column>
+    
+    <p:column headerText="Total inversion" style="font-size:11px;">
+        <h:outputText value="#{p.totalInvestment}" style="font-size:11px;"/>
+        
+    </p:column>
+ 
+    <p:column headerText="Monto ejercicio" style="font-size:11px;">
+        <h:outputText value="#{p.exercisedAmount}" style="font-size:11px;"/>
+    </p:column>
+    
+    <p:column headerText="Monto asignado" style="font-size:11px;">
+        <h:outputText value="#{p.asignedAmount}" style="font-weight: bold;font-size:11px;">
+        	<f:convertNumber type="currency" currencySymbol="$" />
+        </h:outputText>
+    </p:column>
+    
+     <p:column headerText="Tipo recurso" style="font-size:11px;">
+        <h:outputText value="#{p.resourceType}" style="font-size:11px;"/>
+    </p:column>
+    
+     <p:column headerText="Porcentaje" style="font-size:11px;">
+        <h:outputText value="#{p.resourcePercent}" style="font-size:11px;">
+        	
+        </h:outputText>
+    </p:column>
+    
+     <p:column headerText="Descripcion" style="font-size:11px;">
+        <h:outputText value="#{p.buildDescription}" style="font-size:11px;"/>
+    </p:column>
+</p:dataTable>
+<center>
+<p:chart type="pie" model="#{chartObrasView.pieModel}" style="width:500px;height:400px" rendered="#{not empty projectView.tblObras}"/>
+</center>
+</ui:define>
+
+</ui:composition>

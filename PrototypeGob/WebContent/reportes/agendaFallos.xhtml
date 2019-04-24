@@ -1,0 +1,71 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="../home/secundaryHome.xhtml">
+<ui:define name="head">
+<style type="text/css">
+.ui-panelgrid td, .ui-panelgrid tr
+{
+    border-style: none !important
+}
+      	.ui-datatable .ui-column-filter {
+		    display:none;
+		}
+</style>
+</ui:define>
+                
+<ui:define name="source">                
+<center>
+	<p:dataTable id="tblFallos" var="ap" value="#{agendaFallosView.listFallos}" widgetVar="ProyTable"
+                 emptyMessage="No hay agenda capturada" 
+                 filteredValue="#{agendaFallosView.filteredProy}" style="font-size:12px;"
+                 scrollable="true" scrollHeight="500" paginator="true" rows="20">
+
+	   <f:facet name="header">
+            
+            <p:outputPanel>
+            	<p:panelGrid>
+            		<p:row>
+                		<p:column style="text-align:center;width:500px;">
+                			<h1>FALLOS (MES ACTUAL)</h1>
+                		</p:column>
+                		<p:column>
+                			<h:commandLink actionListener="#{dtJReportsBean.viewPDF('Agenda de fallos')}">
+				                <p:graphicImage value="../images/PDF_32.png"/>
+			 				</h:commandLink>
+                		</p:column>
+                		<p:column>
+                			<h:commandLink actionListener="#{dtJReportsBean.viewExcel('Agenda de fallos')}">
+				                <p:graphicImage value="../images/excel.png"/>
+			 				</h:commandLink>
+                		</p:column>
+                	</p:row>
+                </p:panelGrid>
+            </p:outputPanel>
+            
+        </f:facet>                 
+    <p:column filterBy="#{ap.dia}" headerText="DIA"  filterMatchMode="contains" 
+ 				style="text-align:center;font-size:12px;" >
+ 			
+            <h:outputText value="#{ap.dia}" style="font-size:11px;"/>
+    </p:column>
+    <p:column filterBy="#{ap.api}" headerText="API"  filterMatchMode="contains" 
+ 				style="font-size:12px;" >
+            <h:outputText value="#{ap.api}" style="font-size:11px;"/>
+    </p:column>
+    <p:column filterBy="#{ap.obra}" headerText="OBRA"  filterMatchMode="contains" 
+ 				style="font-size:12px;" >
+            <h:outputText value="#{ap.obra}" style="font-size:11px;"/>
+    </p:column>
+    <p:column filterBy="#{ap.observaciones}" headerText="OBSERVACIONES"  filterMatchMode="contains" 
+ 				style="font-size:12px;" >
+            <h:outputText value="#{ap.observaciones}" style="font-size:11px;"/>
+    </p:column>
+    
+    </p:dataTable>
+</center>
+</ui:define>
+
+</ui:composition>

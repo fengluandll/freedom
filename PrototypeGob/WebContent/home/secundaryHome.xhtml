@@ -1,0 +1,133 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<meta http-equiv="x-ua-compatible" content="ie=edge" /> 
+<h:head>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css"/>
+<link rel="stylesheet" type="text/css" href="../css/custom.css"/>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<link href="../images/SCT_24.png" rel="shortcut icon" type='image/png'/>
+
+<style type="text/css">
+.ui-layout-north {                    
+                overflow:hidden !important;
+}
+.ui-layout-north .ui-layout-unit-content {
+    overflow:hidden !important;
+} 
+ .ui-layout-north {
+        z-index:20 !important;
+        overflow:visible !important;
+    }
+
+.ui-layout-north .ui-layout-unit-content {
+    overflow:visible !important;
+}
+
+/*
+.ui-layout-center {                    
+                overflow:hidden !important;
+}
+*/
+.ui-layout-center .ui-layout-unit-content {
+    height: 1000px  !important;
+} 
+
+.menuButton{
+color:white;
+background-color:rgb(207,36,42);
+
+}
+ul li.ui-menuitem-active>a{
+     background-image: none !important;
+    background-color:rgb(220,38,45) !important;    
+}
+
+.ui-button {
+    /*background-color: rgb(220,38,45) !important;*/
+   }
+ul li.ui-button-text {
+  
+    }
+ul li.ui-button-text-only .ui-button-text {
+
+}
+.ui-menu .ui-menuitem-text {
+  color: white;
+}
+.laasspcss .ui-datatable .ui-column-filter{
+ display:none !important;
+ /*width: 60px;
+ margin: auto;*/
+}
+
+</style>
+<script type="text/javascript">
+
+
+function incio(){
+	window.location.href = "/PrototypeGob/home/PrincipalHome.xhtml";
+	}
+function abre(action){
+	window.location.href = "/PrototypeGob/SeleccionaApiServlet?puerto="+action;
+	//window.location.href = "/PrototypeGob/proyectos/registroProyectos.xhtml?puerto="+action;
+	}
+
+</script>
+
+</h:head>
+
+<h:body>
+
+<p:layout widgetVar="layoutWdgt" style="width: 100%; margin: 0 auto;height:860px;">  
+	  
+<p:layoutUnit position="north"			  
+			  resizable="false" 
+			  closable="false" 
+			  collapsible="false" 
+			  style="width:80%;height:70%;"
+			  styleClass="panel panel-danger">
+<img id="inicio_png" src="../images/logoSCT_hoz3.png" onclick="javascript:incio();" style="cursor: pointer;" title="Inicio"/>				  
+<h:form id="frmMenu">
+<p:menubar style="border-style: none !important;">
+	
+	<p:menuitem styleClass="menuButton" value="LICITACIONES"        rendered="#{(sessionScope['personalBean'].rolId == 4 || sessionScope['personalBean'].rolId == 8) and param.in == 0}" icon="ui-icon-script" style="color:white;margin:0px 10px;" url="/ElijeReporteServlet?rep=lic&amp;action=btn2"/>
+	<p:menuitem styleClass="menuButton" value="REPORTE ANUAL"       rendered="#{(sessionScope['personalBean'].rolId == 4 || sessionScope['personalBean'].rolId == 8) and param['in'] == 0}" icon="ui-icon-script" style="color:white;margin:0px 10px;" url="../reportes/reportesAgregados.xhtml?in=0"/>
+	<p:menuitem styleClass="menuButton" value="AGENDA DE APERTURAS" rendered="#{(sessionScope['personalBean'].rolId == 4 || sessionScope['personalBean'].rolId == 8) and request.getParameter('in') == 0}" icon="ui-icon-calendar" style="color:white;margin:0px 10px;" url="../reportes/agendaAperturas.xhtml?in=0"/>
+	<p:menuitem styleClass="menuButton" value="AGENDA DE FALLOS"    rendered="#{(sessionScope['personalBean'].rolId == 4 || sessionScope['personalBean'].rolId == 8) and param['in'] == 0}" icon="ui-icon-calendar" style="color:white;margin:0px 10px;" url="../reportes/agendaFallos.xhtml?in=0"/>
+	
+	<p:menuitem styleClass="menuButton" value="VOLVER AL INICIO" icon="ui-icon-arrowreturn-1-w" style="color:white;margin:0px 10px;" onclick="incio();"/>
+
+	
+	<f:facet name="options">
+            <p:commandButton action="#{loginBean.salir}" styleClass="btn btn-primary btn-xs" value="Salir" icon="ui-icon-extlink" />
+    </f:facet>
+	
+</p:menubar>
+</h:form>  
+</p:layoutUnit>
+
+
+<p:layoutUnit id="layoutCenter" position="center" styleClass="panel panel-danger">
+<h:form id="frmContent" style="height:982px;">
+				                
+<p:growl id="growl" showDetail="true"/>
+	 <ui:insert name="source" style="height:982px;">
+	 	<center>
+	 	<img id="mpaInit" src="../images/mapa_o_2.jpg"/>
+	 	</center>
+	 </ui:insert>
+</h:form>	 
+</p:layoutUnit>
+</p:layout>
+
+
+</h:body>
+</html>

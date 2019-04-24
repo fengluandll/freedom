@@ -1,0 +1,99 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+      <h:head>
+      <style type="text/css">
+      	.tamaCabecero{
+      		font-size:10px;
+      	}
+      	.ui-datatable .ui-column-filter {
+		    display:none;
+		}
+	      	
+      </style>
+</h:head>
+<h:body>
+
+   
+	<p:dataTable var="lici" value="#{dtReporteLiciView.listRep}" style="font-size:11px;" 
+				widgetVar="ProyTable1"
+				 filteredValue="#{dtReporteLiciView.filteredProy}"
+				 id="tblReali" paginator="true" rows="20" scrollable="true" scrollHeight="500">
+        <f:facet name="header">
+            <h3><p:outputLabel value="Puerto seleccionado: #{sessionScope['nomPto']}" /></h3> LICITACIONES 
+            
+            <p:outputPanel style="width:100%;">
+            	<p:panelGrid style="width:100%;">
+            		<p:row>
+            			<p:column style="width:170px;" >
+                			<h:outputText value="Busqueda por todos los campos:" style="font-weight: bold;"/>
+                		</p:column>
+                		<p:column>
+                			<p:inputText id="globalFilter" onkeyup="PF('ProyTable1').filter()" style="width:150px;" placeholder="Ingresa una palabra clave"/>
+                		</p:column>
+                		<p:column>
+                			<h:commandLink actionListener="#{dtJReportsBean.viewPDF('Licitaciones Realizadas')}">
+				                <p:graphicImage value="../images/PDF_32.png"/>
+				                				
+			 				</h:commandLink>
+                		</p:column>
+                		<p:column>
+                			<h:commandLink actionListener="#{dtJReportsBean.viewExcel('Licitaciones Realizadas')}">
+				                <p:graphicImage value="../images/excel.png"/>
+			 				</h:commandLink>
+                		</p:column>
+                	</p:row>
+                </p:panelGrid>
+            </p:outputPanel>
+
+        </f:facet>
+ 
+   		<p:column headerText="PUERTO" filterMatchMode="contains" filterBy="#{lici.nomPto}" style="font-size:9px;width:55px;">
+            <h:outputText value="#{lici.nomPto}" style="font-size:11px;"/>
+        </p:column>
+ 		<p:column headerText="PROCEDIMIENTO" filterMatchMode="contains" filterBy="#{lici.tipoProcedimiento}" style="font-size:9px;width:65px;">
+            <h:outputText value="#{lici.tipoProcedimiento}" style="font-size:11px;"/>
+        </p:column>
+ 		<p:column headerText="PROYECTO" filterMatchMode="contains" filterBy="#{lici.proyecto}" style="font-size:9px;width:80px;">
+            <h:outputText value="#{lici.proyecto}" style="font-size:11px;"/>
+        </p:column>
+        <p:column colspan="2" headerText="OBRAS" filterMatchMode="contains" filterBy="#{lici.obras}" style="font-size:9px;width:80px;">
+            <h:outputText value="#{lici.obras}" style="font-size:11px;"/>
+        </p:column>
+        <p:column colspan="2" style="text-align:center;font-size:9px;width:75px;" headerText="MONTO CONTRATADO"
+        		  filterMatchMode="contains" filterBy="#{lici.montoContratado}">
+            <h:outputText value="#{lici.montoContratado}" style="font-size:11px;">
+            	<f:convertNumber type="currency" currencySymbol="$" />
+            </h:outputText>
+        </p:column>
+        <p:column headerText="PUBLICACION PREBASES" style="font-size:9px;width:50px;">
+            <h:outputText value="#{lici.publiPrebases}" style="font-size:11px;"/>
+        </p:column>
+        <p:column style="width:65px;font-size:9px;text-align:center;" headerText="PUBLICACION CONVOCATORIA"
+        		  filterMatchMode="contains" filterBy="#{lici.publiConvocatoria}">
+            <h:outputText value="#{lici.publiConvocatoria}" style="font-size:11px;" />
+        </p:column>
+        <p:column headerText="APERTURA PROPOSICIONES" style="font-size:9px;width:65px;text-align:center;"
+        		  filterMatchMode="contains" filterBy="#{lici.aperturaProposiciones}">
+           <h:outputText value="#{lici.aperturaProposiciones}" style="font-size:11px;"/>
+        </p:column>
+        <p:column headerText="FALLO" style="font-size:9px;width:55px;text-align:center;"
+        		  filterMatchMode="contains" filterBy="#{lici.fallo}">
+            <h:outputText value="#{lici.fallo}" style="font-size:11px;"/>
+        </p:column>
+        <p:column style="width:60px;font-size:9px;" headerText="INICIO / FIN DE LA OBRA" 
+        		  filterMatchMode="contains"  filterBy="#{lici.incioFinObra}">
+            <h:outputText value="#{lici.incioFinObra}" style="font-size:11px;"/>
+        </p:column>
+        <p:column style="width:90px;font-size:9px;" headerText="OBSERVACIONES*" filterMatchMode="contains"  
+        		  filterBy="#{lici.observaciones}">
+            <h:outputText value="#{lici.observaciones}" style="font-size:11px;"/>
+        </p:column>
+ 
+        
+    </p:dataTable>
+    
+</h:body>
+
+</html>

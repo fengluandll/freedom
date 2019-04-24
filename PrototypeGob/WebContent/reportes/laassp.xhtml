@@ -1,0 +1,141 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="../home/secundaryHome.xhtml">
+
+<ui:define name="source"> 
+
+	<ui:insert name="head">
+	<style type="text/css">
+	    	.tamaCabecero{
+	    		font-size:10px;
+	    	}
+	.ui-datatable .ui-column-filter{
+		 display:none !important;
+		 /*width: 60px;
+		 margin: auto;*/
+	}
+	</style>
+	</ui:insert>               
+<center>
+		<p:dataTable var="aas" value="#{dtReporteLaasspView.listlaassp}" style="font-size:11px;" 
+				widgetVar="ProyTable2"
+				 filteredValue="#{dtReporteLaasspView.filteredProy}"
+				 id="tblass" paginator="true" rows="20" scrollable="true" scrollHeight="500">
+        <f:facet name="header">
+             <h3><p:outputLabel value="Puerto seleccionado: #{sessionScope['nomPto']}" /></h3> ADQUISICIONES, ARRENDAMIENTOS Y SERVICIOS 
+            
+            
+            <p:outputPanel>
+            	<p:panelGrid style="width:100%;">
+            		<p:row>
+            			<p:column style="width:170px;" >
+                			<h:outputText value="Busqueda por todos los campos:" style="font-weight: bold;"/>
+                		</p:column>
+                		<p:column>
+                			<p:inputText id="globalFilter" onkeyup="PF('ProyTable2').filter()" style="width:150px;" placeholder="Ingresa una palabra clave"/>
+                		</p:column>
+                		<p:column>
+                			<h:commandLink actionListener="#{dtJReportsBean.viewPDF('Laassp')}">
+				                <p:graphicImage value="../images/PDF_32.png"/>
+			 				</h:commandLink>
+                		</p:column>
+                		<p:column>
+                			<h:commandLink actionListener="#{dtJReportsBean.viewExcel('Laassp')}">
+				                <p:graphicImage value="../images/excel.png"/>
+			 				</h:commandLink>
+                		</p:column>
+                	</p:row>
+                </p:panelGrid>
+            </p:outputPanel>
+        </f:facet>
+   
+   		
+        
+        <p:columnGroup type="header">
+            <p:row>
+                <p:column colspan="4" headerText="" />
+                <p:column colspan="2" headerText="VIGENCIA DEL CONTRATO"  style="font-size:9px;"/>
+                <p:column colspan="8" headerText="" />
+            </p:row>
+            <p:row>
+            	 <p:column headerText="PUERTO" filterMatchMode="contains" filterBy="#{aas.nomPuerto}" style="font-size:8px;width:5px;"/>
+		 		<p:column headerText="DESCRIPCION BIEN O SERVICIO" filterMatchMode="contains" filterBy="#{aas.buildDescription}" style="font-size:8px;width:5px;"/>
+		 		<p:column headerText="TIPO PROCEDIMIENTO" filterMatchMode="contains" filterBy="#{aas.tp}" style="font-size:8px;width:80px;"/>
+		 		<p:column headerText="NUM. ACUERDO" filterMatchMode="contains" filterBy="#{aas.segment1}" style="font-size:8px;width:80px;"/>
+		 		<p:column headerText="INICIO" filterMatchMode="contains" filterBy="#{aas.fecContractIni}" style="font-size:8px;width:80px;"/>
+            	<p:column headerText="TERMINO" filterMatchMode="contains" filterBy="#{aas.fecContractFin}" style="font-size:8px;width:80px;"/>
+            	<p:column headerText="MONTO A CONTRATAR" filterMatchMode="contains" filterBy="#{aas.amountHire}" style="font-size:8px;width:80px;"/>
+            	<p:column headerText="MONTO CONTRATADO" filterMatchMode="contains" filterBy="#{aas.contractedAmount}" style="font-size:8px;width:80px;"/>
+            	<p:column headerText="NOMBRE PROVEEDOR" filterMatchMode="contains" filterBy="#{aas.providerName}" style="font-size:8px;width:80px;"/>
+            	<p:column headerText="TIPO RECURSO" filterMatchMode="contains" filterBy="#{aas.resourceType}" style="font-size:8px;width:10px;"/>
+            	<p:column headerText="COMPRANET" filterMatchMode="contains" filterBy="#{aas.fecCompranet}" style="font-size:8px;width:10px;"/>
+            	<p:column headerText="JUNTA ACLARACIONES" filterMatchMode="contains" filterBy="#{aas.fecClarification_meeting}" style="font-size:8px;width:10px;"/>
+            	<p:column headerText="PROPUESTAS" filterMatchMode="contains" filterBy="#{aas.fecPresentationsTender}" style="font-size:8px;width:10px;"/>
+            	<p:column headerText="FALLO" filterMatchMode="contains" filterBy="#{aas.fecFail}" style="font-size:8px;width:10px;"/>
+            </p:row>
+        </p:columnGroup>
+        <p:column headerText="PUERTO" filterMatchMode="contains" filterBy="#{aas.nomPuerto}" styleClass="laasspcss" style="font-size:9px;width:5px;">
+		            <h:outputText value="#{aas.nomPuerto}" style="font-size:10px;"/>
+	    </p:column>
+ 		<p:column headerText="DESCRIPCION DEL BIEN O SERVICIO" filterMatchMode="contains" filterBy="#{aas.buildDescription}" styleClass="laassp">
+            <h:outputText value="#{aas.buildDescription}" style="font-size:10px;"/>
+        </p:column>
+ 		<p:column headerText="TIPO PROCEDIMIENTO" filterMatchMode="contains" filterBy="#{aas.tp}" style="font-size:9px;width:80px;">
+            <h:outputText value="#{aas.tp}" style="font-size:10px;"/>
+        </p:column>
+        <p:column headerText="NUM. ACUERDO" filterMatchMode="contains" filterBy="#{aas.segment1}" style="font-size:9px;width:80px;">
+            <h:outputText value="#{aas.segment1}" style="font-size:10px;"/>
+        </p:column>
+      	<p:column headerText="INICIO" filterMatchMode="contains" filterBy="#{aas.fecContractIni}" style="font-size:9px;width:80px;">
+		  <h:outputText value="#{aas.fecContractIni}" style="font-size:10px;">
+		  	 <f:convertDateTime pattern="dd-MM-yyyy" />
+		  </h:outputText>
+        </p:column>
+   	    <p:column headerText="TERMINO" filterMatchMode="contains" filterBy="#{aas.fecContractFin}" style="font-size:9px;width:80px;">
+   		<h:outputText value="#{aas.fecContractFin}" style="font-size:10px;">
+   			 <f:convertDateTime pattern="dd-MM-yyyy" />
+   		</h:outputText>
+	    </p:column>
+	    <p:column headerText="MONTO A CONTRATAR" filterMatchMode="contains" filterBy="#{aas.amountHire}" style="font-size:9px;width:80px;">
+   			<h:outputText value="#{aas.amountHire}" style="font-size:10px;">
+   				<f:convertNumber type="currency" currencySymbol="$" />
+   			</h:outputText>
+	    </p:column>
+	    <p:column headerText="MONTO CONTRATADO" filterMatchMode="contains" filterBy="#{aas.contractedAmount}" style="font-size:9px;width:80px;">
+   			<h:outputText value="#{aas.contractedAmount}" style="font-size:10px;">
+   				<f:convertNumber type="currency" currencySymbol="$" />
+   			</h:outputText>
+	    </p:column>
+        <p:column headerText="NOMBRE PROVEEDOR" filterMatchMode="contains" filterBy="#{aas.providerName}" style="font-size:9px;width:80px;">
+   		<h:outputText value="#{aas.providerName}" style="font-size:10px;"/>
+	    </p:column>
+	    <p:column headerText="TIPO RECURSO" filterMatchMode="contains" filterBy="#{aas.resourceType}" style="font-size:9px;width:10px;">
+   		<h:outputText value="#{aas.resourceType}" style="font-size:10px;"/>
+	    </p:column>
+	     <p:column headerText="COMPRANET" filterMatchMode="contains" filterBy="#{aas.fecCompranet}" style="font-size:9px;width:10px;">
+   		<h:outputText value="#{aas.fecCompranet}" style="font-size:10px;">
+   			 <f:convertDateTime pattern="dd-MM-yyyy" />
+   		</h:outputText>
+	    </p:column>
+	    <p:column  filterMatchMode="contains" filterBy="#{aas.fecClarification_meeting}" style="font-size:9px;width:10px;">
+   		<h:outputText value="#{aas.fecClarification_meeting}" style="font-size:10px;">
+   			 <f:convertDateTime pattern="dd-MM-yyyy" />
+   		</h:outputText>
+	    </p:column>
+	    <p:column headerText="PROPUESTAS" filterMatchMode="contains" filterBy="#{aas.fecPresentationsTender}" style="font-size:9px;width:10px;">
+   		<h:outputText value="#{aas.fecPresentationsTender}" style="font-size:10px;">
+   			 <f:convertDateTime pattern="dd-MM-yyyy" />
+   		</h:outputText>
+	    </p:column>
+	    <p:column headerText="FALLO" filterMatchMode="contains" filterBy="#{aas.fecFail}" style="font-size:9px;width:10px;">
+   		<h:outputText value="#{aas.fecFail}" style="font-size:10px;">
+   			 <f:convertDateTime pattern="dd-MM-yyyy" />
+   		</h:outputText>
+	    </p:column>
+    </p:dataTable>
+</center>
+</ui:define>
+</ui:composition>

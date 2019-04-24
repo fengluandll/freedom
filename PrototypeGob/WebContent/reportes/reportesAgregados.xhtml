@@ -1,0 +1,87 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="../home/secundaryHome.xhtml">
+
+<ui:define name="head">
+<link rel="stylesheet" type="text/css" href="../css/general.css"/>
+</ui:define>
+	
+	
+<ui:define name="source">
+
+
+<p:dataTable id="tblProyecto" var="proy" value="#{dtReporteProyView.listProyectos}" style="font-size:11px;"
+				 widgetVar="ProyTable2"
+				 filteredValue="#{dtReporteProyView.filteredProy}" paginator="true" rows="20" scrollable="true" scrollHeight="500">
+        <f:facet name="header">
+             
+            <p:outputPanel>
+            	<p:panelGrid style="width:100%;">
+            		<p:row>
+            			<p:column style="width:170px;" >
+                			<h:outputText value="Busqueda por todos los campos:" style="font-weight: bold;"/>
+                		</p:column>
+                		<p:column>
+                			<p:inputText id="globalFilter" onkeyup="PF('ProyTable2').filter()" style="width:150px;" placeholder="Ingresa una palabra clave"/>
+                		</p:column>
+                		<p:column>
+                			<h:commandLink actionListener="#{dtJReportsBean.viewPDF('reporte_anual')}">
+				                <p:graphicImage value="../images/PDF_32.png"/>
+			 				</h:commandLink>
+                		</p:column>
+                		<p:column>
+                			<h:commandLink actionListener="#{dtJReportsBean.viewExcel('reporte_anual')}">
+				                <p:graphicImage value="../images/excel.png"/>
+			 				</h:commandLink>
+                		</p:column>
+                	</p:row>
+                </p:panelGrid>
+            </p:outputPanel>
+        </f:facet>
+   
+   		<p:column headerText="PUERTO" filterMatchMode="contains" filterBy="#{proy.nomPto}" style="font-size:9px;width:60px;">
+            <h:outputText value="#{proy.nomPto}" style="font-size:11px;"/>
+        </p:column>
+ 		<p:column headerText="PROYECTO" filterMatchMode="contains" filterBy="#{proy.name}" style="font-size:9px;width:65px;">
+            <h:outputText value="#{proy.name}" style="font-size:11px;"/>
+        </p:column>
+        <p:column colspan="2" headerText="DESCRIPCION" filterMatchMode="contains" filterBy="#{proy.description}" style="font-size:9px;width:65px;">
+            <h:outputText value="#{proy.description}" style="font-size:11px;"/>
+        </p:column>
+        <p:column headerText="CARTERA" colspan="2" style="text-align:center;font-size:9px;width:65px;" filterMatchMode="contains" filterBy="#{proy.code}">
+            <h:outputText value="#{proy.code}"  style="font-size:11px;"/>
+        </p:column>
+        <p:column headerText="PERIODO" style="font-size:9px;width:60px;" filterBy="#{proy.period}">
+            <h:outputText value="#{proy.period}" style="font-size:11px;"/>
+        </p:column>
+        <p:column headerText="INVERSIÓN TOTAL" style="width:65px;font-size:9px;text-align:center;" 
+        		  filterMatchMode="contains" filterBy="#{proy.totalInvestment}">
+            <h:outputText value="#{proy.totalInvestment}" style="font-size:11px;">
+            	<f:convertNumber type="currency" currencySymbol="$" />
+            </h:outputText>
+        </p:column>
+        <p:column headerText="MONTO EJERCIDO" style="font-size:9px;width:60px;text-align:center;"
+        		  filterMatchMode="contains" filterBy="#{proy.exercisedAmount}">
+           <h:outputText value="#{proy.exercisedAmount}" style="font-size:11px;">
+           	<f:convertNumber type="currency" currencySymbol="$" />
+           </h:outputText>
+        </p:column>
+        <p:column headerText="MONTO ASIGNADO" style="font-size:9px;width:60px;text-align:center;"
+        		  filterMatchMode="contains" filterBy="#{proy.asignedAmount}">
+            <h:outputText value="#{proy.asignedAmount}" style="font-size:11px;">
+            	<f:convertNumber type="currency" currencySymbol="$" />
+            </h:outputText>
+        </p:column>
+        <p:column style="width:60px;font-size:9px;text-align:center;" headerText="TIPO DE RECURSO" 
+        		  filterMatchMode="contains"  filterBy="#{proy.resourceType}">
+            <h:outputText value="#{proy.resourceType}" style="font-size:11px;"/>
+        </p:column> 
+        
+</p:dataTable>
+ 
+</ui:define>
+
+</ui:composition>
