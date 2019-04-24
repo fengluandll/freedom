@@ -1,0 +1,13 @@
+.ui-datatable .ui-column-filter{
+ display:none;
+ /*width: 60px;
+ margin: auto;*/
+}
+.textHeader{
+	font-size: 26px;
+	font-weight: 550;
+}
+.textSubHeader{
+	font-size: 20px;
+	font-weight: 550;
+}

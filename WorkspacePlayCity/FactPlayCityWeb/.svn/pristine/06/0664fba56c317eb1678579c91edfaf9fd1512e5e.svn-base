@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      lang="en">
+<h:head>
+
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/login.css"/>
+<link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/bootstrap-theme.css"/>
+<script type="text/javascript" src="#{request.contextPath}/js/bootstrap.js"></script>
+<script type="text/javascript" src="#{request.contextPath}/js/jquery.min.js"></script>
+<link href="images/SCT_24.png" rel="shortcut icon" type='image/png'/>
+
+<style type="text/css">
+
+</style>
+
+</h:head>
+<h:body>
+<div style="height: 76px;width:100%;background-color:#1d355e;) ">
+<table>
+<tr>
+	<td style="padding-left: 30px;padding-top: 0;margin: 0;"><img src="#{request.contextPath}/img/televisa_logo.png"/> </td>
+	<td style="padding-left: 50px;"><h3 style="color:white;text-align: center;"> SISTEMA DE FACTURACION AISA</h3></td>
+</tr>
+</table> </div>
+<div class="container">
+
+<div class="row justify-content-md-center">
+
+	<div class="col-sm-12 col-md-offset-4 col-lg-4" style="margin-top: 50px;">
+<div class="login-form">
+
+    <div class="">
+		   
+		   <p style="font-size: 18px;"><strong>Por favor ingresa tu usuario y contraseña</strong></p>
+   </div>
+    <h:form id="Login">
+
+        <div class="form-group">
+
+
+            <p:inputText id="idUser" value="#{loginBean.psUsername}" styleClass="form-control" required="true" label="Usuario" placeholder="Usuario"/>
+
+        </div>
+
+        <div class="form-group">
+
+            <p:password id="idPassword" value="#{loginBean.psPassword}" styleClass="form-control" required="true" label="Contraseña" placeholder="Contraseña"/>
+
+        </div>
+        
+        <p:commandButton style="background-color:#1d355e;border-color:#ffffff" value="Ingresar" styleClass="btn btn-primary" action="#{loginBean.login}" update="Login"/>
+        
+        <div class="forgot">
+        	<p:messages id="messages" showDetail="false" autoUpdate="true" closable="true" />
+        	
+        	<p:ajaxStatus id="ajaxStatusPanel" style="text-align:center;">
+						    <f:facet name="start">
+						    	<p:outputLabel value=""/><br/>
+						        <h:graphicImage value="/img/ajax-loader.gif" />
+						    </f:facet>
+						     
+						    <f:facet name="complete">
+						        <h:outputText value="" />
+						    </f:facet>
+				</p:ajaxStatus>
+		</div>
+    </h:form>
+
+</div></div>
+
+</div>
+</div>
+</h:body>
+</html>

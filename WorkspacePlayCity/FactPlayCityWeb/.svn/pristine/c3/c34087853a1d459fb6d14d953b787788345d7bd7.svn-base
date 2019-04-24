@@ -1,0 +1,26 @@
+package mx.com.televisa.playcity.background.jobs;
+
+import mx.com.televisa.playcity.view.BillingExtractionSchedulerView;
+
+import org.apache.log4j.Logger;
+import org.quartz.JobDataMap;
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
+import org.quartz.Job;
+
+public class JobTest implements Job {	
+	
+	private static org.apache.log4j.Logger logger = Logger.getLogger(BillingExtractionSchedulerView.class);
+		
+	@Override
+	public void execute(JobExecutionContext context) throws JobExecutionException {
+		try {						
+			JobDataMap idCasino = context.getMergedJobDataMap();			
+			System.out.println("Proceso de extracción del casino " + idCasino.getString("dataProperty"));
+	    } catch (Exception ex) {
+	    	logger.error(ex.getStackTrace());
+	    	ex.printStackTrace();
+	    }
+	}	
+	
+}

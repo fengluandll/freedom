@@ -1,0 +1,58 @@
+package mx.com.televisa.playcity.view;
+
+import java.util.List;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+import mx.com.televisa.playcity.beans.config.JobsBean;
+import mx.com.televisa.playcity.model.JobDAO;
+
+
+@ManagedBean
+@ViewScoped
+public class JobsView {
+	
+	
+	List<JobsBean> loListJobs;
+	int            linIdJob;
+
+	/**
+	 * Metodo Constructor
+	 */
+	public JobsView(){
+		getListJobs();
+	}
+	
+	
+	public void getListJobs(){
+		JobDAO loJobDAO = new JobDAO();
+		this.loListJobs = loJobDAO.getJobs();
+	}
+
+
+	public List<JobsBean> getLoListJobs() {
+		return loListJobs;
+	}
+
+
+	public void setLoListJobs(List<JobsBean> loListJobs) {
+		this.loListJobs = loListJobs;
+	}
+
+
+	public int getLinIdJob() {
+		return linIdJob;
+	}
+
+
+	public void setLinIdJob(int linIdJob) {
+		this.linIdJob = linIdJob;
+	}
+
+	
+
+	
+	
+	
+}

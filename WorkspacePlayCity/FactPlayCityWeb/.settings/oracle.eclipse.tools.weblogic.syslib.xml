@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system-libraries>
+    <library javadoc="http://docs.oracle.com/javaee/6/api/" path="server/lib/api.jar"/>
+    <library path="server/lib/wls-api.jar"/>
+    <module id="glassfish.jsf" javadoc="http://docs.oracle.com/javaee/6/api/" source="C:\Users\argumedo\.m2\repository\org\glassfish\javax.faces\2.1.20-04\javax.faces-2.1.20-04-sources.jar"/>
+</system-libraries>

@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style type="text/css">
+
+.ui-widget,.ui-widget .ui-widget {
+	   font-size: smaller;
+	}
+.ui-datatable .ui-column-filter {
+	    	display:none;
+	}
+.ui-panelgrid>*>tr,
+.ui-panelgrid .ui-panelgrid-cell {
+    border: none;
+}
+
+</style>
+<script type="text/javascript">
+//<![CDATA[ 
+	function direcciona(){
+		
+		//var text = window.parent.document.getElementById('menuCursos').getElementsByTagName('a')[0].click();
+		var lol = window.parent.document.getElementById('contenPrincipal');
+		//lol.src = "/joappWeb/carousel/visualizaVideo.xhtml?linkTopic="+link+"&topicId="+topicId;
+		lol.src = "/TSJDF_HE_Sistema/solicitudes/capturarSolicitudes.xhtml";
+		//var media = window.parent.document.getElementById('clicVideo').click();
+		
+		}
+	//]]>
+</script>
+</h:head>	  
+
+<h:body>
+		<h:form id="frmNuevo">
+			<p:panelGrid id="pgNuevoHeader" style="width: 90%;" styleClass="borderCero3">
+				<f:facet name="header">
+					<p:row>
+						<p:column colspan="6"><p:outputLabel value="Nueva solicitud"/></p:column>
+						<p:column colspan="0"><p:commandButton type="button" value="Regresar" onclick="javascript:direcciona()"/></p:column>
+					</p:row>
+				</f:facet>
+				<p:row>
+						<p:column colspan="5">
+							 <p:messages id="messages" showDetail="false" autoUpdate="true" closable="true" />
+						</p:column>
+			    </p:row>
+				<p:row>
+					<p:column style="width:20%">
+						<p:outputLabel value="Numero de Empleado" for="txtBusquedaNoEmpleado"/>
+					</p:column>
+					<p:column colspan="3" style="width:60%">
+						<p:inputText id="txtBusquedaNoEmpleado" value="#{quincenasLovView.numEmpleado}" readonly="false" required="true" style="width: 100px;"/>
+					</p:column>
+					<p:column style="width:20%" rowspan="3">
+						<div align="center"><p:commandButton value="Generar"
+															 style="width:120px;height:20px;"
+															 actionListener="#{quincenasLovView.generarQuincena}"
+															 update=":frmSolicitud"/></div>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width:20%">
+						<p:outputLabel value="Seleccione una Quincena" for="ddlQuincenas2"/>
+					</p:column>
+					<p:column colspan="3" style="width:60%">
+						<p:selectOneMenu id="ddlQuincenas2" value="#{quincenasLovView.code}" style="width:350px" required="true"
+						filter="true" filterMatchMode="contains">
+			                <!-- <p:ajax listener="#{dropdownView.onQuincenaChange}" update="city" /> -->
+			                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+			                <f:selectItems value="#{quincenasLovView.lovData}" />
+			            </p:selectOneMenu>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+	</h:form>	
+	<h:form id="frmSolicitud">		
+			<p:panelGrid id="pgNuevoLines" style="width: 90%;margin-top:10px;">
+				<f:facet name="header">
+					<p:row>
+						<p:column colspan="7"><p:outputLabel value="Ingresar datos de la nueva solicitud"/></p:column>
+					</p:row>
+				</f:facet>
+				<p:row>
+					<p:column style="width: 30%;" colspan="2">
+						<p:outputLabel value="Número de empleado" for="txtNoEmpleado"/>
+					</p:column>
+					<p:column style="width: 70%;" colspan="3">
+						<p:inputText id="txtNoEmpleado" value="#{quincenasLovView.numEmpleadoSolicitud}" readonly="true" required="true" style="width: 400px;"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width: 30%;" colspan="2">
+						<p:outputLabel value="Nombre del empleado" for="txtNomEmpleado"/>
+					</p:column>
+					<p:column style="width: 70%;" colspan="3">
+						<p:inputText id="txtNomEmpleado" value="#{quincenasLovView.nombreEmpleado}" readonly="true" required="true" style="width: 400px;"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width: 30%;" colspan="2">
+						<p:outputLabel value="Órgano judicial, unidad administrativa, o de apoyo judicial" for="txtUniAdm"/>
+					</p:column>
+					<p:column style="width: 70%;" colspan="3">
+						<p:inputText id="txtUniAdm" value="#{quincenasLovView.organoJudicial}" readonly="true" required="true" style="width: 400px;"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width: 30%;" colspan="2">
+						<p:outputLabel value="RFC" for="txtRfc"/>
+					</p:column>
+					<p:column style="width: 70%;" colspan="3">
+						<p:inputText id="txtRfc" value="#{quincenasLovView.rfc}" readonly="true" required="true" style="width: 400px;"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width: 30%;" colspan="2">
+						<p:outputLabel value="Fecha Inicial" for="txtFecIni"/>
+					</p:column>
+					<p:column style="width: 70%;" colspan="3">
+						<p:inputText id="txtFecIni" value="#{quincenasLovView.fechaInicial}" readonly="true" required="true" style="width: 400px;"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width: 30%;" colspan="2">
+						<p:outputLabel value="Fecha Final" for="txtFecFin"/>
+					</p:column>
+					<p:column style="width: 70%;" colspan="3">
+						<p:inputText id="txtFecFin" value="#{quincenasLovView.fechaFinal}" readonly="true" required="true" style="width: 400px;"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width: 30%;" colspan="2">
+						<p:outputLabel value="Fecha Paga" for="txtFecPaga"/>
+					</p:column>
+					<p:column style="width: 70%;" colspan="3">
+						<p:inputText id="txtFecPaga" value="#{quincenasLovView.fechaPaga}" readonly="true" required="true" style="width: 400px;"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width: 30%;" colspan="2">
+						<p:outputLabel value="Descripción de la Nómina" for="txtDescNomina"/>
+					</p:column>
+					<p:column style="width: 70%;" colspan="3">
+						<p:inputText id="txtDescNomina" value="#{quincenasLovView.descripcionNomina}" readonly="true" required="true" style="width: 400px;"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width: 30%;" colspan="2">
+						<p:outputLabel value="Jornada ordinaria" for="txtJornadaOrd"/>
+					</p:column>
+					<p:column style="width: 70%;" colspan="3">
+						<p:inputText id="txtJornadaOrd" value="#{quincenasLovView.jornadaOrdinaria}" readonly="false" required="false" style="width: 400px;"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column colspan="5">
+						
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column colspan="5">
+						
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column colspan="5">
+						<p:commandButton value="Agregar Horas Extraordinarias" actionListener="#{quincenasLovView.nuevaHora}" />
+						
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column colspan="4" style="width:80%">
+						<p:dataTable id="idHorasExt" var="horas" value="#{quincenasLovView.listHoras}">
+						    						 
+						    <p:column headerText="Hora de Inicio" style="text-align:center;">
+						        <h:outputText value="#{horas.horaEntrada}" />
+						    </p:column>
+						 
+						    <p:column headerText="Hora de Salida" style="text-align:center;">
+						        <h:outputText value="#{horas.horaSalida}" />
+						    </p:column>
+						 
+						    <p:column headerText="Fecha HE" style="text-align:center;">
+						        <h:outputText value="#{horas.fecha}" />
+						    </p:column>
+						    
+						    <p:column headerText="Fecha Laborada" style="text-align:center;">
+						        <h:outputText value="#{horas.numHorasLaboradas}" />
+						    </p:column>
+						 
+						    <p:column headerText="Justificación" style="text-align:center;">
+						        <h:outputText value="#{horas.justificacion}" />
+						    </p:column>
+						 
+						    <p:column headerText="Editar" style="text-align:center;">
+						    	<h:commandLink actionListener="#{quincenasLovView.modificaHoras(horas)}" title="Editar">
+							 	   <img id="editaHr" src="../resources/images/Modify_16.png"  />
+								 </h:commandLink>
+						    </p:column>
+						    <p:column headerText="Eliminar" style="text-align:center;">
+						    	<p:commandLink actionListener="#{quincenasLovView.eliminaHoras(horas)}" title="Salir">
+							 	   <h:graphicImage value="../resources/images/Erase_16.png" style="cursor:pointer;" title="Eliminar nota"/>
+							 	   <span><p:confirm header="Confirmación" message="¿Estas seguro que quieres borrar este registro?" icon="ui-icon-alert"/></span>
+								 </p:commandLink>
+								 <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">  
+							        <p:commandButton value="Si"  type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>  
+							        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>       
+							    </p:confirmDialog> 
+						    </p:column>
+						</p:dataTable>
+					</p:column>
+				</p:row>
+				<p:row>
+				<p:column>
+						 <h:outputText value="Seleccione para guardar todo" style="font:normal bold 110% normal"/>
+					</p:column>
+					<p:column>
+						 <p:selectBooleanCheckbox value="#{quincenasLovView.check}"/>
+					</p:column>
+					<p:column>
+						 <p:commandButton value="Guardar" actionListener="#{quincenasLovView.guardaTodo}"/>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+		</h:form>
+		
+<h:form id="idHoras">
+	<p:dialog header="Horas Extraordinarias" widgetVar="dlg2" modal="true" width="550" height="280">
+	<p:growl id="messages" autoUpdate="true" showDetail="false"/>
+						    <div align="center">
+						    <p:panelGrid id="gridHoras" style="width: 90%;">
+						    	<f:facet name="header">
+									<p:row>
+										<p:column colspan="2"><p:outputLabel value="Agregar nuevo registro"/></p:column>
+									</p:row>
+								</f:facet>
+						    	<p:row>
+						    		<p:column>
+						    			<div align="left" style="font-weight: bold"><p:outputLabel value="Hora de Inicio" for="txtNuevoHoraInicio"/></div>
+						    		</p:column>
+						    		<p:column>
+						    			<p:calendar id="txtNuevoHoraInicio" required="true" value="#{quincenasLovView.horaInicio}" pattern="HH:mm" timeOnly="true" />
+						    			
+						    		</p:column>
+						    	</p:row>
+						    	<p:row>
+						    		<p:column>
+						    			<div align="left" style="font-weight: bold"><p:outputLabel value="Hora de Salida" for="txtNuevoHoraFin"/></div>
+						    		</p:column>
+						    		<p:column>
+						    			<p:calendar id="txtNuevoHoraFin" required="true" value="#{quincenasLovView.horaSalida}" pattern="HH:mm" timeOnly="true" />
+						    		</p:column>
+						    	</p:row>
+						    	<p:row>
+						    		<p:column>
+						    			<div align="left" style="font-weight: bold"><p:outputLabel value="Fecha HE (dd/mm/yyyy)" for="dtNuevoFechaHE"/></div>
+						    		</p:column>
+						    		<p:column>
+						    			<p:calendar id="dtNuevoFechaHE" value="#{quincenasLovView.fechaHe}" pattern="dd/MM/yyyy" required="true" style="width: 100px"/>
+						    		</p:column>
+						    	</p:row>
+						    	<p:row>
+						    		<p:column>
+						    			<div align="left" style="font-weight: bold"><p:outputLabel value="No. Horas Laboradas" for="ddlNuevoHorasLaboradas"/></div>
+						    		</p:column>
+						    		<p:column>
+										<p:selectOneMenu id="ddlNuevoHorasLaboradas" required="true" value="#{quincenasLovView.hrsLaboradas}" style="width:120px">
+								            <f:selectItem itemLabel="Seleccinar" itemValue="" />
+								            <f:selectItem itemLabel="1" itemValue="1" />
+								            <f:selectItem itemLabel="2" itemValue="2" />
+								            <f:selectItem itemLabel="3" itemValue="3" />
+								        </p:selectOneMenu>
+						    		</p:column>
+						    	</p:row>
+						    	<p:row>
+						    		<p:column>
+						    			<div align="left" style="font-weight: bold"><p:outputLabel value="Justificacion" for="txtNuevoJustificacion"/></div>
+						    		</p:column>
+						    		<p:column>
+						    			<p:inputText id="txtNuevoJustificacion" value="#{quincenasLovView.justificacion}" style="width: 250px" required="true"/>
+						    		</p:column>
+						    	</p:row>
+						    	<p:row>
+						    		<p:column colspan="2">
+						    			<div align="center">
+						    				<p:commandButton id="btnAceptarNuevo" 
+						    								 actionListener="#{quincenasLovView.guardaHorasExtras}" 
+						    								 value="Aceptar" 
+						    								 update="gridHoras"
+						    								 style="font-weight: bold"/>
+						    			</div>
+						    		</p:column>
+						    	</p:row>
+						    </p:panelGrid></div>
+						</p:dialog>
+</h:form>		
+
+
+
+</h:body>
+</html>

@@ -1,0 +1,89 @@
+package mx.com.televisa.playcity.model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.naming.NamingException;
+
+import mx.com.televisa.playcity.beans.SessionMenuBean;
+import mx.com.televisa.playcity.model.db.ConnectionDB;
+
+
+public class MenuDAO {
+	
+	Connection        con ;
+	PreparedStatement psmt;
+	ResultSet 		  rs;
+	private SessionMenuBean dtMenu;
+	List<SessionMenuBean> listMenu;
+	private SessionMenuBean dtSubmenu;
+	List<SessionMenuBean> listSubmenu;
+	
+	
+	public List<SessionMenuBean> getMenus(){
+		listMenu = new ArrayList<SessionMenuBean>();
+		ConnectionDB connectionDB = new ConnectionDB();
+		String sql = "SELECT  DISTINCT \n"+
+					 "        m.id_menu, m.nom_menu, m.nom_url \n"+
+					 "FROM    PC_MENU_TAB      m \n"+
+					 "      , PC_SUBMENU_TAB   sm \n"+
+				     "WHERE   m.id_menu     = sm.id_menu \n";
+		try {
+			con = connectionDB.getConexion();
+			psmt = con.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()){
+				dtMenu = new SessionMenuBean(rs.getInt("id_menu"),rs.getString("nom_menu"),rs.getString("nom_url"));
+				listMenu.add(dtMenu);
+			}
+		} catch (NamingException | SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				psmt.close();
+				rs.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return listMenu;
+	}
+	
+	public List<SessionMenuBean> getSubmenus(String idMenu){
+		listSubmenu = new ArrayList<SessionMenuBean>();
+		ConnectionDB connectionDB = new ConnectionDB();
+		String sql = "SELECT  DISTINCT \n"+
+					 "        m.id_menu, sm.id_submenu, sm.NOM_SUBMENU, sm.nom_url \n"+
+					 "FROM    pc_menu_tab      m \n"+
+					 "      , pc_submenu_tab   sm \n"+
+				     "WHERE   m.id_menu     = sm.id_menu \n"+
+					 "    AND m.id_menu    = ? \n";
+		try {
+			con = connectionDB.getConexion();
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, idMenu);
+			rs = psmt.executeQuery();
+			while(rs.next()){
+				dtSubmenu = new SessionMenuBean(rs.getInt("id_menu"), rs.getInt("id_submenu"), 
+						rs.getString("nom_submenu"), rs.getString("nom_url"));
+				listSubmenu.add(dtSubmenu);
+			}
+		} catch (NamingException | SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				psmt.close();
+				rs.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return listSubmenu;
+	}
+}

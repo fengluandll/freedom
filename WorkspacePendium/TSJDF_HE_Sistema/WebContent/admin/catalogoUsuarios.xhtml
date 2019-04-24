@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style type="text/css">
+
+.ui-widget,.ui-widget .ui-widget {
+	   font-size: smaller;
+	}
+	.ui-datatable .ui-column-filter {
+	    	display:none;
+		}
+
+.ui-panelgrid>*>tr,
+.ui-panelgrid .ui-panelgrid-cell {
+    border: none;
+}
+</style>
+</h:head>
+<h:body>
+
+	<h:form id="frmBusqueda">
+	
+		<p:panelGrid id="pgBusqueda">
+			<f:facet name="header">
+				<p:row>
+					<p:column colspan="7"><p:outputLabel style="font-size:22px;" value="Usuarios del sistema"/></p:column>
+				</p:row>
+			</f:facet>
+			<p:row>
+				<p:column colspan="5" style="width:20%">
+					<p:commandButton value="Nuevo" type="button" onclick="PF('dlgNuevo').show();" icon="ui-icon-pencil"/>
+				</p:column>
+			</p:row>
+			<p:row>
+			
+				<p:column colspan="">
+				</p:column>
+				</p:row>
+		</p:panelGrid>
+					<p:dataTable var="users" value="#{dtUsuarioABC.users}" widgetVar="wusersTable" id="usersTable"
+						emptyMessage="No se encontraron resultados" filteredValue="#{dtUsuarioABC.filteredUsers}" 
+						scrollable="true" scrollHeight="400" sortMode="multiple" resizableColumns="false">
+					
+							
+							<f:facet name="header">
+					            <p:outputPanel style="text-align: right; width:100%">
+					                <h:outputText value="Buscar usuario:" />
+					                <p:inputText id="globalFilter" onkeyup="PF('wusersTable').filter()" style="" 
+					                placeholder="Buscar"/>
+					            </p:outputPanel>
+					        </f:facet>
+					     
+						
+						    <p:column headerText="No Empleado" style="text-align:center;" filterBy="#{users.num_empleado}" 
+						    filterMatchMode="contains" sortBy="#{users.num_empleado}" >
+						        <h:outputText value="#{users.num_empleado}" />
+						    </p:column>
+						 
+						    <p:column headerText="Nombre" filterBy="#{users.nombre_completo}" 
+						    filterMatchMode="contains" sortBy="#{users.nombre_completo}">
+						        <h:outputText value="#{users.nombre_completo}" />
+						    </p:column>
+						 
+						    <p:column headerText="Rol Sistema" filterBy="#{users.rol_name}"
+						    filterMatchMode="contains" sortBy="#{users.rol_name}" >
+						        <h:outputText value="#{users.rol_name}" />
+						    </p:column>
+						    
+						    <p:column headerText="Estatus" style="text-align:center;" 
+						    filterMatchMode="contains" sortBy="#{users.status}">
+						        <h:outputText value="#{users.status}" />
+						    </p:column>
+						 
+						    <p:column headerText="Editar" style="text-align:center;width:8%;" rendered="true">
+						    	<p:commandButton update=":frmRegActua"
+						    	 				 oncomplete="PF('dlgEditar').show();" 
+						    	 				 icon="ui-icon-pencil"
+						    	 				 action="#{dtUsuarioABC.obtenUsuario(users)}"
+						    	                 title="Editar"/>
+						    </p:column>
+						    <p:column headerText="Eliminar" style="text-align:center;width:8%;">
+						    	<p:commandButton  icon="ui-icon-circle-close" 
+						    	                  title="Eliminar"
+						    	                  update=":frmBusqueda:usersTable" 
+						    	                  actionListener="#{dtUsuarioABC.booraUsuario(users)}">
+						    		<span><p:confirm header="Confirmación" message="¿Estas seguro que quieres borrar este usuario?" icon="ui-icon-alert"/></span>
+						    	</p:commandButton>
+						    	<p:confirmDialog global="true" showEffect="fade" hideEffect="explode">  
+							        <p:commandButton value="Si"  type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>  
+							        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>       
+							    </p:confirmDialog> 
+						    </p:column>
+						</p:dataTable>
+				
+			
+		<p:dialog header="Precaución!" widgetVar="dlgBorrar" modal="true" width="280" height="80">
+		    <p:panelGrid style="width:90%">
+                <p:row>
+                    <p:column colspan="2" style="width:35%">
+                        <p:outputLabel value="¿Realmente deseas eliminar el usuario"/>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <p:button id="btnSi" value="Si" style="width:80px"/>
+                    </p:column>
+                    <p:column>
+                        <p:button id="btnNo" value="No" style="width:80px"/>
+                    </p:column>
+                </p:row>
+            </p:panelGrid>
+		</p:dialog> 
+	</h:form>
+
+<h:form id="frmRegActua">	
+<p:growl id="messages" autoUpdate="true" showDetail="false"/>
+<p:dialog header="Editar información de usuario" widgetVar="dlgEditar" modal="true" width="600" height="250" resizable="false">
+	
+	<p:outputPanel id="userUpdateDetail">
+		<p:panelGrid>
+              <f:facet name="header">
+                  <p:row>
+                      <p:column colspan="7"><p:outputLabel value="Usuarios del sistema"/></p:column>
+                  </p:row>
+              </f:facet>
+              <p:row>
+                <p:column>
+                	 <h:inputHidden value="#{dtUsuarioABC.idUsuario}"/>
+                     
+                </p:column>
+                
+              </p:row>
+              <p:row>
+                  <p:column style="width:35%">
+                      <p:outputLabel value="Numero de Empleado" for="txtUdpNoEmpleado" style="font-size:12px;"/>
+                  </p:column>
+                  <p:column>
+                      <p:inputText id="txtUdpNoEmpleado" value="#{dtUsuarioABC.txtInsNoEmpleado}" readonly="true" style="width:100px"/>
+                  </p:column>
+              </p:row>
+              <p:row>
+                  <p:column>
+                      <p:outputLabel value="Nombre Completo" for="txtUdpNombreEmpleado" style="font-size:12px;"/>
+                  </p:column>
+                  <p:column>
+                      <p:inputText id="txtUdpNombreEmpleado" value="#{dtUsuarioABC.nombreUsuario}" style="width:350px" readonly="true"/>
+                  </p:column>
+              </p:row>
+              <p:row>
+                  <p:column>
+                      <p:outputLabel value="Seleccione un Rol" for="ddlUdpRoles" style="font-size:12px;"/>
+                  </p:column>
+                  <p:column>
+					<p:selectOneMenu id="ddlUdpRoles" value="#{dtUsuarioABC.idRol}" style="width:250px" required="true"
+					       filter="true" filterMatchMode="contains">
+		                <!-- <p:ajax listener="#{dropdownView.onQuincenaChange}" update="city" /> -->
+		                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+		                <f:selectItems value="#{rolesLovView.lovData}" />
+		            </p:selectOneMenu>
+                  </p:column>
+              </p:row>
+              <p:row>
+              <p:column>
+                      <p:outputLabel value="Estatus" style="font-size:12px;"/>
+                  </p:column>
+              	<p:column>
+						<p:selectOneMenu id="idstatus" value="#{dtUsuarioABC.status}" style="width:250px">
+			                <!-- <p:ajax listener="#{dropdownView.onQuincenaChange}" update="city" /> -->
+			                <f:selectItem itemLabel="Activo"   itemValue="A" />
+			                <f:selectItem itemLabel="Inactivo" itemValue="I" />
+			            </p:selectOneMenu>
+                 </p:column>
+              </p:row>
+              <p:row>
+                  <p:column>
+                  </p:column>
+                  <p:column>
+                      <p:commandButton id="btnActualizar" 
+                      				   value="Actualizar" 
+                      				   actionListener="#{dtUsuarioABC.actualizaUsuario}"
+                      				   update=":frmBusqueda:usersTable"
+                      				   onsuccess="PF('dlgEditar').hide();"/>
+                  </p:column>
+              </p:row>
+          </p:panelGrid>
+          </p:outputPanel>
+</p:dialog>
+</h:form>
+<!-- ALTA DE USUARIOS -->
+<p:dialog header="Registro de informacion de un nuevo usuario" widgetVar="dlgNuevo" modal="true" width="600" height="300">
+ <h:form id="nuevoUsusario">
+		    <p:panelGrid style="width:90%">
+				<f:facet name="header">
+					<p:row>
+						<p:column colspan="7"><p:outputLabel value="Usuarios del sistema"/></p:column>
+					</p:row>
+				</f:facet>
+		    	<p:row>
+					<p:column style="width:35%">
+						<p:outputLabel value="Numero de Empleado" for="txtInsNoEmpleado" />
+					</p:column>
+					<p:column>
+						<p:inputText id="txtInsNoEmpleado" 
+						 			 value="#{dtUsuarioABC.txtInsNoEmpleado}" 
+						 			 style="width:100px" 
+						 			 required="true">
+							<p:ajax event="blur" listener="#{dtUsuarioABC.consultaNumEmpleado()}" update=":nuevoUsusario" />
+						</p:inputText>
+					</p:column>
+				</p:row>
+				<p:row>
+                    <p:column>
+                        <p:outputLabel value="Nombre Completo" for="txtInsNombreEmpleado"/>
+                    </p:column>
+                    <p:column>
+                        <p:inputText id="txtInsNombreEmpleado" value="#{dtUsuarioABC.nombreUsuario}" style="width:350px" readonly="true" required="true"/>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <p:outputLabel value="Contraseña" for="txtInsPassword1"/>
+                    </p:column>
+                    <p:column>
+                        <p:password id="txtInsPassword1" 
+                        			value="#{dtUsuarioABC.password}" 
+                        			style="width:100px" 
+                        			feedback="true" 
+                        			required="true" 
+                        			weakLabel="Débil" 
+								    goodLabel="Bien"
+								    strongLabel="Fuerte"/>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <p:outputLabel value="Re-Contraseña" for="txtInsPassword2"/>
+                    </p:column>
+                    <p:column>
+                        <p:password id="txtInsPassword2" 
+                        			value="#{dtUsuarioABC.rePassword}" 
+                        			style="width:100px" 
+                        			required="true"
+                        			feedback="true" 
+                        			weakLabel="Débil" 
+								    goodLabel="Bien"
+								    strongLabel="Fuerte"/>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <p:outputLabel value="Seleccione un Rol" for="ddlInsRoles"/>
+                    </p:column>
+                    <p:column>
+						<p:selectOneMenu id="ddlInsRoles" value="#{dtUsuarioABC.idRol}" style="width:250px" required="true">
+			                <!-- <p:ajax listener="#{dropdownView.onQuincenaChange}" update="city" /> -->
+			                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+			                <f:selectItems value="#{rolesLovView.lovData}" />
+			            </p:selectOneMenu>
+                    </p:column>
+                </p:row>
+                 <p:row>
+                    <p:column>
+                        <p:outputLabel value="Estatus"/>
+                    </p:column>
+                    <p:column>
+						<p:selectOneMenu id="idstatus" value="#{dtUsuarioABC.status}" style="width:250px" required="true">
+			                <!-- <p:ajax listener="#{dropdownView.onQuincenaChange}" update="city" /> -->
+			                <f:selectItem itemLabel="Activo"   itemValue="A" />
+			                <f:selectItem itemLabel="Inactivo" itemValue="I" />
+			            </p:selectOneMenu>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>	
+                    	<p:ajaxStatus style="width:16px;height:16px;align:center;" id="ajaxStatusPanel">
+						    <f:facet name="start">
+						        <h:graphicImage value="../resources/images/ajaxloading.gif" />
+						    </f:facet>
+						     
+						    <f:facet name="complete">
+						        <h:outputText value="" />
+						    </f:facet>
+						</p:ajaxStatus>
+                    </p:column>
+                    <p:column style="text-align:center;">
+                        <p:commandButton id="btnRegistrar" 
+                        				 value="Guardar" 
+                        				 icon="ui-icon-disk" 
+                        				 actionListener="#{dtUsuarioABC.nuevoEmpleado}"
+                        				 update=":frmBusqueda:usersTable"
+                        				 onsuccess="PF('dlgNuevo').hide();"/>
+                    </p:column>
+                </p:row>
+		    </p:panelGrid>
+</h:form>		    
+</p:dialog> 
+
+
+</h:body>
+
+
+</html>

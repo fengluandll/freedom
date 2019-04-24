@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptSolicitudes" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dc83402e-d51a-41b7-94ea-4d2acdb4a3bd">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Fecha_Paga" class="java.lang.String">
+		<defaultValueExpression><![CDATA[28/02/2015]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT  s.ID_SOLICITUD num_solicitud
+      , s.NUM_EMPLEADO
+      , s.A_PATERNO
+      , s.A_MATERNO
+      , s.NOMBRE
+      , s.RFC
+      , s.JORNADA_ORDINARIA
+      , s.FECHA_PAGA
+      , s.ID_AREA num_area
+      , (SELECT  std_n_work_unitesp
+           FROM  std_work_unit wu
+           WHERE s.ID_AREA = wu.std_id_work_unit
+                 COLLATE DATABASE_DEFAULT) Area_nombre
+      , s.ID_ESTATUS_SOLICITUD estatus_solicitud_num
+      , es.DESCRIPCION estatus_solicitud_nombre
+      -- Inicia las lineas
+      , sl.ID_SOLICITUD_HE_ELABORADAS num_line
+      , sl.fecha
+      , sl.hora_entrada
+      , sl.hora_salida
+      , sl.num_he_laboradas
+      , sl.justificacion
+      , (1) num_x
+FROM    bdhe.dbo.SOLICITUDES s
+      , bdhe.dbo.ESTATUS_SOLICITUD es
+      , bdhe.dbo.SOLICITUD_HE_LABORADAS sl
+WHERE   s.ID_ESTATUS_SOLICITUD = es.ID_ESTATUS_SOLICITUD
+    AND s.ID_SOLICITUD = sl.ID_SOLICITUD
+    AND s.FECHA_PAGA = CONVERT(DATETIME, $P{Fecha_Paga}, 103)]]>
+	</queryString>
+	<field name="num_solicitud" class="java.lang.Integer"/>
+	<field name="NUM_EMPLEADO" class="java.lang.String"/>
+	<field name="A_PATERNO" class="java.lang.String"/>
+	<field name="A_MATERNO" class="java.lang.String"/>
+	<field name="NOMBRE" class="java.lang.String"/>
+	<field name="RFC" class="java.lang.String"/>
+	<field name="JORNADA_ORDINARIA" class="java.lang.String"/>
+	<field name="FECHA_PAGA" class="java.sql.Timestamp"/>
+	<field name="num_area" class="java.lang.String"/>
+	<field name="Area_nombre" class="java.lang.String"/>
+	<field name="estatus_solicitud_num" class="java.math.BigDecimal"/>
+	<field name="estatus_solicitud_nombre" class="java.lang.String"/>
+	<field name="fecha" class="java.sql.Timestamp"/>
+	<field name="hora_entrada" class="java.lang.String"/>
+	<field name="hora_salida" class="java.lang.String"/>
+	<field name="num_he_laboradas" class="java.math.BigDecimal"/>
+	<field name="justificacion" class="java.lang.String"/>
+	<field name="num_line" class="java.lang.String"/>
+	<field name="num_x" class="java.lang.String"/>
+	<variable name="num_he_laboradas_1" class="java.math.BigDecimal" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{num_he_laboradas}]]></variableExpression>
+	</variable>
+	<variable name="num_x_1" class="java.lang.Integer" resetType="Page" calculation="Count">
+		<variableExpression><![CDATA[$F{num_x}]]></variableExpression>
+	</variable>
+	<group name="num_solicitud">
+		<groupExpression><![CDATA[$F{num_solicitud}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="55" splitType="Stretch">
+			<textField>
+				<reportElement x="490" y="0" width="82" height="20" uuid="79e40833-fe91-47cd-9355-fc5ab6eeb299"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{num_solicitud}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="394" y="0" width="96" height="20" uuid="5f14b169-7cbc-4023-9350-d0c72d8c11c8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[# SOLICITUD:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="301" height="20" uuid="f8f3750b-16d3-423c-8081-6a34647d0fc3"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE SOLICITUDES GENERADAS EN LA QUINCENA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="301" y="0" width="93" height="20" uuid="57340326-752c-43a3-afb8-0d3ce95a9ed1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Fecha_Paga}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="394" y="20" width="96" height="20" uuid="ef141961-3438-4f79-b44c-1b9906ceb311"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESTADO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="490" y="20" width="82" height="20" uuid="eec992c5-11dd-4f1c-b5b8-675f5e1c784d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estatus_solicitud_nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="122" splitType="Stretch">
+			<textField>
+				<reportElement x="76" y="0" width="100" height="20" uuid="10d4a7bd-1c98-45a7-95d7-579265406136"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NUM_EMPLEADO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="76" y="20" width="300" height="20" uuid="c54ff338-33b7-47fe-bf8e-7325f77c11ac"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{A_PATERNO}+" "+$F{A_MATERNO}+" "+$F{NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="212" y="0" width="100" height="20" uuid="54658d69-7f72-4d18-9225-2b43ad95c40b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RFC}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="76" height="20" uuid="01590ab0-d4d5-40c1-ab9a-3a92003aba75"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[# EMPLEADO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="176" y="0" width="36" height="20" uuid="f7a08255-05e7-4a0c-b66c-4d40bba00071"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[RFC:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="76" height="20" uuid="289e80a2-d9f1-4b1d-b1ba-71bba0b528b5"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMBRE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="136" height="40" uuid="bc0aa8ec-69c8-40c8-96d8-9ee64ee00e67"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ORGANO JUDICIAL, UNIDAD ADMINISTRATIVA O DE APOYO JUDICIAL:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="136" y="40" width="100" height="20" uuid="4c3e6ac6-ea96-435d-9aa8-e6590f2e213c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{num_area}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="60" width="436" height="20" uuid="f66e7d31-6e34-4543-8044-199b8aede3fb"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Area_nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="425" y="0" width="100" height="20" uuid="6351fa20-e19e-4523-9b48-68b250630c0e"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIAS LABORADOS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="20" width="100" height="20" uuid="e33f84de-07dc-4076-bc46-bb2c037489c7"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[HORAS LABORADAS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="80" width="136" height="20" uuid="375982a5-f58d-4b9f-a2ae-f8ed8f6e69c1"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[JORNADA ORDINARIA:]]></text>
+			</staticText>
+			<textField evaluationTime="Page">
+				<reportElement x="525" y="0" width="47" height="20" uuid="c7a2cf7a-399b-455f-b9e2-94d752de8bee"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{num_x_1}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Page">
+				<reportElement x="525" y="20" width="47" height="20" uuid="22b68c86-2787-49c5-8c97-2c207591f8cc"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{num_he_laboradas_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="80" width="436" height="42" uuid="b25a5774-9cea-44da-9b2e-7ba987ef61c7"/>
+				<textElement verticalAlignment="Top">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{JORNADA_ORDINARIA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="81" height="20" uuid="675de406-ad16-48f4-b749-ace25aac29aa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA LABORADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="81" y="0" width="81" height="20" uuid="9efb33ec-41ba-437e-86e3-201f23fb5e34"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ENTRADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="162" y="0" width="81" height="20" uuid="71371cde-06e9-477f-8103-8cbfbdcfbf67"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SALIDA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="243" y="0" width="81" height="20" uuid="7a6ddb82-d35f-4d8f-8e17-3ff2f5989330"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HORAS ESTRAORDINARIAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="324" y="0" width="248" height="20" uuid="67193f01-d5b0-4828-8a2d-f418a6ca1ec1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[JUSTIFICACION]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="118" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="81" height="20" uuid="ae86faa1-1138-4ae7-b1e2-76d32e19093c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="81" y="0" width="81" height="20" uuid="c33783aa-8b0e-4633-a13b-21a6fa3968b6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hora_entrada}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="162" y="0" width="81" height="20" uuid="24ec24af-6b2b-4abe-b6ab-2f4b1dfc3c7f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hora_salida}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="243" y="0" width="81" height="20" uuid="a6ddd8cf-b4fe-4e17-9992-575d75a6983c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{num_he_laboradas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="324" y="0" width="248" height="20" uuid="59530076-9dc2-49ae-9a36-7cc1f7c6602e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{justificacion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

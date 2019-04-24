@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="0" key="CommitDialog.location.y"/>
+	<item value="58" key="CommitDialog.location.x"/>
+	<item value="500" key="CommitDialog.weights.0"/>
+	<item value="421" key="RevertDialog.location.x"/>
+	<item value="500" key="CommitDialog.weights.1"/>
+	<item value="108" key="RevertDialog.location.y"/>
+	<item value="124" key="TreeConflictsView.col.Resource"/>
+	<item value="738" key="TreeConflictsView.col.Description"/>
+	<item value="728" key="CommitDialog.size.y"/>
+	<item value="1251" key="CommitDialog.size.x"/>
+	<item value="228" key="HistoryTableProvider.SVNHistoryPage.Date"/>
+	<item value="C:/Users/argumedo/WorkspacePlayCity/FactPlayCityWeb/src/mx/com/televisa/playcity/filter/LoginFilter.java" key="TreeConflictsView.resource"/>
+	<item value="385" key="RevertDialog.size.y"/>
+	<item value="525" key="RevertDialog.size.x"/>
+	<item value="182" key="HistoryTableProvider.SVNHistoryPage.Author"/>
+	<item value="91" key="HistoryTableProvider.SVNHistoryPage.Revision"/>
+	<item value="false" key="TreeConflictsView.container"/>
+	<item value="386" key="GenerateDiffFileWizard.location.x"/>
+	<item value="454" key="HistoryTableProvider.SVNHistoryPage.Comment"/>
+	<item value="56" key="GenerateDiffFileWizard.location.y"/>
+	<item value="594" key="GenerateDiffFileWizard.size.x"/>
+	<item value="463" key="GenerateDiffFileWizard.size.y"/>
+	<section name="CommitWizard">
+		<item value="500" key="VWeight2"/>
+		<item value="500" key="VWeight1"/>
+		<item value="false" key="ShowCompare"/>
+	</section>
+	<section name="IgnoreResourcesDialog">
+	</section>
+</section>

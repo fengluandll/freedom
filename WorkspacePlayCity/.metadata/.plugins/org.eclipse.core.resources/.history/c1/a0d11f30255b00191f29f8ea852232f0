@@ -1,0 +1,113 @@
+package mx.com.televisa.playcity.view;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+import org.primefaces.context.RequestContext;
+
+import mx.com.televisa.playcity.beans.config.JobsBean;
+import mx.com.televisa.playcity.model.JobDAO;
+import mx.com.televisa.playcity.util.Functions;
+
+
+@ManagedBean
+@ViewScoped
+public class JobsView {
+	
+	
+	List<JobsBean>         loListJobs;
+	int                    linIdJob;
+	private String         lsNomCasino;
+	private Date           ltHoraMinutos;
+	private String[]       laSemana; 
+	private List<String>   selectSemanas;
+
+	/**
+	 * Metodo Constructor
+	 */
+	public JobsView(){
+		getListJobs();
+	}
+	
+	
+	public void getListJobs(){
+		JobDAO loJobDAO = new JobDAO();
+		this.loListJobs = loJobDAO.getJobs();
+	}
+	
+	public void newJob(){
+//		RequestContext.getCurrentInstance().update("id_obra");
+//		 RequestContext.getCurrentInstance().update("cmbArt");
+//		 RequestContext.getCurrentInstance().update("msgAlert");
+		 Functions.manageDialog("dlgJob", 2);
+	}
+
+
+	public List<JobsBean> getLoListJobs() {
+		return loListJobs;
+	}
+
+
+	public void setLoListJobs(List<JobsBean> loListJobs) {
+		this.loListJobs = loListJobs;
+	}
+
+
+	public int getLinIdJob() {
+		return linIdJob;
+	}
+
+
+	public void setLinIdJob(int linIdJob) {
+		this.linIdJob = linIdJob;
+	}
+
+
+	public String getLsNomCasino() {
+		return lsNomCasino;
+	}
+
+
+	public void setLsNomCasino(String lsNomCasino) {
+		this.lsNomCasino = lsNomCasino;
+	}
+
+
+	public Date getLtHoraMinutos() {
+		return ltHoraMinutos;
+	}
+
+
+	public void setLtHoraMinutos(Date ltHoraMinutos) {
+		this.ltHoraMinutos = ltHoraMinutos;
+	}
+
+
+	public String[] getLaSemana() {
+		return laSemana;
+	}
+
+
+	public void setLaSemana(String[] laSemana) {
+		this.laSemana = laSemana;
+	}
+
+
+	public List<String> getSelectSemanas() {
+		return selectSemanas;
+	}
+
+
+	public void setSelectSemanas(List<String> selectSemanas) {
+		this.selectSemanas = selectSemanas;
+	}
+
+	
+	
+	
+	
+	
+}

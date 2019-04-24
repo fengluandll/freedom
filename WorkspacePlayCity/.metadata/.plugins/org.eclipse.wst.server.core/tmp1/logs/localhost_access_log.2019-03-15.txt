@@ -1,0 +1,14 @@
+127.0.0.1 - - [15/Mar/2019:13:13:10 -0600] "GET / HTTP/1.1" 404 961
+0:0:0:0:0:0:0:1 - - [15/Mar/2019:13:13:11 -0600] "GET /TSJDF_HE_Sistema/ HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [15/Mar/2019:13:13:13 -0600] "GET /TSJDF_HE_Sistema/index.xhtml HTTP/1.1" 200 6182
+0:0:0:0:0:0:0:1 - - [15/Mar/2019:13:13:13 -0600] "GET /TSJDF_HE_Sistema/javax.faces.resource/theme.css.xhtml?ln=primefaces-bootstrap HTTP/1.1" 200 35024
+0:0:0:0:0:0:0:1 - - [15/Mar/2019:13:13:13 -0600] "GET /TSJDF_HE_Sistema/javax.faces.resource/jquery/jquery.js.xhtml?ln=primefaces&v=5.2 HTTP/1.1" 200 108195
+0:0:0:0:0:0:0:1 - - [15/Mar/2019:13:13:13 -0600] "GET /TSJDF_HE_Sistema/javax.faces.resource/primefaces.css.xhtml?ln=primefaces&v=5.2 HTTP/1.1" 200 63580
+0:0:0:0:0:0:0:1 - - [15/Mar/2019:13:13:13 -0600] "GET /TSJDF_HE_Sistema/javax.faces.resource/primefaces.js.xhtml?ln=primefaces&v=5.2 HTTP/1.1" 200 340589
+0:0:0:0:0:0:0:1 - - [15/Mar/2019:13:13:13 -0600] "GET /TSJDF_HE_Sistema/resources/images/logo_.jpg?pfdrid_c=true HTTP/1.1" 200 9566
+0:0:0:0:0:0:0:1 - - [15/Mar/2019:13:13:13 -0600] "GET /TSJDF_HE_Sistema/resources/images/ajax-loader.gif HTTP/1.1" 200 2608
+0:0:0:0:0:0:0:1 - - [15/Mar/2019:13:13:13 -0600] "GET /TSJDF_HE_Sistema/javax.faces.resource/jquery/jquery-plugins.js.xhtml?ln=primefaces&v=5.2 HTTP/1.1" 200 240240
+0:0:0:0:0:0:0:1 - - [15/Mar/2019:13:13:21 -0600] "POST /TSJDF_HE_Sistema/index.xhtml HTTP/1.1" 200 1561
+0:0:0:0:0:0:0:1 - - [15/Mar/2019:13:13:21 -0600] "GET /TSJDF_HE_Sistema/javax.faces.resource/images/ui-icons_333333_256x240.png.xhtml?ln=primefaces-bootstrap HTTP/1.1" 200 4369
+0:0:0:0:0:0:0:1 - - [15/Mar/2019:13:13:21 -0600] "GET /TSJDF_HE_Sistema/javax.faces.resource/messages/messages.png.xhtml?ln=primefaces&v=5.2 HTTP/1.1" 200 27245
+0:0:0:0:0:0:0:1 - - [15/Mar/2019:13:53:21 -0600] "POST /TSJDF_HE_Sistema/index.xhtml HTTP/1.1" 200 1561

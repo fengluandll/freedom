@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui">
+<f:loadBundle basename="mx.gob.tsjdf.properties.solicitudes" var="msg" />
+<h:head>
+<style type="text/css">
+<!--
+.ui-widget,.ui-widget .ui-widget {
+	   font-size: x-small;
+	}
+	.ui-datatable .ui-column-filter {
+	    	display:none;
+		}
+-->
+</style>
+</h:head>
+<h:body>
+	<h:form>
+		<p:commandButton value="Nueva Solicitud" 
+						 action="#{dtCapturaSolicitud.nuevaSolicitud}"
+						 ajax="false"/>
+	</h:form>
+	<div id="body" align="left">
+		<h:form id="frmBusqueda">
+			<p:panelGrid id="pgInicio" style="margin-top:10px; width: 90%;" rendered="true">
+				<f:facet name="header">
+					<p:row>
+						<p:column colspan="7"><p:outputLabel value="Datos de busqueda"/></p:column>
+					</p:row>
+				</f:facet>
+				<p:row>
+					<p:column style="width:20%">
+						<p:outputLabel value="Seleccione una Quincena" for="ddlQuincenas"/>
+					</p:column>
+					<p:column colspan="2" style="width:60%">
+						<p:selectOneMenu id="ddlQuincenas" value="#{quincenasLovView.code}" style="width:350px" required="true"
+						filter="true" filterMatchMode="contains">
+			                <!-- <p:ajax listener="#{dropdownView.onQuincenaChange}" update="city" /> -->
+			                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+			                <f:selectItems value="#{quincenasLovView.lovData}" />
+			                <p:ajax event="change" listener="#{quincenasLovView.consultaSolicitudes()}" update=":frmInicioData:dtInicioData"/>
+			            </p:selectOneMenu>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+			</h:form>
+			<h:form id="frmInicioData">
+			 <div style="position: absolute;top: 300px;left: 480px">
+				<p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">
+				    <f:facet name="start">
+				        <h:graphicImage value="/resources//images/ajaxloading.gif" />
+				    </f:facet>
+				     
+				    <f:facet name="complete">
+				        <h:outputText value="" />
+				    </f:facet>
+				</p:ajaxStatus>
+			</div>
+			<p:panelGrid id="pgInicioData" style="width: 90%; margin-top:15px;" rendered="true">
+				<f:facet name="header">
+					<p:row>
+						<p:column colspan="7"><p:outputLabel value="Solicitudes Ingresadas"/></p:column>
+					</p:row>
+				</f:facet>
+				<p:row>
+					<p:column style="width:20%">
+						<p:dataTable var="solicitudes" value="#{quincenasLovView.listSolicitudes}" id="dtInicioData" widgetVar="wSolicitudesTable"
+						emptyMessage="No se encontraron resultados" filteredValue="#{quincenasLovView.filteredSolicitudes}" 
+						scrollable="true" scrollHeight="350" sortMode="multiple" resizableColumns="false">
+						
+							<f:facet name="header">
+					            <p:outputPanel style="text-align: right; width:100%">
+					                <h:outputText value="Buscar solicitud:" />
+					                <p:inputText id="globalFilter" onkeyup="PF('wSolicitudesTable').filter()" style="" 
+					                placeholder="Buscar"/>
+					            </p:outputPanel>
+					        </f:facet>	
+						
+						    <p:column headerText="# Empleado" filterBy="#{solicitudes.numEmpleado}" 
+						    filterMatchMode="contains" sortBy="#{solicitudes.numEmpleado}">
+						        <h:outputText value="#{solicitudes.numEmpleado}" />
+						        
+						    </p:column>
+						 
+						    <p:column headerText="Apellido paterno" filterBy="#{solicitudes.aPaterno}" 
+						    filterMatchMode="contains" sortBy="#{solicitudes.aPaterno}">
+						        <h:outputText value="#{solicitudes.aPaterno}" />
+						    </p:column>
+						 
+						    <p:column headerText="Apellido materno" filterBy="#{solicitudes.aMaterno}" 
+						    filterMatchMode="contains" sortBy="#{solicitudes.aMaterno}">
+						        <h:outputText value="#{solicitudes.aMaterno}" />
+						    </p:column>
+						 
+						    <p:column headerText="Nombre" filterBy="#{solicitudes.nombre}" 
+						    filterMatchMode="contains" sortBy="#{solicitudes.nombre}">
+						        <h:outputText value="#{solicitudes.nombre}" />
+						    </p:column>
+						 
+						    <p:column headerText="Area" filterBy="#{solicitudes.idArea}" 
+						    filterMatchMode="contains" sortBy="#{solicitudes.idArea}">
+						        <h:outputText value="#{solicitudes.idArea}" />
+						    </p:column>
+						 
+						    <p:column headerText="Fecha paga">
+						        <h:outputText value="#{solicitudes.fechaPaga}" />
+						    </p:column>
+						 
+						    <p:column headerText="Estado" filterBy="#{solicitudes.statusSolicitud}" 
+						    filterMatchMode="contains" sortBy="#{solicitudes.statusSolicitud}">
+						        <h:outputText value="#{solicitudes.statusSolicitud}" />
+						    </p:column>
+						 
+						    <p:column headerText="Editar" style="text-align:center;width:5%;">
+						    	<p:commandLink title="Editar" action="#{quincenasLovView.editaSolicitud(solicitudes.numEmpleado)}" >
+							 	   <h:graphicImage value="../resources/images/Modify_16.png" style="cursor:pointer;" title="Editar"/>
+								 </p:commandLink>
+						    </p:column>
+						 
+						    <p:column headerText="Eliminar" style="text-align:center;width:5%;">
+								 <p:commandLink title="Eliminar" actionListener="#{quincenasLovView.eliminaSolicitud(solicitudes.idSolicitud)}" update="frmInicioData:dtInicioData">
+							 	   <h:graphicImage value="../resources/images/Erase_16.png" style="cursor:pointer;" title="Eliminar nota"/>
+							 	    <span><p:confirm header="Confirmación" message="¿Estas seguro que quieres borrar este registro?" icon="ui-icon-alert"/></span>
+								 </p:commandLink>
+								 <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">  
+							        <p:commandButton value="Si"  type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>  
+							        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>       
+							    </p:confirmDialog> 
+						    </p:column>
+						</p:dataTable>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+			</h:form>
+		
+		<p:separator id="sFrmNuevo" style="width: 100%; " rendered="true"/>
+
+	</div>
+</h:body>
+
+</html>

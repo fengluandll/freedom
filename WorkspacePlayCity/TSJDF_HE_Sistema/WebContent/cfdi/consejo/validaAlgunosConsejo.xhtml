@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style type="text/css">
+
+.ui-widget,.ui-widget .ui-widget {
+	   font-size: small;
+	}
+.ui-panelgrid>*>tr,
+.ui-panelgrid .ui-panelgrid-cell {
+    border: none;
+}
+</style>
+</h:head>
+<h:body>
+<div style="text-align: center">
+<h2><span>Valida Algunos Empleados</span></h2>
+</div>
+<h:form id="frmFile">
+<p:panel id="pnlArchivo" header="Subir archivo con empleados a validar"  style="margin-bottom:20px">
+<p:panelGrid>
+	<p:row>
+		<p:column>
+			<p:messages id="msgFile" autoUpdate="false" showDetail="false" closable="false"/>
+		</p:column>
+	</p:row>
+	<p:row>
+    	<p:column>
+   			
+   			<p:fileUpload fileUploadListener="#{validaTodosView.upload}"
+   						  mode="advanced" 
+   						  dragDropSupport="true"
+            			  update="msgFile" 
+            			  sizeLimit="1000000" 
+            			  fileLimit="1" 
+            			  allowTypes="/(\.|\/)(txt)$/"
+            			  invalidSizeMessage="El tamaño del archivo sobrepasa el limite"
+         				  invalidFileMessage="El formato debe ser txt"
+         				  fileLimitMessage="Solo puedes agregar un archivo por sesion vuelve a cargar la pagina" />
+ 
+			
+   		</p:column>
+    </p:row>
+</p:panelGrid>
+</p:panel>
+</h:form>
+<p:panel id="pnlTodo" header="Genera Nómina algunos empleados"  style="margin-bottom:20px">
+<h:form id="frmGenera">
+	
+        <p:panelGrid id="gridNomina">
+        	<p:row>
+        		<p:column colspan="2">
+        			<p:messages autoUpdate="false" showDetail="false" closable="true"/>
+        		</p:column>
+        	</p:row>
+        	<p:row>
+        		<p:column>
+        			<p:outputLabel value="Folio:" for="txtFolio"/>
+        		</p:column>
+        		<p:column>
+        			<p:inputText id="txtFolio" required="true" value="#{validaTodosView.folio}" />
+				</p:column>
+        	</p:row>
+        	<p:row>
+        		<p:column>
+        			<p:outputLabel value="Fecha Paga:" for="txtFechaPaga"/>
+        		</p:column>
+        		<p:column>
+        			<p:calendar id="txtFechaPaga" required="true" value="#{validaTodosView.fechaPaga}" pattern="dd/MM/yyyy" />
+				</p:column>
+        	</p:row>
+        	<p:row>
+        		<p:column>
+        			<p:outputLabel value="Fecha Emisión:" for="txtFechaEmision"/>
+        		</p:column>
+        		<p:column>
+					<p:calendar id="txtFechaEmision" required="true" value="#{validaTodosView.fechaEmision}" pattern="yyyy-MM-dd HH:mm:ss" />
+				</p:column>
+        	</p:row>
+        	<p:row>
+        		<p:column>
+        			<p:outputLabel value="Descripción:" for="txtDescripcion"/>
+        		</p:column>
+        		<p:column>
+					<p:inputText id="txtDescripcion" value="#{validaTodosView.descripcion}"  required="true" style="width: 400px;"/>
+				</p:column>
+        	</p:row>
+        	<p:row>
+        		<p:column>
+        			<p:outputLabel value="Periocidad de Pago:" for="txtPeriocidadPago"/>
+        		</p:column>
+        		<p:column>
+        			<p:selectOneMenu id="txtPeriocidadPago" value="#{validaTodosView.periocidadPago}" required="true" style="width:125px">
+			            <f:selectItem itemLabel="Seleccionar" itemValue="" />
+			            <f:selectItem itemLabel="QUINCENAL" itemValue="QUINCENAL" />
+			            <f:selectItem itemLabel="MENSUAL" itemValue="MENSUAL" />
+			        </p:selectOneMenu>
+				</p:column>
+        	</p:row>
+        	
+        	<p:row>
+        		<p:column colspan="4" style="text-align:center;">
+        			<p:commandButton value="Valida Nómina" actionListener="#{validaTodosView.validaAlgunosCuantos('consejo')}" update=":frmGenera:gridNomina"/>
+        		</p:column>
+        	</p:row>
+        	<p:row>
+        		<p:column colspan="4">
+        			<br/>
+        		</p:column>
+        	</p:row>
+        </p:panelGrid>
+        <div style="text-align:center;width: 100%;border: 0px solid black;">
+        	<p:ajaxStatus style="width:100%;height:16px;align:center;" id="ajaxStatusPanel">
+						    <f:facet name="start">
+						    	<p:outputLabel value="Este proceso puede tardar varios minutos por favor espere..."/><br/>
+						        <h:graphicImage value="../../resources/images/ajax-loader.gif" />
+						    </f:facet>
+						     
+						    <f:facet name="complete">
+						        <h:outputText value="" />
+						    </f:facet>
+			</p:ajaxStatus>
+        </div>
+        </h:form>
+       
+    </p:panel>
+
+
+</h:body>
+
+</html>

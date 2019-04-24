@@ -1,0 +1,71 @@
+package mx.televisa.playcity.util;
+
+import java.util.HashMap;
+import java.util.Hashtable;
+
+import javax.naming.Context;
+import javax.naming.NamingEnumeration;
+import javax.naming.NamingException;
+import javax.naming.directory.DirContext;
+import javax.naming.directory.InitialDirContext;
+import javax.naming.directory.SearchControls;
+import javax.naming.directory.SearchResult;
+
+public class LDAP {
+	
+	private final static String URL = "ldap://corpsfedc02.corp.televisa.com.mx:389/dc=corp,dc=televisa,dc=com,dc=mx";
+	//private final static String USER_DN = "sgsandovalr@corp";
+	//private final static String PASSWORD = "T3l3v1sa.2025";
+
+	public static DirContext connect(String userID,String password) throws NamingException{
+ 		Hashtable<String, String> env = new Hashtable<String, String>();
+    	env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
+  		env.put(Context.PROVIDER_URL, URL);
+  		env.put(Context.SECURITY_AUTHENTICATION,"simple");
+  		env.put(Context.SECURITY_PRINCIPAL, userID + "@corp");
+  		env.put(Context.SECURITY_CREDENTIALS,password);  	
+  		env.put(Context.REFERRAL, "follow");
+  		DirContext context = null;
+  		try{
+  			context = new InitialDirContext(env);  		
+		} catch (NamingException e) {
+			e.printStackTrace();			
+		} 
+  		return context;
+	}
+
+	public static void close(DirContext context) {
+	    try {
+	        context.close();
+	    } catch (NamingException e) {        
+	        e.printStackTrace();
+	    }
+	}
+
+	public static HashMap<String, String> search (String filter,DirContext context, String[] returningAtts) throws NamingException{ 	    
+	    SearchControls ctls = new SearchControls();
+	    ctls.setReturningObjFlag(true); // Para que devuelva los elementos que buscamos
+	    
+	    //Asignamos los atributos a devolver
+	    ctls.setReturningAttributes(returningAtts);
+	    ctls.setSearchScope(SearchControls.SUBTREE_SCOPE);
+
+	    NamingEnumeration answer = null;
+	    HashMap<String, String> mapResult = new HashMap<String, String>();
+	    try{
+	    	answer = context.search(URL,filter,ctls);	    	
+		    while (answer.hasMore()){
+		        SearchResult result = (SearchResult) answer.next();		        
+		        for (String returning : returningAtts){		        	
+		        	mapResult.put(returning, result.getAttributes().get(returning).get().toString());
+		        }	        
+		    }   
+	    }catch (NamingException e) {        
+	        e.printStackTrace();
+	    }
+	    
+	    return mapResult;
+	    		  
+	}
+
+}

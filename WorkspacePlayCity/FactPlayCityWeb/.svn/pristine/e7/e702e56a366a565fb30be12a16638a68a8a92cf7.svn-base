@@ -1,0 +1,66 @@
+package mx.televisa.playcity.background.scheduler;
+
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+import org.apache.log4j.Logger;
+import org.quartz.CronScheduleBuilder;
+import org.quartz.Job;
+import org.quartz.JobBuilder;
+import org.quartz.JobDetail;
+import org.quartz.Scheduler;
+import org.quartz.SchedulerException;
+import org.quartz.Trigger;
+import org.quartz.TriggerBuilder;
+import org.quartz.ee.servlet.QuartzInitializerListener;
+import org.quartz.impl.StdSchedulerFactory;
+
+public class QuartzSchedulerListener implements ServletContextListener {
+
+    private static Scheduler scheduler;
+	private static org.apache.log4j.Logger logger = Logger.getLogger(QuartzSchedulerListener.class);
+
+    @Override
+    public void contextDestroyed(ServletContextEvent arg0) {
+	    try{	
+    		if(scheduler != null) {	    				       
+	    		scheduler.shutdown(false);
+	    	}    
+    	} catch (Exception e) {
+    		logger.error("Error al apagar Quartz scheduler: " + e.getMessage(), e);    		
+    	}
+    }
+
+    @Override
+    public void contextInitialized(ServletContextEvent ctx) {        
+        try {
+            scheduler = ((StdSchedulerFactory) ctx.getServletContext()
+                    .getAttribute(QuartzInitializerListener.QUARTZ_FACTORY_KEY))
+                    .getScheduler();            
+        } catch (SchedulerException e) {
+
+        }
+    }
+    
+    public static void createJob(Class<? extends Job> jobClass,
+    								String jobName,
+    								String triggerName,
+    								CronScheduleBuilder schedule,
+    								String dataProperty){
+    	try {
+	    	JobDetail job = JobBuilder.newJob(jobClass)
+	                .withIdentity(jobName, "mainJobGroup").build();
+	
+	        Trigger trigger = TriggerBuilder
+	                .newTrigger()
+	                .withIdentity(triggerName, "mainTriggerGroup")
+	                .usingJobData("dataProperty", dataProperty)
+	                .startNow()
+	                .withSchedule(schedule)
+	                .build();
+	        // Tell quartz to schedule the job using our trigger        
+			scheduler.scheduleJob(job, trigger);
+		} catch (SchedulerException e) {
+			logger.error(e.getStackTrace(),e);
+		}
+    }
+}

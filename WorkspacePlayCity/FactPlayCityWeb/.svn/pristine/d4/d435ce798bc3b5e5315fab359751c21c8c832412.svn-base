@@ -1,0 +1,22 @@
+package mx.televisa.playcity.background.jobs;
+
+import java.util.Date;
+
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
+import org.quartz.Job;
+import org.slf4j.LoggerFactory;
+
+public class JobTest implements Job {
+
+	@Override
+	public void execute(JobExecutionContext context) throws JobExecutionException {
+		try {			
+			Date now = new Date();
+			System.out.println(now.toGMTString());
+	    } catch (Exception ex) {
+	      LoggerFactory.getLogger(getClass()).error(ex.getMessage());
+	    }
+	}	
+	
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style type="text/css">
+
+.ui-widget,.ui-widget .ui-widget {
+	   font-size: small;
+	}
+.ui-panelgrid>*>tr,
+.ui-panelgrid .ui-panelgrid-cell {
+    border: none;
+}
+</style>
+</h:head>
+<h:body>
+<div style="text-align: center">
+<h2><span>Generacion de Tokens</span></h2>
+</div>
+
+<h:form id="frmGenera">
+	<p:panel id="pnlTodo" header="Genera Sólo tokens"  style="margin-bottom:20px">
+        <p:panelGrid id="gridNomina">
+        	<p:row>
+        		<p:column colspan="2">
+        			<p:messages autoUpdate="false" showDetail="false" closable="true"/>
+        		</p:column>
+        	</p:row>
+        	<p:row>
+        		<p:column>
+        			<p:outputLabel value="Nombre carpeta:" for="txtCarpeta"/>
+        		</p:column>
+        		<p:column>
+        			<p:inputText id="txtCarpeta" required="true" value="#{cfdisView.rutaToken}" style="width:400px;"/>
+				</p:column>
+        	</p:row>
+        	<p:row>
+        		<p:column>
+        			<p:outputLabel value="Fecha Paga:" for="txtFechaPaga"/>
+        		</p:column>
+        		<p:column>
+        			<p:calendar id="txtFechaPaga" required="true" value="#{cfdisView.fechaPaga}" pattern="dd/MM/yyyy" />
+				</p:column>
+        	</p:row>
+        	<p:row>
+        		<p:column>
+        			<p:outputLabel value="Token" for="idToken"/>
+        		</p:column>
+        		<p:column>
+					<p:selectOneRadio id="idToken" value="#{cfdisView.token}" required="true">
+			            <f:selectItem itemLabel="Producción" itemValue="produccion" />
+			            <f:selectItem itemLabel="Pruebas"    itemValue="pruebas" />
+			        </p:selectOneRadio>
+        		</p:column>
+        	</p:row>
+        	<p:row>
+        		<p:column colspan="4" style="text-align:center;">
+        			<p:commandButton value="Generar Tokens" actionListener="#{cfdisView.generaTokens}" update=":frmGenera:gridNomina"/>
+        		</p:column>
+        	</p:row>
+        	<p:row>
+        		<p:column colspan="4">
+        			<br/>
+        		</p:column>
+        	</p:row>
+        </p:panelGrid>
+        <div style="text-align:center;width: 100%;border: 0px solid black;">
+        	<p:ajaxStatus style="width:100%;height:16px;align:center;" id="ajaxStatusPanel">
+						    <f:facet name="start">
+						    	<p:outputLabel value="Este proceso puede tardar varios minutos por favor espere..."/><br/>
+						        <h:graphicImage value="../resources/images/ajax-loader.gif" />
+						    </f:facet>
+						     
+						    <f:facet name="complete">
+						        <h:outputText value="" />
+						    </f:facet>
+			</p:ajaxStatus>
+        </div>
+    </p:panel>
+</h:form>
+
+<!-- 
+<h:form id="frmLog">
+<div style="text-align:center;">
+	<p:inputTextarea id="txtAreaLog" rows="20" scrollHeight="30" cols="100" value="#{cfdisView.txtArea}"/>
+</div>
+</h:form>
+-->
+</h:body>
+
+</html>

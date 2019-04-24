@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+<h:head>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css"/>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+
+<link href="../resources/images/trjdf_24.png" rel="shortcut icon" type='image/png'/>
+
+<style type="text/css">
+.ui-widget,.ui-widget .ui-widget {
+	font-size: small;
+}
+.ui-menu.ui-widget {
+	border: none;
+	width: 100%;
+}
+
+		.row{
+			background: #1d355e;
+			margin-top: 0px;
+			margin-bottom: 10px;
+		}
+.columna{
+	background: #1d355e;
+	text-align: center;
+	padding: 10px;
+	/*border:1px solid #4d5061;*/
+}
+
+.colorbackground{
+background:#1d355e;
+width: 100%;
+}
+.ui-layout-unit-header  {
+	background:#1d355e;!important;
+	color:#ffffff;!important;
+	text-shadow: none;!important;
+}		
+
+</style> 
+<script type="text/javascript">
+//<![CDATA[ 
+function direcciona(){
+	
+	//var text = window.parent.document.getElementById('menuCursos').getElementsByTagName('a')[0].click();
+	var lol = window.parent.document.getElementById('contenPrincipal');
+	//lol.src = "/joappWeb/carousel/visualizaVideo.xhtml?linkTopic="+link+"&topicId="+topicId;
+	lol.src = "/TSJDF_HE_Sistema/admin/catalogoUsuarios.xhtml";
+	//var media = window.parent.document.getElementById('clicVideo').click();
+	
+	}
+//]]> 
+</script>	 
+   
+</h:head>
+<h:body>
+
+<div class="colorbackground container" style="max-width: 100%;">
+	
+
+<div class="row">
+<div class="columna col-1"><img id="tsjdfpng" src="/FactPlayCityWeb/img/televisa_logo.png"  /></div>
+<div class="font-weight-light columna col-6"><span id="" style="font-size: 24px;color: #ffffff;"><strong>FACTURACIÓN ELECTRONICA AISA</strong></span></div>
+<div class="font-weight-light columna col-4"><span><strong><h:outputText style="color:#ffffff" value="Bienvenido: #{loginBean.nombre} #{loginBean.apellidoPaterno}"/></strong></span></div>
+<div class="columna col-1"><h:form>
+		<p:commandButton action="#{loginView.salir}" style="background:#1d355e;border-color:#ffffff" styleClass="btn btn-primary btn-sm" value="Salir" />
+	</h:form>
+</div>
+</div>
+
+</div>
+
+<p:layout style="" widgetVar="layoutWdgt" >
+    <p:layoutUnit id="menu" 
+    			  position="west" 
+    			  size="240" 
+    			  header="MENU" 
+    			  resizable="true" 
+    			  closable="false" 
+    			  collapsible="true" 
+    			  collapsed=""
+    			  style="height:100px;">
+  
+    <h:form>    
+    <p:growl id="messages" autoUpdate="true" showDetail="false"/>
+    <p:menu model="#{menuView.model}" toggleable="true" style=""/> 
+
+    </h:form>
+
+    </p:layoutUnit>
+ 
+    <p:layoutUnit id="layCenter" position="center" style="min-height:580px;">
+       <h:form id="frameContent" style="height:100%;" class="restricted"> 
+         
+        <iframe id="contenPrincipal" 
+                src="#{menuView.pageLink}"
+                width="100%"  
+                height="100%"
+                frameborder="0"/>  
+        
+        </h:form>
+     
+    </p:layoutUnit>
+</p:layout>
+
+
+</h:body>
+</html>

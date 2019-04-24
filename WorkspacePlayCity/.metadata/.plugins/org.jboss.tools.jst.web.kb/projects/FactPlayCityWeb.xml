@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kb-project>
+ <depends-on-projects/>
+ <used-by-projects/>
+ <paths>
+  <path value="C:/Users/argumedo/WorkspacePlayCity/FactPlayCityWeb/WebContent/WEB-INF/lib/c3p0-0.9.5.2.jar"/>
+  <path value="C:/Oracle/Middleware/Oracle_Home/oracle_common/modules/javax.servlet_2.2.0.0_3-0.jar"/>
+  <path value="C:/Oracle/Middleware/Oracle_Home/oracle_common/modules/javax.xml.bind_1.0.0.0_2-2-3.jar"/>
+  <path value="C:/Oracle/Middleware/Oracle_Home/oracle_common/modules/jaxrpc-api-1.1.jar"/>
+  <path value="C:/Oracle/Middleware/Oracle_Home/wlserver/modules/javax.jdo_2.0.4.jar"/>
+  <path value="C:/Oracle/Middleware/Oracle_Home/wlserver/modules/javax.websocket_1.0.0.0.jar"/>
+  <path value="C:/Oracle/Middleware/Oracle_Home/oracle_common/modules/javax.jms_1.1.4.jar"/>
+  <path value="C:/Oracle/Middleware/Oracle_Home/wlserver/modules/javax.enterprise.deploy_1.4.jar"/>
+  <path value="C:/Users/argumedo/WorkspacePlayCity/FactPlayCityWeb/WebContent/WEB-INF/lib/quartz-2.3.0-SNAPSHOT.jar"/>
+  <path value="C:/Oracle/Middleware/Oracle_Home/wlserver/modules/javax.json_1.0.0.0_1-0.jar"/>
+  <path value="C:/Users/argumedo/WorkspacePlayCity/FactPlayCityWeb/WebContent/WEB-INF/lib/quartz-jobs-2.3.0-SNAPSHOT.jar"/>
+  <path value="C:/Oracle/Middleware/Oracle_Home/oracle_common/modules/javax.mail_2.0.0.0_1-4-4.jar"/>
+  <path value="C:/Users/argumedo/WorkspacePlayCity/FactPlayCityWeb/WebContent/WEB-INF/lib/log4j-1.2.17.jar"/>
+  <path value="C:/Users/argumedo/WorkspacePlayCity/FactPlayCityWeb/WebContent/WEB-INF/lib/ojdbc6.jar"/>
+  <path value="C:/Users/argumedo/WorkspacePlayCity/FactPlayCityWeb/WebContent/WEB-INF/lib/slf4j-log4j12-1.7.7.jar"/>
+  <path value="C:/Oracle/Middleware/Oracle_Home/wlserver/modules/javax.resource_1.7.0.jar"/>
+  <path value="C:/Oracle/Middleware/Oracle_Home/wlserver/modules/javax.security.auth.message_2.2.jar"/>
+  <path value="C:/Oracle/Middleware/Oracle_Home/oracle_common/modules/javax.ejb_3.3.0.jar"/>
+  <path value="/FactPlayCityWeb/WebContent/WEB-INF/faces-config.xml">
+   <libraries>
+    <library class="faces-config">
+     <id class="model-object"
+      path="FileSystems/WEB-INF/faces-config.xml" project="FactPlayCityWeb"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/Oracle/Middleware/Oracle_Home/wlserver/modules/javax.transaction_2.2.0.0_1-1.jar"/>
+  <path value="C:/Oracle/Middleware/Oracle_Home/wlserver/modules/javax.validation_1.2.0.jar"/>
+  <path value="C:/Oracle/Middleware/Oracle_Home/wlserver/server/lib/api.jar"/>
+  <path value="C:/Oracle/Middleware/Oracle_Home/oracle_common/modules/javax.annotation_1.2.0.0_1-1.jar"/>
+  <path value="C:/Oracle/Middleware/Oracle_Home/oracle_common/modules/javax.persistence_2.0.0.0_2-0.jar"/>
+  <path value="C:/Users/argumedo/WorkspacePlayCity/FactPlayCityWeb/WebContent/WEB-INF/lib/primefaces-6.2.jar">
+   <libraries>
+    <library class="faces-config">
+     <id class="model-object"
+      path="FileSystems/lib-primefaces-6.2.jar/meta-inf/faces-config.xml" project="FactPlayCityWeb"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-primefaces-6.2.jar/meta-inf/primefaces-p.taglib.xml" project="FactPlayCityWeb"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-primefaces-6.2.jar/meta-inf/primefaces-pm.taglib.xml" project="FactPlayCityWeb"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/Oracle/Middleware/Oracle_Home/wlserver/modules/glassfish.jsf_2.0.0.0_2-1-20.jar">
+   <libraries>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-glassfish.jsf_2.0.0.0_2-1-20.jar/meta-inf/html_basic.tld" project="FactPlayCityWeb"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-glassfish.jsf_2.0.0.0_2-1-20.jar/meta-inf/jsf_core.tld" project="FactPlayCityWeb"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-glassfish.jsf_2.0.0.0_2-1-20.jar/meta-inf/mojarra_ext.taglib.xml" project="FactPlayCityWeb"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-glassfish.jsf_2.0.0.0_2-1-20.jar/meta-inf/mojarra_ext.tld" project="FactPlayCityWeb"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/Oracle/Middleware/Oracle_Home/wlserver/modules/javax.xml.registry_1.2.0.0_1-0-4.jar"/>
+  <path value="C:/Users/argumedo/WorkspacePlayCity/FactPlayCityWeb/WebContent/WEB-INF/lib/slf4j-api-1.7.7.jar"/>
+  <path value="C:/Oracle/Middleware/Oracle_Home/oracle_common/modules/javax.jsp_4.0.0.0_2-2.jar"/>
+  <path value="C:/Oracle/Middleware/Oracle_Home/oracle_common/modules/javax.xml.ws_1.0.0.0_2-2.jar"/>
+  <path value="C:/Oracle/Middleware/Oracle_Home/wlserver/modules/javax.interceptor_1.3.jar"/>
+  <path value="C:/Oracle/Middleware/Oracle_Home/wlserver/modules/javax.security.jacc_1.2.0.0_1-1.jar"/>
+  <path value="C:/Oracle/Middleware/Oracle_Home/wlserver/server/lib/wls-api.jar"/>
+  <path value="C:/Oracle/Middleware/Oracle_Home/wlserver/modules/javax.enterprise.inject_1.2.jar"/>
+  <path value="C:/Oracle/Middleware/Oracle_Home/oracle_common/modules/javax.management.j2ee_1.2.0.0.jar"/>
+  <path value="C:/Oracle/Middleware/Oracle_Home/wlserver/modules/glassfish.jstl_1.0.0.0_1-2-2-0.jar">
+   <libraries>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-glassfish.jstl_1.0.0.0_1-2-2-0.jar/meta-inf/c-1_0-rt.tld" project="FactPlayCityWeb"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-glassfish.jstl_1.0.0.0_1-2-2-0.jar/meta-inf/c-1_0.tld" project="FactPlayCityWeb"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-glassfish.jstl_1.0.0.0_1-2-2-0.jar/meta-inf/c.tld" project="FactPlayCityWeb"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-glassfish.jstl_1.0.0.0_1-2-2-0.jar/meta-inf/fmt-1_0-rt.tld" project="FactPlayCityWeb"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-glassfish.jstl_1.0.0.0_1-2-2-0.jar/meta-inf/fmt-1_0.tld" project="FactPlayCityWeb"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-glassfish.jstl_1.0.0.0_1-2-2-0.jar/meta-inf/fmt.tld" project="FactPlayCityWeb"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-glassfish.jstl_1.0.0.0_1-2-2-0.jar/meta-inf/fn.tld" project="FactPlayCityWeb"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-glassfish.jstl_1.0.0.0_1-2-2-0.jar/meta-inf/permittedtaglibs.tld" project="FactPlayCityWeb"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-glassfish.jstl_1.0.0.0_1-2-2-0.jar/meta-inf/scriptfree.tld" project="FactPlayCityWeb"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-glassfish.jstl_1.0.0.0_1-2-2-0.jar/meta-inf/sql-1_0-rt.tld" project="FactPlayCityWeb"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-glassfish.jstl_1.0.0.0_1-2-2-0.jar/meta-inf/sql-1_0.tld" project="FactPlayCityWeb"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-glassfish.jstl_1.0.0.0_1-2-2-0.jar/meta-inf/sql.tld" project="FactPlayCityWeb"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-glassfish.jstl_1.0.0.0_1-2-2-0.jar/meta-inf/x-1_0-rt.tld" project="FactPlayCityWeb"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-glassfish.jstl_1.0.0.0_1-2-2-0.jar/meta-inf/x-1_0.tld" project="FactPlayCityWeb"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-glassfish.jstl_1.0.0.0_1-2-2-0.jar/meta-inf/x.tld" project="FactPlayCityWeb"/>
+    </library>
+   </libraries>
+  </path>
+ </paths>
+ <validation>
+  <core validator-id="jsf-verification">
+   <linked-resource declaration="true" name="%1;%2;%3;%4;" path="%0"/>
+  </core>
+  <core validator-id="jboss.jsf.core"/>
+  <el>
+   <linked-el length="22" name="%5" offset="383" path="%6"/>
+   <linked-el length="24" name="%5" offset="650" path="%6"/>
+   <linked-el length="38" name="%7" offset="359" path="%8"/>
+   <linked-el length="48" name="%7" offset="535" path="%8"/>
+   <linked-el length="40" name="%7" offset="810" path="%9"/>
+   <linked-el length="42" name="%7" offset="633" path="%9"/>
+   <linked-el length="64" name="%7" offset="1931" path="%10"/>
+   <linked-el length="40" name="%7" offset="622" path="%8"/>
+   <linked-el length="42" name="%7" offset="445" path="%8"/>
+   <linked-el length="46" name="%7" offset="1232" path="%9"/>
+   <linked-el length="41" name="%7" offset="897" path="%9"/>
+   <linked-el length="38" name="%7" offset="547" path="%9"/>
+   <linked-el length="48" name="%7" offset="723" path="%9"/>
+   <linked-el length="41" name="%7" offset="709" path="%8"/>
+   <linked-el length="22" name="%11" offset="2410" path="%10"/>
+   <linked-el length="58" name="%11" offset="2263" path="%10"/>
+   <linked-el length="26" name="%11" offset="1851" path="%9"/>
+   <linked-el length="26" name="%11" offset="2062" path="%9"/>
+   <linked-el length="21" name="%11" offset="2337" path="%9"/>
+   <linked-el length="40" name="%12" offset="3291" path="%10"/>
+   <linked-el length="20" name="%12" offset="2972" path="%10"/>
+   <linked-el length="26" name="%12" offset="2843" path="%13"/>
+   <linked-el length="26" name="%14" offset="7000" path="%8"/>
+   <linked-el length="28" name="%14" offset="7289" path="%8"/>
+   <linked-el length="24" name="%14" offset="7577" path="%8"/>
+   <linked-el length="28" name="%14" offset="10137" path="%8"/>
+   <linked-el length="26" name="%14" offset="9340" path="%8"/>
+   <linked-el length="23" name="%14" offset="2779" path="%8"/>
+   <linked-el length="45" name="%14" offset="2622" path="%8"/>
+   <linked-el length="25" name="%14" offset="2557" path="%8"/>
+   <linked-el length="35" name="%14" offset="8175" path="%8"/>
+   <linked-el length="28" name="%14" offset="7826" path="%8"/>
+   <linked-el length="23" name="%14" offset="9619" path="%8"/>
+   <linked-el length="35" name="%14" offset="10486" path="%8"/>
+   <linked-el length="64" name="%14" offset="3625" path="%8"/>
+   <linked-el length="58" name="%14" offset="5193" path="%8"/>
+   <linked-el length="36" name="%14" offset="5611" path="%8"/>
+   <linked-el length="24" name="%14" offset="9888" path="%8"/>
+   <linked-el length="23" name="%15" offset="1766" path="%6"/>
+   <linked-el length="23" name="%15" offset="1442" path="%6"/>
+   <linked-el length="24" name="%15" offset="1981" path="%6"/>
+   <linked-el length="22" name="%16" offset="383" path="%6"/>
+   <linked-el length="24" name="%17" offset="1981" path="%6"/>
+   <linked-el length="40" name="%13" offset="3291" path="%10"/>
+   <linked-el length="20" name="%13" offset="2972" path="%10"/>
+   <linked-el length="26" name="%13" offset="2843" path="%13"/>
+   <linked-el length="17" name="%18" offset="4184" path="%8"/>
+   <linked-el length="26" name="%18" offset="7000" path="%8"/>
+   <linked-el length="20" name="%18" offset="4249" path="%8"/>
+   <linked-el length="24" name="%18" offset="7577" path="%8"/>
+   <linked-el length="28" name="%18" offset="10137" path="%8"/>
+   <linked-el length="17" name="%18" offset="3996" path="%8"/>
+   <linked-el length="23" name="%18" offset="2779" path="%8"/>
+   <linked-el length="20" name="%18" offset="4446" path="%8"/>
+   <linked-el length="18" name="%18" offset="4766" path="%8"/>
+   <linked-el length="21" name="%18" offset="4637" path="%8"/>
+   <linked-el length="28" name="%18" offset="7826" path="%8"/>
+   <linked-el length="17" name="%18" offset="4115" path="%8"/>
+   <linked-el length="23" name="%18" offset="9619" path="%8"/>
+   <linked-el length="20" name="%18" offset="4374" path="%8"/>
+   <linked-el length="64" name="%18" offset="3625" path="%8"/>
+   <linked-el length="36" name="%18" offset="5611" path="%8"/>
+   <linked-el length="24" name="%18" offset="9888" path="%8"/>
+   <linked-el length="21" name="%18" offset="4514" path="%8"/>
+   <linked-el length="18" name="%18" offset="4897" path="%8"/>
+   <linked-el length="18" name="%18" offset="4966" path="%8"/>
+   <linked-el length="21" name="%18" offset="4709" path="%8"/>
+   <linked-el length="28" name="%18" offset="7289" path="%8"/>
+   <linked-el length="26" name="%18" offset="9340" path="%8"/>
+   <linked-el length="45" name="%18" offset="2622" path="%8"/>
+   <linked-el length="25" name="%18" offset="2557" path="%8"/>
+   <linked-el length="35" name="%18" offset="8175" path="%8"/>
+   <linked-el length="35" name="%18" offset="10486" path="%8"/>
+   <linked-el length="58" name="%18" offset="5193" path="%8"/>
+   <linked-el length="17" name="%19" offset="4184" path="%8"/>
+   <linked-el length="20" name="%19" offset="4249" path="%8"/>
+   <linked-el length="17" name="%19" offset="3996" path="%8"/>
+   <linked-el length="20" name="%19" offset="4446" path="%8"/>
+   <linked-el length="18" name="%19" offset="4766" path="%8"/>
+   <linked-el length="21" name="%19" offset="4637" path="%8"/>
+   <linked-el length="21" name="%19" offset="4514" path="%8"/>
+   <linked-el length="18" name="%19" offset="4897" path="%8"/>
+   <linked-el length="17" name="%19" offset="4115" path="%8"/>
+   <linked-el length="20" name="%19" offset="4374" path="%8"/>
+   <linked-el length="18" name="%19" offset="4966" path="%8"/>
+   <linked-el length="21" name="%19" offset="4709" path="%8"/>
+   <linked-el length="23" name="%20" offset="1442" path="%6"/>
+   <linked-el length="22" name="%21" offset="2410" path="%10"/>
+   <linked-el length="58" name="%21" offset="2263" path="%10"/>
+   <linked-el length="26" name="%21" offset="1851" path="%9"/>
+   <linked-el length="26" name="%21" offset="2062" path="%9"/>
+   <linked-el length="21" name="%21" offset="2337" path="%9"/>
+   <linked-el length="23" name="%22" offset="1766" path="%6"/>
+   <linked-el length="38" name="%23" offset="359" path="%8"/>
+   <linked-el length="48" name="%23" offset="535" path="%8"/>
+   <linked-el length="40" name="%23" offset="810" path="%9"/>
+   <linked-el length="42" name="%23" offset="633" path="%9"/>
+   <linked-el length="64" name="%23" offset="1931" path="%10"/>
+   <linked-el length="40" name="%23" offset="622" path="%8"/>
+   <linked-el length="42" name="%23" offset="445" path="%8"/>
+   <linked-el length="46" name="%23" offset="1232" path="%9"/>
+   <linked-el length="41" name="%23" offset="897" path="%9"/>
+   <linked-el length="38" name="%23" offset="547" path="%9"/>
+   <linked-el length="48" name="%23" offset="723" path="%9"/>
+   <linked-el length="41" name="%23" offset="709" path="%8"/>
+   <linked-el length="24" name="%24" offset="650" path="%6"/>
+  </el>
+ </validation>
+ <aliases>
+  <alias path="msg" value="%5"/>
+  <alias path="request" value="%7"/>
+  <alias path="/login.xhtml" value="%1"/>
+  <alias path="loginBean" value="%11"/>
+  <alias
+   path="/FactPlayCityWeb/WebContent/facturacion/facturacionPlay.xhtml" value="%8"/>
+  <alias path="loginView.passUser" value="%17"/>
+  <alias path="jobsView" value="%18"/>
+  <alias
+   path="/FactPlayCityWeb/src/mx/com/televisa/playcity/beans/config/JobsBean.java" value="%19"/>
+  <alias
+   path="/FactPlayCityWeb/src/mx/com/televisa/playcity/beans/LoginBean.java" value="%21"/>
+  <alias path="loginView.password" value="%22"/>
+  <alias path="/FactPlayCityWeb/WebContent/WEB-INF/faces-config.xml" value="%0"/>
+  <alias path="/FactPlayCityWeb/WebContent/login.xhtml" value="%9"/>
+  <alias path="/principal/home.xhtml" value="%4"/>
+  <alias path="\FactPlayCityWeb\WebContent\login.xhtml" value="%2"/>
+  <alias path="menuView" value="%12"/>
+  <alias
+   path="/FactPlayCityWeb/src/mx/com/televisa/playcity/view/JobsView.java" value="%14"/>
+  <alias path="loginView" value="%15"/>
+  <alias path="msg.welcomeTitle" value="%16"/>
+  <alias path="\FactPlayCityWeb\WebContent\principal\home.xhtml" value="%3"/>
+  <alias
+   path="/FactPlayCityWeb/src/mx/com/televisa/playcity/view/MenuView.java" value="%13"/>
+  <alias path="loginView.username" value="%20"/>
+  <alias path="request.contextPath" value="%23"/>
+  <alias path="/FactPlayCityWeb/WebContent/index.xhtml" value="%6"/>
+  <alias path="/FactPlayCityWeb/WebContent/principal/home.xhtml" value="%10"/>
+  <alias path="msg.welcomeMessage" value="%24"/>
+ </aliases>
+ <includes/>
+ <uris>
+  <uri value="http://java.sun.com/jsp/jstl/functions">
+   <prefix>fn</prefix>
+  </uri>
+  <uri value="http://java.sun.com/jsf/core">
+   <prefix>f</prefix>
+  </uri>
+  <uri value="http://java.sun.com/jsf/html">
+   <prefix>h</prefix>
+  </uri>
+  <uri value="http://primefaces.org/ui">
+   <prefix>p</prefix>
+  </uri>
+ </uris>
+</kb-project>

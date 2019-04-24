@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+
+.ui-widget,.ui-widget .ui-widget {
+	   font-size: x-small;
+
+	}
+
+	.txtArea{
+		font-weight: bold;
+	}

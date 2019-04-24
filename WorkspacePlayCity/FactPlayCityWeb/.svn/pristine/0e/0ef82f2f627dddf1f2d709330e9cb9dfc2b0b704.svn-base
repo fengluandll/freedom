@@ -1,0 +1,22 @@
+package mx.televisa.playcity.view;
+
+import javax.annotation.PostConstruct;
+import mx.televisa.playcity.background.jobs.JobTest;
+import mx.televisa.playcity.background.scheduler.QuartzSchedulerListener;
+import org.apache.log4j.Logger;
+import org.quartz.CronScheduleBuilder;
+
+public class BillingExtractionSchedulerView {
+	
+	private static org.apache.log4j.Logger logger = Logger.getLogger(BillingExtractionSchedulerView.class);
+
+	@PostConstruct
+	public void init() {			        
+    }
+	
+	public void createJob(){				
+		CronScheduleBuilder schedule = CronScheduleBuilder.cronSchedule("0 13 19 * * ?").withMisfireHandlingInstructionDoNothing();
+		QuartzSchedulerListener.createJob(JobTest.class, "job1","trigger1", schedule, "Casino1");		
+	}
+	
+}

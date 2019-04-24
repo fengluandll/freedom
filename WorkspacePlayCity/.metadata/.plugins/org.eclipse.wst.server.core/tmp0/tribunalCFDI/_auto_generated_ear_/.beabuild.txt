@@ -1,0 +1,3 @@
+C\:/Users/argumedo/WorkspacePlayCity/FactPlayCityWeb/WebContent = FactPlayCityWeb.war
+C\:/Users/argumedo/WorkspacePlayCity/.metadata/.plugins/org.eclipse.core.resources/FactPlayCityWeb/build/weboutput = FactPlayCityWeb.war
+C\:/Users/argumedo/WorkspacePlayCity/FactPlayCityWeb/build/classes = FactPlayCityWeb.war/WEB-INF/classes

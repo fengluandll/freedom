@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+<h:head>
+<link href="../resources/images/trjdf_24.png" rel="shortcut icon" type='image/png'/>
+
+<style type="text/css">
+.ui-widget,.ui-widget .ui-widget {
+	font-size: small;
+}
+.ui-menu.ui-widget {
+	border: none;
+	width: 100%;
+}
+</style> 
+<script type="text/javascript">
+//<![CDATA[ 
+function direcciona(){
+	
+	//var text = window.parent.document.getElementById('menuCursos').getElementsByTagName('a')[0].click();
+	var lol = window.parent.document.getElementById('contenPrincipal');
+	//lol.src = "/joappWeb/carousel/visualizaVideo.xhtml?linkTopic="+link+"&topicId="+topicId;
+	lol.src = "/TSJDF_HE_Sistema/admin/catalogoUsuarios.xhtml";
+	//var media = window.parent.document.getElementById('clicVideo').click();
+	
+	}
+//]]> 
+</script>	 
+   
+</h:head>
+<h:body>
+
+<div id="contenedor" style="height: 85px;border: 0px solid black;">
+	
+
+<div style="position:static; float:left;width: 8%;border: 0px solid blue;">
+<img id="tsjdfpng" src="../resources/images/trjdf_80.png"  />
+
+</div>
+<div style="position:relative;text-align:center; top:15px; left:20px;width: 620px;border: 0px solid blue">
+<span id="titleLogin" style="font-size: 24px;" class="text-success"><strong>PODER JUDICIAL DEL DISTRITO FEDERAL</strong></span>
+
+
+</div>
+<div style="position:relative;top:-15px;left:65%;width: 400px;border: 0px solid blue">
+	<span><strong><h:outputText value="Bienvenido: #{loginBean.nombre} #{loginBean.apellidoPaterno}"/></strong></span>
+</div>
+<div style="position:relative;top:0px;left:1100px;width: 200px;border: 0px solid blue">
+	<h:form>
+		<p:commandButton action="#{loginView.salir}" styleClass="btn btn-primary btn-xs" value="Salir" icon="ui-icon-extlink" />
+	</h:form>
+</div>
+</div>
+
+<p:layout style="" widgetVar="layoutWdgt" >
+    <p:layoutUnit id="menu" 
+    			  position="west" 
+    			  size="240" 
+    			  header="MENU" 
+    			  resizable="true" 
+    			  closable="false" 
+    			  collapsible="true" 
+    			  collapsed=""
+    			  style="height:100px;">
+  
+    <h:form>    
+    <p:growl id="messages" autoUpdate="true" showDetail="false"/>
+    <p:menu model="#{menuView.model}" toggleable="true"/> 
+
+    </h:form>
+
+    </p:layoutUnit>
+ 
+    <p:layoutUnit id="layCenter" position="center" style="min-height:580px;">
+       <h:form id="frameContent" style="height:100%;" class="restricted"> 
+         
+        <iframe id="contenPrincipal" 
+                src="#{menuView.pageLink}"
+                width="100%"  
+                height="100%"
+                frameborder="0"/>  
+        
+        </h:form>
+     
+    </p:layoutUnit>
+</p:layout>
+
+
+</h:body>
+</html>

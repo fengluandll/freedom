@@ -1,0 +1,10 @@
+package mx.com.televisa.playcity.beans.config;
+
+import java.io.Serializable;
+
+public class JobsBean implements Serializable{
+	
+	private int 		idJob;
+	private String 		nomJob;
+
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style type="text/css">
+<!--
+.ui-widget,.ui-widget .ui-widget {
+	   font-size: x-small;
+	}
+-->
+</style>
+</h:head>
+<h:body>
+	<div id="body" align="left">
+		<h:form id="frmBusqueda" rendered="true">
+			<p:panelGrid id="pgInicio" style="margin-top:30px; width: 90%;" rendered="true">
+				<f:facet name="header">
+					<p:row>
+						<p:column colspan="7"><p:outputLabel value="Datos de busqueda"/></p:column>
+					</p:row>
+				</f:facet>
+				<p:row>
+					<p:column style="width:20%">
+						<p:outputLabel value="Seleccione una Quincena" for="ddlQuincenas"/>
+					</p:column>
+					<p:column colspan="3" style="width:60%">
+						<p:selectOneMenu id="ddlQuincenas" value="#{layoutView.quincena}" style="width:350px" 
+							required="true" filter="true" filterMatchMode="contains">
+			                <!-- <p:ajax listener="#{dropdownView.onQuincenaChange}" update="city" /> -->
+			                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+			                <f:selectItems value="#{quincenasLovView.lovData}" />
+			            </p:selectOneMenu>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width:20%">
+						<p:outputLabel value="Tipo de reporte" for="ddlGenerarReporte"/>
+					</p:column>
+					<p:column colspan="3" style="width:60%">
+						<p:selectOneMenu id="ddlGenerarReporte" required="true" value="#{layoutView.tipoReporte}" style="width:350px">
+				            <f:selectItem itemLabel="Seleccinar" itemValue="" />
+				            <f:selectItem itemLabel="Todas las solicitudes, incluyendo las ya generadas en el layout" itemValue="Todas" />
+				            <f:selectItem itemLabel="Solicitudes autorizadas que no se han generado en el layout " itemValue="Sin generar" />
+				        </p:selectOneMenu>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width:20%">
+						<p:outputLabel value="Fecha Aplicacion de Pago" for="dtFecha1"/>
+					</p:column>
+					<p:column style="width:30%">
+						<p:calendar id="dtFecha1" showOn="button"  required="true" value="#{layoutView.fechaAplicacionPago}" pattern="dd/MM/yyyy"/>
+					</p:column>
+					<p:column style="width:20%">
+						<p:outputLabel value="Fecha de Computacion" for="dtFecha2"/>
+					</p:column>
+					<p:column style="width:30%">
+						<p:calendar id="dtFecha2" showOn="button" required="true" value="#{layoutView.fechaComputacion}" pattern="dd/MM/yyyy"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<p:outputLabel value="Generar reporte de Excel"/>
+					</p:column>
+					<p:column colspan="3">
+						<h:commandLink actionListener="#{layoutView.generarReporte()}">
+							<p:graphicImage value="/resources/images/excel.png"/>
+					        <p:dataExporter type="xls" target=":frmTable:layoutTable" fileName="#{layoutView.reportName}"/>
+					    </h:commandLink>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+		</h:form>
+		<h:form id="frmExporter" rendered="false">
+			<p:panelGrid style="margin-top:10px; width: 90%;" id="pgExporter">
+				<f:facet name="header">
+					<p:row><p:column colspan="2">
+			            <p:outputPanel style="text-align: center; width:100%">
+			                <h:outputText value="Datos de salida del Layout" />
+			            </p:outputPanel>
+					</p:column></p:row>
+		        </f:facet>
+				<p:row>
+					<p:column style="width: 20%;">
+						<p:outputLabel value="Exportar datos: "/>
+					</p:column>
+					<p:column>
+						<h:commandLink actionListener="#{layoutView.actualizaDatos()}">
+							<p:graphicImage value="/resources/images/excel.png"/>
+					        <p:dataExporter type="xls" target=":frmTable:layoutTable" fileName="#{layoutView.reportName}"/>
+					    </h:commandLink>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+		</h:form>
+		<h:form id="frmTable" >
+			<p:dataTable var="layout" value="#{layoutView.listLayout}" id="layoutTable" widgetVar="wLayoutTable"
+						emptyMessage="No se encontraron resultados" filteredValue="#{layoutView.filteredLayout}" 
+						scrollable="true" scrollHeight="350" sortMode="multiple" resizableColumns="false" 
+						style="margin-bottom:10px; width: 90%;" rendered="false">
+		        
+				<f:facet name="{Exporters}">
+		            <h:commandLink>
+		                <p:graphicImage value="/resources/images/excel-1.png"/>
+		                <p:dataExporter type="xls" target=":frmTable:layoutTable" fileName="listLayout" />
+		            </h:commandLink>
+		        </f:facet>
+		        
+		        <p:column headerText="MENSAJES">
+			        <h:outputText value="#{layout.mensajes}" />
+			    </p:column>
+		        
+		        <p:column headerText="ID_EMPLEADO">
+			        <h:outputText value="#{layout.idEmpleado}" />
+			    </p:column>
+		        
+		        <p:column headerText="ID_INCIDENCIA">
+			        <h:outputText value="#{layout.idIncidencia}" />
+			    </p:column>
+		        
+		        <p:column headerText="FECHA_INICIO">
+			        <h:outputText value="#{layout.fechaInicio}" />
+			    </p:column>
+		        
+		        <p:column headerText="FECHA_FIN">
+			        <h:outputText value="#{layout.fechaFin}" />
+			    </p:column>
+		        
+		        <p:column headerText="UNIDADES">
+			        <h:outputText value="#{layout.unidades}" />
+			    </p:column>
+		        
+		        <p:column headerText="FECHA_INI_APLICA">
+			        <h:outputText value="#{layout.fechaIniAplicacion}" />
+			    </p:column>
+		        
+		        <p:column headerText="FECHA_FIN_APLICA">
+			        <h:outputText value="#{layout.fechaFinAplicacion}" />
+			    </p:column>
+		        
+		        <p:column headerText="NUM_DIAS_HED">
+			        <h:outputText value="#{layout.numDiasHE}" />
+			    </p:column>
+		        
+		        <p:column headerText="NOMBRE">
+			        <h:outputText value="#{layout.nombreCompleto}" />
+			    </p:column>
+			</p:dataTable>
+		</h:form>
+	</div>
+</h:body>
+
+</html>

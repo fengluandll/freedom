@@ -1,0 +1,7 @@
+<classpath>
+  <container id="FactPlayCityWeb!org.eclipse.jst.j2ee.internal.web.container">
+    <entry id="C:/Users/argumedo/WorkspacePlayCity/FactPlayCityWeb/WebContent/WEB-INF/lib/primefaces-6.2.jar">
+      <source-attachment-path>C:/Users/argumedo/.m2/repository/org/primefaces/primefaces/6.2/primefaces-6.2-sources.jar</source-attachment-path>
+    </entry>
+  </container>
+</classpath>

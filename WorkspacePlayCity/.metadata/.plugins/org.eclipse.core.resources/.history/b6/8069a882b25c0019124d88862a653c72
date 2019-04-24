@@ -1,0 +1,164 @@
+package mx.com.televisa.playcity.view;
+
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+
+
+
+
+
+import org.apache.log4j.Logger;
+
+import mx.com.televisa.playcity.beans.config.JobsBean;
+import mx.com.televisa.playcity.model.JobDAO;
+import mx.com.televisa.playcity.util.Functions;
+import mx.com.televisa.playcity.util.Mensajes;
+
+
+@ManagedBean
+@ViewScoped
+public class JobsView {
+	
+	private static org.apache.log4j.Logger logger = Logger.getLogger(JobsView.class);
+	
+	List<JobsBean>         loListJobs;
+	int                    linIdJob;
+	private String         lsNomCasino;
+	private Date           ltHoraMinutos;
+	private String[]       laSemana; 
+	private List<String>   selectSemanas;
+	private JobDAO         loJobDAO;
+
+	/**
+	 * Metodo Constructor
+	 */
+	public JobsView(){
+		getListJobs();
+		selectSemanas = new ArrayList<String>(); 
+		selectSemanas.add("Lunes");
+		selectSemanas.add("Martes");
+		selectSemanas.add("Miercoles");
+		selectSemanas.add("Jueves");
+		selectSemanas.add("Viernes");
+		selectSemanas.add("Sábado");
+		selectSemanas.add("Domingo");
+	}
+	
+	
+	public void getListJobs(){
+		loJobDAO = new JobDAO();
+		this.loListJobs = loJobDAO.getJobs();
+	}
+	
+	public void newJob(){
+//		RequestContext.getCurrentInstance().update("id_obra");
+//		 RequestContext.getCurrentInstance().update("cmbArt");
+//		 RequestContext.getCurrentInstance().update("msgAlert");
+		 Functions.manageDialog("dlgJob", 2);
+	}
+	
+	public void saveJob(){
+		loJobDAO             = new JobDAO();
+		JobsBean loJobsBean  = new JobsBean();
+		StringBuilder stb    = new StringBuilder();
+		logger.debug("Nombre casino: "+this.lsNomCasino);
+		
+		
+		Format   lsFormatter = new SimpleDateFormat("HH:mm");
+	    String   lsTime      = lsFormatter.format(this.ltHoraMinutos);
+	    String[] lsplitTime  = lsTime.split(":");
+	    loJobsBean.setPsHora(lsplitTime[0]);
+	    loJobsBean.setPsMinuto(lsplitTime[1]);
+	    logger.debug("Tiempo ejecución: "+lsTime);
+	    
+	    
+		for(String sem : this.laSemana){
+			logger.debug("Dia de la semana: "+sem);
+			stb.append(sem);
+			stb.append(",");
+		}
+		
+		loJobsBean.setPsCodSemana(stb.toString());
+		boolean lbPaso = loJobDAO.insertJob(loJobsBean);
+		if(lbPaso){
+			Functions.showMessage(
+					"Se agrego Correctamente",
+					"Exito", Mensajes.INFO);
+			Functions.manageDialog("dlgJob", 1);
+		}
+		
+	}
+
+
+	public List<JobsBean> getLoListJobs() {
+		return loListJobs;
+	}
+
+
+	public void setLoListJobs(List<JobsBean> loListJobs) {
+		this.loListJobs = loListJobs;
+	}
+
+
+	public int getLinIdJob() {
+		return linIdJob;
+	}
+
+
+	public void setLinIdJob(int linIdJob) {
+		this.linIdJob = linIdJob;
+	}
+
+
+	public String getLsNomCasino() {
+		return lsNomCasino;
+	}
+
+
+	public void setLsNomCasino(String lsNomCasino) {
+		this.lsNomCasino = lsNomCasino;
+	}
+
+
+	public Date getLtHoraMinutos() {
+		return ltHoraMinutos;
+	}
+
+
+	public void setLtHoraMinutos(Date ltHoraMinutos) {
+		this.ltHoraMinutos = ltHoraMinutos;
+	}
+
+
+	public String[] getLaSemana() {
+		return laSemana;
+	}
+
+
+	public void setLaSemana(String[] laSemana) {
+		this.laSemana = laSemana;
+	}
+
+
+	public List<String> getSelectSemanas() {
+		return selectSemanas;
+	}
+
+
+	public void setSelectSemanas(List<String> selectSemanas) {
+		this.selectSemanas = selectSemanas;
+	}
+
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style type="text/css">
+<!--
+.ui-widget,.ui-widget .ui-widget {
+	   font-size: x-small;
+	}
+	.ui-datatable .ui-column-filter {
+	    	display:none;
+		}
+-->
+</style>
+</h:head>
+<h:body>
+	<div id="body" align="left">
+		<h:form id="frmBusqueda" rendered="true">
+			<p:panelGrid id="pgInicio" style="margin-top:30px; width: 90%;" rendered="true">
+				<f:facet name="header">
+					<p:row>
+						<p:column colspan="7"><p:outputLabel value="Datos de busqueda"/></p:column>
+					</p:row>
+				</f:facet>
+				<p:row>
+					<p:column style="width:20%">
+						<p:outputLabel value="Seleccione una Quincena" for="ddlQuincenas"/>
+					</p:column>
+					<p:column colspan="3" style="width:60%">
+						<p:selectOneMenu id="ddlQuincenas" value="#{quincenaActualView.fechaPaga}" style="width:350px" 
+							required="true" filter="true" filterMatchMode="contains">
+			                <!-- <p:ajax listener="#{dropdownView.onQuincenaChange}" update="city" /> -->
+			                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+			                <f:selectItems value="#{quincenasLovView.lovData}" />
+			            </p:selectOneMenu>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width:20%">
+						<p:outputLabel value="Tipo de reporte" for="ddlActivo"/>
+					</p:column>
+					<p:column colspan="3" style="width:60%">
+						<p:selectOneMenu id="ddlActivo" required="true" value="#{quincenaActualView.activoNombre}" style="width:150px">
+				            <f:selectItem itemLabel="Seleccinar" itemValue="" />
+				            <f:selectItem itemLabel="Activo" itemValue="Todas" />
+				            <f:selectItem itemLabel="Inactivo" itemValue="Sin generar" />
+				        </p:selectOneMenu>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						
+					</p:column>
+					<p:column colspan="3">
+						<p:commandButton actionListener="#{quincenaActualView.guardarDatos()}" value="Guardar quincena" update=":frmTable:dataTable"/>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+		</h:form>
+		<h:form id="frmTable" >
+			<p:dataTable var="layout" value="#{quincenaActualView.listQuincena}" id="dataTable" widgetVar="wdataTable"
+						emptyMessage="No se encontraron resultados" filteredValue="#{quincenaActualView.filteredList}" 
+						scrollable="true" scrollHeight="350" sortMode="multiple" resizableColumns="false" 
+						style="margin-bottom:10px; width: 90%;" rendered="true">
+		        
+		        <f:facet name="header">
+		            <p:outputPanel style="text-align: right; width:100%">
+		                <h:outputText value="Buscar:  " />
+		                <p:inputText id="globalFilter" onkeyup="PF('wdataTable').filter()" style="" 
+		                placeholder="Buscar"/>
+		            </p:outputPanel>
+		        </f:facet>	
+		        
+		        <p:column headerText="Quincena" filterBy="#{layout.fechaPagaNombre}" 
+			    	filterMatchMode="contains" sortBy="#{layout.fechaPagaNombre}">
+			        <h:outputText value="#{layout.fechaPagaNombre}" />
+			    </p:column>
+		        
+		        <p:column headerText="Fecha Paga" filterBy="#{layout.fechaPaga}" 
+			    	filterMatchMode="contains" sortBy="#{layout.fechaPaga}" style="width: 15%; text-align: center">
+			        <h:outputText value="#{layout.fechaPaga}" />
+			    </p:column>
+		        
+		        <p:column headerText="Estatus" filterBy="#{layout.activoNombre}" 
+			    	filterMatchMode="contains" sortBy="#{layout.activoNombre}" style="width: 15%; text-align: center">
+			        <h:outputText value="#{layout.activoNombre}" />
+			    </p:column>
+		        
+		        <p:column headerText="Activar" style="width: 5%; text-align: center">
+			        <p:commandButton  icon="ui-icon-check" 
+			    	                  title="Activar"
+			    	                  update=":frmTable:dataTable" 
+			    	                  actionListener="#{quincenaActualView.cambiaStatus(layout)}">
+			    	</p:commandButton>
+			    </p:column>
+			</p:dataTable>
+		</h:form>
+	</div>
+</h:body>
+
+</html>

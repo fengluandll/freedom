@@ -1,0 +1,175 @@
+package mx.televisa.playcity.beans;
+
+import java.io.Serializable;
+import java.util.HashMap;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.naming.NamingException;
+import javax.naming.directory.DirContext;
+import javax.faces.context.FacesContext;
+
+import org.apache.log4j.Logger;
+
+import mx.televisa.playcity.util.Funciones;
+import mx.televisa.playcity.util.LDAP;
+
+@ManagedBean
+@SessionScoped
+public class LoginBean implements Serializable{
+	
+	
+	private static final long serialVersionUID = 1L;
+	private static org.apache.log4j.Logger logger = Logger.getLogger(LoginBean.class);
+	
+	private int    idUsuario;
+	private String username;
+	private String password;
+	private String numEmpleado;
+	private String apellidoPaterno;
+	private String apellidoMaterno;
+	private String nombre;
+	private String nombreCompleto;
+	private String area;
+	private String nomRol;
+	private int idRol;
+	
+	public String passUser(){		
+		DirContext context = null;		
+		String result = "";
+		try {
+			context = LDAP.connect(this.username, this.password);
+			if(context != null){				
+				this.setUsername(this.username);
+				this.setNombre(this.username);
+				LoginBean loginBean = new LoginBean();
+				loginBean.setUsername(this.username);				
+				Funciones.getSession().setAttribute("loginBean", loginBean);
+				result = "exito";
+				String[] returningAtts = {"CN"}; 
+				HashMap<String, String> userMap = LDAP.search("(&(objectCategory=person)(objectClass=user)(sAMAccountName=" + this.username +"))", context, returningAtts);
+				loginBean.setNombre(userMap.get("CN"));
+				LDAP.close(context);				
+			}
+			else{
+				result = "fallo";
+				Funciones.mostrarMensaje("Usuario o contraseña incorrecto", "Error", "ERROR");
+			}
+		} catch (NamingException e) {				
+		}					
+		return result;							
+	}
+	
+	public String salir() {
+
+		LoginBean loginBean = (LoginBean) Funciones.getSession().getAttribute("loginBean");
+		
+		logger.debug("Session de " + loginBean.getNombre()
+				+ " Cerrada!!");
+		Funciones.getSession().removeAttribute("loginBean");
+		
+		FacesContext.getCurrentInstance().getExternalContext()
+				.invalidateSession();
+
+		return "salir";
+	}
+
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+	public String getNumEmpleado() {
+		return numEmpleado;
+	}
+
+	public void setNumEmpleado(String numEmpleado) {
+		this.numEmpleado = numEmpleado;
+	}
+
+	public String getApellidoPaterno() {
+		return apellidoPaterno;
+	}
+
+	public void setApellidoPaterno(String apellidoPaterno) {
+		this.apellidoPaterno = apellidoPaterno;
+	}
+
+	public String getApellidoMaterno() {
+		return apellidoMaterno;
+	}
+
+	public void setApellidoMaterno(String apellidoMaterno) {
+		this.apellidoMaterno = apellidoMaterno;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getNombreCompleto() {
+		return nombreCompleto;
+	}
+
+	public void setNombreCompleto(String nombreCompleto) {
+		this.nombreCompleto = nombreCompleto;
+	}
+
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
+	public String getNomRol() {
+		return nomRol;
+	}
+
+	public void setNomRol(String nomRol) {
+		this.nomRol = nomRol;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public LoginBean(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
+	}
+	
+
+	public int getIdRol() {
+		return idRol;
+	}
+
+	public void setIdRol(int idRol) {
+		this.idRol = idRol;
+	}
+
+	public LoginBean() {
+		super();
+	}
+}

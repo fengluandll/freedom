@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#index.xhtml" PATH="/index.xhtml"
+  SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#index.xhtml:0" NAME="item"
+   PATH="/index.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="home::#principal#home.xhtml" NAME="output"
+    PATH="/principal/home.xhtml" TARGET="rules:#principal#home.xhtml"
+    TITLE="home" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#principal#home.xhtml"
+  PATH="/principal/home.xhtml" SHAPE="240,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#principal#home.xhtml:0" NAME="item"
+   PATH="/principal/home.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="salir::#index.xhtml" NAME="output"
+    PATH="/index.xhtml" TARGET="rules:#index.xhtml" TITLE="salir" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#solicitudes#nuevaSolicitud.xhtml"
+  PATH="/solicitudes/nuevaSolicitud.xhtml" SHAPE="224,144,50,25" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#solicitudes#nuevaSolicitud.xhtml:0"
+   NAME="item" PATH="/solicitudes/nuevaSolicitud.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="regresar::#solicitudes#capturarSolicitudes.xhtml" NAME="output"
+    PATH="/solicitudes/capturarSolicitudes.xhtml"
+    TARGET="rules:#solicitudes#capturarSolicitudes.xhtml"
+    TITLE="regresar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#solicitudes#capturarSolicitudes.xhtml"
+  PATH="/solicitudes/capturarSolicitudes.xhtml" SHAPE="40,120,50,25" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#solicitudes#capturarSolicitudes.xhtml:0"
+   NAME="item" PATH="/solicitudes/capturarSolicitudes.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="nuevaSolicitud::#solicitudes#nuevaSolicitud.xhtml" NAME="output"
+    PATH="/solicitudes/nuevaSolicitud.xhtml"
+    TARGET="rules:#solicitudes#nuevaSolicitud.xhtml"
+    TITLE="nuevaSolicitud" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="modificarSolicitud::#solicitudes#modificarSolicitud.xhtml"
+    NAME="output1" PATH="/solicitudes/modificarSolicitud.xhtml"
+    TARGET="rules:#solicitudes#modificarSolicitud.xhtml"
+    TITLE="modificarSolicitud" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#solicitudes#modificarSolicitud.xhtml"
+  PATH="/solicitudes/modificarSolicitud.xhtml" SHAPE="224,232,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#solicitudes#modificarSolicitud.xhtml:0"
+   NAME="item" PATH="/solicitudes/modificarSolicitud.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="regresar::#solicitudes#capturarSolicitudes.xhtml" NAME="output"
+    PATH="/solicitudes/capturarSolicitudes.xhtml"
+    TARGET="rules:#solicitudes#capturarSolicitudes.xhtml"
+    TITLE="regresar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

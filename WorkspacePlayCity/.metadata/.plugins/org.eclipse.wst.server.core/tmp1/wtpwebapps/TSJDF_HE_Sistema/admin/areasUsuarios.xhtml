@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style type="text/css">
+<!--
+.ui-widget,.ui-widget .ui-widget {
+	   font-size: x-small;
+	}
+	.ui-datatable .ui-column-filter {
+	    	display:none;
+		}
+
+.ui-panelgrid>*>tr,
+.ui-panelgrid .ui-panelgrid-cell {
+    border: none;
+}
+-->
+</style>
+</h:head>
+<h:body>
+	<h:form>
+		<p:panelGrid>
+			<f:facet name="header">
+                <f:facet name="header">
+                    <p:row>
+                        <p:column colspan="7"><p:outputLabel value="Selecciona un usuario"/></p:column>
+                    </p:row>
+                </f:facet>
+			</f:facet>
+			<p:row>
+				<p:column>
+					<p:outputLabel value="Selecciona un usuario" for="ddlUsuarios"/>
+				</p:column>
+				<p:column>
+					<p:selectOneMenu id="ddlUsuarios" value="#{areasUsuarioView.username}" style="width:250px" required="true"
+					filter="true" filterMatchMode="contains">
+		                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+		                <f:selectItems value="#{dtUsersView.lovData}" />
+			                <p:ajax event="change" listener="#{areasUsuarioView.consultaAreasUsuario()}"/>
+		            </p:selectOneMenu>
+				</p:column>
+				<p:column>
+					<!-- 
+					<p:commandButton value="Asignar areas" action="#{dtUsersView.guardaIdUsuarioAreas()}" icon="ui-icon-pencil"/>
+					 <p:commandButton value="Asignar areas" onclick="PF('dlgAsignarAreas').show();" icon="ui-icon-pencil"/>
+					 -->
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>
+					<p:outputLabel value="Selecciona una area" for="ddlAreas"/>
+				</p:column>
+				<p:column>
+					<p:selectOneMenu id="ddlAreas" value="#{areasUsuarioView.area}" style="width:250px" required="true"
+					filter="true" filterMatchMode="contains">
+		                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+		                <f:selectItems value="#{areasUsuarioView.lovAreas}" />
+			                <p:ajax event="change" listener="#{areasUsuarioView.muestraArea()}"/>
+		            </p:selectOneMenu>
+				</p:column>
+				<p:column>
+					<!-- 
+					<p:commandButton value="Asignar areas" action="#{dtUsersView.guardaIdUsuarioAreas()}" icon="ui-icon-pencil"/>
+					 <p:commandButton value="Asignar areas" onclick="PF('dlgAsignarAreas').show();" icon="ui-icon-pencil"/>
+					 -->
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>
+				</p:column>
+				<p:column colspan="2">
+					<p:commandButton value="Asignar areas" icon="ui-icon-disk" actionListener="#{areasUsuarioView.insertarDatos()}"/>
+				</p:column>
+			</p:row>
+		</p:panelGrid>
+	</h:form>
+	<h:form id="frmAreas">
+		<p:dataTable var="area" value="#{areasUsuarioView.listAreas}" id="dtAreas" widgetVar="wdtAreas"
+						emptyMessage="No se encontraron resultados" filteredValue="#{areasUsuarioView.listAreasFiltered}" 
+						scrollable="true" scrollHeight="350" sortMode="multiple" resizableColumns="false" 
+						style="margin-bottom:10px; width: 90%;" rendered="true">
+		        
+				<f:facet name="header">
+		            <p:outputPanel style="text-align: right; width:100%">
+		                <h:outputText value="Buscar area: " />
+		                <p:inputText id="globalFilter" onkeyup="PF('wdtAreas').filter()" style="" 
+		                placeholder="Buscar"/>
+		            </p:outputPanel>
+		        </f:facet>
+		        
+		        <p:column headerText="NUM AREA" style="width: 10%;">
+			        <h:outputText value="#{area.idArea}" />
+			    </p:column>
+		        
+		        <p:column headerText="NOMBRE" filterBy="#{area.nombreArea}" 
+						    filterMatchMode="contains">
+			        <h:outputText value="#{area.nombreArea}" />
+			    </p:column>
+			    
+			</p:dataTable>
+	</h:form>
+
+</h:body>
+</html>

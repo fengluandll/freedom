@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style type="text/css">
+
+.ui-widget,.ui-widget .ui-widget {
+	   font-size: smaller;
+	}
+.ui-datatable .ui-column-filter {
+	    	display:none;
+	}
+.ui-panelgrid>*>tr,
+.ui-panelgrid .ui-panelgrid-cell {
+    border: none;
+}
+
+</style>
+</h:head>	  
+
+<h:body>
+	<h:form id="frmSolicitud">		
+			<p:panelGrid id="pgNuevoLines" style="width: 90%;margin-top:10px;">
+				<f:facet name="header">
+					<p:row>
+						<p:column colspan="6"><p:outputLabel value="Modificando datos de la solicitud"/></p:column>
+						<p:column colspan="0"><p:commandButton value="Regresar" action="regresar"/></p:column>
+					</p:row>
+				</f:facet>
+				<p:row>
+					<p:column style="width: 30%;" colspan="2">
+						<p:outputLabel value="Número de empleado" for="txtNoEmpleado"/>
+					</p:column>
+					<p:column style="width: 70%;" colspan="3">
+						<p:inputText id="txtNoEmpleado" value="#{modificaSolicitudView.numEmpleado}" readonly="true" required="true" style="width: 400px;"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width: 30%;" colspan="2">
+						<p:outputLabel value="Nombre del empleado" for="txtNomEmpleado"/>
+					</p:column>
+					<p:column style="width: 70%;" colspan="3">
+						<p:inputText id="txtNomEmpleado" value="#{modificaSolicitudView.nombreEmpleado}" readonly="true" required="true" style="width: 400px;"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width: 30%;" colspan="2">
+						<p:outputLabel value="Órgano judicial, unidad administrativa, o de apoyo judicial" for="txtUniAdm"/>
+					</p:column>
+					<p:column style="width: 70%;" colspan="3">
+						<p:inputText id="txtUniAdm" value="#{modificaSolicitudView.organoJudicial}" readonly="true" required="true" style="width: 400px;"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width: 30%;" colspan="2">
+						<p:outputLabel value="RFC" for="txtRfc"/>
+					</p:column>
+					<p:column style="width: 70%;" colspan="3">
+						<p:inputText id="txtRfc" value="#{modificaSolicitudView.rfc}" readonly="true" required="true" style="width: 400px;"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width: 30%;" colspan="2">
+						<p:outputLabel value="Fecha Inicial" for="txtFecIni"/>
+					</p:column>
+					<p:column style="width: 70%;" colspan="3">
+						<p:inputText id="txtFecIni" value="#{modificaSolicitudView.fechaInicial}" readonly="true" required="true" style="width: 400px;"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width: 30%;" colspan="2">
+						<p:outputLabel value="Fecha Final" for="txtFecFin"/>
+					</p:column>
+					<p:column style="width: 70%;" colspan="3">
+						<p:inputText id="txtFecFin" value="#{modificaSolicitudView.fechaFinal}" readonly="true" required="true" style="width: 400px;"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width: 30%;" colspan="2">
+						<p:outputLabel value="Fecha Paga" for="txtFecPaga"/>
+					</p:column>
+					<p:column style="width: 70%;" colspan="3">
+						<p:inputText id="txtFecPaga" value="#{modificaSolicitudView.fechaPaga}" readonly="true" required="true" style="width: 400px;"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width: 30%;" colspan="2">
+						<p:outputLabel value="Descripción de la Nómina" for="txtDescNomina"/>
+					</p:column>
+					<p:column style="width: 70%;" colspan="3">
+						<p:inputText id="txtDescNomina" value="#{modificaSolicitudView.descripcionNomina}" readonly="true" required="true" style="width: 400px;"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width: 30%;" colspan="2">
+						<p:outputLabel value="Jornada ordinaria" for="txtJornadaOrd"/>
+					</p:column>
+					<p:column style="width: 70%;" colspan="3">
+						<p:inputText id="txtJornadaOrd" value="#{modificaSolicitudView.jornadaOrdinaria}" readonly="false" required="false" style="width: 400px;"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column colspan="5">
+						
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column colspan="5">
+						
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column colspan="5">
+						<p:commandButton value="Agregar Horas Extraordinarias" actionListener="#{modificaSolicitudView.nuevaHora}" />
+						
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column colspan="4" style="width:80%">
+						<p:dataTable id="idHorasExt" var="horas" value="#{modificaSolicitudView.listHoras}">
+						    						 
+						    <p:column headerText="Hora de Inicio" style="text-align:center;">
+						        <h:outputText value="#{horas.horaEntrada}" />
+						    </p:column>
+						 
+						    <p:column headerText="Hora de Salida" style="text-align:center;">
+						        <h:outputText value="#{horas.horaSalida}" />
+						    </p:column>
+						 
+						    <p:column headerText="Fecha HE" style="text-align:center;">
+						        <h:outputText value="#{horas.fecha}" />
+						    </p:column>
+						    
+						    <p:column headerText="Fecha Laborada" style="text-align:center;">
+						        <h:outputText value="#{horas.numHorasLaboradas}" />
+						    </p:column>
+						 
+						    <p:column headerText="Justificación" style="text-align:center;">
+						        <h:outputText value="#{horas.justificacion}" />
+						    </p:column>
+						 
+						    <p:column headerText="Editar" style="text-align:center;">
+						    	<h:commandLink actionListener="#{modificaSolicitudView.modificaHoras(horas)}" title="Editar">
+							 	   <img id="editaHr" src="../resources/images/Modify_16.png"  />
+								 </h:commandLink>
+						    </p:column>
+						    <p:column headerText="Eliminar" style="text-align:center;">
+						    	<p:commandLink actionListener="#{modificaSolicitudView.eliminaHoras(horas)}" title="Salir">
+							 	   <h:graphicImage value="../resources/images/Erase_16.png" style="cursor:pointer;" title="Eliminar nota"/>
+							 	   <span><p:confirm header="Confirmación" message="¿Estas seguro que quieres borrar este registro?" icon="ui-icon-alert"/></span>
+								 </p:commandLink>
+								 <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">  
+							        <p:commandButton value="Si"  type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>  
+							        <p:commandButton value="No"  type="button" styleClass="ui-confirmdialog-no"  icon="ui-icon-close"/>       
+							    </p:confirmDialog> 
+						    </p:column>
+						</p:dataTable>
+					</p:column>
+				</p:row>
+				<p:row>
+				<p:column>
+						 <h:outputText value="Seleccione para guardar todo" style="font:normal bold 110% normal"/>
+					</p:column>
+					<p:column>
+						 <p:selectBooleanCheckbox value="#{modificaSolicitudView.check}"/>
+					</p:column>
+					<p:column>
+						 <p:commandButton value="Guardar" actionListener="#{modificaSolicitudView.guardaTodo}"/>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+		</h:form>
+		
+<h:form id="idHoras">
+	<p:dialog header="Horas Extraordinarias" widgetVar="dlg2" modal="true" width="550" height="280">
+	<p:growl id="messages" autoUpdate="true" showDetail="false"/>
+						    <div align="center">
+						    <p:panelGrid id="gridHoras" style="width: 90%;">
+						    	<f:facet name="header">
+									<p:row>
+										<p:column colspan="2"><p:outputLabel value="Agregar nuevo registro"/></p:column>
+									</p:row>
+								</f:facet>
+						    	<p:row>
+						    		<p:column>
+						    			<div align="left" style="font-weight: bold"><p:outputLabel value="Hora de Inicio" for="txtNuevoHoraInicio"/></div>
+						    		</p:column>
+						    		<p:column>
+						    			<p:calendar id="txtNuevoHoraInicio" required="true" value="#{modificaSolicitudView.horaInicio}" pattern="HH:mm" timeOnly="true" />
+						    			
+						    		</p:column>
+						    	</p:row>
+						    	<p:row>
+						    		<p:column>
+						    			<div align="left" style="font-weight: bold"><p:outputLabel value="Hora de Salida" for="txtNuevoHoraFin"/></div>
+						    		</p:column>
+						    		<p:column>
+						    			<p:calendar id="txtNuevoHoraFin" required="true" value="#{modificaSolicitudView.horaSalida}" pattern="HH:mm" timeOnly="true" />
+						    		</p:column>
+						    	</p:row>
+						    	<p:row>
+						    		<p:column>
+						    			<div align="left" style="font-weight: bold"><p:outputLabel value="Fecha HE (dd/mm/yyyy)" for="dtNuevoFechaHE"/></div>
+						    		</p:column>
+						    		<p:column>
+						    			<p:calendar id="dtNuevoFechaHE" value="#{modificaSolicitudView.fechaHe}" pattern="dd/MM/yyyy" required="true" style="width: 100px"/>
+						    		</p:column>
+						    	</p:row>
+						    	<p:row>
+						    		<p:column>
+						    			<div align="left" style="font-weight: bold"><p:outputLabel value="No. Horas Laboradas" for="ddlNuevoHorasLaboradas"/></div>
+						    		</p:column>
+						    		<p:column>
+										<p:selectOneMenu id="ddlNuevoHorasLaboradas" required="true" value="#{modificaSolicitudView.hrsLaboradas}" style="width:120px">
+								            <f:selectItem itemLabel="Seleccinar" itemValue="" />
+								            <f:selectItem itemLabel="1" itemValue="1" />
+								            <f:selectItem itemLabel="2" itemValue="2" />
+								            <f:selectItem itemLabel="3" itemValue="3" />
+								        </p:selectOneMenu>
+						    		</p:column>
+						    	</p:row>
+						    	<p:row>
+						    		<p:column>
+						    			<div align="left" style="font-weight: bold"><p:outputLabel value="Justificacion" for="txtNuevoJustificacion"/></div>
+						    		</p:column>
+						    		<p:column>
+						    			<p:inputText id="txtNuevoJustificacion" value="#{modificaSolicitudView.justificacion}" style="width: 250px" required="true"/>
+						    		</p:column>
+						    	</p:row>
+						    	<p:row>
+						    		<p:column colspan="2">
+						    			<div align="center">
+						    				<p:commandButton id="btnAceptarNuevo" 
+						    								 actionListener="#{modificaSolicitudView.guardaHorasExtras}" 
+						    								 value="Aceptar" 
+						    								 update="gridHoras"
+						    								 style="font-weight: bold"/>
+						    			</div>
+						    		</p:column>
+						    	</p:row>
+						    </p:panelGrid></div>
+						</p:dialog>
+</h:form>		
+
+
+
+</h:body>
+</html>

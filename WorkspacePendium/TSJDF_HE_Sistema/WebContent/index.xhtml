@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:loadBundle basename="mx.gob.tsjdf.properties.application" var="msg" />
+
+<h:head>
+	<link href="resources/images/trjdf_24.png" rel="shortcut icon" type='image/png'/>
+	<title><h:outputText value="#{msg.welcomeTitle}" /></title>
+	<style type="text/css">
+<!--
+.ui-widget,.ui-widget .ui-widget {
+	   font-size: small;
+	}
+-->
+</style>
+</h:head>
+
+<body class="frmLogin">
+	<div id="header" align="center" style="margin-top:60px">
+		<h1><h:outputText value="#{msg.welcomeMessage}" /></h1>
+	</div>
+
+	<div id="body" align="center">
+	<h:form id="frmLogin">
+		<p:panelGrid id="pgLogin" style="margin-top:80px">
+			<f:facet name="header">
+				<p:row>
+					<h2><p:column colspan="7">Inicion de Sesión</p:column></h2>
+				</p:row>
+			</f:facet>
+
+			<p:row>
+				<p:column colspan="2" rowspan="7">
+					<p:graphicImage value="/resources/images/logo_.jpg"></p:graphicImage>
+				</p:column>
+				<p:column colspan="6" style="height: 30px;">
+				</p:column>
+			</p:row>
+
+			<p:row>
+				<p:column colspan="3">
+					<p:outputLabel for="txtNoEmpleado" style="text-align: right;">Número de empleado:</p:outputLabel>
+				</p:column>
+				<p:column colspan="3">
+					<p:inputText id="txtNoEmpleado" label="NumeroEmpleado" required="true" value="#{loginView.username}"></p:inputText>
+				</p:column>
+			</p:row>
+
+			<p:row>
+				<p:column colspan="3">
+					<p:outputLabel for="txtPassword" style="text-align: right;">Contraseña:</p:outputLabel>
+				</p:column>
+				<p:column colspan="3">
+					<p:password id="txtPassword" label="Password" required="true" value="#{loginView.password}"></p:password>
+				</p:column>
+			</p:row>
+
+			<p:row>
+				<p:column colspan="3">
+				</p:column>
+				<p:column colspan="3">
+					<p:commandButton id="btnAcceso" value="Acceso" action="#{loginView.passUser}" global="true"/>
+				</p:column>
+			</p:row>
+
+			<p:row>
+				<p:column colspan="8" rowspan="2"><p:messages id="messages" showDetail="false" autoUpdate="true" closable="true" /></p:column>
+			</p:row>
+			<div style="text-align:center;width: 100%;border: 0px solid black;">
+        		<p:ajaxStatus style="width:100%;height:16px;align:center;" id="ajaxStatusPanel">
+						    <f:facet name="start">
+						    	<p:outputLabel value=""/><br/>
+						        <h:graphicImage value="/resources/images/ajax-loader.gif" />
+						    </f:facet>
+						     
+						    <f:facet name="complete">
+						        <h:outputText value="" />
+						    </f:facet>
+						    <f:facet name="error">
+						        <h:outputText value="Error" />
+						    </f:facet>
+				</p:ajaxStatus>
+				
+        	</div>
+		</p:panelGrid>
+	</h:form>
+	</div>
+	<!--
+	<footer id="footer">
+	<div id="footer" align="center">
+		<p class="LabelFooter">
+			<p:outputLabel value="#{msg.footerMessage}" />
+		</p>
+	</div>
+	</footer>
+	 -->
+</body>
+</html>

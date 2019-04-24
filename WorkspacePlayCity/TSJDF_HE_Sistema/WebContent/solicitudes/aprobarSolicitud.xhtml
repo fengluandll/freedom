@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<style type="text/css">
+.ui-widget, .ui-widget .ui-widget {
+	font-size: smaller;
+}
+
+.ui-datatable .ui-column-filter {
+	display: none;
+}
+
+.ui-panelgrid>*>tr, .ui-panelgrid .ui-panelgrid-cell {
+	border: none;
+}
+</style>
+<script type="text/javascript">
+//<![CDATA[ 
+	function direcciona(){
+		
+		//var text = window.parent.document.getElementById('menuCursos').getElementsByTagName('a')[0].click();
+		var lol = window.parent.document.getElementById('contenPrincipal');
+		//lol.src = "/joappWeb/carousel/visualizaVideo.xhtml?linkTopic="+link+"&topicId="+topicId;
+		lol.src = "/TSJDF_HE_Sistema/solicitudes/aprobarSolicitudes.xhtml";
+		//var media = window.parent.document.getElementById('clicVideo').click();
+		
+		}
+	//]]>
+</script>
+</h:head>
+
+<h:body>
+	<h:form id="frmSolicitudOne">
+	<p:growl id="messages" autoUpdate="true" showDetail="false"/>
+		<p:panelGrid id="pgNuevoLines" style="width: 90%;margin-top:10px;">
+			<f:facet name="header">
+				<p:row>
+					<p:column colspan="5"><p:outputLabel value="Datos de la Solicitud" /></p:column>
+					<p:column colspan="0"><h:form><p:commandButton value="Regresar" onclick="javascript:direcciona()"/></h:form></p:column>
+				</p:row>
+			</f:facet>
+			
+				<p:row>
+					<p:column style="width: 30%;" colspan="2">
+						<p:outputLabel value="Número de empleado" for="txtNoEmpleado"/>
+					</p:column>
+					<p:column style="width: 70%;" colspan="3">
+						<p:inputText id="txtNoEmpleado" value="#{modificaSolicitudView.numEmpleado}" readonly="true"  style="width: 400px;"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width: 30%;" colspan="2">
+						<p:outputLabel value="Nombre del empleado" for="txtNomEmpleado"/>
+					</p:column>
+					<p:column style="width: 70%;" colspan="3">
+						<p:inputText id="txtNomEmpleado" value="#{modificaSolicitudView.nombreEmpleado}" readonly="true"  style="width: 400px;"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width: 30%;" colspan="2">
+						<p:outputLabel value="Órgano judicial, unidad administrativa, o de apoyo judicial" for="txtUniAdm"/>
+					</p:column>
+					<p:column style="width: 70%;" colspan="3">
+						<p:inputText id="txtUniAdm" value="#{modificaSolicitudView.organoJudicial}" readonly="true"  style="width: 400px;"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width: 30%;" colspan="2">
+						<p:outputLabel value="RFC" for="txtRfc"/>
+					</p:column>
+					<p:column style="width: 70%;" colspan="3">
+						<p:inputText id="txtRfc" value="#{modificaSolicitudView.rfc}" readonly="true"  style="width: 400px;"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width: 30%;" colspan="2">
+						<p:outputLabel value="Periodo correspondiente a la quincena" for="txtFecPaga"/>
+					</p:column>
+					<p:column style="width: 70%;" colspan="3">
+						<p:inputText id="txtFecPaga" value="#{modificaSolicitudView.fechaPaga}" readonly="true"  style="width: 400px;"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width: 30%;" colspan="2">
+						<p:outputLabel value="Descripción de la Nómina" for="txtDescNomina"/>
+					</p:column>
+					<p:column style="width: 70%;" colspan="3">
+						<p:inputText id="txtDescNomina" value="#{modificaSolicitudView.descripcionNomina}" readonly="true"  style="width: 400px;"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width: 30%;" colspan="2">
+						<p:outputLabel value="Jornada ordinaria" for="txtJornadaOrd"/>
+					</p:column>
+					<p:column style="width: 70%;" colspan="3">
+						<p:inputText id="txtJornadaOrd" value="#{modificaSolicitudView.jornadaOrdinaria}" readonly="false" required="false" style="width: 400px;"/>
+					</p:column>
+				</p:row>
+			<p:row>
+				<p:column colspan="5">
+					<p:dataTable id="idHorasExt" var="horas" value="#{modificaSolicitudView.listHoras}" style="width: 100%">
+						<p:column headerText="Hora de Inicio" style="text-align:center;">
+						        <h:outputText value="#{horas.horaEntrada}" />
+						    </p:column>
+						 
+						    <p:column headerText="Hora de Salida" style="text-align:center;">
+						        <h:outputText value="#{horas.horaSalida}" />
+						    </p:column>
+						 
+						    <p:column headerText="Fecha HE" style="text-align:center;">
+						        <h:outputText value="#{horas.fecha}" />
+						    </p:column>
+						    
+						    <p:column headerText="Fecha Laborada" style="text-align:center;">
+						        <h:outputText value="#{horas.numHorasLaboradas}" />
+						    </p:column>
+						 
+						    <p:column headerText="Justificación" style="text-align:center;">
+						        <h:outputText value="#{horas.justificacion}" />
+						    </p:column>
+					</p:dataTable>
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>
+					<p:outputLabel value="Motivo rechazo:" for="txtMotivoRechaza"/>
+				</p:column>
+				<p:column colspan="5">
+					<p:inputText id="txtMotivoRechaza" value="#{modificaSolicitudView.motivoRechazo}"/>
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>
+					<p:outputLabel value="Estatus:" for="ddlNuevoHorasLaboradas"/>
+				</p:column>
+				<p:column colspan="1">
+					<p:selectOneMenu id="ddlNuevoHorasLaboradas" 
+						value="#{modificaSolicitudView.aprobarSolicitud}" style="width:120px" filter="false"
+						filterMatchMode="contains"
+						required="true">
+		                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+		                <f:selectItems value="#{aprobarSolicitudesView.lovStatusData}" />
+					</p:selectOneMenu>
+				</p:column>
+				<p:column colspan="4">
+					<p:commandButton value="Guardar" action="#{modificaSolicitudView.aprobarSolicitudes}"/>
+				</p:column>
+			</p:row>
+		</p:panelGrid>
+		
+	</h:form>
+
+		
+	
+</h:body>
+</html>

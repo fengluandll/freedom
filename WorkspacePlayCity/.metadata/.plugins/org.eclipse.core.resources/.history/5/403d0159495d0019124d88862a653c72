@@ -1,0 +1,290 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      lang="en">
+<h:head>
+<link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/login.css"/>
+<link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/bootstrap-theme.css"/>
+<script type="text/javascript" src="#{request.contextPath}/js/bootstrap.js"></script>
+<script type="text/javascript" src="#{request.contextPath}/js/jquery.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
+
+<style type="text/css">
+ 
+.ui-datatable .ui-column-filter {
+	    	display:none;
+		}
+.formulario{
+	font-weight: bold;
+}
+</style>
+
+
+<script type="text/javascript">
+    //<![CDATA[
+    
+    //]]>
+
+    PrimeFaces.locales['de'] = {
+        closeText: 'Schließen',
+        prevText: 'Zurück',
+        nextText: 'Weiter',
+        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthNamesShort: ['Jan', 'Feb', 'März', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+        dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+        dayNamesShort: ['Son', 'Mon', 'Die', 'Mit', 'Don', 'Fre', 'Sam'],
+        dayNamesMin: ['S', 'M', 'D', 'M ', 'D', 'F ', 'S'],
+        weekHeader: 'Woche',
+        FirstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: '',
+        timeOnlyTitle: 'Nur Zeit',
+        timeText: 'Zeit',
+        hourText: 'Hora',
+        minuteText: 'Minutos',
+        secondText: 'Sekunde',
+        currentText: 'Aktuelles Datum',
+        ampm: false,
+        month: 'Monat',
+        week: 'Woche',
+        day: 'Tag',
+        allDayText: 'Ganzer Tag'
+    };
+</script>
+
+</h:head>
+<h:body>
+<div class="container" style="max-width: 100%;">
+
+<div class="row">
+<div class="col-sm-12 col-md-12 col-lg-12" style="margin-top: 30px;">
+<strong>PROGRAMACIÓN DE JOBS</strong>
+<h:form id="frmJob" prependId="false">
+<p:dataTable id="tblJobs" var="job" value="#{jobsView.loListJobs}" widgetVar="jobTable"
+				filteredValue="#{obrasView.filteredObra}"
+                 emptyMessage="No existen tareas de trabajo" 
+                 style="font-size:11px;" scrollable="true" rowKey="#{jobsView.linIdJob}" >
+
+<f:facet name="header">
+            
+            <p:outputPanel>
+            	<p:panelGrid style="width:80%;">
+            		<p:row>
+            			<p:column style="width:170px;" >
+                			<h:outputText value="Busqueda por todos los campos:" style="font-weight: bold;"/>
+                		</p:column>
+                		<p:column>
+                			<p:inputText id="globalFilter" onkeyup="PF('tblJobs').filter()" style="width:150px;" placeholder="Ingresa una palabra clave"/>
+                		</p:column>
+                		<p:column style="width:150px;">
+            				<h:outputText value="Nuevo Job" style="font-weight: bold;"/>
+            			</p:column>
+            			<p:column>
+            				<p:commandLink oncomplete="PF('dlgJob').show();" 
+            				               action="#{jobsView.cleanVariables()}" 
+            				               update=":frmnvjob:id_job">
+            					<i class="fas fa-plus-circle fa-3x" style="color:#1d355e;"></i>
+            				</p:commandLink>
+            			</p:column>
+                	</p:row>
+                </p:panelGrid>
+            </p:outputPanel>
+            
+</f:facet>	
+<p:column filterBy="#{job.piIdJob}" headerText="id job"  filterMatchMode="contains" 
+                 style="font-size:11px;" footerText="#{job.piIdJob}" rendered="false">
+             <h:outputText value="#{job.piIdJob}" />
+         
+</p:column> 
+<p:column filterBy="#{job.piIdCasino}" headerText="id casino"  filterMatchMode="contains" 
+                 style="font-size:11px;" footerText="#{job.piIdCasino}" rendered="false">
+             <h:outputText value="#{job.piIdCasino}" />
+         
+</p:column> 
+<p:column filterBy="#{job.psNomCasino}" headerText="Casino"  filterMatchMode="contains" 
+                 style="font-size:11px;" footerText="#{job.psNomCasino}" rendered="true">
+             <h:outputText value="#{job.psNomCasino}" />
+</p:column>
+<p:column filterBy="#{job.psTiempo}" headerText="Hora de Ejecución"  filterMatchMode="contains" 
+                 style="font-size:11px;" footerText="#{job.psTiempo}" rendered="true">
+             <h:outputText value="#{job.psTiempo}" />
+</p:column>  
+
+<p:column headerText="Editar" style="font-size:12px;text-align:center;width:5%;">
+
+ <p:commandLink update=":frmEditjob" 
+             				  oncomplete="PF('dlgEditJob').show()"  action="#{jobsView.refresVariablesJob(job)}"
+             				  icon="ui-icon-pencil"
+             				  title="Editar"
+             				  style="height:15px">
+		<i class="far fa-edit fa-lg" style="color:#1d355e;"></i>             				  
+</p:commandLink>
+</p:column>
+<p:column headerText="Eliminar" style="font-size:12px;text-align:center;width:7%;">
+
+<p:commandLink update=":frmEditjob" 
+               actionListener="#{jobsView.deleteJob(job)}"
+			   icon="ui-icon-pencil"
+			   title="Eliminar"
+			   style="height:15px">
+
+<p:confirm header="Confirmación" message="¿Estas seguro que deseas eliminar este registro?" icon="ui-icon-alert"/>			   
+<i class="far fa-trash-alt fa-lg" style="color:#1d355e;"></i>
+</p:commandLink>
+<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+			        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+			        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+</p:confirmDialog>            
+</p:column>                          
+
+</p:dataTable>                 
+</h:form>
+</div>
+</div>
+</div>
+</h:body>
+
+<!-- Dialogs -->
+<h:form id="frmnvjob" prependId="false" >
+<p:dialog header="Nuevo Job" 
+		  widgetVar="dlgJob" 
+		  modal="true" 
+		  resizable="false"
+		  showEffect="slide"
+		  hideEffect="fold"
+		  id="id_job">
+		  
+ 	<p:growl widgetVar="msgPro" id="msgPro" autoUpdate="true" showDetail="false"/>
+ 	<!-- <p:messages id="msgAlert" showDetail="false" autoUpdate="true"/> -->
+<p:scrollPanel mode="native" style="height:410px;"> 	
+ 	<p:panelGrid>
+		<p:row>
+			<p:column>
+				<p:outputLabel value="Nombre Casino: " styleClass="formulario" />
+			</p:column>
+			<p:column>
+				<p:inputText id="id_casino" value="#{jobsView.lsNomCasino}" label="Nombre del Casino" required="true"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<p:outputLabel value="Tiempo de ejecución: " styleClass="formulario" />
+			</p:column>
+			<p:column>
+            	<p:calendar id="time" label="Tiempo" value="#{jobsView.ltHoraMinutos}" pattern="HH:mm" timeOnly="true" required="true" />
+			</p:column>
+		</p:row>	
+		<p:row>
+			<p:column>
+				<p:outputLabel value="Día de la semana" styleClass="formulario" />
+			</p:column>
+			<p:column>
+   					<p:selectCheckboxMenu id="idSemana" value="#{jobsView.laSemana}"  multiple="true"
+                              filter="true" filterMatchMode="startsWith" panelStyle="width:300px" 
+                              required="true" label="Dia de la semana">
+            		<f:selectItems value="#{jobsView.selectSemanas}" />
+        		</p:selectCheckboxMenu> 
+			</p:column>
+		</p:row>		
+		<p:row style="text-align:center;">
+			<p:column colspan="2">
+				<p:commandButton style="background-color:#1d355e;border-color:#ffffff" 
+				                 value="Guardar" 
+							     styleClass="btn btn-primary" 
+							     actionListener="#{jobsView.saveJob}"
+							     update=":frmJob"/>
+				<p:ajaxStatus id="ajaxStatusPanel" style="text-align:center;">
+						    <f:facet name="start">
+						    	<p:outputLabel value=""/><br/>
+						        <h:graphicImage value="/img/ajax-loader.gif" />
+						    </f:facet>
+						     
+						    <f:facet name="complete">
+						        <h:outputText value="" />
+						    </f:facet>
+				</p:ajaxStatus>							     
+			</p:column>
+		</p:row>
+	</p:panelGrid>
+	
+</p:scrollPanel>
+</p:dialog> 
+</h:form>
+
+<!-- Dialogo de Editar -->
+
+<h:form id="frmEditjob" prependId="false" >
+<p:dialog header="Modificar Job" 
+		  widgetVar="dlgEditJob" 
+		  modal="true" 
+		  resizable="false"
+		  showEffect="slide"
+		  hideEffect="fold"
+		  id="id_job_edit">
+		  
+ 	<p:growl widgetVar="msgPro2" id="msgPro2" autoUpdate="true" showDetail="false"/>
+ 	<!-- <p:messages id="msgAlert" showDetail="false" autoUpdate="true"/> -->
+<p:scrollPanel mode="native" style="height:410px;"> 	
+ 	<p:panelGrid>
+		<p:row>
+			<p:column>
+				<p:outputLabel value="Nombre Casino: " styleClass="formulario" />
+			</p:column>
+			<p:column>
+				<p:inputText value="#{jobsView.lsNomCasino}" label="Nombre del Casino" required="true"/>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<p:outputLabel value="Tiempo de ejecución: " styleClass="formulario" />
+			</p:column>
+			<p:column>
+            	<p:calendar label="Tiempo" value="#{jobsView.lsTiempo}" pattern="HH:mm" timeOnly="true" required="true" />
+			</p:column>
+		</p:row>	
+		<p:row>
+			<p:column>
+				<p:outputLabel value="Día de la semana" styleClass="formulario" />
+			</p:column>
+			<p:column>
+   					<p:selectCheckboxMenu value="#{jobsView.laSemana}"  multiple="true"
+                              filter="true" filterMatchMode="startsWith" panelStyle="width:300px" 
+                              required="true" label="Dia de la semana">
+            		<f:selectItems value="#{jobsView.selectSemanas}" />
+        		</p:selectCheckboxMenu> 
+			</p:column>
+		</p:row>		
+		<p:row style="text-align:center;">
+			<p:column colspan="2">
+				<p:commandButton style="background-color:#1d355e;border-color:#ffffff" 
+				                 value="Guardar" 
+							     styleClass="btn btn-primary" 
+							     actionListener="#{jobsView.editJob}"
+							     update=":frmJob"/>
+				<p:ajaxStatus  style="text-align:center;">
+						    <f:facet name="start">
+						    	<p:outputLabel value=""/><br/>
+						        <h:graphicImage value="/img/ajax-loader.gif" />
+						    </f:facet>
+						     
+						    <f:facet name="complete">
+						        <h:outputText value="" />
+						    </f:facet>
+				</p:ajaxStatus>							     
+			</p:column>
+		</p:row>
+	</p:panelGrid>
+	
+</p:scrollPanel>
+</p:dialog> 
+</h:form>
+
+           
+
+</html>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MasterDetailsEditorPageState>
+    <ContentOutlineState>
+        <Ratio>0.29911154985192495</Ratio>
+        <Root>
+            <Children>
+                <MasterDetailsNodeState>
+                    <Label>Security</Label>
+                    <Expanded>true</Expanded>
+                </MasterDetailsNodeState>
+                <MasterDetailsNodeState>
+                    <Label>Session</Label>
+                    <Selected>true</Selected>
+                </MasterDetailsNodeState>
+            </Children>
+        </Root>
+    </ContentOutlineState>
+</MasterDetailsEditorPageState>
