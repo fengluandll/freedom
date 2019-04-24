@@ -39,7 +39,7 @@
 <!--       
     <Resource  name="jdbc/startonl_joapp" auth="Container" type="javax.sql.DataSource"
                maxActive="100" maxIdle="30" maxWait="120000"
-               username="start_user_web" password="Lupe12121531" driverClassName="com.mysql.jdbc.Driver"
+               username="" password="" driverClassName="com.mysql.jdbc.Driver"
                url="jdbc:mysql://www.startonline.com.mx:3306/startonl_joapp"
                removeAbandoned="false"
 	           removeAbandonedTimeout="60"
@@ -56,7 +56,7 @@
    
     <Resource  name="jdbc/startonl_joapp" auth="Container" type="javax.sql.DataSource"
                maxActive="100" maxIdle="30" maxWait="120000"
-               username="start_user_web" password="Lupe12121531" driverClassName="com.mysql.jdbc.Driver"
+               username="" password="" driverClassName="com.mysql.jdbc.Driver"
                url="jdbc:mysql://localhost:3306/startonl_joapp"
                removeAbandoned="false"
 	           removeAbandonedTimeout="60"
@@ -73,7 +73,7 @@
 	           
     <Resource  name="jdbc/startonl_sct_app" auth="Container" type="javax.sql.DataSource"
                maxActive="100" maxIdle="30" maxWait="120000"
-               username="start_user_sct" password="Lupe12121531" driverClassName="com.mysql.jdbc.Driver"
+               username="" password="" driverClassName="com.mysql.jdbc.Driver"
                url="jdbc:mysql://localhost:3306/startonl_sct_app"
                removeAbandoned="false"
 	           removeAbandonedTimeout="60"
@@ -90,7 +90,7 @@
 <!--  
     <Resource  name="jdbc/startonl_sct_app" auth="Container" type="javax.sql.DataSource"
                maxActive="100" maxIdle="30" maxWait="120000"
-               username="start_user_sct" password="Lupe12121531" driverClassName="com.mysql.jdbc.Driver"
+               username="start_user_sct" password="" driverClassName="com.mysql.jdbc.Driver"
                url="jdbc:mysql://www.startonline.com.mx:3306/startonl_sct_app"
                removeAbandoned="false"
 	           removeAbandonedTimeout="60"
@@ -108,7 +108,7 @@
 <!-- 	           
     <Resource name="jdbc/pre_db" auth="Container" type="javax.sql.DataSource"
                maxActive="100" maxIdle="30" maxWait="100000"
-               username="apps" password="Lupe12121531" driverClassName="com.mysql.jdbc.Driver"
+               username="apps" password="" driverClassName="com.mysql.jdbc.Driver"
                url="jdbc:mysql://localhost:3306/pre_db"/>
  -->                              
 <!-- 
