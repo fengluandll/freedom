@@ -36,45 +36,9 @@ color: #f2f2f2;
 <h:form id="idDashCursos" prependId="false">
 <div class="layout-dashboard">
 <div class="ui-g">
-	<div class="titCursos ui-lg-12">
-		<h3>Mis Cursos Contratados</h3>
-	</div>
-	<div class="w-100">
-	
-	</div>
-	<p:repeat value="#{arbolCursosBean.listCourses}" var="curso">
-		<div class="ui-g-12 ui-md-6 ui-lg-4">
-			<div class="overview-box #{curso.segment3}">
-                                             
-				<p:graphicImage name="images/icon-users.png" library="ecuador-layout"  styleClass="image-icon" />
-				<div class="overview-title">Entrar</div>
-				<div class="overview-numbers">
-					    
-			    <p:commandLink 	title="Entrar al curso"
-	 				  			action="#{listUnidadesBean.dameUnidades(curso.courseId,curso.courseName)}"
-	 				  			style="text-decoration:none;"
-	 				  			update=":frmunits"
-	 				   			oncomplete="PF('dlgConCurso').show();" 
-	 				  			onmouseover="changeClass('linkEntra','resalta')">
-	 				  
-	 			<h:outputText value="#{curso.courseName}" style="color:white;font-size:20px;"/>
-	 			</p:commandLink>
-				</div>
-				<div class="overview-subinfo">
-				    <div class="ui-g-6 progressbar">
-				        <div class="progress sale" style="width: #{graficaCursosBean.getPorTotal(curso.courseId)}%"></div>
-				    </div>
-				    <span class="ui-g-6">#{graficaCursosBean.getPorTotal(curso.courseId)}%</span>
-				</div>        
-                                                 
-</div>
-</div>
-</p:repeat>
-             
-</div>
-<hr/>
-<div class="titCursos ui-lg-12" style="margin-top: 8%">
-		<h3>Cursos Disponibles</h3>
+
+<div class="titCursos ui-lg-12" style="margin-top: 1%">
+		<h3>Cursos Contratados</h3>
 </div>
 <p:repeat value="#{listUnidadesBean.listCursos}" var="cur">
 
@@ -91,7 +55,7 @@ color: #f2f2f2;
             <div class="col-sm-12" style="padding: 0;text-align: center;">
                 <img src="#{cur.img}" alt="" class="img-fluid p-b-10"/>
                 <div class="contact-icon">
-                    <p:commandLink action="#{topicsCarouselBean.verContenido}" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Ver Contenido" ><i class="icofont icofont-eye m-0"></i>
+                    <p:commandLink action="#{topicsCarouselBean.verContenido}" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Entrar" ><i class="icofont icofont-eye m-0"></i>
                     	<f:param name="nomCurso" value="#{cur.courseName}"/>
                     	<f:param name="courseId" value="#{cur.courseId}"/>
                     	<h:outputText value="#{cur.courseName}"/>
@@ -126,19 +90,16 @@ color: #f2f2f2;
                 </div>
                 <div class="row">
                     <div class="col-sm-5">
-                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-bill-alt"></i>Inversión :</h6>
+                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-bill-alt"></i>Progreso :</h6>
                     </div>
                     <div class="col-sm-7" style="text-align: center">
-                        <h1 class="m-b-30"><strong><h:outputText value="#{cur.inversionTotal}"/></strong></h1>
+                        <div class="ui-g-6 progressbar">
+				           <div class="progress sale" style="width: #{graficaCursosBean.getPorTotal(cur.courseId)}%"></div>
+				        </div>
+				        <span class="ui-g-6">#{graficaCursosBean.getPorTotal(cur.courseId)}%</span>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <p:commandButton value="Agregar al Carrito"
-										 action="#{loginBean.passStudent}" 
-										 styleClass="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" />
-                    </div>
-                </div>
+
             </div>
 <!--         </div> -->
 
@@ -150,6 +111,7 @@ color: #f2f2f2;
 
 </p:repeat>
 
+</div>
 </div>
       
 </h:form>	

@@ -13,10 +13,12 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
 import mx.javaonline.beans.CoursesBean;
+import mx.javaonline.beans.StudentPersonalBean;
 import mx.javaonline.beans.TopicsBean;
 import mx.javaonline.carousel.beans.ObjetivoCursoBean;
 import mx.javaonline.daos.CursosDAO;
@@ -30,7 +32,8 @@ public class listUnidadesBean {
 	
 	private static org.apache.log4j.Logger logger = Logger.getLogger(listUnidadesBean.class);
 	FacesContext facesContext = FacesContext.getCurrentInstance();
-	
+	HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
+	StudentPersonalBean studentPersonalBean = (StudentPersonalBean)session.getAttribute("studentPersonalBean");
 	List<CursoUnidadBean> 	listCurUni;
 	List<TopicsBean> 		listTopics;
 	UnidadesDAO 			unidadesDAO;
@@ -77,7 +80,8 @@ public class listUnidadesBean {
 	}
 	
 	public List<CoursesBean> dameCursos() {
-		List<CoursesBean> listCursos = cursosDAO.dameCurso();
+		
+		List<CoursesBean> listCursos = cursosDAO.getCursosContratados(studentPersonalBean.getStudentPersonalId());
 		return listCursos;
 		//this.listCursos = listCursos;
 	}
