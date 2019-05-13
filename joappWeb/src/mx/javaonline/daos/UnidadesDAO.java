@@ -41,7 +41,8 @@ public class UnidadesDAO {
 						   "u.segment1 objetivo_unidad, \n"+
 						   "u.segment2, \n"+
 						   "u.segment3, \n"+
-						   "u.link ligaUnidad \n"+
+						   "u.link ligaUnidad, \n"+
+						   "u.id_order \n"+
 					"FROM  courses c, \n"+
 					"     units   u \n"+
 					"WHERE u.course_id = c.course_id \n"+
@@ -62,6 +63,7 @@ public class UnidadesDAO {
 			cursoUnidadBean.setSegment2(rs.getString(7));
 			cursoUnidadBean.setSegment3(rs.getString(8));
 			cursoUnidadBean.setLigaUnidad(rs.getString(9));
+			cursoUnidadBean.setIdOrder(rs.getInt(10));
 			listCurUni.add(cursoUnidadBean);
 			
 		}

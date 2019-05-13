@@ -15,6 +15,12 @@
  
 <style type="text/css">
 
+.center-div
+{
+  margin: 0 auto;
+  /* width: 100%; */
+}
+
 .tableMargin {
 	margin: 10px 10px 10px 10px;
 }
@@ -169,12 +175,12 @@
 			<div class="route-bar-breadcrumb">
                <h:link id="backCursos2" outcome="/index" class="fa fa-home"></h:link> 
                <span>/ <p:commandLink 	title="Mostrar curso"
-			 				  			action="#{listUnidadesBean.dameUnidades(sessionScope.courseId,sessionScope.courseName)}"
+			 				  			action="#{topicsCarouselBean.verContenido}"
 			 				  			style="text-decoration:none;"
 			 				  			update=":frmunits"
-			 				   			oncomplete="PF('dlgConCurso').show();" 
 			 				  			onmouseover="changeClass('linkEntra','resalta')">
-	 				  
+	 				    <f:param name="nomCurso" value="#{sessionScope.courseName}"/>
+                    	<f:param name="courseId" value="#{sessionScope.courseId}"/>
 			 			<h:outputText value="#{sessionScope.courseName}" /> 
 			 			</p:commandLink>
 	 			
@@ -205,10 +211,8 @@
 						<span><h3>
 							<!-- 	<h:outputText value="#{sessionScope.courseName}" />   -->
 									<h:outputText value="#{sessionScope.topicName}" />
-							</h3></span> <span></span>
-						<div class="card-header-right">
-							<i class="icofont icofont-spinner-alt-5"></i>
-						</div>
+							</h3></span> 
+						
 					</div>
 
 					<div class="ui-g-12 ui-md-6 ui-lg-6">
@@ -218,7 +222,7 @@
 								<p:dataTable id="tblVideos" var="vid"
 									value="#{topicsCarouselBean.dameVideos(sessionScope.topicId)}"
 									widgetVar="VideoTable"
-									emptyMessage="No es necesario videos para este tema"
+									emptyMessage="No es necesario videos para esta clase"
 									styleClass="tableMargin">
 
 									<p:column styleClass="headerColumn" headerText="Nombre Video">
@@ -256,7 +260,7 @@
 						<p:dataTable id="tblLaminas" var="lam"
 							value="#{topicsCarouselBean.dameLaminas(sessionScope.topicId)}"
 							widgetVar="laminaTable"
-							emptyMessage="No es necesario laminas para este tema"
+							emptyMessage="No es necesario laminas para esta clase"
 							styleClass="tableMargin">
 
 							<p:column styleClass="headerColumn" headerText="Nombre Archivo">
@@ -298,7 +302,7 @@
 							<p:dataTable id="tblPracticas" var="prac"
 								value="#{topicsCarouselBean.damePracticas(sessionScope.topicId)}"
 								widgetVar="practicaTable"
-								emptyMessage="No es necesario practicas para este tema"
+								emptyMessage="No es necesario practicas para esta clase"
 								styleClass="tableMargin">
 
 								<p:column headerText="Nombre" styleClass="headerColumn">
@@ -376,7 +380,7 @@
 								<p:dataTable id="tblSolucion" var="sol"
 									value="#{topicsCarouselBean.dameSolucion(sessionScope.topicId)}"
 									widgetVar="solucionTable"
-									emptyMessage="No es necesario una solución para este tema"
+									emptyMessage="No es necesario una solución para esta clase"
 									styleClass="tableMargin">
 
 									<p:column headerText="Nombre" styleClass="headerColumn">
@@ -444,9 +448,40 @@
 							</div>
 						</div>
 					</div>
+<div class="center-div">
 
+<p:commandButton value="Clase Terminada"
+				 action="#{loginBean.passStudent}" 
+				 styleClass="btn btn-primary btn-lg btn-block waves-effect text-center m-b-20" 
+				 style="width:400px;height:50px;font-size:18px;"/>
 
-				</div>
+</div>
+
+<div class="ui-g-6 ui-md-6 ui-lg-6 ui-xl-6" style="margin-top: 100px;">
+Siguiente Clase                                                
+<table id="e-product-list" class="table table-striped dt-responsive nowrap">
+	<thead>
+	    <tr>
+	        <th>Siguiente Clase</th>
+	        <th>Objetivo</th>
+	    </tr>
+	</thead>
+	<tbody>
+	<p:repeat value="#{topicsCarouselBean.getNextCourse(sessionScope.unitId,sessionScope.idOrder)}" var="cur"> 
+	    <tr>
+	        <td class="pro-list-img">
+	            <h:outputText value="#{cur.topicName}"/>
+	        </td>
+	        <td class="pro-name">
+	            <h:outputText value="Tomar Clase"/>
+	        </td>
+</tr>
+</p:repeat>
+</tbody>
+</table>
+</div>
+
+</div>
 
 
 
@@ -505,7 +540,7 @@
 <table id="e-product-list" class="table table-striped dt-responsive nowrap">
     <thead>
         <tr>
-            <th>Tema</th>
+            <th>Clase</th>
             <th>Objetivo</th>
         </tr>
     </thead>
@@ -516,10 +551,10 @@
                           <p:commandLink  id="linkTomarClase2"
                       					  action="#{redirectPageBean.loadPage}">
 	                      	<f:param name="topicName"   value="#{topic.topicName}" />
-	                      	<f:param name="courseName"  value="#{listUnidadesBean.nomCurso}" />
+	                      	<f:param name="courseName"  value="#{sessionScope.courseName}" />
 	                      	<f:param name="topicId"     value="#{topic.topicId}" />
 	                      	<f:param name="unitName"    value="#{listUnidadesBean.nomUnidad}" />
-	                      	<f:param name="courseId"    value="#{listUnidadesBean.courseId}" />
+	                      	<f:param name="courseId"    value="#{sessionScope.courseId}" />
 	                      	<f:param name="unitId"      value="#{listUnidadesBean.unitId}" />
                             <h:outputText value="#{topic.topicName}"/>
                            </p:commandLink>   

@@ -24,6 +24,7 @@ import mx.javaonline.admin.beans.VideosBean;
 import mx.javaonline.beans.StudentPersonalBean;
 import mx.javaonline.beans.TopicsBean;
 import mx.javaonline.daos.AgregaContenidoDAO;
+import mx.javaonline.daos.TopicsDAO;
 import mx.javaonline.model.ConectionWrapper;
 
 public class TopicsCarouselBean {
@@ -413,6 +414,11 @@ public class TopicsCarouselBean {
 		return listTopics;
 	}
 	
+	public List<TopicsBean> getNextCourse(String unitId,String idOrder) {
+		TopicsDAO topicsDAO = new TopicsDAO();
+		List<TopicsBean>  listTopicsBean = topicsDAO.getNextClass(Integer.parseInt(unitId), Integer.parseInt(idOrder));
+		return listTopicsBean;
+	}
 	
 	public List<VideosBean> dameVideos(int topicId){
 		

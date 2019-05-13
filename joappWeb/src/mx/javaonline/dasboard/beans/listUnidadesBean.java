@@ -3,11 +3,6 @@
  */
 package mx.javaonline.dasboard.beans;
 
-import java.sql.CallableStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Types;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -24,7 +19,6 @@ import mx.javaonline.carousel.beans.ObjetivoCursoBean;
 import mx.javaonline.daos.CursosDAO;
 import mx.javaonline.daos.TopicsDAO;
 import mx.javaonline.daos.UnidadesDAO;
-import mx.javaonline.model.ConectionWrapper;
 
 @ManagedBean
 @ViewScoped

@@ -159,6 +159,9 @@
    PATH="/home/contenidoCurso.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="salir::#login.xhtml" NAME="output"
     PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="salir" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="dashTopics::#home#dashTema.xhtml"
+    NAME="output1" PATH="/home/dashTema.xhtml"
+    TARGET="rules:#home#dashTema.xhtml" TITLE="dashTopics" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#miPerfilPlus.xhtml"

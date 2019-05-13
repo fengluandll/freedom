@@ -28,7 +28,7 @@ public class TopicsBean implements Serializable{
 	private int evaluacion_tab_id;
 	private String linkEvaluacion;
 	private String duracion;
-	
+	private int    idOrder;
 	
 	public TopicsBean() {
 	}
@@ -237,7 +237,23 @@ public class TopicsBean implements Serializable{
 	public void setDuracion(String duracion) {
 		this.duracion = duracion;
 	}
+
+
+	/**
+	 * @return the idOrder
+	 */
+	public int getIdOrder() {
+		return idOrder;
+	}
+
+
+	/**
+	 * @param idOrder the idOrder to set
+	 */
+	public void setIdOrder(int idOrder) {
+		this.idOrder = idOrder;
+	}
 	
-	
+		
 
 }

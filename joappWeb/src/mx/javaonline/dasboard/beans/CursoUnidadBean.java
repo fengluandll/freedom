@@ -17,6 +17,7 @@ private String segment1;
 private String segment2;
 private String segment3;
 private String ligaUnidad;
+private int    idOrder;
 
 	public CursoUnidadBean(){
 		
@@ -102,5 +103,20 @@ private String ligaUnidad;
 		this.ligaUnidad = ligaUnidad;
 	}
 
+	/**
+	 * @return the idOrder
+	 */
+	public int getIdOrder() {
+		return idOrder;
+	}
+
+	/**
+	 * @param idOrder the idOrder to set
+	 */
+	public void setIdOrder(int idOrder) {
+		this.idOrder = idOrder;
+	}
+
+	
 	
 }

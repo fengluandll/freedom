@@ -29,9 +29,9 @@
 		<div class="col-md-12">
                                                 <div class="card">
                                                     <div class="card-header">
-                                                    	<div class="col-sm-12 text-right">
+                                                    	<!-- <div class="col-sm-12 text-right">
                                                                 <button class="btn btn-primary"> Comprar</button>
-                                                        </div>
+                                                        </div> -->
                                                         <div class="card-header-left">
                                                             <h:outputText style="font-size:25px;" value="#{sessionScope['nomCurso']}"/>
                                                         </div>
@@ -70,7 +70,18 @@
                                                                             <p class="text-muted"> <h:outputText value="#{t.duracion}"/>  min</p>
                                                                         </td>
                                                                         <td>
-                                                                            <p class="m-l-20 text-c-green"><i class="fa fa-play-circle-o fa-3x"></i></p>
+                                                          <p:commandLink  id="linkTomarClase2"
+								                      					  action="#{redirectPageBean.loadPage}">
+									                      	<f:param name="topicName"   value="#{t.topicName}" />
+									                      	<f:param name="courseName"  value="#{sessionScope['nomCurso']}" />
+									                      	<f:param name="topicId"     value="#{t.topicId}" />
+									                      	<f:param name="unitName"    value="#{u.unitName}" />
+									                      	<f:param name="courseId"    value="#{sessionScope['courseId']}" />
+									                      	<f:param name="unitId"      value="#{u.unitId}" />
+									                      	<f:param name="idOrder"      value="#{t.idOrder}" />
+								                            <p class="m-l-20 text-c-green"><i class="fa fa-play-circle-o fa-3x"></i></p>
+		                           </p:commandLink> 
+                                                            
                                                                         </td>
                                                                     </tr>
                        
@@ -85,9 +96,9 @@
                                                         </div>
                                                         <div class="row marketing-card-footer">
                                                             
-                                                            <div class="col-sm-12 text-right">
+                                                           <!--  <div class="col-sm-12 text-right">
                                                                 <button class="btn btn-primary"> Comprar</button>
-                                                            </div>
+                                                            </div> -->
                                                         </div>
 
                                                     </div>

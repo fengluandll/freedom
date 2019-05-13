@@ -44,6 +44,7 @@ public class RedirectPageBean {
 		session.setAttribute("unitName", params.get("unitName"));
 		session.setAttribute("courseId", params.get("courseId"));
 		session.setAttribute("unitId", params.get("unitId"));
+		session.setAttribute("idOrder", params.get("idOrder"));
 		
 		return "dashTopics";
 	}

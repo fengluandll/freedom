@@ -1,0 +1,9 @@
+Ctrl + T			Seleccionar y dar forma a un Objeto
+Ctrl + D			Deseleccionar herramienta de selección
+Shift + Alt         Redimensiono imagen sin distorcionarlo
+Ctrl + Alt + Z      Deshacer varias veces
+Shift + Flechitas   Son de 10px cada uno
+Ctrl + , 			muestra las reglas
+Ctrl + G			Para agrupas dos capas
+Ctrl + J			Duplicas carpeta o capas
+Ctrl + Alt + Clic	Para fusionarlas

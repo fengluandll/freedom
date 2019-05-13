@@ -2,20 +2,22 @@
     xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
 
 <h:form id="frmPerfil">
+
     <div class="layout-topbar">
-         <!-- <a href="#" id="topbar-menu-button">
-            <i class="fa fa-angle-left arrow"></i>
-            <i class="fa fa-angle-up mobile"></i>
-        </a> -->
+          <!-- <a href="#" id="topbar-menu-button">
+             <i class="fa fa-angle-left arrow"></i>
+            <i class="fa fa-angle-up mobile"></i> 
+        </a>  -->
 		 
-		 <!-- <div class="search-input">
-            <i class="fa fa-search icon-search"></i>
-            <input type="text"></input>
-        </div> -->
-		
-        <h:link outcome="/index" styleClass="logo-container">
-            <p:graphicImage name="images/ecuador-logo.png" library="ecuador-layout" />
-        </h:link>
+		 <div class="search-input">
+           <!--  <i class="fa fa-search icon-search"></i>
+            <input type="text"></input> -->
+        </div> 
+
+       <h:link outcome="/index" styleClass="logo-container">
+           <p:graphicImage name="images/ecuador-logo.png" library="ecuador-layout" />
+       </h:link>
+
 
         <a id="topbar-profile-menu-button" href="#">
             <span><p:outputLabel  value="#{studentPersonalBean.givenNames}&#160;#{studentPersonalBean.surNames}"/></span>
@@ -23,6 +25,7 @@
             <i class="fa fa-angle-down"></i>
         </a>
 
+     <div>
         <ul id="topbar-usermenu">
             <li>
                 <a href="/joappWeb/miPerfilPlus.xhtml">
@@ -46,11 +49,13 @@
                
             </li>
         </ul>
+     </div>   
 	<!-- 	
         <a href="#" id="right-panel-button">
             <i class="fa fa-angle-double-left"></i>
         </a>
       -->   
     </div>
+   
 </h:form>
 </ui:composition>

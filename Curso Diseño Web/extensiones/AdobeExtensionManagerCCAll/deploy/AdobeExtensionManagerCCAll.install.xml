@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Deployment>
+  <Properties>
+    <!--Note that the INSTALLDIR value is machine specific.  The value below is a suggested default value but may need to be overriden.-->
+    <Property name="INSTALLDIR">C:\Program Files\Adobe</Property>
+  </Properties>
+  <Payloads>
+    <Payload adobeCode="{244FD30F-63F1-49B9-9D98-1150FF4FFCB1}">
+      <Action>install</Action>
+    </Payload>
+  </Payloads>
+</Deployment>

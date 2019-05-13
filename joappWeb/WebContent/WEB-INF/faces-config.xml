@@ -308,6 +308,11 @@
    <to-view-id>/login.xhtml</to-view-id>
    <redirect/>
   </navigation-case>
+  <navigation-case>
+   <from-outcome>dashTopics</from-outcome>
+   <to-view-id>/home/dashTema.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
   <from-view-id>/miPerfilPlus.xhtml</from-view-id>

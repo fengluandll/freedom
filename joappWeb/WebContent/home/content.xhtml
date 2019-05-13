@@ -37,7 +37,7 @@ color: #f2f2f2;
 <div class="layout-dashboard">
 <div class="ui-g">
 
-<div class="titCursos ui-lg-12" style="margin-top: 1%">
+<div class="titCursos ui-g-12 ui-md-12 ui-lg-12" style="margin-top: 1%">
 		<h3>Cursos Contratados</h3>
 </div>
 <p:repeat value="#{listUnidadesBean.listCursos}" var="cur">
@@ -94,7 +94,7 @@ color: #f2f2f2;
                     </div>
                     <div class="col-sm-7" style="text-align: center">
                         <div class="ui-g-6 progressbar">
-				           <div class="progress sale" style="width: #{graficaCursosBean.getPorTotal(cur.courseId)}%"></div>
+				           <div class="progress sale" style="background-color:#5d0963; width: #{graficaCursosBean.getPorTotal(cur.courseId)}%"></div>
 				        </div>
 				        <span class="ui-g-6">#{graficaCursosBean.getPorTotal(cur.courseId)}%</span>
                     </div>
