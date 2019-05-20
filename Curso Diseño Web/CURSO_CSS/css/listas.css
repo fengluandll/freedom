@@ -1,0 +1,53 @@
+
+/*ul,ol{
+	list-style: none;
+	padding: 0px;
+}*/
+body{
+	font-family: Arial;
+}
+ul{
+/*	list-style: circle;*/
+	/*list-style: square;*/
+	list-style-image: url('../img/checked.png'); 
+}
+
+ol{
+	/*list-style-image: url('../img/checked.png');*/
+	list-style: upper-roman;
+}
+
+/*
+Graficos:
+list-style: none | disc | circle | square
+
+Numericos:
+list-style: decimal | decimal-leading-zero | lower-roman | upper-roman |
+			lower-latin | upper-latin
+*/
+
+/*Menu*/
+
+.menu{
+	background: #4357ad;
+	width: 200px;
+	list-style: none;
+	padding: 0px;
+	text-align: center;
+	
+}
+
+.menu li{
+	border-bottom: 1px solid rgba(255,255,255,.3);
+}
+
+.menu li a{
+	display: block;
+	padding: 15px;
+	color: #fff;
+	text-decoration: none;
+}
+
+.menu li a:hover{
+	background: #4888d6;
+}

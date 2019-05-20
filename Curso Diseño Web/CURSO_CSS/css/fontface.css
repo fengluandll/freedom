@@ -1,0 +1,22 @@
+@font-face{
+	
+	font-family: "Anton-Regular";
+	src:url('../fonts/Anton-Regular.ttf');
+}
+
+@font-face{
+	
+	font-family: "MaidenOrange-Regular";
+	src:url('../fonts/MaidenOrange-Regular.ttf');
+}
+@font-face{
+	
+	font-family: "BalooBhai-Regular";
+	src:url('../fonts/BalooBhai-Regular.ttf');
+}
+
+body{
+	font-family: 'Anton-Regular';
+	line-height: 25px;
+	line
+}

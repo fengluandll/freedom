@@ -1,0 +1,62 @@
+@font-face{
+	
+	font-family: "Inconsolata-Regular";
+	src:url('../fonts/Inconsolata-Regular.ttf');
+}
+@font-face{
+	
+	font-family: "Inconsolata-Bold";
+	src:url('../fonts/Inconsolata-Bold.ttf');
+}
+
+@font-face{
+	
+	font-family: "Anton-Regular";
+	src:url('../fonts/Anton-Regular.ttf');
+}
+
+@font-face{
+	
+	font-family: "MaidenOrange-Regular";
+	src:url('../fonts/MaidenOrange-Regular.ttf');
+}
+@font-face{
+	
+	font-family: "BalooBhai-Regular";
+	src:url('../fonts/BalooBhai-Regular.ttf');
+}
+
+*{
+	/*padding: 0;
+	margin: 0;*/
+}
+
+body{
+	background: #f2f2f2;
+}
+
+div{
+	width: 200px;
+	height: 120px;
+	line-height:100px;
+	background: #fa8334;
+	margin:20px;
+	text-align: center;
+	border-radius: 3px;
+	
+}
+
+
+
+.caja span{
+	color: #fff;
+	font-size: 22px;
+	text-transform: capitalize;
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 30px;
+	font-weight: bold;
+	font-family: "MaidenOrange-Regular";
+	letter-spacing: 2px;
+}
+

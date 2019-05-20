@@ -1,0 +1,22 @@
+a{
+	font-size: 20px;
+	text-decoration: none;
+}
+
+a:hover{
+	background: #f9a03f;
+	color: #fff;
+}
+
+a:link{/*Enlace que no hemos visitado*/
+	text-decoration: none;
+	color:red;
+}
+a:visited{/*Enlace que ya hemos visitado*/
+	/*color:#ccc;*/
+}
+
+a:active{/*Mientras se hace un clic*/
+	text-decoration: underline;
+	color:yellow;
+}

@@ -1,0 +1,22 @@
+*{
+	padding: 0px;
+	margin:  0px;
+}
+
+body{
+	background: #ccc;
+}
+
+.texto{
+	/*text-shadow: 2px 3px 10px #000;*/
+	color:#fff;
+	text-shadow: 2px 0px 10px blue;
+}
+
+.caja{
+	width: 200px;
+	height: 200px;
+	background: #f79256;
+	box-shadow: 2px 0px 10px rgba(0,0,0,.5);
+	
+}
