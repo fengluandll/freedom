@@ -96,7 +96,7 @@ public class TopicsDAO {
 	 * @param idOrder el id del orden que esta actualmente
 	 * @return
 	 */
-	public List<TopicsBean> getNextClass(int unitId,int idOrder) {
+	public TopicsBean getNextClass(int unitId,int idOrder) {
 		
 		Connection        con       	 = null;
 		CallableStatement cstmtCall 	 = null;
@@ -107,14 +107,14 @@ public class TopicsDAO {
 		con = conectionWrapper.getConexion();
 		cstmtCall = con.prepareCall("{CALL siguiente_clase_pr(?,?)}");
 		cstmtCall.setInt(1,unitId);
-		cstmtCall.setInt(2,idOrder);
+		cstmtCall.setInt(2,++idOrder);
 		rs = cstmtCall.executeQuery();
 		while(rs.next()){
 			topicsBean = new TopicsBean();
 			topicsBean.setTopicId(rs.getInt("topic_id"));
 			topicsBean.setTopicName(rs.getString("topic_name"));
 			topicsBean.setSegment1(rs.getString("segment1"));
-			listTopicsBean.add(topicsBean);	
+			//listTopicsBean.add(topicsBean);	
 		}
 	} catch (SQLException | NamingException e) {
 			logger.error(e);
@@ -126,6 +126,6 @@ public class TopicsDAO {
 				logger.error(e);
 			}
 		}
-		return listTopicsBean;
+		return topicsBean;
 	}
 }

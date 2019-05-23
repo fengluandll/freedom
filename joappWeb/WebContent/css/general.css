@@ -1,3 +1,72 @@
+@font-face{
+	
+	font-family: "OpenSans-Bold";
+	src:url('../fonts/OpenSans-Bold.ttf');
+}
+@font-face{
+	
+	font-family: "OpenSans-BoldItalic";
+	src:url('../fonts/OpenSans-BoldItalic.ttf');
+}
+@font-face{
+	
+	font-family: "OpenSans-ExtraBold";
+	src:url('../fonts/OpenSans-ExtraBold.ttf');
+}
+@font-face{
+	
+	font-family: "OpenSans-ExtraBoldItalic";
+	src:url('../fonts/OpenSans-ExtraBoldItalic.ttf');
+}
+@font-face{
+	
+	font-family: "OpenSans-Italic";
+	src:url('../fonts/OpenSans-Italic.ttf');
+}
+@font-face{
+	
+	font-family: "OpenSans-Light";
+	src:url('../fonts/OpenSans-Light.ttf');
+}
+@font-face{
+	
+	font-family: "OpenSans-LightItalic";
+	src:url('../fonts/OpenSans-LightItalic.ttf');
+}
+@font-face{
+	
+	font-family: "OpenSans-Regular";
+	src:url('../fonts/OpenSans-Regular.ttf');
+}
+@font-face{
+	
+	font-family: "OpenSans-SemiBold";
+	src:url('../fonts/OpenSans-SemiBold.ttf');
+}
+@font-face{
+	
+	font-family: "OpenSans-SemiBoldItalic";
+	src:url('../fonts/OpenSans-SemiBoldItalic.ttf');
+}
+.nomClase{
+	letter-spacing: 1px;
+	font-family: "OpenSans-SemiBoldItalic";
+	font-size: 18px;
+	font-weight: bold; 
+	text-transform: capitalize;
+	color:#DB9D47;
+}
+
+.lineTitle{
+	border: 1px solid #DB9D47;
+	background: #DB9D47;
+}
+
+.sub-title{
+	letter-spacing: 1px;
+	font-size: 18px;
+	font-family: "OpenSans-Regular";
+}
 .txtLabelsForm{
 	color: white;
 }

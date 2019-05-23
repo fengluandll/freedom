@@ -11,15 +11,17 @@
 
 <ui:define name="head">
 
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+
+<link rel="stylesheet" href="../css/dashTema.css" />
+<link rel="stylesheet" href="../css/general.css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"  />
 
  
 <style type="text/css">
 
-.center-div
-{
-  margin: 0 auto;
-  /* width: 100%; */
-}
 
 .tableMargin {
 	margin: 10px 10px 10px 10px;
@@ -159,15 +161,7 @@
 		
 		}
 	</script>
-			<meta name="viewport"
-				content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
-			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 			
-			<!-- Google font-->
-			<!--  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet"/> -->
-
-			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"  />
-			<link rel="stylesheet" type="text/css" href="../bower_components/css/tableBootStrap.css"/>
 
 		</ui:define>
 
@@ -204,16 +198,10 @@
 			</p:dialog>
 			<h:form id="frmDasTemas">
 				<div class="ui-g">
-					<div class="ui-g-12 ui-md-12 ui-lg-12">
-						<!--  <h:link id="backCursos" outcome="/index" styleClass="">
-						<i class="fas fa-hand-point-left fa-3x"></i> </h:link> -->
-						
-						<span><h3>
-							<!-- 	<h:outputText value="#{sessionScope.courseName}" />   -->
-									<h:outputText value="#{sessionScope.topicName}" />
-							</h3></span> 
-						
+					<div class="ui-g-12 ui-md-12 ui-lg-12">		
+					 <h:outputText styleClass="nomClase" value="#{sessionScope.topicName}" />	
 					</div>
+					<div class="ui-g-12 ui-md-12 ui-lg-12"><hr class="lineTitle"/></div>
 
 					<div class="ui-g-12 ui-md-6 ui-lg-6">
 						<h4 class="sub-title">Videos</h4>
@@ -297,7 +285,7 @@
 
 					</div>
 					<div class="ui-g-12 ui-md-6 ui-lg-6">
-						<h4 class="sub-title">Practicas</h4>
+						<h4 class="sub-title">Prácticas</h4>
 						<div class="browser offline-box">
 							<p:dataTable id="tblPracticas" var="prac"
 								value="#{topicsCarouselBean.damePracticas(sessionScope.topicId)}"
@@ -448,37 +436,28 @@
 							</div>
 						</div>
 					</div>
-<div class="center-div">
-
-<p:commandButton value="Clase Terminada"
-				 action="#{loginBean.passStudent}" 
-				 styleClass="btn btn-primary btn-lg btn-block waves-effect text-center m-b-20" 
-				 style="width:400px;height:50px;font-size:18px;"/>
-
+<div class="ui-g-12 ui-md-12 ui-lg-12 divClaseTerm">
+	<a href="#" class="btnTerminada">Clase Terminada</a>
 </div>
 
-<div class="ui-g-6 ui-md-6 ui-lg-6 ui-xl-6" style="margin-top: 100px;">
-Siguiente Clase                                                
-<table id="e-product-list" class="table table-striped dt-responsive nowrap">
-	<thead>
-	    <tr>
-	        <th>Siguiente Clase</th>
-	        <th>Objetivo</th>
-	    </tr>
-	</thead>
-	<tbody>
-	<p:repeat value="#{topicsCarouselBean.getNextCourse(sessionScope.unitId,sessionScope.idOrder)}" var="cur"> 
-	    <tr>
-	        <td class="pro-list-img">
-	            <h:outputText value="#{cur.topicName}"/>
-	        </td>
-	        <td class="pro-name">
-	            <h:outputText value="Tomar Clase"/>
-	        </td>
-</tr>
-</p:repeat>
-</tbody>
-</table>
+<div class="widget">
+	<ul>
+		<li>
+			<div class="caja">
+				<span>
+					<h:outputText value="#{topicsCarouselBean.getNextCourse(sessionScope.unitId,sessionScope.idOrder)}"/>	
+				</span>
+		
+			</div>
+		</li>
+		<li>
+			<ul class="subLista">
+				<li class="feliz">Felicidades! Sigue con el Curso!</li>	
+				<li class="clase"><h:outputText value="#{topicsCarouselBean.getNextCourse(sessionScope.unitId,sessionScope.idOrder)}"/></li>
+			</ul>
+		</li>
+		<li><a href="">Siguiente Clase</a> </li>
+	</ul>
 </div>
 
 </div>
