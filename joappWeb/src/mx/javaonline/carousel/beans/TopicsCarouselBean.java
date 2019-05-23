@@ -414,10 +414,10 @@ public class TopicsCarouselBean {
 		return listTopics;
 	}
 	
-	public List<TopicsBean> getNextCourse(String unitId,String idOrder) {
+	public String getNextCourse(String unitId,String idOrder) {
 		TopicsDAO topicsDAO = new TopicsDAO();
-		List<TopicsBean>  listTopicsBean = topicsDAO.getNextClass(Integer.parseInt(unitId), Integer.parseInt(idOrder));
-		return listTopicsBean;
+		TopicsBean  ttopicsBean = topicsDAO.getNextClass(Integer.parseInt(unitId), Integer.parseInt(idOrder));
+		return ttopicsBean.getTopicName();
 	}
 	
 	public List<VideosBean> dameVideos(int topicId){
