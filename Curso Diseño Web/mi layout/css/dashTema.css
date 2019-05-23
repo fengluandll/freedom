@@ -1,0 +1,152 @@
+@font-face{
+	
+	font-family: "OpenSans-Bold";
+	src:url('../fonts/OpenSans-Bold.ttf');
+}
+@font-face{
+	
+	font-family: "OpenSans-BoldItalic";
+	src:url('../fonts/OpenSans-BoldItalic.ttf');
+}
+@font-face{
+	
+	font-family: "OpenSans-ExtraBold";
+	src:url('../fonts/OpenSans-ExtraBold.ttf');
+}
+@font-face{
+	
+	font-family: "OpenSans-ExtraBoldItalic";
+	src:url('../fonts/OpenSans-ExtraBoldItalic.ttf');
+}
+@font-face{
+	
+	font-family: "OpenSans-Italic";
+	src:url('../fonts/OpenSans-Italic.ttf');
+}
+@font-face{
+	
+	font-family: "OpenSans-Light";
+	src:url('../fonts/OpenSans-Light.ttf');
+}
+@font-face{
+	
+	font-family: "OpenSans-LightItalic";
+	src:url('../fonts/OpenSans-LightItalic.ttf');
+}
+@font-face{
+	
+	font-family: "OpenSans-Regular";
+	src:url('../fonts/OpenSans-Regular.ttf');
+}
+@font-face{
+	
+	font-family: "OpenSans-SemiBold";
+	src:url('../fonts/OpenSans-SemiBold.ttf');
+}
+@font-face{
+	
+	font-family: "OpenSans-SemiBoldItalic";
+	src:url('../fonts/OpenSans-SemiBoldItalic.ttf');
+}
+
+*{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 0px;
+	margin: 0px;
+}
+body{
+	background: #7E8287;
+}
+
+.divClaseTerm{
+	width: 100%;
+	margin:20px auto;
+	text-align: center;
+}
+
+.btnTerminada{
+	display:inline-block;
+	text-decoration: none;
+	font-size:20px;
+	letter-spacing:2px;
+	color:#fff;
+	margin:20px;
+	padding:10px;
+	width:49%;
+	text-align:center;
+	background: #1a51a8;
+	border-radius: 5px;
+}
+
+.btnTerminada:hover{
+	color:#4fb560;
+	font-size:21px;
+}
+
+.widget{
+	width: 100%;
+	margin:20px auto;
+	text-align: center;
+}
+
+.widget ul li  {
+	display: inline-block;
+	padding: 20px;
+} 
+
+.widget .subLista li{
+	display: block;
+}
+
+.caja{
+	width: 200px;
+	height: 120px;
+	line-height:100px;
+	background: #fa8334;
+	margin:20px;
+	text-align: center;
+	border-radius: 3px;
+	
+}
+
+.caja span{
+	color: #fff;
+	font-size: 20px;
+	text-transform: capitalize;
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 30px;
+	font-weight: bold;
+	font-family: "OpenSans-Regular";
+	letter-spacing: 2px;
+}
+
+.widget ul li a{
+	padding: 20px;
+	background: #434343;
+	color: #fff;
+	border-radius: 3px;
+	text-decoration: none;
+	font-size: 18px;
+	letter-spacing:2px;
+	font-family: "OpenSans-Regular";
+}
+
+.widget ul li a:hover{
+	opacity: .8;
+}
+.widget .subLista .feliz{
+	font-family: "OpenSans-SemiBoldItalic";
+	color:#fff;
+	font-size: 22px;
+}
+
+.widget .subLista .clase{
+	font-family: "OpenSans-SemiBold";
+	color:#010101;
+	font-size: 22px;
+	letter-spacing: 1px;
+}
+

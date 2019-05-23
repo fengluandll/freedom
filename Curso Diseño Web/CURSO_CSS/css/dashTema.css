@@ -1,0 +1,36 @@
+*{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 0px;
+	margin: 0px;
+}
+body{
+	background: #7E8287;
+}
+
+.divClaseTerm{
+	width: 100%;
+	margin:20px auto;
+	text-align: center;
+}
+
+.btnTerminada{
+	display:inline-block;
+	text-decoration: none;
+	font-size:20px;
+	letter-spacing:2px;
+	color:#fff;
+	margin:20px;
+	padding:10px;
+	width:49%;
+	text-align:center;
+	background: #1a51a8;
+	border-radius: 5px;
+}
+
+.btnTerminada:hover{
+	color:#4fb560;
+	font-size:21px;
+}
+
