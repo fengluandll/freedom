@@ -1,0 +1,21 @@
+.headContacto{
+	float:left;
+	width: 300px;
+	overflow: hidden;
+} 
+ 
+ .headContacto .contacto a{
+	display: inline-block;
+	font-size: 18px;
+	letter-spacing: 1px;
+	color: #fff;
+	padding:20px 0;
+	margin-left: 30px;
+}
+
+
+
+ .headContacto .contacto a:hover{
+	padding-bottom:10px;
+	border-bottom: 2px solid #fff;
+}

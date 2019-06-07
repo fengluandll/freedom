@@ -1,0 +1,73 @@
+.main .contenedor{
+	background: #3d405b;
+	width:      90%;
+	max-width:  1000px;
+	margin: 	20px auto;
+	height: 	100%;
+	display: 	flex;
+	flex-direction: column;
+	margin-bottom: 100px;
+} 
+
+.main .contenedor .video{
+	padding: 15px;
+	width: 60%;
+	align-self: center;
+}
+
+.main .contenedor .textAntes{
+	padding: 10px;
+	color: #fff;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+.main .contenedor .textoModulos h1{
+	width: 100%;
+	background: #1b2021;
+	color: #fff;
+	line-height: 40px;	
+	text-align: center;
+	margin: 20px auto;
+	letter-spacing: 2px;
+	font-weight: 600;
+}
+
+.main .contenedor .modulos .pasos h1{
+	color: #ffa400;
+	font-size: 40px;
+	text-align;left;
+	padding-left: 20px;
+	letter-spacing: 2px;
+}
+
+.main .contenedor .modulos .nomModulo h2{
+	color:#fff;
+	letter-spacing: 2px;
+	text-align: center;
+}
+
+.main .contenedor .modulos .contentModulo .imgcurso img{
+	width: 250px;
+	height 220px;
+	background: #000;
+	padding: 10px;
+	margin-left: 30px;
+} 
+
+.main .contenedor .modulos .contentModulo .btn{
+	background: #a44200;
+	color:#fff;
+	font-size: 14px;
+	letter-spacing:1px;
+	padding: 15px 20px;
+	display: inline-block;
+	margin: 0 10px;
+	text-align: center;
+}
+.btn:hover{
+	opacity: .8;
+	
+}
+

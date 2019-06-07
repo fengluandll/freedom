@@ -1,3 +1,63 @@
+*{
+	padding:0;
+	margin: 0;
+	
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.giftloading{
+	width: 100%;
+	height:37px;
+	text-align:center;
+}
+header .contenedor{
+	background: #0C7489;
+	width: 100%; 
+	height: 100px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	
+}
+
+header{
+	margin-bottom: 20px;
+}
+header .contenedor .artistas .texto{
+	color:#fff;
+	font-family: 'Opens Sans',sans-serif;
+	font-size: 32px;
+	letter-spacing: 5px;
+	padding: 20px;
+	display: inline;
+}
+
+header .contenedor .pagina{
+	
+}
+
+header .contenedor .pagina a{
+	color:#fff;
+	display: inline;
+	font-family: 'Opens Sans',sans-serif;
+	letter-spacing: 2px;
+	font-size: 12px;
+	padding:20px 0;
+	margin-right:15px;
+	padding-bottom:2px;
+}
+
+
+header .contenedor .pagina a:hover{
+	
+	border-bottom: 1px solid rgba(255,255,255,0.5);
+}
+
+
 .uno{
 	background-color: #2b3e50;
 	/*padding-bottom: 1%;*/
@@ -32,4 +92,16 @@
 	font-size: 10pt;
 	font-weight: 100;
 	font-family: Helvetica, sans-serif;
+}
+
+@media screen and (max-width: 600px){
+	
+	header .contenedor{
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	
+}
+	
 }

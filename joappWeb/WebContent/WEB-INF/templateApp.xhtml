@@ -12,14 +12,18 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1.0,maxium-scale=1.0, user-scalable=0, minimal-ui"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/footer.css"/>
+<link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/normalize.css"/>
+<link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/topbar.css"/>
 <!-- Favicon icon -->
 <link rel="icon" href="favicon/favicon.ico" type="image/x-icon"/>
 <!-- Google font-->
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,600i,700" rel="stylesheet"/>
 
 <link rel="stylesheet" type="text/css" href="#{request.contextPath}/assets/icon/themify-icons/themify-icons.css"/>
 <!-- ico font -->
 <link rel="stylesheet" type="text/css" href="#{request.contextPath}/assets/icon/icofont/css/icofont.css"/>
+
 
 </f:facet>
         <title><ui:insert name="title">Startonline</ui:insert></title>
@@ -50,11 +54,11 @@ body{
                 <div class="layout-content" style="min-height:300px">
                     <ui:insert name="content"></ui:insert>
                 </div>
-				<!-- 
+				
                 <div class="layout-footer">
                     <ui:include src="./footer.xhtml"></ui:include>
                 </div>
-                -->
+                
             </div>
 
             <p:ajaxStatus styleClass="layout-ajax-loader">

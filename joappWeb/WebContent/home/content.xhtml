@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
@@ -8,201 +9,42 @@
 <h:head>
 
 
-<style>
-.titleCurso{
+<link rel="stylesheet" type="text/css" href="css/content.css"/>
 
-background: #952D7F; 
-text-align:center;
-padding-top: 15px;
-padding-bottom: 20px;
-margin-top: 0;
-color: #f2f2f2;
-
-
-}
-.cajita{
-	height: 100px;
-}
-.titCursos{
-	background:#303549;
-	color:#ffffff;
-	font-family: "Montserrat", sans-serif;
-}
-</style>
 </h:head>                
 
 
 <h:body>
-<h:form id="idDashCursos" prependId="false">
-<div class="layout-dashboard">
-<div class="ui-g">
 
-<div class="titCursos ui-g-12 ui-md-12 ui-lg-12" style="margin-top: 1%">
-		<h3>Cursos Contratados</h3>
-</div>
+
+<section class="main">
+<div class="contenedor">
+	<div class="imgbienvenida">
+		 <img src="images/Bienvenida.jpg" alt="Bienvedio"/>
+	</div>
+	<div class="textoCursos">
+		<h1>Mis Cursos</h1>
+	</div>
 <p:repeat value="#{listUnidadesBean.listCursos}" var="cur">
-
-
-
-<div class="ui-g-12 ui-md-6 ui-lg-4">
-
-  <div class="card">
-    <div class="card-block user-detail-card" style="padding: 0;margin:-1px;margin-top: 10px;">
-<!--         <div class="row justify-content-start"> -->
-<!--         	 <div class="titleCurso col-sm-12"> -->
-<!--         	 	<span style="font-size: 32px">MySql</span> -->
-<!--         	 </div> -->
-            <div class="col-sm-12" style="padding: 0;text-align: center;">
-                <img src="#{cur.img}" alt="" class="img-fluid p-b-10"/>
-                <div class="contact-icon">
-                    <p:commandLink action="#{topicsCarouselBean.verContenido}" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Entrar" ><i class="icofont icofont-eye m-0"></i>
-                    	<f:param name="nomCurso" value="#{cur.courseName}"/>
+	<div class="cursos">
+		<div class="imgcurso">
+			 <img src="images/Aprendiendo Java_negro.jpg" alt="Curso Java"/>
+		</div>
+		<div class="textoDesc">
+           <h4><h:outputText value="#{cur.courseName}"/></h4>
+		</div>
+		<div>
+			<p:commandLink action="#{topicsCarouselBean.verContenido}" title="Entrar" styleClass="btn">
+			   <f:param name="nomCurso" value="#{cur.courseName}"/>
                     	<f:param name="courseId" value="#{cur.courseId}"/>
-                    	<h:outputText value="#{cur.courseName}"/>
-                    </p:commandLink>
-<!--                     <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Print" ><i class="icofont icofont-printer m-0"></i></button> -->
-<!--                     <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Download" ><i class="icofont icofont-download-alt m-0"></i></button> -->
-<!--                     <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Share" ><i class="icofont icofont-share m-0"></i></button> -->
-                </div>
-            </div>
-
-            <div class="col-sm-12 user-detail" style="padding-top: 25px;">
-                <div class="row">
-                    <div class="cajita col-sm-12">
-                        <h6 class="m-b-30"><span><h:outputText value="#{cur.descripcion}"/></span> </h6>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-5">
-                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-clock-time"></i>Duración :</h6>
-                    </div>
-                    <div class="col-sm-7">
-                        <h6 class="m-b-30"><h:outputText value="#{cur.duracion}"/></h6>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-5">
-                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-user"></i>Profesor :</h6>
-                    </div>
-                    <div class="col-sm-7">
-                        <h6 class="m-b-30"><a href="#!"><h:outputText value="#{cur.profesor}"/></a></h6>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-5">
-                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-bill-alt"></i>Progreso :</h6>
-                    </div>
-                    <div class="col-sm-7" style="text-align: center">
-                        <div class="ui-g-6 progressbar">
-				           <div class="progress sale" style="background-color:#5d0963; width: #{graficaCursosBean.getPorTotal(cur.courseId)}%"></div>
-				        </div>
-				        <span class="ui-g-6">#{graficaCursosBean.getPorTotal(cur.courseId)}%</span>
-                    </div>
-                </div>
-
-            </div>
-<!--         </div> -->
-
-    </div>
+                    	Haz Clic para Continua
+              </p:commandLink>
+			
+		</div>
+	</div>
+</p:repeat>	
 </div>
-
-</div>
- 
-
-</p:repeat>
-
-</div>
-</div>
-      
-</h:form>	
-
-	
-<h:form id="frmunits" prependId="false">
-    <p:dialog widgetVar="dlgConCurso"  closeOnEscape="true"  modal="true" dynamic="true" resizable="false"  header="Temario de #{listUnidadesBean.nomCurso}">
-	
-<div class="ui-g-12 ui-md-12 ui-lg-12 ui-xl-6">
-                                                
-<table id="e-product-list" class="table table-striped dt-responsive nowrap">
-	<thead>
-	    <tr>
-	        <th>Unidad</th>
-	        <th>Objetivo</th>
-	        <th>Progreso</th>
-	    </tr>
-	</thead>
-	<tbody>
-	<p:repeat value="#{listUnidadesBean.listCurUni}" var="unit"> 
-	    <tr>
-	        <td class="pro-list-img">
-	       <p:commandLink 	id="linkUnit"
-	       					action="#{listUnidadesBean.dameTemas(unit.unitId,unit.unitName)}" 
-	    					oncomplete="PF('dlgtopics').show();"
-	    					update=":frmTopics">
-	    		<f:param name="unitId"      value="#{unit.unitId}" />
-	            <h:outputText value="#{unit.unitName}"/>
-	        </p:commandLink>
-	          <p:tooltip id="toolTipEntrarUni" for="linkUnit" value="Clic para ver el temario" trackMouse="true" />
-	        </td>
-	        
-	        <td class="pro-name">
-	            <h:outputText value="#{unit.segment1}"/>
-	        </td>
-	        <td>
-	        	<!-- 
-	             div class="progress progress-striped active">
-					  <div class="progress-bar progress-bar-danger" style="width: #{topicsCarouselBean.getUnitBarraGral(unit.unitId)}% "><strong style="color:black;">#{topicsCarouselBean.getUnitBarraGral(unit.unitId)}%</strong></div>
-					</div>
-					-->
-				<strong style="color:#44be2c;align-content: right;">#{topicsCarouselBean.getUnitBarraGral(unit.unitId)}%</strong>
-			</td>                                                 
-		</tr>
-	</p:repeat>                                                            
-     </tbody>
- </table>
-</div>
-</p:dialog>
-</h:form>
-
-<h:form id="frmTopics" prependId="false">
-
-<p:dialog widgetVar="dlgtopics"   modal="true" header="#{listUnidadesBean.nomUnidad}">
-
-<table id="e-product-list" class="table table-striped dt-responsive nowrap">
-    <thead>
-        <tr>
-           <!--  <th>Entrar</th>   -->
-            <th>Tema</th>
-            <th>Objetivo</th>
-        </tr>
-    </thead>
-    <tbody>
-              <p:repeat value="#{listUnidadesBean.listTopics}" var="topic"> 
-                      <tr>
-                      	
-                          <td class="pro-list-img">
-                          <p:commandLink  id="linkTomarClase2"
-                      					  action="#{redirectPageBean.loadPage}">
-	                      	<f:param name="topicName"   value="#{topic.topicName}" />
-	                      	<f:param name="courseName"  value="#{listUnidadesBean.nomCurso}" />
-	                      	<f:param name="topicId"     value="#{topic.topicId}" />
-	                      	<f:param name="unitName"    value="#{listUnidadesBean.nomUnidad}" />
-	                      	<f:param name="courseId"    value="#{listUnidadesBean.courseId}" />
-	                      	<f:param name="unitId"      value="#{listUnidadesBean.unitId}" />
-                            <h:outputText value="#{topic.topicName}"/>
-                           </p:commandLink>   
-                          </td>
-                          <td class="pro-name">
-                              <h:outputText value="#{topic.segment1}"/>
-                          </td>
-                          
-                      </tr>
-			  </p:repeat>                                                                       
-                                                                           
-    </tbody>
-</table>                       
-</p:dialog>
-</h:form>
-	
+</section>
 
 </h:body>
 </html>

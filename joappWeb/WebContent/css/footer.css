@@ -1,0 +1,50 @@
+.pie .contenedor{
+	background: #1e469a;
+    height: 6%;
+	display: 	flex;
+	flex-direction: row;
+	flex-wrap:wrap;
+	justify-content: space-between;
+} 
+
+.pie .contenedor .contacto a{
+	display: inline-block;
+	/* padding: 20px 0; */
+	margin-right: 30px;
+	font-size: 22px;
+	letter-spacing: 1px;
+	color: #fff;
+}
+
+.pie .contenedor .contacto a:hover{
+	padding-bottom:10px;
+	border-bottom: 2px solid #fff;
+}
+
+@media screen and (max-width: 600px){
+	
+ .pie .contenedor{
+ flex-direction: column;
+ align-content: center;
+ align-items: center;
+ justify-content: center;
+ }
+ 
+}
+
+ @media screen and (max-width: 420px){
+ 
+.pie .contenedor .contacto .linkcontacto{
+ margin-top: 10px;	
+ }
+ 
+ .pie .contenedor .contacto{
+ 	text-align: center;
+ }
+ 
+ .pie .contenedor .contacto a{
+	display: block;
+}
+ 
+}
+

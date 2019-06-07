@@ -7,17 +7,10 @@
                 template="../WEB-INF/templateApp.xhtml">
 
  <ui:define name="head">
-<link rel="stylesheet" type="text/css" href="#{request.contextPath}/assets/css/style.css"/>
-<link rel="stylesheet" type="text/css" href="#{request.contextPath}/bower_components/css/tableBootStrap.css"/>
- 
- <style>
- .listObj{
- 	font-family: Montserrat, sans-serif;
- 	font-size: 18px;
- 	font-weight: 500;
- 	color: #333333;
- }
- </style>
+<link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/contenidoCurso.css"/>
+<script src="https://fast.wistia.com/embed/medias/1ailj644gs.jsonp"></script>
+<script src="https://fast.wistia.com/assets/external/E-v1.js"></script>
+
  </ui:define>             
 
 <ui:define name="barraNavegacion">
@@ -28,87 +21,35 @@
              </div>
 </ui:define>
 <ui:define name="content">	
-	<h:form id="idContenidoTema" prependId="false">
-		<div class="col-md-12">
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                    	<!-- <div class="col-sm-12 text-right">
-                                                                <button class="btn btn-primary"> Comprar</button>
-                                                        </div> -->
-                                                        <div class="card-header-left">
-                                                            <h:outputText style="font-size:25px;" value="#{sessionScope['nomCurso']}"/>
-                                                        </div>
-                                                        <div class="p-20 z-depth-bottom-0 waves-effect" style="background: #f2f2f2;margin-top: 20px;" data-toggle="tooltip" data-placement="top" title=".z-depth-bottom-0">
-                                                            <p class="text-left font-weight-bold">Que aprenderé en este curso</p>
-                                                            
-                                                            <ul>
-                                                           	<p:repeat var="ob" value="#{listUnidadesBean.dameObjetivosCurso(sessionScope['courseId'])}">
-                                                            	
-                                                            	<li class="listObj"> <i class="fa fa-check"/><h:outputText value="&#32;#{ob.descripcion}"/></li>
-                                                           </p:repeat>
-                                                            </ul>
-                                                            
-                                                              <br/><br/>
-                                                            
-                                                    	</div>
-                                                        
-                                                    </div>
-                                                    
-                                                    <div class="card-block marketing-card p-t-0">
-                                                        <div class="table-responsive">
-                      <p:accordionPanel value="#{listUnidadesBean.dameUnidades(sessionScope['courseId'])}" var="u">
-                      
-                      		<p:tab title="#{u.unitName}">
-                                                            <table class="table" style="">
-                                                                <tbody>
-                                                                  
-                      <p:repeat value="#{listUnidadesBean.dameTemas(u.unitId)}" var="t">    
-                                                                    <tr>
-                                                                        <td style="width: 950px;word-wrap: break-word;"><a href="#!"></a>
-                                                                            <div class="table-contain">
-                                                                                <p><h:outputText value="#{t.topicName}"/></p>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <p class="text-muted"> <h:outputText value="#{t.duracion}"/>  min</p>
-                                                                        </td>
-                                                                        <td>
-                                                          <p:commandLink  id="linkTomarClase2"
-								                      					  action="#{redirectPageBean.loadPage}">
-									                      	<f:param name="topicName"   value="#{t.topicName}" />
-									                      	<f:param name="courseName"  value="#{sessionScope['nomCurso']}" />
-									                      	<f:param name="topicId"     value="#{t.topicId}" />
-									                      	<f:param name="unitName"    value="#{u.unitName}" />
-									                      	<f:param name="courseId"    value="#{sessionScope['courseId']}" />
-									                      	<f:param name="unitId"      value="#{u.unitId}" />
-									                      	<f:param name="idOrder"      value="#{t.idOrder}" />
-								                            <p class="m-l-20 text-c-green"><i class="fa fa-play-circle-o fa-3x"></i></p>
-		                           </p:commandLink> 
-                                                            
-                                                                        </td>
-                                                                    </tr>
-                       
-                      </p:repeat>
-                      
-                                                                </tbody>
-                                                            </table>
-                    </p:tab> 
-                   
-                    </p:accordionPanel> 
-                                                        
-                                                        </div>
-                                                        <div class="row marketing-card-footer">
-                                                            
-                                                           <!--  <div class="col-sm-12 text-right">
-                                                                <button class="btn btn-primary"> Comprar</button>
-                                                            </div> -->
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                  
-	</h:form>
-</ui:define> 
-	
+<section class="main">
+<div class="contenedor">
+	<div class="textAntes"><h2>Antes de Inicar</h2></div>
+	<div class="video">		
+		<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_1ailj644gs videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/1ailj644gs/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>
+	</div>
+	<div class="textoModulos">
+		<h1>Modulos</h1>
+	</div>
+	<div class="modulos">
+		<div class="pasos">
+			<h1>PASO 1</h1>
+		</div>
+		<div class="nomModulo">
+			<h2>Fundamentos de JAVA</h2>
+		</div>
+		<div class="contentModulo">
+			<div class="imgcurso">
+				<!-- <img src="../images/FundamentosJava.jpg" alt="Curso Java"/> -->
+			</div>
+			<div>
+				ProgressBar
+			</div>
+			<div>
+			 <a href="#" class="btn"><h6>Haz Clic para Continuar</h6></a>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+</ui:define>
 </ui:composition>

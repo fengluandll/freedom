@@ -7,7 +7,7 @@
 	lang="es">
 <h:head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"/>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<script type="text/javascript">
 	function redirecciona(){
@@ -36,36 +36,32 @@ function redireccionaNvaCuenta(){
     <link rel="stylesheet" type="text/css" href="assets/icon/themify-icons/themify-icons.css"/>
     <link rel="stylesheet" type="text/css" href="assets/icon/icofont/css/icofont.css"/>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,600i,700" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="css/login.css"/>
     <script type="text/javascript" src="js/jquery.min.js"></script>
+    
     <script src="js/fontawesome/fontawesome-all.js"></script>
 
 <style>
 
 
 </style>
+
 </h:head>
 <h:body styleClass="fix-menu">
+
 <div class="container-fluid">
-	<div class="row">
-		<div class="col-sm-12 col-md-12 col-lg-12 uno">
-		<span id="startPalabra" onclick="redireccionaWeb()" style="cursor: pointer;">
-			start
-		</span>
-		<span class="text-danger" onclick="redireccionaWeb()" style="cursor: pointer;position: relative;
-															top: 8px;
-															right: px;
-															left: 0px;
-															font-size: 30pt;
-															font-weight: 100;
-															font-family: Helvetica, sans-serif">
-			Web
-		</span>
-		<span id="web" onclick="redireccionaWeb()" style="cursor: pointer;">
-			www.startonline.com.mx
-		</span>
-		</div>
+<header>
+<div class="contenedor">
+	<div class="artistas">
+	  <span class="texto">Artistas Digitales</span>
 	</div>
+	<div class="pagina">
+		<a href="http://www.startonline.com.mx" target="_blank">www.artistasdigitales.com</a>
+	</div>
+</div>	
+</header>	
 <h:form id="frmLogin">	
 <div class="row justify-content-center">
 
@@ -76,10 +72,10 @@ function redireccionaNvaCuenta(){
 				       		<h2 class="text-info" style="text-align: center;">Bienvenido</h2>
 				        </div>
 				</div>
-				<hr/>
+				<!-- <hr/>
 				        <div class="col-md-12">
 				         	<span class="linkolvido">¿No tienes cuenta?</span><p:commandLink onclick="javascript:redireccionaNvaCuenta()" styleClass="linkolvido" style="color:#007bff !important;">    Registrate aqui! </p:commandLink>
-				       	</div>
+				       	</div> -->
 				<hr/>
 				       	<div class="w-100"></div>
 				       	<div class="input-group">
@@ -116,23 +112,18 @@ function redireccionaNvaCuenta(){
 											 action="#{loginBean.passStudent}" 
 											 styleClass="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" />
 						 </div>	
-						 <div class="row justify-content-center">
-						 	<div class="col-md-auto">
-								<p:ajaxStatus  id="ajaxStatusPanel">
+						 <div class="giftloading">
+						  <p:ajaxStatus  id="ajaxStatusPanel">
 								    <f:facet name="start">
 								        <div class="loader-block">
-                                            <svg id="loader2" viewBox="0 0 100 100">
-                                                <circle id="circle-loader2" cx="50" cy="50" r="25"></circle>
-                                            </svg>
+                                            <img alt="Rolling.gif" src="images/Rolling.gif"/>	
                                      	</div>
-
 								    </f:facet>
-								     
 								    <f:facet name="complete">
 								        <h:outputText value="" />
 								    </f:facet>
 								</p:ajaxStatus>
-							</div>	
+							 
 						</div>
 	</div>
 </div>
